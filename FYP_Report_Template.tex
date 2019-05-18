@@ -570,6 +570,50 @@ test extract 3
 \section{Reflection}
 \section{Trade-Review of "Online vs Offline" processing}\label{sec:TradeReview}
 
+\section{Writing you're not sure if you want to keep}
+\subsection{Development Tools and Technologies}
+Windows 10, i7-7500U and GeForce 940MX, Nvidia 1080Ti, VS Code, LaTeX, Python, Matlab, sklearn, numpy, ExtraSensory dataset, git.
+
+Visual Studio was used for developing the Python project
+
+\subsection{Discussion on practical aspects of IMU and Audio}
+
+\begin{itemize}
+    \item I'm not sure if it's practical to try and be recording IMU plus audio
+    \item It's a case of POV; if you can record IMU, you can also record audio from the POV of your user. This theoretically suggests a higher fidelity in classification, especially in determining whether an event was local (POV) or whether it was an external event (someone else)
+    \item whilst IMU is helpful, the level of understanding
+\end{itemize}
+
+Python was chosen for this project due to its ease of use, ease of analysis, ease of learning and its low maintenance. Choosing which dataset was the most difficult was not difficult for me as I have worked heavily with it and its great use cases are pretty straightforward for large data sets. In fact I even wrote a Python for it recently. Although it is still an early, immature project it works quite well for training models and will be the foundation of others as well. There are very few data in the dataset I could not predict the results from. This gives me confidence that the model is accurate from the start and can be used across all datasets and in other languages.
+
+When the dataset was large the results tended to cluster around the 50th and 75th percentile. From this dataset I learned a bit of things. First off, the most recent observations are generally much better aligned and consistent than the average number of observations. And second this isn't a problem for every one of the training data! It seems most of the time we end up with some data which has better variance and the better alignments in the data. If these outl
+
+
+
+
+
+To summarize what we did :
+We load and processed the dataset
+We got familiar with the dataset by plotting some histograms and a correlation heat map of the features
+We used a deep neural network with three hidden layers each one has 256 nodes.
+We used a linear activation function on the output layer
+We trained the model then test it on Kaggle.
+We also tested two other models
+Our deep neural network was able to outscore these two models
+We believe that these two models could beat the deep neural network model if we tweak their hyperparameters.https://towardsdatascience.com/deep-neural-networks-for-regression-problems-81321897ca33
+
+
+\subsection{Nearest Neighbour}
+Nearest Neighbour was chosen as a classification method to test against, and evaluate the other methods. Nearest Neighbour would not be used as a primary method as does not generalise well\citationneeded \footnote{https://scikit-learn.org/stable/modules/neighbors.html}
+
+
+
+ciation:
+
+Vaizman2017a	
+Vaizman, Y., Ellis, K., and Lanckriet, G. "Recognizing Detailed Human Context In-the-Wild from Smartphones and Smartwatches". IEEE Pervasive Computing, vol. 16, no. 4, October-December 2017, pp. 62-74. doi:10.1109/MPRV.2017.3971131
+*Cite this paper if you use the ExtraSensory Dataset for any publication!
+
 \newpage
 
 \end{document}
