@@ -12,6 +12,8 @@
 \usepackage[normalem]{ulem}
 \usepackage[parfill]{parskip}   % For replacing paragraph indenting with a newline instead
 
+\usepackage{csvsimple} % For tables from CSV
+
 % Wikipedia-style "citation needed" macro source: https://gist.github.com/martinarroyo/b9e0a963ad27169a6eee
 \newcommand{\citationneeded}{\textsuperscript{\color{blue} [citation needed]}}
 
@@ -251,6 +253,37 @@ The app development took 5 weeks to get to a useful state. It is able to record 
 During this time, an Atlassian JIRA environment was set up to facilitate management (using concepts from ENG3500 - Project Management). The Atlassian "Git-Flow" methodology was also learnt and used.
 
 I helped with 30\% of the overall programming, and code reviewed the product along with other colleagues.
+
+\subsubsection{Data collected during project vs ExtraSensory datset}
+The table 
+
+\begin{table}[]
+    \begin{tabular}{llllll}
+    id & attr\_time & Time             & attr\_x   & attr\_y & attr\_z \\
+    1  & 1.55E+12   & 2018-01-11 14:52 & -0.229843 & 3.1795  & 8.52336 \\
+    2  & 1.55E+12   & 2018-01-11 14:52 & -0.257614 & 2.93185 & 8.61444 \\
+    3  & 1.55E+12   & 2018-01-11 14:52 & -0.179626 & 2.81464 & 8.81348 \\
+    4  & 1.55E+12   & 2018-01-11 14:52 & -0.118927 & 2.82674 & 8.70142 \\
+    5  & 1.55E+12   & 2018-01-11 14:52 & -0.191544 & 2.95287 & 8.66815
+    \end{tabular}
+    \end{table}
+
+\begin{table}[]
+    \begin{tabular}{lllllll}
+    timestamp  & Time             & raw\_acc:mean & raw\_acc:std & raw\_acc:moment3 & raw\_acc:moment4 \\
+    1464129912 & 2016-05-24 22:45 & 1.011438                       & 0.012573                      & 0.023013                          & 0.04124      \\
+    1464129950 & 2016-05-24 22:45 & 1.011233                       & 0.009356                      & -0.005622                         & 0.016687     \\
+    1464130031 & 2016-05-24 22:47 & 1.013422                       & 0.018068                      & -0.008593                         & 0.039286     \\
+    1464130109 & 2016-05-24 22:48 & 1.014891                       & 0.0164                        & 0.021383                          & 0.038825     \\
+    1464130130 & 2016-05-24 22:48 & 1.017487                       & 0.022632                      & -0.012891                         & 0.037226    
+    \end{tabular}
+\end{table}
+% \begin{tabular}{l|c}%
+%     \bfseries Person & \bfseries Matr.~No.% specify table head
+%     \csvreader[head to column names]{data/trecsRaw.csv}{}% use head of csv as column names
+%     {\\\hline\givenname\ \name & \matriculation}% specify your coloumns here
+%     \end{tabular}
+
 
 \subsection{Data Pre-Processing}
 Python was used to process the data before the Machine Learning modules of code, and Matlab was used with GPS, IMU to prototype the algorithms. 
