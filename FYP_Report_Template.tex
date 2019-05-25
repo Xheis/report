@@ -13,10 +13,10 @@
 \usepackage[parfill]{parskip}   % For replacing paragraph indenting with a newline instead
 
 \usepackage{csvsimple} % For tables from CSV
-
+\usepackage{float} % Used for forcing diagrams to the [H] action
 % Wikipedia-style "citation needed" macro source: https://gist.github.com/martinarroyo/b9e0a963ad27169a6eee
 \newcommand{\citationneeded}{\textsuperscript{\color{blue} [citation needed]}}
-
+% \renewcommand{\floatpagefraction}
 %from/for unicode-math
 %\setmathfont{texgyrepagella-math.otf}[math-style=TeX]
 
@@ -154,10 +154,26 @@ A tool called “18 Words” was used to constantly refine and maintain a descri
 
 \subsubsection{Tree Diagram}
 With the new understanding of what the project is, a Tree Diagram was drafted to explore missed requirements, hidden mod-ules and other aspects of the project not yet considered. 
+\begin{figure}[ht]
+    \begin{center}
+        \includegraphics[width=0.8\linewidth]{Figures/treeDiagram.png}
+        \caption{A tree diagram for the project, being used as a method of allocating work}
+        \label{fig:AndroidDataExample}
+    \end{center}
+ \end{figure}
 
 \subsubsection{Quad of Aims}
 The Quad of Aims is a tool used to explore 4 critical, high level aspects of the project as shown in table \ref{tab:QuadOfAims}.
-\begin{table}[h!]
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[width=0.8\linewidth]{Figures/QuadOfAims2.png}
+        \caption{A Quad of Aims for the project might be A3 in size and would have the relevant information embedded. It may also be completed on a white-board.}
+        \label{fig:AndroidDataExample}
+    \end{center}
+ \end{figure}
+
+ \begin{table}[h]
     \begin{center}
         \caption{Quad of Aims }\label{tab:QuadOfAims}
         {\footnotesize
@@ -177,20 +193,74 @@ This is typically done to instigate early works on a project.
 
 \subsubsection{Input Output Analysis}
 The Input Output Analysis of the system informs the bounds and requirements to operate the system. In this situation, it helped consider the full scope of the project; this includes the technical and non-technical aspects of undertaking the MECH4841 Project.
+\begin{figure}[ht]
+    \begin{center}
+        \includegraphics[width=0.8\linewidth]{Figures/InputOutput.png}
+        \caption{A Quad of Aims for the project might be A3 in size and would have the relevant information embedded. It may also be completed on a white-board.}
+        \label{fig:AndroidDataExample}
+    \end{center}
+ \end{figure}
 
 \subsubsection{Affinity Diagram}
 An Affinity Diagram helps to solidify the high level, vague ideas, requirements and tests into a more detailed view. There is a focus on putting tangible measurements onto requirements. During this process, system architecture decisions were made such as a trade review into online vs offline processing, and subsequently splitting the system into smaller modules. Our primary system had 2 key sub-systems: The recording, and the processing systems. An Affinity Diagram of the top-level sys-tem was created, and the 2 affinity diagrams of the sub-systems were informed and made from this. After this was complete, previous work was updated to reflect these changes.
+\begin{figure}[ht]
+    \begin{center}
+        \includegraphics[width=0.8\linewidth]{Figures/AffinityDiagram.png}
+        \caption{The Affinity Diagrams for the full system architecture}
+        %The 3 Affinity Diagrams (Left: Overall System, Middle: Recording Sys-tem, Right: Processing System)
+        \label{fig:AndroidDataExample}
+    \end{center}
+ \end{figure}
+
 \subsubsection{Systems Map}
 A Systems Map takes the Affinity Diagram, Input Output Analysis, and Tree-Diagram to identify the processes inside sub-modules that are needed to design the system. This was used to great effect to measure and estimate the workload necessary to implement data fusion alongside deep learning of acoustic classification and detection.
+\begin{figure}[ht]
+    \begin{center}
+        \includegraphics[width=0.8\linewidth]{Figures/SystemMap.png}
+        \caption{A systems map for the project}
+        \label{fig:AndroidDataExample}
+    \end{center}
+ \end{figure}
+
 \subsubsection{Sequence Diagram}
 A Sequence Diagram was developed to analyse the flow of data through the processes identified in the System Map. This helped to predict and manage any potential complexities and logistics related to the specific needs of each process. 
 Consequently, data fusion was removed from the scope due to the large workload required to implement alongside machine learning. 
+\begin{figure}[ht]
+    \begin{center}
+        \includegraphics[width=0.8\linewidth]{Figures/SequenceDiagram.png}
+        \caption{A Basic Sequence Diagram for the project}
+        \label{fig:AndroidDataExample}
+    \end{center}
+ \end{figure}
+
 \subsubsection{N\textsuperscript{2} Analysis}
 An N\textsuperscript{2}  Analysis methodically expands on the what data moves around the system. This is to compliment the discussed complexities in the Sequence Diagram by documenting what data is expected.
+\begin{figure}[ht]
+    \begin{center}
+        \includegraphics[width=0.8\linewidth]{Figures/n2analysis.png}
+        \caption{A N2 Diagram for the project}
+        \label{fig:AndroidDataExample}
+    \end{center}
+ \end{figure}
+
 \subsubsection{Spray Diagram}
 The Spray Diagram shown below shows how details of the sys-tem can have multi-factored effects in design requirements, outcomes and operational use. Of interest in the diagram is the relationship between high-quality output will require high-quality input, and this may increase production and design costs. 
+\begin{figure}[ht]
+    \begin{center}
+        \includegraphics[width=0.8\linewidth]{Figures/SprayDiagram.png}
+        \caption{A Spray Diagram for the project}
+        \label{fig:AndroidDataExample}
+    \end{center}
+ \end{figure}
 \subsubsection{Matrix Diagram}
 A matrix diagram was made to review the now more refined, reduced scope. This works by using a “strong”, “weak” or “none” indicator for each aspect of the project. It highlighted the difficulty in balancing the needs of both major stakeholders.
+\begin{figure}[ht]
+    \begin{center}
+        \includegraphics[width=0.8\linewidth]{Figures/MatrixDiagram.png}
+        \caption{A N2 Diagram for the project}
+        \label{fig:AndroidDataExample}
+    \end{center}
+ \end{figure}
 \subsection{Final Problem Analysis}
 \subsubsection{Discussion}
 The purpose of the project is to hypothesis and produce a proof-of-concept of how digital technologies could improve debriefing processes and outcomes. This seems achievable within 1 year, and should provide an excellent learning oppor-tunity for the author.
@@ -208,7 +278,13 @@ A literature review of the current research was conducted with guidance from Uni
 
 \subsection{Acoustic Event Detection and Acoustic Event Classification}
 Historically the technologies for AED/AEC have been Support vector machine (SVMs), Hidden Markov Models (HHMs), and more generally, basic DSP (Digital Signal Processing) classifiers. But in the last 8 years, AED and AEC research has emerged as a hot topic of research. Research focuses on the two key tasks: Detection (when did an acoustic event occur in the au-dio, and when did it stop?) and classification (what sound oc-curred?). New research papers are often the result of DCASE competitions, which is an official IEEE Audio and Acoustic Signal Processing (AASP) competition.
-
+\begin{figure}[ht]
+    \begin{center}
+        \includegraphics[width=.6\linewidth]{Figures/F1_score.PNG}
+        \caption{DCASE Researcher Toni Heittola's F1 Results reflect the AED/AEC field of research with drastic improvements over the last 8 years. \citationneeded}
+        \label{fig:Sinc}
+    \end{center}
+\end{figure}
 \subsection{DCASE Competitions (Detection and Classification of Acoustic Scenes and Events)}
 The DCASE competitions format started 2013, had its second competition in 2016, and since then has been a yearly event. Since 2017, there has been a new format where the competi-tion starts march, formal results are released by September, and a workshop for participants on the best team’s work in Novem-ber [7]. 2016 was the first to feature Machine Learning (win-ning teams incorporated machine learning into ensemble mod-els/classifiers). By 2017 all entries utilised machine learning. Recently the results from DCASE2018 have been published; progress in the AED/AEC field has allowed more sophisticated, real-world applications to be evaluated (Challenge Task \#4) [8]. The complexity of the dataset, the number of acoustic classes and fidelity of output are unprecedented in the AEC field. The winning results at this level of complexity aren’t as high quali-ty compared to last year’s more controlled environment/dataset (2017 had a 41.7\% F1 score [9] vs 2018’s 32.4\% [8]), but pre-sent the best precedent for the problem addressed in this paper.
 
@@ -230,21 +306,45 @@ The winning model used in the DCASE2018 Task 4 challenge used a “Mean-teacher�
         }
     \end{center}
 \end{table}
+\begin{gather*}
+    Car AudioSet:  \frac{0.8}{114.9}=0.69\%
+\end{gather*}
+
 %%%%%%%%%%%%%%%%%%%%%%%
 \section{Method}
-The method for learning and prototyping the Machine Learning interface was to driven by reading [some textbook], and then to build up the network in small stages. The desired topology was the Mean Teacher topology from DCASE 2018, however it was beneficial to work up slowly to this goal.  The main tasks required to build the classifier are as follows:
+The method for learning and prototyping the Machine Learning interface was driven by reading [some textbook], and then building up the network in small stages. The desired topology was the Mean Teacher topology from DCASE 2018, however it was beneficial to work up slowly to this goal.  The main tasks required to build the classifier are as follows:
 
 \begin{itemize}
     \item Develop the use-case, and identify the output
     \item Investigate what datasets are available, and whether further data would be beneficial
     \item Choose a framework/technology to implement the machine learning algorithm in
     \item Build the machine learning, and test it's effectiveness
-    \item Refine and attempt to improve the network using the F-Score
+    \item Refine the network using the F-Score
     \item Take the classified output, and append it to the input trackfile
 \end{itemize}
 
+\subsection{Required Data}
+The Machine Learning uses GPS, accelerometer, gyroscope, and audio. A Google Pixel 2 was selected as the model data acquisition, which table /ref{} below shows.
+\begin{table}[h!]
+    \begin{center}
+        \caption{Data Available\citationneeded}\label{tab:AndroidDataAvailable}
+        {\footnotesize
+            \begin{tabular}{c l l l|}
+                \hline\hline Sensor & Description \\ \hline 
+                GPS & The Pixel 2 uses the Snapdragon 835 System on Chip GPS receiver\\
+                Accelerometer / Gyroscope & The Pixel 2 uses a bosch BMI160
+                Audio & The Pixel 2 uses a Qualcom WCD9395 Audio Codec chip, a NXP TFA9891UK Audio Amplifier,
+                \\ \hline
+            \end{tabular}
+        }
+    \end{center}
+\end{table}
+
 \subsection{Data Collection}
+
 The choice of what data to collected and use was found through the first problem analysis step. As the goal is to maximise the accuracy of the classifier (whilst still being an achievable goal), the data chosen for use and collection was GPS, accelerometer, gyroscope, and audio. As described in the problem analysis phase, the best platform for this would be a smartphone as shown in section \ref{sec:ProblemAnalysis} and appendix \ref{sec:TradeReview}. 
+
+% The choice of what data to collected and use was found through the first problem analysis step. As the goal is to maximise the accuracy of the classifier (whilst still being an achievable goal), the data chosen for use and collection was GPS, accelerometer, gyroscope, and audio. As described in the problem analysis phase, the best platform for this would be a smartphone as shown in section \ref{sec:ProblemAnalysis} and appendix \ref{sec:TradeReview}. 
 
 Android was chosen as the platform as it had easier/more support for reading from the on-board sensors. The data available from the Android API can be seen in table \ref{tab:AndroidDataAvailable}, of which GPS and Acceleration will be used. It was also chosen due to it's support for C/C++ and C\#, which C is required knowledge for the University of Newcastle Bachelor of Mechatronics degree, and C\# is a very similar language.
 
