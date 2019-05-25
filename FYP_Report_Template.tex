@@ -20,6 +20,46 @@
 %from/for unicode-math
 %\setmathfont{texgyrepagella-math.otf}[math-style=TeX]
 
+% New macro to make defining labels easier.
+%\newcommand{\citationneeded}{\textsuperscript{\color{blue} [citation needed]}}
+\newcommand{\inlineQuote}[1]{``#1''}
+
+
+\newcommand{\fref}[1] {Figure: \ref{#1}}
+
+\newcommand{\fFigure}[3]{
+	\begin{figure}[h]
+        \begin{center}  
+            \includegraphics[width=#3\linewidth]{Figures/#1}  
+            \caption{#2}
+            \label{#1}
+        \end{center}
+	\end{figure}
+}
+
+% \fref{TEST.png}
+% \fFigure{TEST.png}{caption}{0.8}
+
+% \newcommand{\cFigure}[4]{
+%     \begin{figure}[h]
+%         \begin{center}
+%             \includegraphics[width=0.8\linewidth]{Figures/QuadOfAims2.png}
+%             \caption{A Quad of Aims for the project might be A3 in size and would have the relevant information embedded. It may also be completed on a white-board.}
+%             \label{fig:AndroidDataExample}
+%         \end{center}
+%      \end{figure}    
+
+% \begin{figure}[h!]
+% 		\label{\getLabel{#2}{#3}{#4}}
+% 		 \centering
+% 		 \includegraphics[width=\linewidth]{#1}	 
+% 		 \caption{#2 for #4 DOF mesh, Re #3.}
+% 	\end{figure} 
+% }
+
+
+
+ 
 
 %\LoadClass[twoside,a4paper,11pt]{scrartcl}
 
@@ -144,34 +184,22 @@ We want to define and reduce the scope of this project to be achievable, measura
 
 
 \subsection{System Engineering Tools for Problem Analysis}
-The following tools have been adapted and implemented to develop this paper and the author’s understanding of the prob-lem. 
-
-Author’s note: Details of specific use cases have been omitted in this section. 
+The following tools have been adapted and implemented to develop this paper and the author’s understanding of the problem. 
 
 \subsubsection{Current 18 Words}
 A tool called “18 Words” was used to constantly refine and maintain a description on the scope as it changed throughout problem analysis. The current “18 Words” is the following:
 “[The project is] a portable proprietary format compliant track file data recording system coupled with offline processing to log specific physical events in proximity that occurred during recording.” 
 
 \subsubsection{Tree Diagram}
-With the new understanding of what the project is, a Tree Diagram was drafted to explore missed requirements, hidden mod-ules and other aspects of the project not yet considered. 
-\begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth]{Figures/treeDiagram.png}
-        \caption{A tree diagram for the project, being used as a method of allocating work}
-        \label{fig:AndroidDataExample}
-    \end{center}
- \end{figure}
+With the new understanding of what the project is, a Tree Diagram was drafted to explore missed requirements, hidden modules and other aspects of the project not yet considered. \fref{treeDiagram.png} shows a Tree Diagram breakdown for this FYP.
+
+ \fFigure{treeDiagram.png}{A tree diagram for the project, being used as a method of allocating work}{0.7}
+
 
 \subsubsection{Quad of Aims}
-The Quad of Aims is a tool used to explore 4 critical, high level aspects of the project as shown in table \ref{tab:QuadOfAims}.
+The Quad of Aims is a tool used to explore 4 critical, high level aspects of the project as explained in table \ref{tab:QuadOfAims}, and shown in \fref{QuadOfAims2.png}.
 
-\begin{figure}[h]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth]{Figures/QuadOfAims2.png}
-        \caption{A Quad of Aims for the project might be A3 in size and would have the relevant information embedded. It may also be completed on a white-board.}
-        \label{fig:AndroidDataExample}
-    \end{center}
- \end{figure}
+\fFigure{QuadOfAims2.png}{A Quad of Aims for the project might be A3 in size and would have the relevant information embedded. It may also be completed on a white-board.}{0.7}
 
  \begin{table}[h]
     \begin{center}
@@ -192,99 +220,62 @@ The Quad of Aims is a tool used to explore 4 critical, high level aspects of the
 This is typically done to instigate early works on a project.
 
 \subsubsection{Input Output Analysis}
-The Input Output Analysis of the system informs the bounds and requirements to operate the system. In this situation, it helped consider the full scope of the project; this includes the technical and non-technical aspects of undertaking the MECH4841 Project.
-\begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth]{Figures/InputOutput.png}
-        \caption{A Quad of Aims for the project might be A3 in size and would have the relevant information embedded. It may also be completed on a white-board.}
-        \label{fig:AndroidDataExample}
-    \end{center}
- \end{figure}
+The Input Output Analysis of the system informs the bounds and requirements to operate the system. In this situation, it helped consider the full scope of the project; this includes the technical and non-technical aspects of undertaking the MECH4841 Project as shown in \fref{InputOutput.png}.
+
+\fFigure{InputOutput.png}{The input output analysis for the system}{0.75}
+
 
 \subsubsection{Affinity Diagram}
-An Affinity Diagram helps to solidify the high level, vague ideas, requirements and tests into a more detailed view. There is a focus on putting tangible measurements onto requirements. During this process, system architecture decisions were made such as a trade review into online vs offline processing, and subsequently splitting the system into smaller modules. Our primary system had 2 key sub-systems: The recording, and the processing systems. An Affinity Diagram of the top-level sys-tem was created, and the 2 affinity diagrams of the sub-systems were informed and made from this. After this was complete, previous work was updated to reflect these changes.
-\begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth]{Figures/AffinityDiagram.png}
-        \caption{The Affinity Diagrams for the full system architecture}
-        %The 3 Affinity Diagrams (Left: Overall System, Middle: Recording Sys-tem, Right: Processing System)
-        \label{fig:AndroidDataExample}
-    \end{center}
- \end{figure}
+An Affinity Diagram helps to solidify the high level, vague ideas, requirements and tests into a more detailed view. There is a focus on putting tangible measurements onto requirements. During this process, system architecture decisions were made such as a trade review into online vs offline processing, and subsequently splitting the system into smaller modules. Our primary system had 2 key sub-systems: The recording, and the processing systems. An Affinity Diagram of the top-level sys-tem was created, and the 2 affinity diagrams of the sub-systems were informed and made from this. After this was complete, previous work was updated to reflect these changes. *ADD A REF TO THE FIGURE* \fref{AffinityDiagram.png}
+\fFigure{AffinityDiagram.png}{The Affinity Diagrams for the full system architecture}{0.8}
 
 \subsubsection{Systems Map}
-A Systems Map takes the Affinity Diagram, Input Output Analysis, and Tree-Diagram to identify the processes inside sub-modules that are needed to design the system. This was used to great effect to measure and estimate the workload necessary to implement data fusion alongside deep learning of acoustic classification and detection.
-\begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth]{Figures/SystemMap.png}
-        \caption{A systems map for the project}
-        \label{fig:AndroidDataExample}
-    \end{center}
- \end{figure}
+A Systems Map takes the Affinity Diagram, Input Output Analysis, and Tree-Diagram to identify the processes inside sub-modules that are needed to design the system. This was used to great effect to measure and estimate the workload necessary to implement data fusion alongside deep learning of acoustic classification and detection as shown in \fref{SystemMap.png}.
+\fFigure{SystemMap.png}{A systems map for the project}{0.8}
+
 
 \subsubsection{Sequence Diagram}
-A Sequence Diagram was developed to analyse the flow of data through the processes identified in the System Map. This helped to predict and manage any potential complexities and logistics related to the specific needs of each process. 
-Consequently, data fusion was removed from the scope due to the large workload required to implement alongside machine learning. 
-\begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth]{Figures/SequenceDiagram.png}
-        \caption{A Basic Sequence Diagram for the project}
-        \label{fig:AndroidDataExample}
-    \end{center}
- \end{figure}
+A Sequence Diagram was developed to analyse the flow of data through the processes identified in the System Map. This is shown in \fref{SequenceDiagram.png}. This helped to predict and manage any potential complexities and logistics related to the specific needs of each process. 
+Originally, This Sequence Diagram was used to justify removing data fusion from the scope due to the large workload required to implement alongside machine learning. Later in the project, it was brought back into the scope of the project to help compare and evaluate it's effectiveness in improving the overall system. 
+\fFigure{SequenceDiagram.png}{A basic Sequence Diagram for the project}{0.8}
+
 
 \subsubsection{N\textsuperscript{2} Analysis}
-An N\textsuperscript{2}  Analysis methodically expands on the what data moves around the system. This is to compliment the discussed complexities in the Sequence Diagram by documenting what data is expected.
-\begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth]{Figures/n2analysis.png}
-        \caption{A N2 Diagram for the project}
-        \label{fig:AndroidDataExample}
-    \end{center}
- \end{figure}
+An N\textsuperscript{2} Analysis methodically expands on the what data moves around the system. This is to compliment the discussed complexities in the Sequence Diagram by documenting what data is expected. A example of this is shown in \fref{n2analysis.png}
+\fFigure{n2analysis.png}{A N\textsuperscript{2} Analysis for the project}{0.8}
 
 \subsubsection{Spray Diagram}
-The Spray Diagram shown below shows how details of the sys-tem can have multi-factored effects in design requirements, outcomes and operational use. Of interest in the diagram is the relationship between high-quality output will require high-quality input, and this may increase production and design costs. 
-\begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth]{Figures/SprayDiagram.png}
-        \caption{A Spray Diagram for the project}
-        \label{fig:AndroidDataExample}
-    \end{center}
- \end{figure}
+The Spray Diagram shown in \fref{SprayDiagram.png} shows how details of the system can have multi-factored effects in design requirements, outcomes and operational use. Of interest in the diagram is the relationship between high-quality output will require high-quality input, and this may increase production and design costs. 
+\fFigure{SprayDiagram.png}{A Spray Diagram for the project}{0.8}
+
 \subsubsection{Matrix Diagram}
-A matrix diagram was made to review the now more refined, reduced scope. This works by using a “strong”, “weak” or “none” indicator for each aspect of the project. It highlighted the difficulty in balancing the needs of both major stakeholders.
-\begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=0.8\linewidth]{Figures/MatrixDiagram.png}
-        \caption{A N2 Diagram for the project}
-        \label{fig:AndroidDataExample}
-    \end{center}
- \end{figure}
+A matrix diagram was made to review the now more refined, reduced scope as shown in \fref{MatrixDiagram.png}. This works by using a “strong”, “weak” or “none” indicator for each aspect of the project. It highlighted the difficulty in balancing the needs of both major stakeholders. 
+\fFigure{MatrixDiagram.png}{A Matrix Diagram for the project}{0.8}
+
 \subsection{Final Problem Analysis}
 \subsubsection{Discussion}
 The purpose of the project is to hypothesis and produce a proof-of-concept of how digital technologies could improve debriefing processes and outcomes. This seems achievable within 1 year, and should provide an excellent learning oppor-tunity for the author.
 
 %%%%%%%%%%%%%%%%%%%%%%%
 \section{Review Of Literature}
-A literature review of the current research was conducted with guidance from University of Queensland’s guide to Literature reviews [5] . There are 3 nested areas of research that are of interest to this project. The wider classification and regression research topic, the machine learning topic that covers many various fields of implemented and theoretical machine learning applications, and finally the specific field of Acoustic Event Detection and Classification (AED/AEC); this field has tradition-ally relied on older techniques, and is undergoing a revolution with machine learning. 
-\begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=.6\linewidth]{Figures/niche.PNG}
-        \caption{The literature for this project is a niche topic}
-        \label{fig:Sinc}
-    \end{center}
-\end{figure}
+A literature review of the current research was conducted with guidance from University of Queensland’s guide to Literature reviews [5] \citationneeded . There are 3 nested areas of research that are of interest to this project. The wider classification and regression research topic, the machine learning topic that covers many various fields of implemented and theoretical machine learning applications, and finally the specific field of Acoustic Event Detection and Classification (AED/AEC); this field has traditionally relied on older techniques, and is undergoing a revolution with machine learning. 
+\fFigure{niche.png}{The literature for this project is a niche topic in the Machine Learning area of research}{0.8}
+
+\subsection{Machine Learning}
+A definition for Machine learning is taken from Tom M. Mitchell's 1997 textbook, \inlineQuote{Machine Learning}
+\begin{quote}
+    A computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E. \citationneeded
+\end{quote} /citationneeded  Mitchell, T. (1997). Machine Learning. McGraw Hill. p. 2. ISBN 978-0-07-042807-2.
+
+This definition of Machine Learning lends itself to best explaining this project; The task T (AED/C), the E (Audo, IMU, GPS), and P (a traditional F1 score). 
+
+The computer program described in this project has been produced in Python, using the sklearn and tensorflow libraries.
 
 \subsection{Acoustic Event Detection and Acoustic Event Classification}
 Historically the technologies for AED/AEC have been Support vector machine (SVMs), Hidden Markov Models (HHMs), and more generally, basic DSP (Digital Signal Processing) classifiers. But in the last 8 years, AED and AEC research has emerged as a hot topic of research. Research focuses on the two key tasks: Detection (when did an acoustic event occur in the au-dio, and when did it stop?) and classification (what sound oc-curred?). New research papers are often the result of DCASE competitions, which is an official IEEE Audio and Acoustic Signal Processing (AASP) competition.
-\begin{figure}[ht]
-    \begin{center}
-        \includegraphics[width=.6\linewidth]{Figures/F1_score.PNG}
-        \caption{DCASE Researcher Toni Heittola's F1 Results reflect the AED/AEC field of research with drastic improvements over the last 8 years. \citationneeded}
-        \label{fig:Sinc}
-    \end{center}
-\end{figure}
+\fref{F1_score.png}
+\fFigure{F1_score.png}{DCASE Researcher Toni Heittola's F1 Results reflect the AED/AEC field of research with drastic improvements over the last 8 years. \citationneeded}{0.8}
+
 \subsection{DCASE Competitions (Detection and Classification of Acoustic Scenes and Events)}
 The DCASE competitions format started 2013, had its second competition in 2016, and since then has been a yearly event. Since 2017, there has been a new format where the competi-tion starts march, formal results are released by September, and a workshop for participants on the best team’s work in Novem-ber [7]. 2016 was the first to feature Machine Learning (win-ning teams incorporated machine learning into ensemble mod-els/classifiers). By 2017 all entries utilised machine learning. Recently the results from DCASE2018 have been published; progress in the AED/AEC field has allowed more sophisticated, real-world applications to be evaluated (Challenge Task \#4) [8]. The complexity of the dataset, the number of acoustic classes and fidelity of output are unprecedented in the AEC field. The winning results at this level of complexity aren’t as high quali-ty compared to last year’s more controlled environment/dataset (2017 had a 41.7\% F1 score [9] vs 2018’s 32.4\% [8]), but pre-sent the best precedent for the problem addressed in this paper.
 
@@ -332,8 +323,8 @@ The Machine Learning uses GPS, accelerometer, gyroscope, and audio. A Google Pix
             \begin{tabular}{c l l l|}
                 \hline\hline Sensor & Description \\ \hline 
                 GPS & The Pixel 2 uses the Snapdragon 835 System on Chip GPS receiver\\
-                Accelerometer / Gyroscope & The Pixel 2 uses a bosch BMI160
-                Audio & The Pixel 2 uses a Qualcom WCD9395 Audio Codec chip, a NXP TFA9891UK Audio Amplifier,
+                Accelerometer / Gyroscope & The Pixel 2 uses a bosch BMI160 \\
+                Audio & The Pixel 2 uses a Qualcom WCD9395 Audio Codec chip, a NXP TFA9891UK Audio Amplifier, \citationneeded FINISH \\
                 \\ \hline
             \end{tabular}
         }
@@ -358,25 +349,37 @@ I helped with 30\% of the overall programming, and code reviewed the product alo
 The table 
 
 \begin{table}[]
-    \begin{tabular}{llllll}
-    id & attr\_time & Time             & attr\_x   & attr\_y & attr\_z \\
-    1  & 1.55E+12   & 2018-01-11 14:52 & -0.229843 & 3.1795  & 8.52336 \\
-    2  & 1.55E+12   & 2018-01-11 14:52 & -0.257614 & 2.93185 & 8.61444 \\
-    3  & 1.55E+12   & 2018-01-11 14:52 & -0.179626 & 2.81464 & 8.81348 \\
-    4  & 1.55E+12   & 2018-01-11 14:52 & -0.118927 & 2.82674 & 8.70142 \\
-    5  & 1.55E+12   & 2018-01-11 14:52 & -0.191544 & 2.95287 & 8.66815
-    \end{tabular}
-    \end{table}
+    \begin{center}
+        \begin{tabular}{llllll}
+        \hline\hline id & attr\_time & Time & attr\_x   & attr\_y & attr\_z \\ \hline
+        1  & 1.55E+12   & 2018-01-11 14:52 & -0.229843 & 3.1795  & 8.52336 \\
+        2  & 1.55E+12   & 2018-01-11 14:52 & -0.257614 & 2.93185 & 8.61444 \\
+        3  & 1.55E+12   & 2018-01-11 14:52 & -0.179626 & 2.81464 & 8.81348 \\
+        4  & 1.55E+12   & 2018-01-11 14:52 & -0.118927 & 2.82674 & 8.70142 \\
+        5  & 1.55E+12   & 2018-01-11 14:52 & -0.191544 & 2.95287 & 8.66815 \\ \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+    % \hline\hline Label & Description \\ \hline 
+    % Purpose & This is our “18 words” \\
+    % Stakeholders & University, Author’s Work \\
+    % Deliverables & Documentation, recommendations, FYP report, proof-of-concept \\
+    % Measure of Success & Review of Documentation by SMEs, review of FYP report, dry and wet run of proof-of-concept \\
+    % \\ \hline
 
 \begin{table}[]
+    \begin{center}
     \begin{tabular}{lllllll}
-    timestamp  & Time             & raw\_acc:mean & raw\_acc:std & raw\_acc:moment3 & raw\_acc:moment4 \\
+        \hline\hline timestamp  & Time & raw\_acc:mean & raw\_acc:std & raw\_acc:moment3 & raw\_acc:moment4 \\\hline 
     1464129912 & 2016-05-24 22:45 & 1.011438                       & 0.012573                      & 0.023013                          & 0.04124      \\
     1464129950 & 2016-05-24 22:45 & 1.011233                       & 0.009356                      & -0.005622                         & 0.016687     \\
     1464130031 & 2016-05-24 22:47 & 1.013422                       & 0.018068                      & -0.008593                         & 0.039286     \\
     1464130109 & 2016-05-24 22:48 & 1.014891                       & 0.0164                        & 0.021383                          & 0.038825     \\
-    1464130130 & 2016-05-24 22:48 & 1.017487                       & 0.022632                      & -0.012891                         & 0.037226    
+    1464130130 & 2016-05-24 22:48 & 1.017487                       & 0.022632                      & -0.012891                         & 0.037226    \\\hline 
     \end{tabular}
+        
+\end{center}
 \end{table}
 % \begin{tabular}{l|c}%
 %     \bfseries Person & \bfseries Matr.~No.% specify table head
@@ -430,13 +433,9 @@ The GPS signal is requested by the "Fused Location Provider", in the Google Play
 \subsubsection{IMU}
 For the purpose of this project, the data collected through the Android App applied a Low Pass Filter\citationneeded. A Kalman Filter was considered, but wasn't used to avoid modelling the specific android sensor plant dynamics.
 
-\begin{figure}[ht]
-   \begin{center}
-       \includegraphics[width=0.8\linewidth]{Figures/AndroidDataExample}
-       \caption{Results of Low Pass Filter vs Raw accelerometer data}
-       \label{fig:AndroidDataExample}
-   \end{center}
-\end{figure}
+\fref{AndroidDataExample.png}
+\fFigure{AndroidDataExample.png}{Results of Low Pass Filter vs Raw accelerometer data}{0.8}
+
 
 \lstinputlisting[
     language=Matlab,

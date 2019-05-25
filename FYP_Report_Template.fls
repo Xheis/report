@@ -1,0 +1,365 @@
+PWD c:\FYP\report
+INPUT C:\Users\Administrator\AppData\Local\MiKTeX\2.9\miktex\data\le\pdftex\pdflatex.fmt
+INPUT c:\FYP\report\FYP_Report_Template.tex
+OUTPUT c:\FYP\report\FYP_Report_Template.log
+INPUT c:\FYP\report\UoNMCHA.cls
+INPUT c:\FYP\report\UoNMCHA.cls
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\scrartcl.cls
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\scrartcl.cls
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\scrkbase.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\scrkbase.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\scrbase.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\scrbase.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\scrlfile.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\scrlfile.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\tocbasic.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\tocbasic.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\scrsize11pt.clo
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\scrsize11pt.clo
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmr10.tfm
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\typearea.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\typearea.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\fancyhdr\fancyhdr.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\fancyhdr\fancyhdr.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\abstract\abstract.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\abstract\abstract.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\lastpage\lastpage.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\lastpage\lastpage.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\url\url.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\url\url.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\graphics.cfg
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\graphics.cfg
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def
+INPUT c:\FYP\report\LOGO_Square.pdf
+INPUT c:\FYP\report\LOGO_Square.pdf
+OUTPUT c:\FYP\report\FYP_Report_Template.pdf
+INPUT c:\FYP\report\LOGO_Square.pdf
+INPUT c:\FYP\report\LOGO_Square.pdf
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\natbib\natbib.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\natbib\natbib.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\tools\array.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\tools\array.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\booktabs\booktabs.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\booktabs\booktabs.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\jknappen\mathrsfs.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\jknappen\mathrsfs.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\tools\bm.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\tools\bm.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\graphics\color.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\graphics\color.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\color.cfg
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\color.cfg
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\tools\enumerate.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\tools\enumerate.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\listings.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\listings.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstmisc.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstmisc.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\listings.cfg
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\listings.cfg
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\subfig\subfig.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\subfig\subfig.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\caption\caption.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\caption\caption.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\caption\caption3.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\caption\caption3.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\ulem\ulem.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\ulem\ulem.sty
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\latex-fonts\lasy6.tfm
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\parskip\parskip.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\parskip\parskip.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\etoolbox\etoolbox.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\etoolbox\etoolbox.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\csvsimple\csvsimple.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\csvsimple\csvsimple.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\utilities\pgfrcs.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\utilities\pgfrcs.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfutil-common.tex
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfutil-common-lists.tex
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfutil-latex.def
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\ms\everyshi.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\ms\everyshi.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfrcs.code.tex
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfrcs.code.tex
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\pgf.revision.tex
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\pgf.revision.tex
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\utilities\pgfkeys.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\utilities\pgfkeys.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfkeys.code.tex
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfkeys.code.tex
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfkeysfiltered.code.tex
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\tools\shellesc.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\tools\shellesc.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\float\float.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\float\float.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstlang1.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstlang1.sty
+INPUT c:\FYP\report\FYP_Report_Template.aux
+INPUT c:\FYP\report\FYP_Report_Template.aux
+OUTPUT c:\FYP\report\FYP_Report_Template.aux
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\context\base\mkii\supp-pdf.mkii
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\context\base\mkii\supp-pdf.mkii
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty
+INPUT c:\FYP\report\FYP_Report_Template.out
+INPUT c:\FYP\report\FYP_Report_Template.out
+INPUT c:\FYP\report\FYP_Report_Template.out
+INPUT c:\FYP\report\FYP_Report_Template.out
+INPUT c:\FYP\report\FYP_Report_Template.out
+INPUT c:\FYP\report\FYP_Report_Template.out
+OUTPUT c:\FYP\report\FYP_Report_Template.out
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\bookmark.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\bookmark.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\bkm-pdftex.def
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\bkm-pdftex.def
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmr12.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmmi12.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmsy10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmex10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam7.tfm
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\jknappen\ursfs.fd
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\jknappen\ursfs.fd
+INPUT C:\Users\Administrator\AppData\Local\MiKTeX\2.9\fonts\tfm\public\rsfs\rsfs10.tfm
+INPUT C:\Users\Administrator\AppData\Local\MiKTeX\2.9\fonts\tfm\public\rsfs\rsfs10.tfm
+INPUT C:\Users\Administrator\AppData\Local\MiKTeX\2.9\fonts\tfm\public\rsfs\rsfs7.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmbx12.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmbx10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmbx7.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmmib10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmmib10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\cmextra\cmmib7.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmbsy10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmbsy10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\cmextra\cmbsy7.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmti10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam5.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm5.tfm
+INPUT C:\Users\Administrator\AppData\Local\MiKTeX\2.9\fonts\tfm\public\rsfs\rsfs5.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmbx5.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\cmextra\cmmib5.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\cmextra\cmbsy5.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmssi10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmss10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmssbx10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmssbx10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmssbx10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmr9.tfm
+INPUT C:\Users\Administrator\AppData\Local\MiKTeX\2.9\pdftex\config\pdftex.map
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmssbx10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmsy10.tfm
+INPUT c:\FYP\report\FYP_Report_Template.toc
+INPUT c:\FYP\report\FYP_Report_Template.toc
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmr8.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmr6.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmmi10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmmi8.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmmi6.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmsy8.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmsy6.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmex10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\cmextra\cmex8.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam7.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
+INPUT C:\Users\Administrator\AppData\Local\MiKTeX\2.9\fonts\tfm\public\rsfs\rsfs10.tfm
+INPUT C:\Users\Administrator\AppData\Local\MiKTeX\2.9\fonts\tfm\public\rsfs\rsfs10.tfm
+INPUT C:\Users\Administrator\AppData\Local\MiKTeX\2.9\fonts\tfm\public\rsfs\rsfs5.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmbx10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmbx8.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmbx6.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmmib10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\cmextra\cmmib8.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\cmextra\cmmib6.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmbsy10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\cmextra\cmbsy8.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\cmextra\cmbsy6.tfm
+OUTPUT c:\FYP\report\FYP_Report_Template.toc
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmssbx10.tfm
+INPUT c:\FYP\report\Figures\treeDiagram.png
+INPUT c:\FYP\report\Figures\treeDiagram.png
+INPUT c:\FYP\report\Figures\treeDiagram.png
+INPUT c:\FYP\report\Figures\treeDiagram.png
+INPUT c:\FYP\report\Figures\treeDiagram.png
+INPUT c:\FYP\report\Figures\QuadOfAims2.png
+INPUT c:\FYP\report\Figures\QuadOfAims2.png
+INPUT c:\FYP\report\Figures\QuadOfAims2.png
+INPUT c:\FYP\report\Figures\QuadOfAims2.png
+INPUT c:\FYP\report\Figures\QuadOfAims2.png
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmmi9.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmsy9.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\cmextra\cmex9.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+INPUT C:\Users\Administrator\AppData\Local\MiKTeX\2.9\fonts\tfm\public\rsfs\rsfs10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmbx9.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\cmextra\cmmib9.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\cmextra\cmbsy9.tfm
+INPUT c:\FYP\report\Figures\InputOutput.png
+INPUT c:\FYP\report\Figures\InputOutput.png
+INPUT c:\FYP\report\Figures\InputOutput.png
+INPUT c:\FYP\report\Figures\InputOutput.png
+INPUT c:\FYP\report\Figures\InputOutput.png
+INPUT c:\FYP\report\Figures\AffinityDiagram.png
+INPUT c:\FYP\report\Figures\AffinityDiagram.png
+INPUT c:\FYP\report\Figures\AffinityDiagram.png
+INPUT c:\FYP\report\Figures\AffinityDiagram.png
+INPUT c:\FYP\report\Figures\AffinityDiagram.png
+INPUT c:\FYP\report\Figures\SystemMap.png
+INPUT c:\FYP\report\Figures\SystemMap.png
+INPUT c:\FYP\report\Figures\SystemMap.png
+INPUT c:\FYP\report\Figures\SystemMap.png
+INPUT c:\FYP\report\Figures\SystemMap.png
+INPUT c:\FYP\report\Figures\SequenceDiagram.png
+INPUT c:\FYP\report\Figures\SequenceDiagram.png
+INPUT c:\FYP\report\Figures\SequenceDiagram.png
+INPUT c:\FYP\report\Figures\SequenceDiagram.png
+INPUT c:\FYP\report\Figures\SequenceDiagram.png
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmssbx10.tfm
+INPUT c:\FYP\report\Figures\n2analysis.png
+INPUT c:\FYP\report\Figures\n2analysis.png
+INPUT c:\FYP\report\Figures\n2analysis.png
+INPUT c:\FYP\report\Figures\n2analysis.png
+INPUT c:\FYP\report\Figures\n2analysis.png
+INPUT c:\FYP\report\Figures\SprayDiagram.png
+INPUT c:\FYP\report\Figures\SprayDiagram.png
+INPUT c:\FYP\report\Figures\SprayDiagram.png
+INPUT c:\FYP\report\Figures\SprayDiagram.png
+INPUT c:\FYP\report\Figures\SprayDiagram.png
+INPUT c:\FYP\report\Figures\MatrixDiagram.png
+INPUT c:\FYP\report\Figures\MatrixDiagram.png
+INPUT c:\FYP\report\Figures\MatrixDiagram.png
+INPUT c:\FYP\report\Figures\MatrixDiagram.png
+INPUT c:\FYP\report\Figures\MatrixDiagram.png
+INPUT c:\FYP\report\Figures\niche.png
+INPUT c:\FYP\report\Figures\niche.png
+INPUT c:\FYP\report\Figures\niche.png
+INPUT c:\FYP\report\Figures\niche.png
+INPUT c:\FYP\report\Figures\niche.png
+INPUT c:\FYP\report\Figures\F1_score.png
+INPUT c:\FYP\report\Figures\F1_score.png
+INPUT c:\FYP\report\Figures\F1_score.png
+INPUT c:\FYP\report\Figures\F1_score.png
+INPUT c:\FYP\report\Figures\F1_score.png
+INPUT c:\FYP\report\code\extract_mfcc.m
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmtt10.tfm
+INPUT c:\FYP\report\code\extract_mfcc.m
+INPUT c:\FYP\report\code\extract_mfcc.m
+INPUT c:\FYP\report\Figures\AndroidDataExample.png
+INPUT c:\FYP\report\Figures\AndroidDataExample.png
+INPUT c:\FYP\report\Figures\AndroidDataExample.png
+INPUT c:\FYP\report\Figures\AndroidDataExample.png
+INPUT c:\FYP\report\Figures\AndroidDataExample.png
+INPUT c:\FYP\report\code\filter_android.m
+INPUT c:\FYP\report\code\filter_android.m
+INPUT c:\FYP\report\code\filter_android.m
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmtt10.tfm
+INPUT c:\FYP\report\FYP_Report_Template.bbl
+INPUT c:\FYP\report\FYP_Report_Template.bbl
+INPUT c:\FYP\report\FYP_Report_Template.aux
+INPUT c:\FYP\report\FYP_Report_Template.out
+INPUT c:\FYP\report\FYP_Report_Template.out
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmbx10.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmbx10.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi10.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi10.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr10.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr10.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr12.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr12.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr6.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr6.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr7.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr7.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr8.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr8.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr9.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr9.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmssbx10.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmssbx10.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmssi10.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmssi10.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmsy10.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmsy10.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmti10.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmti10.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmtt10.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmtt10.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\rsfs\rsfs10.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\rsfs\rsfs10.pfb
