@@ -44,7 +44,7 @@
 @Book{HandsOnMLTextbook,
   title     = {Hands on Machine Learning with Scikit, Keras \& Tensorflow},
   publisher = {O'Reilly},
-  year      = {2017},
+  year      = {2},
   author    = {Aurelien Geron},
 }
 

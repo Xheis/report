@@ -134,14 +134,15 @@ As per the FYP Handbook: \newline
 I did:
 \begin{itemize}
     \item I learnt and prototyped a machine learning algorithm for classifying physical actions from an audio input
-    \item I investigated prototyping a machine learning solution that takes audio and physical data (GPS, accelerometer, gyroscope) to compare whether subject matter insight could improve the classification of sound. E.g. would a mechatronics understanding help in pre-processing or improving the data source, resulting in better classification.
-    \item I used my mechatronics subject matter learnings to best apply machine learning to this novel problem. (Sound pre-processing, understanding the input as an energy (and they're translation to coefficients), Linear Time Invariance in respect to the Machine Learning model)
+    \item I investigated prototyping a machine learning solution that takes audio and physical data (GPS, accelerometer, gyroscope) to compare whether subject matter insight could improve the classification of sound. That is, would a mechatronics understanding help in pre-processing or improving the data source, resulting in better classification?
+    \item I used my mechatronics subject matter learnings to best apply machine learning to this problem. This includes Mechatronics Design (trade off and evaluations from MCHA3000), sound pre-processing, preprocessing Inertial Measuring Unit data, and how Audio waveforms can be treated as energy.
     \item I learnt and used System Engineering techniques to elicit requirements from my university and work stakeholders
 \end{itemize}
 I helped:
 \begin{itemize}
-   \item I managed another employee and helped implement a proof of concept app to record data as an input into the Trackfile Recording System. This involved me using my software engineering skills and project management skills to do
-    \item \sout{I helped integrate this proof of concept with a larger C\# replay system at my work. This involved lat/long coordinate calculations for display playback, leading the configuration management with a local git server, and helping develop the data pipeline where the proof of concept feeds through my machine learning classifier, and into the larger replay system.}
+   \item I managed and worked with another employee to implement a proof of concept app to record data as an input into a this project. This involved using my software engineering skills and project management skills to create a schema, develop the android app, and present it to the relevant stakeholders.
+%    \item 
+%     \item \sout{I helped integrate this proof of concept with a larger C\# replay system at my work. This involved lat/long coordinate calculations for display playback, leading the configuration management with a local git server, and helping develop the data pipeline where the proof of concept feeds through my machine learning classifier, and into the larger replay system.}
 \end{itemize}
 \newpage
 
@@ -149,54 +150,54 @@ I helped:
 \vspace{-5mm}
 \section*{Executive summary}
 \vspace{-3mm}
-This document will cover the author's progress through the Final Year Project Part A. The scope of the project is a portable data recording system coupled with offline processing to track and identify specific physical events in close proximity that occurred during recording. Acoustic Event Detection and Classification is the focus of this paper, and the goal of this FYP report is exploring and validating current research techniques in an uncontrolled environment for a specific use case. The content of this paper will start with, system engineering, problem analysis, a review into the current research and will expand to document python implementation, machine learning, data pre-processing, app development and progress in developing the proof of concept to take logged data from a phone and process it on a sever to create a “trackfile” (special csv file).
+The project investigated whether using data from an Inertial Measurement Unit (IMU) and GPS data as additional data points in an Acoustic Event Detection / Classification (AED/C) problem would improve a classifier's ability to classify an “acoustic event”. The motivation behind this was to improve AED/C without onerous microphone requirements. The project began documenting the process of evaluating the research problem for a car use case (specific tasks such as putting on a seatbelt, closing doors, indicating, horn use, etc.). This includes the requirements, data collection, data pre-processing, design and training of the classifier, and evaluating the results. Due to a lack of data, the public ExtraSensory dataset was used for the AED/C for similar events such as walking, driving, sleeping, computer work, etc. to demonstrate the researched technologies. Results show the supplementary data improved classification. This research shows multi-sensor AED/C is effective but requires more datasets.
+% This document will cover the author's progress through the Final Year Project. The scope of the project is a portable data recording system coupled with offline processing to track and identify specific physical events in close proximity that occurred during recording. Acoustic Event Detection and Classification is the focus of this paper, and the goal of this FYP report is exploring and validating current research techniques in an uncontrolled environment for a specific use case. The content of this paper will start with, system engineering, problem analysis, a review into the current research and will expand to document python implementation, machine learning, data pre-processing, app development and progress in developing the proof of concept to take logged data from a phone and process it on a sever to create a “trackfile” (special csv file).
 
 %%%%%%%%%%%%%%
 \vspace{-2mm}
 \section*{Acknowledgements}
 \vspace{-3mm}
-I'd like to thank my partner Brigid, for encouraging and supporting me throughout.
+I'd like to thank my partner Brigid for encouraging and supporting me throughout this project.
 \newpage
 \tableofcontents
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
-Debriefing is a tool used to educate an individual, inform a collective and create a holistic historical recording of an event. Wikipedia defines the process of debriefing as: (1) Receiving an explanation, (2) Receiving information and situation-based reminders of context, (3) Reporting of measures of performance, and/or opportunities to further investigate the results of a study, investigation, or assessment of performance after participation in an immersive activity is complete [1]. Traditionally this is done through a collection of primary sources (where available) and secondary sources. In the information age, these primary sources have expanded to include large datasets, recordings and other digital forensics. This new and increasing range of prima-ry sources provides the potential to significantly improve the steps of debriefing, and ultimately improve debriefing outcomes.
+Debriefing is a tool used to educate an individual, inform a collective and create a holistic historical recording of an event. Wikipedia defines the process of debriefing as: (1) Receiving an explanation, (2) Receiving information and situation-based reminders of context, (3) Reporting of measures of performance, and/or opportunities to further investigate the results of a study, investigation, or assessment of performance after participation in an immersive activity is complete\citationneeded. Traditionally this is done through a collection of primary sources (where available) and secondary sources. In the information age, these primary sources have expanded to include large datasets, recordings and other digital forensics. This new and increasing range of primary sources provides the potential to significantly improve the steps of debriefing, and ultimately improve debriefing outcomes.
 
 This paper will report on the Author’s progress of harnessing this new potential and is organised as follows: section 2 will discuss how the scope has been analysed and reduced, section 3 will review the literature of this research topic, section 4 will discuss the method of implementing the technology, section 5 will discuss the evaluation methodology, and section 6 will discuss the results of the proof-of-concept.
 
-To organise your introduction section you can use the following structure:
-\begin{itemize}
-    \item \textbf{Position}: Show there is a problem and that it is important to solve it.
-    \item \textbf{Problem}: Describe the specifics of the problem you are trying to address
-    \item \textbf{Proposal}: Discuss how you are going to address this problem. Use the literature to back-up your approach to the problem, or to highlight that what you are doing has not been done before
-\end{itemize}
-Here you need to sell why what you are doing is important, and what benefits will it bring if you are successful and solve the problem? 
+% To organise your introduction section you can use the following structure:
+% \begin{itemize}
+%     \item \textbf{Position}: Show there is a problem and that it is important to solve it.
+%     \item \textbf{Problem}: Describe the specifics of the problem you are trying to address
+%     \item \textbf{Proposal}: Discuss how you are going to address this problem. Use the literature to back-up your approach to the problem, or to highlight that what you are doing has not been done before
+% \end{itemize}
+% Here you need to sell why what you are doing is important, and what benefits will it bring if you are successful and solve the problem? 
 %
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Problem Analysis}\label{sec:ProblemAnalysis}
 
-This paper approached the posed problem through the perspec-tive of System Engineering, a process which “is a structured and systematic methodology providing greater visibility and control over … new system[s]” [2]. This perspective was in-formed by ISO 15288 [3] and Burge Hughes Walsh’s System Engineering Toolbox [4]. The tool adapted and applied throughout this section are primarily derived from the System Engineering Toolbox. 
+This project approached the problem through a System Engineering perspective, a process which “is a structured and systematic methodology providing greater visibility and control over … new system[s]” \citationneeded [2]. This perspective was informed by ISO 15288 \citationneeded [3] and Burge Hughes Walsh’s System Engineering Toolbox \citationneeded [4]. The tools adapted and applied throughout this section are primarily derived from that \inlineQuote{System Engineering Toolbox}. 
 
-\subsection{Purpose of Problem Analysis}
-We want to define and reduce the scope of this project to be achievable, measurable and practical to implement. This took 2-4 weeks through June 2018, and remains an small ongoing task. 
+% \subsection{Purpose of Problem Analysis} %should this be a 
+The purpose of Problem Analysis is to define the scope of this project to be achievable, measurable and practical to implement. This took 2-4 weeks through June 2018, and remains an ongoing task. 
 
+% \subsection{System Engineering Tools for Problem Analysis}
+The following System Engineering tools have been adapted and implemented to develop this paper and the author’s understanding of the problem. 
 
-\subsection{System Engineering Tools for Problem Analysis}
-The following tools have been adapted and implemented to develop this paper and the author’s understanding of the problem. 
-
-\subsubsection{Current 18 Words}
-A tool called “18 Words” was used to constantly refine and maintain a description on the scope as it changed throughout problem analysis. The current “18 Words” is the following:
+\subsection{Current 18 Words}
+A tool called \inlineQuote{18 Words} was used to constantly refine and maintain a description on the scope as it changed throughout problem analysis. The current “18 Words” is the following:
 “[The project is] a portable proprietary format compliant track file data recording system coupled with offline processing to log specific physical events in proximity that occurred during recording.” 
 
-\subsubsection{Tree Diagram}
+\subsection{Tree Diagram}
 With the new understanding of what the project is, a Tree Diagram was drafted to explore missed requirements, hidden modules and other aspects of the project not yet considered. \fref{treeDiagram.png} shows a Tree Diagram breakdown for this FYP.
 
  \fFigure{treeDiagram.png}{A tree diagram for the project, being used as a method of allocating work}{0.7}
 
 
-\subsubsection{Quad of Aims}
+\subsection{Quad of Aims}
 The Quad of Aims is a tool used to explore 4 critical, high level aspects of the project as explained in table \ref{tab:QuadOfAims}, and shown in \fref{QuadOfAims2.png}.
 
 \fFigure{QuadOfAims2.png}{A Quad of Aims for the project might be A3 in size and would have the relevant information embedded. It may also be completed on a white-board.}{0.7}
@@ -219,42 +220,42 @@ The Quad of Aims is a tool used to explore 4 critical, high level aspects of the
 
 This is typically done to instigate early works on a project.
 
-\subsubsection{Input Output Analysis}
+\subsection{Input Output Analysis}
 The Input Output Analysis of the system informs the bounds and requirements to operate the system. In this situation, it helped consider the full scope of the project; this includes the technical and non-technical aspects of undertaking the MECH4841 Project as shown in \fref{InputOutput.png}.
 
 \fFigure{InputOutput.png}{The input output analysis for the system}{0.75}
 
 
-\subsubsection{Affinity Diagram}
+\subsection{Affinity Diagram}
 An Affinity Diagram helps to solidify the high level, vague ideas, requirements and tests into a more detailed view. There is a focus on putting tangible measurements onto requirements. During this process, system architecture decisions were made such as a trade review into online vs offline processing, and subsequently splitting the system into smaller modules. Our primary system had 2 key sub-systems: The recording, and the processing systems. An Affinity Diagram of the top-level sys-tem was created, and the 2 affinity diagrams of the sub-systems were informed and made from this. After this was complete, previous work was updated to reflect these changes. *ADD A REF TO THE FIGURE* \fref{AffinityDiagram.png}
 \fFigure{AffinityDiagram.png}{The Affinity Diagrams for the full system architecture}{0.8}
 
-\subsubsection{Systems Map}
+\subsection{Systems Map}
 A Systems Map takes the Affinity Diagram, Input Output Analysis, and Tree-Diagram to identify the processes inside sub-modules that are needed to design the system. This was used to great effect to measure and estimate the workload necessary to implement data fusion alongside deep learning of acoustic classification and detection as shown in \fref{SystemMap.png}.
 \fFigure{SystemMap.png}{A systems map for the project}{0.8}
 
 
-\subsubsection{Sequence Diagram}
+\subsection{Sequence Diagram}
 A Sequence Diagram was developed to analyse the flow of data through the processes identified in the System Map. This is shown in \fref{SequenceDiagram.png}. This helped to predict and manage any potential complexities and logistics related to the specific needs of each process. 
 Originally, This Sequence Diagram was used to justify removing data fusion from the scope due to the large workload required to implement alongside machine learning. Later in the project, it was brought back into the scope of the project to help compare and evaluate it's effectiveness in improving the overall system. 
 \fFigure{SequenceDiagram.png}{A basic Sequence Diagram for the project}{0.8}
 
 
-\subsubsection{N\textsuperscript{2} Analysis}
+\subsection{N\textsuperscript{2} Analysis}
 An N\textsuperscript{2} Analysis methodically expands on the what data moves around the system. This is to compliment the discussed complexities in the Sequence Diagram by documenting what data is expected. A example of this is shown in \fref{n2analysis.png}
 \fFigure{n2analysis.png}{A N\textsuperscript{2} Analysis for the project}{0.8}
 
-\subsubsection{Spray Diagram}
+\subsection{Spray Diagram}
 The Spray Diagram shown in \fref{SprayDiagram.png} shows how details of the system can have multi-factored effects in design requirements, outcomes and operational use. Of interest in the diagram is the relationship between high-quality output will require high-quality input, and this may increase production and design costs. 
 \fFigure{SprayDiagram.png}{A Spray Diagram for the project}{0.8}
 
-\subsubsection{Matrix Diagram}
+\subsection{Matrix Diagram}
 A matrix diagram was made to review the now more refined, reduced scope as shown in \fref{MatrixDiagram.png}. This works by using a “strong”, “weak” or “none” indicator for each aspect of the project. It highlighted the difficulty in balancing the needs of both major stakeholders. 
 \fFigure{MatrixDiagram.png}{A Matrix Diagram for the project}{0.8}
 
 \subsection{Final Problem Analysis}
-\subsubsection{Discussion}
-The purpose of the project is to hypothesis and produce a proof-of-concept of how digital technologies could improve debriefing processes and outcomes. This seems achievable within 1 year, and should provide an excellent learning oppor-tunity for the author.
+\subsection{Discussion}
+The purpose of the project is to hypothesis and produce a proof-of-concept of how digital technologies could improve debriefing processes and outcomes. This seems achievable within 1 year, and should provide an excellent learning opportunity for the author.
 
 %%%%%%%%%%%%%%%%%%%%%%%
 \section{Review Of Literature}
@@ -337,55 +338,68 @@ The choice of what data to collected and use was found through the first problem
 
 % The choice of what data to collected and use was found through the first problem analysis step. As the goal is to maximise the accuracy of the classifier (whilst still being an achievable goal), the data chosen for use and collection was GPS, accelerometer, gyroscope, and audio. As described in the problem analysis phase, the best platform for this would be a smartphone as shown in section \ref{sec:ProblemAnalysis} and appendix \ref{sec:TradeReview}. 
 
-Android was chosen as the platform as it had easier/more support for reading from the on-board sensors. The data available from the Android API can be seen in table \ref{tab:AndroidDataAvailable}, of which GPS and Acceleration will be used. It was also chosen due to it's support for C/C++ and C\#, which C is required knowledge for the University of Newcastle Bachelor of Mechatronics degree, and C\# is a very similar language.
+Android was chosen as the platform as it had significant support for reading from the on-board sensors. The data available from the Android API can be seen in table \ref{tab:AndroidDataAvailable}, of which GPS and acceleration will be used. It was also chosen due to it's support for C/C++ through the Native Development Kit (NDK). The programming language C is required knowledge for many courses in the University of Newcastle Bachelor of Mechatronics degree. 
 
-The app development took 5 weeks to get to a useful state. It is able to record Audio to a .wav file and record raw GPS lat/long/alt, raw accelerometer, and raw gyroscope to a csv. There are technical issues still present in the app (must record with screen unlocked)
+The app development took 5 weeks to get to a useful state. It is able to record Audio to a .wav file and record raw GPS lat/long/alt, raw accelerometer, and raw gyroscope to a csv. There are technical issues still present in the app (notably that the screen must be unlocked to record).
 
 During this time, an Atlassian JIRA environment was set up to facilitate management (using concepts from ENG3500 - Project Management). The Atlassian "Git-Flow" methodology was also learnt and used.
 
-I helped with 30\% of the overall programming, and code reviewed the product along with other colleagues.
+I helped with 30\% of the overall programming, and code reviewed the product along with other colleagues. Credit goes to [Sebastian Wallman].
 
 \subsubsection{Data collected during project vs ExtraSensory datset}
-The table 
+The table \ref{tab:ProjectData} shows a snippet of the Comma-Seperated Values (csv) data produced from the app. The id is a unique count, %the attr\_time is a timestamp from the Android system, and attr\_x, attr\_y, and attr\_z are the raw output of the. 
+The table \ref{tab:ExtraSensoryData} shows a snippet of the csv data from the ExtraSensory dataset. 
 
-\begin{table}[]
+Both datasets share the same timestamp format, so a \inlineQuote{Time} column has been added to the table for illustration purposes only.
+
+%https://developer.android.com/guide/topics/sensors/sensors_motion
+ \lstinputlisting[
+    language=C,
+    float=h,
+    numbers=left,
+    xleftmargin=1cm,
+    frame=shadowbox,
+    caption={Code snippet for getting Accelerometer data from the Android System as above \citationneeded above},
+    morekeywords={try,catch}
+    ]{accel_example.c}
+
+
+\begin{table}[]\label{tab:ProjectData}
     \begin{center}
         \begin{tabular}{llllll}
         \hline\hline id & attr\_time & Time & attr\_x   & attr\_y & attr\_z \\ \hline
-        1  & 1.55E+12   & 2018-01-11 14:52 & -0.229843 & 3.1795  & 8.52336 \\
-        2  & 1.55E+12   & 2018-01-11 14:52 & -0.257614 & 2.93185 & 8.61444 \\
-        3  & 1.55E+12   & 2018-01-11 14:52 & -0.179626 & 2.81464 & 8.81348 \\
-        4  & 1.55E+12   & 2018-01-11 14:52 & -0.118927 & 2.82674 & 8.70142 \\
-        5  & 1.55E+12   & 2018-01-11 14:52 & -0.191544 & 2.95287 & 8.66815 \\ \hline
+        1  & 1547182324433 & 2018-01-11 14:52 & -0.229843 & 3.1795  & 8.52336 \\
+        2  & 1547182324442 & 2018-01-11 14:52 & -0.257614 & 2.93185 & 8.61444 \\
+        3  & 1547182324451 & 2018-01-11 14:52 & -0.179626 & 2.81464 & 8.81348 \\
+        4  & 1547182324467 & 2018-01-11 14:52 & -0.118927 & 2.82674 & 8.70142 \\
+        5  & 1547182324498 & 2018-01-11 14:52 & -0.191544 & 2.95287 & 8.66815 \\ \hline
         \end{tabular}
     \end{center}
 \end{table}
 
-    % \hline\hline Label & Description \\ \hline 
-    % Purpose & This is our “18 words” \\
-    % Stakeholders & University, Author’s Work \\
-    % Deliverables & Documentation, recommendations, FYP report, proof-of-concept \\
-    % Measure of Success & Review of Documentation by SMEs, review of FYP report, dry and wet run of proof-of-concept \\
-    % \\ \hline
 
-\begin{table}[]
+\begin{table}[]\label{tab:ExtraSensoryData}
     \begin{center}
-    \begin{tabular}{lllllll}
-        \hline\hline timestamp  & Time & raw\_acc:mean & raw\_acc:std & raw\_acc:moment3 & raw\_acc:moment4 \\\hline 
-    1464129912 & 2016-05-24 22:45 & 1.011438                       & 0.012573                      & 0.023013                          & 0.04124      \\
-    1464129950 & 2016-05-24 22:45 & 1.011233                       & 0.009356                      & -0.005622                         & 0.016687     \\
-    1464130031 & 2016-05-24 22:47 & 1.013422                       & 0.018068                      & -0.008593                         & 0.039286     \\
-    1464130109 & 2016-05-24 22:48 & 1.014891                       & 0.0164                        & 0.021383                          & 0.038825     \\
-    1464130130 & 2016-05-24 22:48 & 1.017487                       & 0.022632                      & -0.012891                         & 0.037226    \\\hline 
-    \end{tabular}
-        
-\end{center}
+        \begin{tabular}{lllllll}
+            \hline\hline timestamp  & Time & raw\_acc:mean & raw\_acc:std & raw\_acc:moment3 & raw\_acc:moment4 \\\hline 
+        1464129912 & 2016-05-24 22:45 & 1.011438                       & 0.012573                      & 0.023013                          & 0.04124      \\
+        1464129950 & 2016-05-24 22:45 & 1.011233                       & 0.009356                      & -0.005622                         & 0.016687     \\
+        1464130031 & 2016-05-24 22:47 & 1.013422                       & 0.018068                      & -0.008593                         & 0.039286     \\
+        1464130109 & 2016-05-24 22:48 & 1.014891                       & 0.0164                        & 0.021383                          & 0.038825     \\
+        1464130130 & 2016-05-24 22:48 & 1.017487                       & 0.022632                      & -0.012891                         & 0.037226    \\\hline 
+        \end{tabular}
+    \end{center}
 \end{table}
-% \begin{tabular}{l|c}%
-%     \bfseries Person & \bfseries Matr.~No.% specify table head
-%     \csvreader[head to column names]{data/trecsRaw.csv}{}% use head of csv as column names
-%     {\\\hline\givenname\ \name & \matriculation}% specify your coloumns here
-%     \end{tabular}
+
+The ExtraSensory dataset is compiled from 60 users with a diverse range of phones (\inlineQuote{34 iPhone users, 26 Android users.}\citationneeded http:\/\/extrasensory.ucsd.edu\/). This is in contrast to this project's phone range, which was limited to 2 Android devices, a Samsung S6 and a Lenovo Zuk Z2. The Samsung uses a InvenSense MPU-6500, the Lenovo Zuk Z2 unknown.
+
+\begin{quotation}
+    \underline{Devices:}
+    The users in ExtraSensory had a variety of phone devices.
+    iPhone generations: 4, 4S, 5, 5S, 5C, 6 and 6S.
+    iPhone operating system versions ranging from iOS-7 to iOS-9.
+    Android devices: Samsung, Nexus, HTC, moto G, LG, Motorola, One Plus One, Sony.
+\end{quotation}
 
 
 \subsection{Data Pre-Processing}
@@ -496,8 +510,17 @@ For the purpose of this project, the data collected through the Android App appl
 \subsubsection{Audio}
 
 \subsection{Classification and Network Topology}
-sklearn was used
-topology chosen to 
+Google's Tensorflow and scikit-learn were both used throughout this project. 
+
+\subsubsection{Tensorflow}
+TensorFlow is an opensource machine learning framework, primarily developed by Google.
+\inlineQuote{It has a comprehensive, flexible ecosystem of tools, libraries and community resources that lets researchers push the state-of-the-art in ML and developers easily build and deploy ML powered applications.}\citep{TFwebsite}. TensorFlow in conjunction with with Keras was used to prototype the inital 'pipeline'. A pipeline is \begin{quote}
+A sequence of data processing components is called a data pipeline. Pipelines are very
+common in Machine Learning systems, since there is a lot of data to manipulate and
+many data transformations to apply
+\end{quote} \cite{HandsOnMLTextbook}
+
+
 % \begin{itemize}
 %     \item Mean-teacher*
 %     \item CNN Context Gating
@@ -683,13 +706,16 @@ Future work from here would be to look at the larger role of data aquition. This
 \section{References and Citations}\label{sec:RefCite}
 To generate the bibliography look at the end of this document in .tex file. To make reference to the bibliography use the commands \verb|\citet{}| and \verb|\citep{}| \citep{strunk2007elements}. You can combine more than one reference in a single citation \citep{troyka1999simon, jay1995write}.
 
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+True \cite{TFwebsite2}
+\citet{TFwebsite2}
+% \cit
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \bibliographystyle{ieeetr}%harvard}
+% \bibliography{chris} % This is the .bib file where the bibliography database is stored
+\bibliography{main} 
 \bibliographystyle{harvard}
-\bibliography{main} % This is the .bib file where the bibliography database is stored
 
+\newpage
 \appendix
 \section{Full Extracts of Journals}
 \subsection{Journals 1}
@@ -701,6 +727,10 @@ test extract 3
 \subsection{Journals 4}
 \section{Reflection}
 \section{Trade-Review of "Online vs Offline" processing}\label{sec:TradeReview}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Writing you're not sure if you want to keep}
 \subsection{Development Tools and Technologies}
@@ -745,6 +775,20 @@ ciation:
 Vaizman2017a	
 Vaizman, Y., Ellis, K., and Lanckriet, G. "Recognizing Detailed Human Context In-the-Wild from Smartphones and Smartwatches". IEEE Pervasive Computing, vol. 16, no. 4, October-December 2017, pp. 62-74. doi:10.1109/MPRV.2017.3971131
 *Cite this paper if you use the ExtraSensory Dataset for any publication!
+
+
+
+
+sounds like dropout is great for making sure accelerometer data is used
+
+Dropout
+
+Unlike these methods mentioned above, dropout in my understanding is tricky but practical. Like the figure shown below, the dropout will randomly mute some neurons in the neural network and we therefore have a sparse network which hugely decreases the possibility of overfitting.More importantly, the dropout will make the weights spread over the input features instead of focusing on some features.
+
+The possibility of muting neurons is often set as 0.5 though you can feel free to make it 0.3 or 1.0. When the dropout is 1.0, then you simply don't drop out any neurons. But our experience tells us 0.5 is usually the best choice.
+
+After finishing the training, it is important to turn off the dropout during development and testing. Otherwise, the prediction of this model is not stable since dropout add uncertainties to it.
+
 
 \newpage
 

@@ -291,6 +291,16 @@ INPUT c:\FYP\report\Figures\SequenceDiagram.png
 INPUT c:\FYP\report\Figures\SequenceDiagram.png
 INPUT c:\FYP\report\Figures\SequenceDiagram.png
 INPUT c:\FYP\report\Figures\SequenceDiagram.png
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmr12.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmmi12.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmsy10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmex10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+INPUT C:\Users\Administrator\AppData\Local\MiKTeX\2.9\fonts\tfm\public\rsfs\rsfs10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmbx12.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmmib10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmbsy10.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmssbx10.tfm
 INPUT c:\FYP\report\Figures\n2analysis.png
 INPUT c:\FYP\report\Figures\n2analysis.png
@@ -317,8 +327,15 @@ INPUT c:\FYP\report\Figures\F1_score.png
 INPUT c:\FYP\report\Figures\F1_score.png
 INPUT c:\FYP\report\Figures\F1_score.png
 INPUT c:\FYP\report\Figures\F1_score.png
-INPUT c:\FYP\report\code\extract_mfcc.m
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstlang1.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstlang1.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstmisc.sty
+INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstmisc.sty
+INPUT c:\FYP\report\accel_example.c
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmtt10.tfm
+INPUT c:\FYP\report\accel_example.c
+INPUT c:\FYP\report\accel_example.c
+INPUT c:\FYP\report\code\extract_mfcc.m
 INPUT c:\FYP\report\code\extract_mfcc.m
 INPUT c:\FYP\report\code\extract_mfcc.m
 INPUT c:\FYP\report\Figures\AndroidDataExample.png

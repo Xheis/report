@@ -1,0 +1,10 @@
+% Encoding: UTF-8
+
+@WWW{,
+  author = {Google Brain},
+  title  = {TensorFlow},
+  year   = {2019},
+  url    = {https://www.tensorflow.org/},
+}
+
+@Comment{jabref-meta: databaseType:biblatex;}

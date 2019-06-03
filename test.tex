@@ -3,6 +3,26 @@
 \usepackage{graphicx}
 \usepackage{adjustbox}
 
+% \begin{lstlisting}[
+%    language=C,
+%    float=h,
+%    numbers=none,
+%    xleftmargin=1cm,
+%    frame=none,
+%    caption={A winning entry from the 16th International Obfuscated C Code Contest, that computes the square root of its input.\label{lst:sqrt}}
+%    ]{accel_example.c}
+% \end{lstlisting}
+
+%\lstinputlisting[
+%    language=Matlab,
+%    float=h,
+%    numbers=left,
+%    xleftmargin=1cm,
+%    frame=shadowbox,
+%    caption={Matlab serial communication example.\label{lst:matlabserial}},
+%    morekeywords={try,catch}
+%    ]{Code/serialtest.m}
+%
 
 \newcommand{\doLabel}[3]{%
 	fig:{#1}Re#2DOF#3%
@@ -52,12 +72,17 @@ sfvhybdvb
 
 Caption here for \fref{n2analysis.PNG} but then you might \fref{InputOutput.PNG}
 
+True \cite{TFwebsite2}
 
 \mytable{QuadOfAims}{This is the Quad of Aims macro table}{Label & Description \\ }{
 Purpose & This is our “18 words” \\
 Stakeholders & University, Author’s Work \\
 Deliverables & Documentation, recommendations, FYP report, proof-of-concept \\
 Measure of Success & Review of Documentation by SMEs, review of FYP report, dry and wet run of proof-of-concept \\}
+
+
+\bibliographystyle{ieeetr}%harvard}
+\bibliography{main} % This is the .bib file where 
 
 % \begin{table}[h]
 %     \begin{center}
