@@ -44,8 +44,29 @@
 @Book{HandsOnMLTextbook,
   title     = {Hands on Machine Learning with Scikit, Keras \& Tensorflow},
   publisher = {O'Reilly},
-  year      = {2},
+  year      = {2017},
   author    = {Aurelien Geron},
+}
+
+@Misc{convertTF,
+  author = {{Google Brain}},
+  title  = {Get started with TensorFlow Lite},
+  year   = {2019},
+  url    = {https://www.tensorflow.org/install/pip},
+}
+
+@Misc{scikitlearnpythonVer,
+  author = {{Google Brain}},
+  title  = {Install TensorFlow with pip | TensorFlow},
+  year   = {2019},
+  url    = {https://www.tensorflow.org/lite/guide/get_started#2_convert_the_model_format},
+}
+
+@Misc{scikitlearnpythonVer,
+  author = {{scikitlearnpythonVer}},
+  title  = {Release History — scikit-learn 0.21.2 documentation},
+  year   = {2019},
+  url    = {https://scikit-learn.org/stable/whats_new.html},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}

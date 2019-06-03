@@ -270,7 +270,7 @@ A definition for Machine learning is taken from Tom M. Mitchell's 1997 textbook,
 
 This definition of Machine Learning lends itself to best explaining this project; The task T (AED/C), the E (Audo, IMU, GPS), and P (a traditional F1 score). 
 
-The computer program described in this project has been produced in Python, using the sklearn and tensorflow libraries.
+The computer program described in this project has been produced in Python, using the sklearn and TensorFlow libraries.
 
 \subsection{Acoustic Event Detection and Acoustic Event Classification}
 Historically the technologies for AED/AEC have been Support vector machine (SVMs), Hidden Markov Models (HHMs), and more generally, basic DSP (Digital Signal Processing) classifiers. But in the last 8 years, AED and AEC research has emerged as a hot topic of research. Research focuses on the two key tasks: Detection (when did an acoustic event occur in the au-dio, and when did it stop?) and classification (what sound oc-curred?). New research papers are often the result of DCASE competitions, which is an official IEEE Audio and Acoustic Signal Processing (AASP) competition.
@@ -361,7 +361,7 @@ Both datasets share the same timestamp format, so a \inlineQuote{Time} column ha
     frame=shadowbox,
     caption={Code snippet for getting Accelerometer data from the Android System as above \citationneeded above},
     morekeywords={try,catch}
-    ]{accel_example.c}
+    ]{Code/accel_example.c}
 
 
 \begin{table}[]\label{tab:ProjectData}
@@ -510,16 +510,34 @@ For the purpose of this project, the data collected through the Android App appl
 \subsubsection{Audio}
 
 \subsection{Classification and Network Topology}
-Google's Tensorflow and scikit-learn were both used throughout this project. 
+The classification libraries used were Google's TensorFlow and scikit-learn. Both libraries are python based (supporting both Python 3.0, and Python 2.7) \cite{TFpythonVer} \cite{scikit-learn-pyV}.
 
-\subsubsection{Tensorflow}
+\subsubsection{TensorFlow}
 TensorFlow is an opensource machine learning framework, primarily developed by Google.
-\inlineQuote{It has a comprehensive, flexible ecosystem of tools, libraries and community resources that lets researchers push the state-of-the-art in ML and developers easily build and deploy ML powered applications.}\citep{TFwebsite}. TensorFlow in conjunction with with Keras was used to prototype the inital 'pipeline'. A pipeline is \begin{quote}
-A sequence of data processing components is called a data pipeline. Pipelines are very
-common in Machine Learning systems, since there is a lot of data to manipulate and
-many data transformations to apply
-\end{quote} \cite{HandsOnMLTextbook}
+\inlineQuote{It has a comprehensive, flexible ecosystem of tools, libraries and community resources that lets researchers push the state-of-the-art in ML and developers easily build and deploy ML powered applications.}\cite{TFwebsite}. TensorFlow in conjunction with with Keras was used to prototype the inital pipeline. According to the textbook, \inlineQuote{Hands on Machine Learning with Scikit, Keras \& TensorFlow}, a pipeline is \begin{quote}
+A sequence of data processing components is called a data pipeline. Pipelines are very common in Machine Learning systems, since there is a lot of data to manipulate and many data transformations to apply\cite{HandsOnMLTextbook}\end{quote}. TensorFlow and Keras were selected to initially design the classifier due it's ability to run on the TensorFlow Lite. The code snippet \ref{lst:pythonlisting} shows how a model converts.
 
+\lstinputlisting[
+    language=python,
+    float=h,
+    numbers=left,
+    xleftmargin=1cm,
+    frame=shadowbox,
+    caption={Code snippet for converting the classifier model to TensorFlow Lite for mobile operation \cite{convertTF}\label{lst:pythonlisting}},
+    ]{Code/tensorflow_convert.py}
+
+The original prototyping for audio only classification with TensorFlow and Keras was to use matplotlib to plot the spectrogram of each audio sample, and use a sequential CNN to process the spectrograms. A code snippet for that design is shown in \ref{lst:cnnpythonlisting}.
+
+Due to the sample size of the dataset (AudioSet's large database, but smaller balanced datasets for the specific use-cases identified), and the use of GPS, Acceleration and Gyroscope data, the classifier could have been prone to overfitting. \citationneeded Dropout layers are method of regularisation, which is used to help prevent overfitting in machine learning. Dropout layers work by "randomly dropping units (along with their connections) from the neural network during training" \cite{witten2016data}. The purpose of dropout layers in this classifier is to prevent the classifier from overfitting by reducing the over reliance on any individual neuron, but also to reduce the over reliance on any individual data source. This is important because the Audio feature has the highest fidelity (MFCCs across N-bins), and the classifier could have a heavy bias towards it and as a result overfit. Dropout layers will help minimise this overfit by 
+
+\lstinputlisting[
+    language=python,
+    float=h,
+    numbers=left,
+    xleftmargin=1cm,
+    frame=shadowbox,
+    caption={Code snippet for the early CNN model\label{lst:cnnpythonlisting}},
+    ]{Code/tensorflow_cnn.py}
 
 % \begin{itemize}
 %     \item Mean-teacher*
