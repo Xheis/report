@@ -4,6 +4,7 @@
         "Keras",
         "Lite",
         "matplotlib",
+        "overfit",
         "overfitting",
         "trackfile"
     ]

@@ -528,7 +528,10 @@ A sequence of data processing components is called a data pipeline. Pipelines ar
 
 The original prototyping for audio only classification with TensorFlow and Keras was to use matplotlib to plot the spectrogram of each audio sample, and use a sequential CNN to process the spectrograms. A code snippet for that design is shown in \ref{lst:cnnpythonlisting}.
 
-Due to the sample size of the dataset (AudioSet's large database, but smaller balanced datasets for the specific use-cases identified), and the use of GPS, Acceleration and Gyroscope data, the classifier could have been prone to overfitting. \citationneeded Dropout layers are method of regularisation, which is used to help prevent overfitting in machine learning. Dropout layers work by "randomly dropping units (along with their connections) from the neural network during training" \cite{witten2016data}. The purpose of dropout layers in this classifier is to prevent the classifier from overfitting by reducing the over reliance on any individual neuron, but also to reduce the over reliance on any individual data source. This is important because the Audio feature has the highest fidelity (MFCCs across N-bins), and the classifier could have a heavy bias towards it and as a result overfit. Dropout layers will help minimise this overfit by 
+Due to the sample size of the dataset (AudioSet's large database, but smaller balanced datasets for the specific use-cases identified), and the use of GPS, Acceleration and Gyroscope data, the classifier could have been prone to overfitting. \citationneeded Dropout layers are method of regularisation, which is used to help prevent overfitting in machine learning. Dropout layers work by "randomly dropping units (along with their connections) from the neural network during training" \cite{witten2016data}. The purpose of dropout layers in this classifier is to prevent the classifier from overfitting by reducing the over reliance on any individual neuron, but also to reduce the over reliance on any individual data source. This is important because the Audio feature has the highest fidelity (MFCCs across N-bins), and the classifier could have a heavy bias towards it and as a result overfit. Dropout layers will help minimise this overfit. To test this hypothesis, a Random Forest classifier (estimators = 300) was trained on all users to weigh the features, to help identify the design choices. Appendix \ref{apx:FeatureImportance} shows each feature importance breakdown, where \fref{feature_important_just_Combined2.png} shows the scikit Random Trees feature importance of the set (Audio, Accelerometer, Gyroscope, GPS).
+% These should go to Appendix
+
+\fFigure{feature_important_just_combined_big_colour.png}{A Random Tree Classifier was used to evaluate feaure importance, during the design phase of the main classifier. Features were Audio (Blue, 26 bins), Accelerometer (Orange, 26 features), Gyroscope (Red, 26 features), GPS (Green, 17 features)}{1}
 
 \lstinputlisting[
     language=python,
@@ -743,6 +746,14 @@ test extract 2
 \subsection{Journals 3}
 test extract 3
 \subsection{Journals 4}
+\section{Dataset Feature Importance}\label{apx:FeatureImportance}
+\fFigure{feature_important_just_audio2.png}{A Random Tree Classifier was used to evaluate feaure importance, during the design phase of the main classifier. Features were Audio (26 bins), Accelerometer (), Gyroscope, GPS ()}{0.5}
+
+\fFigure{feature_important_just_accel.png}{A Random Tree Classifier was used to evaluate feaure importance, during the design phase of the main classifier. Features were Audio (26 bins), Accelerometer (), Gyroscope (), GPS ()}{0.5}
+
+\fFigure{feature_important_just_Gyro.png}{A Random Tree Classifier was used to evaluate feaure importance, during the design phase of the main classifier. Features were Audio (26 bins), Accelerometer (), Gyroscope (), GPS ()}{0.5}
+
+\fFigure{feature_important_just_GPS2.png}{A Random Tree Classifier was used to evaluate feaure importance, during the design phase of the main classifier. Features were Audio (26 bins), Accelerometer (), Gyroscope (), GPS ()}{0.5}
 \section{Reflection}
 \section{Trade-Review of "Online vs Offline" processing}\label{sec:TradeReview}
 
