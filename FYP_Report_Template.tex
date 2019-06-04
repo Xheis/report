@@ -21,11 +21,11 @@
 %\setmathfont{texgyrepagella-math.otf}[math-style=TeX]
 
 % New macro to make defining labels easier.
-%\newcommand{\citationneeded}{\textsuperscript{\color{blue} [citation needed]}}
+\newcommand{\flagforreview}{\textsuperscript{\color{red} [FLAGGED FOR REVIEW]}}
 \newcommand{\inlineQuote}[1]{``#1''}
 
 
-\newcommand{\fref}[1] {Figure: \ref{#1}}
+\newcommand{\fref}[1] {Figure \ref{#1}}
 
 \newcommand{\fFigure}[3]{
 	\begin{figure}[h]
@@ -157,7 +157,10 @@ The project investigated whether using data from an Inertial Measurement Unit (I
 \vspace{-2mm}
 \section*{Acknowledgements}
 \vspace{-3mm}
-I'd like to thank my partner Brigid for encouraging and supporting me throughout this project.
+I'd like to thank my partner Brigid for encouraging and supporting me throughout this project. \\
+
+I'd also like to thank each and every mechatronics Academic staff member at the University of Newcastle . The teaching staff care about their students, and I want that to grow.
+% My Mechatronics experience 
 \newpage
 \tableofcontents
 \newpage
@@ -200,7 +203,7 @@ With the new understanding of what the project is, a Tree Diagram was drafted to
 \subsection{Quad of Aims}
 The Quad of Aims is a tool used to explore 4 critical, high level aspects of the project as explained in table \ref{tab:QuadOfAims}, and shown in \fref{QuadOfAims2.png}.
 
-\fFigure{QuadOfAims2.png}{A Quad of Aims for the project might be A3 in size and would have the relevant information embedded. It may also be completed on a white-board.}{0.7}
+\fFigure{QuadOfAims2.png}{A Quad of Aims for the project might be A3 in size and would have the relevant information embedded. It may also be completed on a white-board.}{1}
 
  \begin{table}[h]
     \begin{center}
@@ -227,8 +230,8 @@ The Input Output Analysis of the system informs the bounds and requirements to o
 
 
 \subsection{Affinity Diagram}
-An Affinity Diagram helps to solidify the high level, vague ideas, requirements and tests into a more detailed view. There is a focus on putting tangible measurements onto requirements. During this process, system architecture decisions were made such as a trade review into online vs offline processing, and subsequently splitting the system into smaller modules. Our primary system had 2 key sub-systems: The recording, and the processing systems. An Affinity Diagram of the top-level sys-tem was created, and the 2 affinity diagrams of the sub-systems were informed and made from this. After this was complete, previous work was updated to reflect these changes. *ADD A REF TO THE FIGURE* \fref{AffinityDiagram.png}
-\fFigure{AffinityDiagram.png}{The Affinity Diagrams for the full system architecture}{0.8}
+An Affinity Diagram helps to solidify the high level, vague ideas, requirements and tests into a more detailed view. There is a focus on putting tangible measurements onto requirements. During this process, system architecture decisions were made such as a trade review into online vs offline processing, and subsequently splitting the system into smaller modules. Our primary system had 2 key sub-systems: The recording, and the processing systems. An Affinity Diagram of the top-level sys-tem was created, and the 2 affinity diagrams of the sub-systems were informed and made from this. After this was complete, previous work was updated to reflect these changes. \fref{AffinityDiagram.png}. \citationneeded
+\fFigure{AffinityDiagram.png}{The Affinity Diagrams for the full system architecture}{1}
 
 \subsection{Systems Map}
 A Systems Map takes the Affinity Diagram, Input Output Analysis, and Tree-Diagram to identify the processes inside sub-modules that are needed to design the system. This was used to great effect to measure and estimate the workload necessary to implement data fusion alongside deep learning of acoustic classification and detection as shown in \fref{SystemMap.png}.
@@ -247,14 +250,14 @@ An N\textsuperscript{2} Analysis methodically expands on the what data moves aro
 
 \subsection{Spray Diagram}
 The Spray Diagram shown in \fref{SprayDiagram.png} shows how details of the system can have multi-factored effects in design requirements, outcomes and operational use. Of interest in the diagram is the relationship between high-quality output will require high-quality input, and this may increase production and design costs. 
-\fFigure{SprayDiagram.png}{A Spray Diagram for the project}{0.8}
+\fFigure{SprayDiagram.png}{A Spray Diagram for the project}{1}
 
 \subsection{Matrix Diagram}
 A matrix diagram was made to review the now more refined, reduced scope as shown in \fref{MatrixDiagram.png}. This works by using a “strong”, “weak” or “none” indicator for each aspect of the project. It highlighted the difficulty in balancing the needs of both major stakeholders. 
 \fFigure{MatrixDiagram.png}{A Matrix Diagram for the project}{0.8}
 
-\subsection{Final Problem Analysis}
-\subsection{Discussion}
+\subsection{Final Problem Analysis and Discussion}
+% \subsection{Discussion}
 The purpose of the project is to hypothesis and produce a proof-of-concept of how digital technologies could improve debriefing processes and outcomes. This seems achievable within 1 year, and should provide an excellent learning opportunity for the author.
 
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -265,27 +268,27 @@ A literature review of the current research was conducted with guidance from Uni
 \subsection{Machine Learning}
 A definition for Machine learning is taken from Tom M. Mitchell's 1997 textbook, \inlineQuote{Machine Learning}
 \begin{quote}
-    A computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E. \citationneeded
-\end{quote} /citationneeded  Mitchell, T. (1997). Machine Learning. McGraw Hill. p. 2. ISBN 978-0-07-042807-2.
+    A computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E. \cite{Mitchell1997}
+\end{quote}
 
-This definition of Machine Learning lends itself to best explaining this project; The task T (AED/C), the E (Audo, IMU, GPS), and P (a traditional F1 score). 
+This definition of Machine Learning can be applied to this project; the task T (AED/C), the E (Audo, IMU, GPS), and P (a traditional F1 score). 
 
-The computer program described in this project has been produced in Python, using the sklearn and TensorFlow libraries.
+The computer program described in this project has been produced in Python, using the sklearn and TensorFlow libraries. \flagforreview
 
 \subsection{Acoustic Event Detection and Acoustic Event Classification}
-Historically the technologies for AED/AEC have been Support vector machine (SVMs), Hidden Markov Models (HHMs), and more generally, basic DSP (Digital Signal Processing) classifiers. But in the last 8 years, AED and AEC research has emerged as a hot topic of research. Research focuses on the two key tasks: Detection (when did an acoustic event occur in the au-dio, and when did it stop?) and classification (what sound oc-curred?). New research papers are often the result of DCASE competitions, which is an official IEEE Audio and Acoustic Signal Processing (AASP) competition.
-\fref{F1_score.png}
+Historically the technologies for AED/AEC have been Support vector machine (SVMs), Hidden Markov Models (HHMs), and more generally, basic DSP (Digital Signal Processing) classifiers. But in the last 8 years, AED and AEC research has emerged as a hot topic of research. Research focuses on the two key tasks: Detection (when did an acoustic event occur in the au-dio, and when did it stop?) and classification (what sound oc-curred?). New research papers are often the result of DCASE competitions, which is an official IEEE Audio and Acoustic Signal Processing (AASP) competition. \fref{F1_score.png}.
+
 \fFigure{F1_score.png}{DCASE Researcher Toni Heittola's F1 Results reflect the AED/AEC field of research with drastic improvements over the last 8 years. \citationneeded}{0.8}
 
 \subsection{DCASE Competitions (Detection and Classification of Acoustic Scenes and Events)}
-The DCASE competitions format started 2013, had its second competition in 2016, and since then has been a yearly event. Since 2017, there has been a new format where the competi-tion starts march, formal results are released by September, and a workshop for participants on the best team’s work in Novem-ber [7]. 2016 was the first to feature Machine Learning (win-ning teams incorporated machine learning into ensemble mod-els/classifiers). By 2017 all entries utilised machine learning. Recently the results from DCASE2018 have been published; progress in the AED/AEC field has allowed more sophisticated, real-world applications to be evaluated (Challenge Task \#4) [8]. The complexity of the dataset, the number of acoustic classes and fidelity of output are unprecedented in the AEC field. The winning results at this level of complexity aren’t as high quali-ty compared to last year’s more controlled environment/dataset (2017 had a 41.7\% F1 score [9] vs 2018’s 32.4\% [8]), but pre-sent the best precedent for the problem addressed in this paper.
+The DCASE competitions format started 2013, had its second competition in 2016, and since then has been a yearly event. Since 2017, there has been a new format where the competition starts march, formal results are released by September, and a workshop for participants on the best team’s work in November [7]\citationneeded. 2016 was the first to feature Machine Learning (win-ning teams incorporated machine learning into ensemble mod-els/classifiers). By 2017 all entries utilised machine learning. Recently the results from DCASE2018 have been published; progress in the AED/AEC field has allowed more sophisticated, real-world applications to be evaluated (Challenge Task \#4) [8]\citationneeded. The complexity of the dataset, the number of acoustic classes and fidelity of output are unprecedented in the AEC field. The winning results at this level of complexity are not as high quality compared to last year’s more controlled environment/dataset (2017 had a 41.7\% F1 score [9]\citationneeded vs 2018’s 32.4\% [8]\citationneeded), but pre-sent the best precedent for the problem addressed in this paper.
 
 \subsection{Leading Research, DCASE2018 Task 4 Winner}
-The winning model used in the DCASE2018 Task 4 challenge used a “Mean-teacher” model for classification (useful abstract results averaging applicable to a range of classifier models), a CNN for context gating (a pre-classifier step to improve flaws in training methodologies for some machine learning models [10]) and a bidirectional recurrent neural network (RNN) to improve the utilisation of unlabelled, unbalanced training da-tasets [11]; this last component is important for this paper, as the leading dataset outside of DCASE challenges is the weakly labelled Google AudioSet, of which only small percentage of is balanced.
+The winning model used in the DCASE2018 Task 4 challenge used a “Mean-teacher” model for classification (useful abstract results averaging applicable to a range of classifier models), a CNN for context gating (a pre-classifier step to improve flaws in training methodologies for some machine learning models [10]\citationneeded) and a bidirectional recurrent neural network (RNN) to improve the utilisation of unlabelled, unbalanced training da-tasets [11]\citationneeded; this last component is important for this paper, as the leading dataset outside of DCASE challenges is the weakly labelled Google AudioSet, of which only small percentage of is balanced.
 
 \begin{table}[h!]
     \begin{center}
-        \caption{AudioSet data on Cars}\label{tab:AudioSetCars}
+        \caption{AudioSet data on cars}\label{tab:AudioSetCars}
         {\footnotesize
             \begin{tabular}{c l l l|}
                 \hline\hline Dataset & Number of videos & Duration hours \\ \hline 
@@ -293,7 +296,7 @@ The winning model used in the DCASE2018 Task 4 challenge used a “Mean-teacher�
                 Balanced train & 296 & 0.8 \\
                 Unbalanced train & 40,978 & 113.3 \\
                 Overall & 41,554 & 114.9 \\
-                \\ \hline
+                \hline
             \end{tabular}
         }
     \end{center}
@@ -325,8 +328,7 @@ The Machine Learning uses GPS, accelerometer, gyroscope, and audio. A Google Pix
                 \hline\hline Sensor & Description \\ \hline 
                 GPS & The Pixel 2 uses the Snapdragon 835 System on Chip GPS receiver\\
                 Accelerometer / Gyroscope & The Pixel 2 uses a bosch BMI160 \\
-                Audio & The Pixel 2 uses a Qualcom WCD9395 Audio Codec chip, a NXP TFA9891UK Audio Amplifier, \citationneeded FINISH \\
-                \\ \hline
+                Audio & The Pixel 2 uses a Qualcom WCD9395 Audio Codec chip, a NXP TFA9891UK Audio Amplifier, \citationneeded FINISH \\ \hline
             \end{tabular}
         }
     \end{center}
@@ -528,7 +530,7 @@ A sequence of data processing components is called a data pipeline. Pipelines ar
 
 The original prototyping for audio only classification with TensorFlow and Keras was to use matplotlib to plot the spectrogram of each audio sample, and use a sequential CNN to process the spectrograms. A code snippet for that design is shown in \ref{lst:cnnpythonlisting}.
 
-Due to the sample size of the dataset (AudioSet's large database, but smaller balanced datasets for the specific use-cases identified), and the use of GPS, Acceleration and Gyroscope data, the classifier could have been prone to overfitting. \citationneeded Dropout layers are method of regularisation, which is used to help prevent overfitting in machine learning. Dropout layers work by "randomly dropping units (along with their connections) from the neural network during training" \cite{witten2016data}. The purpose of dropout layers in this classifier is to prevent the classifier from overfitting by reducing the over reliance on any individual neuron, but also to reduce the over reliance on any individual data source. This is important because the Audio feature has the highest fidelity (MFCCs across N-bins), and the classifier could have a heavy bias towards it and as a result overfit. Dropout layers will help minimise this overfit. To test this hypothesis, a Random Forest classifier (estimators = 300) was trained on all users to weigh the features, to help identify the design choices. Appendix \ref{apx:FeatureImportance} shows each feature importance breakdown, where \fref{feature_important_just_Combined2.png} shows the scikit Random Trees feature importance of the set (Audio, Accelerometer, Gyroscope, GPS).
+Due to the sample size of the dataset (AudioSet's large database, but smaller balanced datasets for the specific use-cases identified), and the use of GPS, Acceleration and Gyroscope data, the classifier could have been prone to overfitting. \citationneeded Dropout layers are method of regularisation, which is used to help prevent overfitting in machine learning. Dropout layers work by "randomly dropping units (along with their connections) from the neural network during training" \cite{witten2016data}. The purpose of dropout layers in this classifier is to prevent the classifier from overfitting by reducing the over reliance on any individual neuron, but also to reduce the over reliance on any individual data source. This is important because the Audio feature has the highest fidelity (MFCCs across N-bins), and the classifier could have a heavy bias towards it and as a result overfit. Dropout layers will help minimise this overfit. To test this hypothesis, a Random Forest classifier (estimators = 300) was trained on all users to weigh the features, to help identify the design choices. Appendix \ref{apx:FeatureImportance} shows each feature importance breakdown, where \fref{feature_important_just_combined_big_colour.png} shows the scikit Random Trees feature importance of the set (Audio, Accelerometer, Gyroscope, GPS).
 % These should go to Appendix
 
 \fFigure{feature_important_just_combined_big_colour.png}{A Random Tree Classifier was used to evaluate feaure importance, during the design phase of the main classifier. Features were Audio (Blue, 26 bins), Accelerometer (Orange, 26 features), Gyroscope (Red, 26 features), GPS (Green, 17 features)}{1}
@@ -551,11 +553,12 @@ Due to the sample size of the dataset (AudioSet's large database, but smaller ba
 % \end{itemize}
 
 \subsection{Data Training and Evaluation Set}
-\begin{itemize}
-    \item AudioSet and maybe the DCASE2018 Task 4 data set.
-    \item Ideally, start pulling training and evaluation from smartphone app. 
-    \item Lock down a use case and rewrite paper with that in mind.
-\end{itemize}
+The ExtraSensory dataset is
+% \begin{itemize}
+%     \item AudioSet and maybe the DCASE2018 Task 4 data set.
+%     \item Ideally, start pulling training and evaluation from smartphone app. 
+%     \item Lock down a use case and rewrite paper with that in mind.
+% \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%
 \section{Evaulation}
@@ -739,13 +742,23 @@ True \cite{TFwebsite2}
 \newpage
 \appendix
 \section{Full Extracts of Journals}
-\subsection{Journals 1}
-test extract
-\subsection{Journals 2}
-test extract 2
-\subsection{Journals 3}
-test extract 3
-\subsection{Journals 4}
+N/A
+\section{Reflection}
+
+I'll write this from the first person perspective.
+This project was a whirlwind. Taken over the 2018 S2, 2019 S1 period, including the Christmas Holidays, the project was a learning experience. The outcome I got is barely quantifiable past a common sense guess, but I can take pride in knowing the outcome is quantified and based on the `360 hours' minimum of work to get to that result. I learnt a lot starting with\dots
+\subsection{Lessons Learnt}
+\begin{itemize}
+    \item The Industry - FYP was a squandered opportunity on my part, but almost by my choice in FYP topic. Work was able to provide significant support for implementation, and even the prospect of data collection through engaging with potential customers and stakeholders for different use-cases. Unfortunately, I felt uncomfortable pursing that due to how heavy the time spent in implementing felt.  The lesson learnt is to have not done an Industry FYP without understanding how it'll affect the pathway to the final thesis. 
+    \item Implementation drove some technology choices I probably would have been better off without. E.g. I went to a Matlab seminar on how to develop Machine Learning in Matlab. Had I used this, the project could have been more homogenous and focused on the big question around "Acoustic Event Detection/Classification". But to do so means I don't develop the python ML skills needed for 'real world' ML tasks. A lesson learnt is to focus on what is assessable, and to probably have used Matlab to demonstrate I understood the theory, not to learn and demonstrate the actual skills of Industry.
+    \item The FYP is a ~10 week full time commitment to meet the 360 hours. I potentially \inlineQuote{wasted} 6 weeks just identifying the question I was trying to answer in the report. If I hadn't elected to do a Industry FYP, this is potentially work that could be better shared between the supervisor and myself.
+    \item Smaller Scope, get it done in Part A, expand and write in Part B.
+\end{itemize}
+
+The FYP has made me appreciate Subject Matter Expertise. In MCHA3900, I focused heavily on understanding the physical hardware involved in the Hexapod - Matlab, RPi, i2c, Openservo v3, and the physical bot itself. I felt I knew that system well, but I recognised my limited understanding. In comparison to that, I reflect on \textit{how much} I've learnt during this FYP, and to what depth of detail compared to MCHA3900. I think I already knew that when I read it's `MCHA3900 - INTRO TO ROBOTICS', but seeing how that was already a good 200 hours I'm surprised just how much more I've had to delve into this.
+
+On that note, I lastly reflect on the skills I've learnt, and the perspective I've gained in how complex the field is, and how much more there is to learn.
+
 \section{Dataset Feature Importance}\label{apx:FeatureImportance}
 \fFigure{feature_important_just_audio2.png}{A Random Tree Classifier was used to evaluate feaure importance, during the design phase of the main classifier. Features were Audio (26 bins), Accelerometer (), Gyroscope, GPS ()}{0.5}
 
@@ -754,7 +767,7 @@ test extract 3
 \fFigure{feature_important_just_Gyro.png}{A Random Tree Classifier was used to evaluate feaure importance, during the design phase of the main classifier. Features were Audio (26 bins), Accelerometer (), Gyroscope (), GPS ()}{0.5}
 
 \fFigure{feature_important_just_GPS2.png}{A Random Tree Classifier was used to evaluate feaure importance, during the design phase of the main classifier. Features were Audio (26 bins), Accelerometer (), Gyroscope (), GPS ()}{0.5}
-\section{Reflection}
+
 \section{Trade-Review of "Online vs Offline" processing}\label{sec:TradeReview}
 
 

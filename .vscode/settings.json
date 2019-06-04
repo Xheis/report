@@ -3,9 +3,11 @@
         "Dropout",
         "Keras",
         "Lite",
+        "MCHA",
         "matplotlib",
         "overfit",
         "overfitting",
+        "scikit",
         "trackfile"
     ]
 }

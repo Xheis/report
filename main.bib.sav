@@ -69,4 +69,13 @@
   url    = {https://scikit-learn.org/stable/whats_new.html},
 }
 
+@Book{Mitchell1997,
+  title     = {Machine Learning},
+  publisher = {McGraw-Hill Education},
+  year      = {1997},
+  author    = {Tom M. Mitchell},
+  isbn      = {978-0-07-042807-2},
+  url       = {https://www.amazon.com/Machine-Learning-Tom-M-Mitchell/dp/0070428077?SubscriptionId=AKIAIOBINVZYXZQZ2U3A&tag=chimbori05-20&linkCode=xm2&camp=2025&creative=165953&creativeASIN=0070428077},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
