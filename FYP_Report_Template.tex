@@ -24,6 +24,12 @@
 \newcommand{\flagforreview}{\textsuperscript{\color{red} [FLAGGED FOR REVIEW]}}
 \newcommand{\inlineQuote}[1]{``#1''}
 
+\newcommand{\fancyquote}[1]{
+    \begin{quotation}
+        \inlineQuote{#1}
+    \end{quotation}
+}
+
 
 \newcommand{\fref}[1] {Figure \ref{#1}}
 
@@ -130,7 +136,9 @@ E-mail: \href{mailto:Christopher.Caelli@uon.edu.au}{\textsf{Christopher.Caelli@u
 \vspace{-5mm}
 \section*{Mandatory Dot Point Summary}
 \vspace{-3mm}
-As per the FYP Handbook: \newline
+flagforreview \flagforreview \\
+citationneeded \citationneeded \\
+As per the FYP Handbook: \\
 I did:
 \begin{itemize}
     \item I learnt and prototyped a machine learning algorithm for classifying physical actions from an audio input
@@ -395,13 +403,13 @@ Both datasets share the same timestamp format, so a \inlineQuote{Time} column ha
 
 The ExtraSensory dataset is compiled from 60 users with a diverse range of phones (\inlineQuote{34 iPhone users, 26 Android users.}\citationneeded http:\/\/extrasensory.ucsd.edu\/). This is in contrast to this project's phone range, which was limited to 2 Android devices, a Samsung S6 and a Lenovo Zuk Z2. The Samsung uses a InvenSense MPU-6500, the Lenovo Zuk Z2 unknown.
 
-\begin{quotation}
+\fancyquote{
     \underline{Devices:}
     The users in ExtraSensory had a variety of phone devices.
     iPhone generations: 4, 4S, 5, 5S, 5C, 6 and 6S.
     iPhone operating system versions ranging from iOS-7 to iOS-9.
     Android devices: Samsung, Nexus, HTC, moto G, LG, Motorola, One Plus One, Sony.
-\end{quotation}
+}
 
 
 \subsection{Data Pre-Processing}
@@ -533,7 +541,9 @@ The original prototyping for audio only classification with TensorFlow and Keras
 Due to the sample size of the dataset (AudioSet's large database, but smaller balanced datasets for the specific use-cases identified), and the use of GPS, Acceleration and Gyroscope data, the classifier could have been prone to overfitting. \citationneeded Dropout layers are method of regularisation, which is used to help prevent overfitting in machine learning. Dropout layers work by "randomly dropping units (along with their connections) from the neural network during training" \cite{witten2016data}. The purpose of dropout layers in this classifier is to prevent the classifier from overfitting by reducing the over reliance on any individual neuron, but also to reduce the over reliance on any individual data source. This is important because the Audio feature has the highest fidelity (MFCCs across N-bins), and the classifier could have a heavy bias towards it and as a result overfit. Dropout layers will help minimise this overfit. To test this hypothesis, a Random Forest classifier (estimators = 300) was trained on all users to weigh the features, to help identify the design choices. Appendix \ref{apx:FeatureImportance} shows each feature importance breakdown, where \fref{feature_important_just_combined_big_colour.png} shows the scikit Random Trees feature importance of the set (Audio, Accelerometer, Gyroscope, GPS).
 % These should go to Appendix
 
-\fFigure{feature_important_just_combined_big_colour.png}{A Random Tree Classifier was used to evaluate feaure importance, during the design phase of the main classifier. Features were Audio (Blue, 26 bins), Accelerometer (Orange, 26 features), Gyroscope (Red, 26 features), GPS (Green, 17 features)}{1}
+A Random Tree Classifier was used to evaluate feature importance. Random Tree Classifier's perform poorly on unbalanced datasets. like on  on a the ExtraSensory after random undersampled dataset, during the design phase of the main classifier. Features were Audio (Blue, 26 bins), Accelerometer (Orange, 26 features), Gyroscope (Red, 26 features), GPS (Green, 17 features)
+
+\fFigure{feature_important_just_combined_big_colour.png}{A Random Tree Classifier was used to evaluate feaure importance on a the ExtraSensory after random undersampled dataset, during the design phase of the main classifier. Features were Audio (Blue, 26 bins), Accelerometer (Orange, 26 features), Gyroscope (Red, 26 features), GPS (Green, 17 features)}{1}
 
 \lstinputlisting[
     language=python,
@@ -544,6 +554,11 @@ Due to the sample size of the dataset (AudioSet's large database, but smaller ba
     caption={Code snippet for the early CNN model\label{lst:cnnpythonlisting}},
     ]{Code/tensorflow_cnn.py}
 
+
+\subsection{scikit-learn}
+
+Scikit-learn is a statistics and machine learning for Python. It was selected due to it's ease of use, and has been used to analyse, prototype and produce the results of this paper.
+
 % \begin{itemize}
 %     \item Mean-teacher*
 %     \item CNN Context Gating
@@ -552,8 +567,20 @@ Due to the sample size of the dataset (AudioSet's large database, but smaller ba
 %     \item * = Stretch Goals
 % \end{itemize}
 
-\subsection{Data Training and Evaluation Set}
-The ExtraSensory dataset contains 
+
+
+\subsection{Data Training, Testing and Evaluation Set}
+The ExtraSensory dataset contains 60 CSVs (with 278 features), as shown in \ref{tab:ExtraSensoryDataExample}. The dataset is unbalanced, and contains multiple labels. Further details about the users themselves can be found in \ref{tab:ExtraSensoryDataBreakdown}.
+
+The dataset was considered for use in 2 ways; training on a per user instance, or training on a per minute snapshot instance. The benefits of per user is to isolate recording hardware, to minimise it's impact in evaluation. However this is the benefit of training on a per snapshot instance basis. As we kfold\flagforreview the dataset for training, by working on a per snapshot instance, we can increase the likelyhood of the random selection to incorporate a larger variance of noise.
+
+\subsection{\inlineQuote{kfold} Cross validation}
+kfold Cross Validation can be described as:
+\fancyquote{
+    ... approach involves randomly dividing the set of observations into k groups, or folds, of approximately equal size. The first fold is treated as a validation set (sic), and the method is fit on the remaining k - 1 folds. 
+    }\cite{James2017}
+A key element expanding on this is the ability to cycle through k 'folds', changing which group is the \inlineQuote{validation}, or test set.
+The kfold creates creates 2 groups. A single test group and many training groups. Each training group gets tested via the single test group. Then, test group changes each 'fold'.
 
 \begin{table}[h]
     \begin{center}  
@@ -575,6 +602,9 @@ The ExtraSensory dataset contains
     \end{center}
 \end{table}
 
+The question of whether supplementary data will improve the classifier's F1 score is best answered by deciding on an appropriate classifier, and testing it with and without the supplementary data. As discussed, the appropriate classifier could be chosen via hyperparameter testing against a validation set, however the feature analysis carried out above will also influence classifier design. The unbalanced nature of the dataset is also a factor.
+
+The MLPClassifier using solver='lbfgs' alpha=1e-5, hidden_layer_sizes=(80, 10) was settled on as the classifier to use for evaluation.
 % \hline\hline timestamp  & Time & raw\_acc:mean & raw\_acc:std & raw\_acc:moment3 & raw\_acc:moment4 \\\hline 
 % 1464129912 & 2016-05-24 22:45 & 1.011438                       & 0.012573                      & 0.023013                          & 0.04124      \\
 % 1464129950 & 2016-05-24 22:45 & 1.011233                       & 0.009356                      & -0.005622                         & 0.016687     \\
@@ -588,41 +618,119 @@ The ExtraSensory dataset contains
 % \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%
-\section{Evaulation}
+% \section{Evaluation}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%
-\section{Results and Discussion}
+\section{Results}
+
 \subsection{With all}
-% 665514DE-49DC-421F-8DCB-145D0B2609AD.features_labels.csv.gz
-% == Projected the features to 95 features from the sensors: Aud, Acc, Gyro, Loc
-% C:\FYP\2019-05-11\extra sensor\example_notebook.py:625: RuntimeWarning: invalid value encountered in greater
-%   normalizers = np.where(std_vec > 0., std_vec, 1.).reshape((1,-1));
-== Testing with 7402 examples. For label 'Walking' we have 1181 positive and 6221 negative examples.
-----------
-Accuracy*:         0.87
-Sensitivity (TPR): 0.26
-Specificity (TNR): 0.98
-Balanced accuracy: 0.62
-Precision**:       0.72
-F-Score:           0.84
 
-\subsection{without all}
-% 665514DE-49DC-421F-8DCB-145D0B2609AD.features_labels.csv.gz
-% == Projected the features to 26 features from the sensors: Aud
-% == Testing with 7402 examples. For label 'Walking' we have 1181 positive and 6221 negative examples.
-% C:\FYP\2019-05-11\extra sensor\example_notebook.py:762: RuntimeWarning: invalid value encountered in true_divide
-%   precision = float(tp) / (tp+fp);
-% C:\Program Files\Python36\lib\site-packages\sklearn\metrics\classification.py:1143: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no predicted samples.
-%   'precision', 'predicted', average, warn_for)
+all sensors
+== Training with 31897 examples. For label 'Walking' we have 17735 positive and 14162 negative examples.
+== Projected the features to 95 features from the sensors: Aud, Acc, Gyro, Loc
+== Testing with 8000 examples. For label 'Walking' we have 4401 positive and 3599 negative examples.
 ----------
-Accuracy*:         0.84
-Sensitivity (TPR): 0.00
-Specificity (TNR): 1.00
-Balanced accuracy: 0.50
-Precision**:       nan
-F-Score:           0.77
+Accuracy*:         0.83
+Sensitivity (TPR): 0.85
+Specificity (TNR): 0.81
+Balanced accuracy: 0.83
+Precision**:       0.85
+F-Score:           0.83
+--- Confusion Matrix ---
+[[2914  685]
+ [ 648 3753]]
+
+ just Audio
+ == Training with 31918 examples. For label 'Walking' we have 17641 positive and 14277 negative examples.
+== Projected the features to 26 features from the sensors: Aud
+== Testing with 8023 examples. For label 'Walking' we have 4495 positive and 3528 negative examples.
+----------
+Accuracy*:         0.79
+Sensitivity (TPR): 0.83
+Specificity (TNR): 0.73
+Balanced accuracy: 0.78
+Precision**:       0.80
+F-Score:           0.78
+--- Confusion Matrix ---
+[[2581  947]
+ [ 775 3720]]
+
+\begin{table}[h]
+    \begin{center}  
+        \caption{ExtraSensory Data Breakdown \cite{Vaizman2017}}\label{tab:ExtraSensoryDataBreakdown}
+        \begin{tabular}{llllll}
+            \hline\hline 
+                kfold             & 1    & 2    & 3    & 4    & 5    \\
+                \hline 
+                Accuracy          & 0.92 & 0.93 & 0.95 & 0.94 & 0.95 \\
+                Sensitivity (TPR) & 0.26 & 0.35 & 0.33 & 0.29 & 0.38 \\
+                F-Score           & 0.9  & 0.93 & 0.94 & 0.93 & 0.95 \\
+            \hline  
+            \end{tabular}
+    \end{center}
+\end{table}
+
+% Testing Kfold 3
+% == Training with 31874 examples. For label 'Walking' we have 17708 positive and 14166 negative examples.
+% == Testing with 7896 examples. For label 'Walking' we have 4428 positive and 3468 negative examples.
+% ----------
+% Accuracy*:         0.78
+% Sensitivity (TPR): 0.77
+% Specificity (TNR): 0.79
+% Balanced accuracy: 0.78
+% Precision**:       0.83
+% F-Score:           0.78
+% --- Confusion Matrix ---
+% [[2757  711]
+%  [1022 3406]]
+% ----------
+% <><><><><><><><><><><><><><><><><><><><>
+
+
+% \lstinputlisting[
+%     language=sh,
+%     float=h,
+%     numbers=left,
+%     xleftmargin=1cm,
+%     frame=shadowbox,
+%     caption={Results of 5-fold CV on a ExtraTreesClassifier \label{lst:kfold_results}},
+%     morekeywords={try,catch}
+%     ]{code/5foldResults.txt}
+
+% % 665514DE-49DC-421F-8DCB-145D0B2609AD.features_labels.csv.gz
+% % == Projected the features to 95 features from the sensors: Aud, Acc, Gyro, Loc
+% % C:\FYP\2019-05-11\extra sensor\example_notebook.py:625: RuntimeWarning: invalid value encountered in greater
+% %   normalizers = np.where(std_vec > 0., std_vec, 1.).reshape((1,-1));
+% == Testing with 7402 examples. For label 'Walking' we have 1181 positive and 6221 negative examples.
+% ----------
+% Accuracy*:         0.87
+% Sensitivity (TPR): 0.26
+% Specificity (TNR): 0.98
+% Balanced accuracy: 0.62
+% Precision**:       0.72
+% F-Score:           0.84
+
+% \subsection{without all}
+% % 665514DE-49DC-421F-8DCB-145D0B2609AD.features_labels.csv.gz
+% % == Projected the features to 26 features from the sensors: Aud
+% % == Testing with 7402 examples. For label 'Walking' we have 1181 positive and 6221 negative examples.
+% % C:\FYP\2019-05-11\extra sensor\example_notebook.py:762: RuntimeWarning: invalid value encountered in true_divide
+% %   precision = float(tp) / (tp+fp);
+% % C:\Program Files\Python36\lib\site-packages\sklearn\metrics\classification.py:1143: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no predicted samples.
+% %   'precision', 'predicted', average, warn_for)
+% ----------
+% Accuracy*:         0.84
+% Sensitivity (TPR): 0.00
+% Specificity (TNR): 1.00
+% Balanced accuracy: 0.50
+% Precision**:       nan
+% F-Score:           0.77
 %%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Discussion}\label{sec:Discussion}
+
+
 \section{Conclusion}\label{sec:Conclusion}
 This is one of the most important parts of the report. In the conclusion section, you  should 
 \begin{itemize}
@@ -635,8 +743,8 @@ This is one of the most important parts of the report. In the conclusion section
 The results achieved showed audio as a sole input for determining physical actions to be a viable but also shows room for improvement. The focus was on what data to use, preprocessing and finally classification. 
 Data use settled on Google's AudioSet for ease of use, where as the IMU data was needed was recorded through a bespoke app created by myself and a colleague. Preprocessing took some domain knowledge learnt through out Mechatronics, and processed (mel power coeffecients). Classification was through machine learning (RNN, known topologies etc.). 
 The work presented does demonstrates a contribution to the audio processing space and explores how mechatronics domain knowledge impacts and extends machine learning.
-Based on the work presented, it's clear that audio data processing will be a major tool and research topic into the future. The nieche explored in this FYP, of amalgamating traditional audio processing with physical sensor input looks to be of limited use, to limited applications. More over, without large datasets of audio paired with physical sensor data, the machine learning tools explored in this FYP will not be able to be used. As such, the rise of audio recording equipped equipment should be the basis for further research into this space. 
-Future work from here would be to look at the larger role of data aquition. This is both because it was one of the larger hurdles I had to face, plus it enables further research into the effectiveness of what a diverse dataset can bring. Industry will reasonably expect to take aspects of data fusion and machine leanring. To know what
+Based on the work presented, it's clear that audio data processing will be a major tool and research topic into the future. The niche explored in this FYP, of amalgamating traditional audio processing with physical sensor input looks to be of limited use, to limited applications. More over, without large datasets of audio paired with physical sensor data, the machine learning tools explored in this FYP will not be able to be used. As such, the rise of audio recording equipped equipment should be the basis for further research into this space. 
+Future work from here would be to look at the larger role of data acquisition. This is both because it was one of the larger hurdles I had to face, plus it enables further research into the effectiveness of what a diverse dataset can bring. Industry will reasonably expect to take aspects of data fusion and machine learning. To know what
 
 
 \newpage 
@@ -883,7 +991,7 @@ Unlike these methods mentioned above, dropout in my understanding is tricky but 
 
 The possibility of muting neurons is often set as 0.5 though you can feel free to make it 0.3 or 1.0. When the dropout is 1.0, then you simply don't drop out any neurons. But our experience tells us 0.5 is usually the best choice.
 
-After finishing the training, it is important to turn off the dropout during development and testing. Otherwise, the prediction of this model is not stable since dropout add uncertainties to it.
+ExtraSensory Data BreakdoAfter finishing the training, it is important to turn off the dropout during development and testing. Otherwise, the prediction of this model is not stable since dropout add uncertainties to it.
 
 
 \newpage

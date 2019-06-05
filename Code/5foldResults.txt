@@ -1,0 +1,322 @@
+KFold(n_splits=5, random_state=None, shuffle=False)
+Testing Kfold 1
+== Training with 243108 examples. For label 'Walking' we have 15797 positive and 227311 negative examples.
+== Testing with 63486 examples. For label 'Walking' we have 6339 positive and 57147 negative examples.
+----------
+Accuracy*:         0.92
+Sensitivity (TPR): 0.26
+F-Score:           0.90
+----------
+<><><><><><><><><><><><><><><><><><><><>
+
+
+Testing Kfold 2
+== Training with 243011 examples. For label 'Walking' we have 17445 positive and 225566 negative examples.
+== Testing with 63583 examples. For label 'Walking' we have 4691 positive and 58892 negative examples.
+----------
+Accuracy*:         0.93
+Sensitivity (TPR): 0.35
+F-Score:           0.93
+----------
+<><><><><><><><><><><><><><><><><><><><>
+
+
+Testing Kfold 3
+== Training with 242942 examples. For label 'Walking' we have 18435 positive and 224507 negative examples.
+== Testing with 63652 examples. For label 'Walking' we have 3701 positive and 59951 negative examples.
+----------
+Accuracy*:         0.95
+Sensitivity (TPR): 0.33
+F-Score:           0.94
+----------
+<><><><><><><><><><><><><><><><><><><><>
+
+
+Testing Kfold 4
+== Training with 250279 examples. For label 'Walking' we have 18425 positive and 231854 negative examples.
+== Testing with 56315 examples. For label 'Walking' we have 3711 positive and 52604 negative examples.
+----------
+Accuracy*:         0.94
+Sensitivity (TPR): 0.29
+F-Score:           0.93
+----------
+<><><><><><><><><><><><><><><><><><><><>
+
+
+Testing Kfold 5
+== Training with 247036 examples. For label 'Walking' we have 18442 positive and 228594 negative examples.
+== Testing with 59558 examples. For label 'Walking' we have 3694 positive and 55864 negative examples.
+----------
+Accuracy*:         0.95
+Sensitivity (TPR): 0.38
+F-Score:           0.95
+----------
+<><><><><><><><><><><><><><><><><><><><>
+
+
+Testing model again a single user 30
+== Testing with 9404 examples. For label 'Walking' we have 657 positive and 8747 negative examples.
+----------
+Accuracy*:         1.00
+Sensitivity (TPR): 1.00
+F-Score:           1.00
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PS C:\FYP\2019-05-11\extra sensor> .\example_notebook.py
+00EABED2-271D-49D8-B599-1D4A09240601.features_labels.csv.gz |X2287-Y2287 / timestamps 2287 / feature_names 225 / label_names 51
+098A72A5-E3E5-4F54-A152-BBDA0DF7B694.features_labels.csv.gz |X9100-Y9100 / timestamps 9100 / feature_names 225 / label_names 51
+0A986513-7828-4D53-AA1F-E02D6DF9561B.features_labels.csv.gz |X13060-Y13060 / timestamps 13060 / feature_names 225 / label_names 51
+0BFC35E2-4817-4865-BFA7-764742302A2D.features_labels.csv.gz |X16168-Y16168 / timestamps 16168 / feature_names 225 / label_names 51
+0E6184E1-90C0-48EE-B25A-F1ECB7B9714E.features_labels.csv.gz |X23689-Y23689 / timestamps 23689 / feature_names 225 / label_names 51
+1155FF54-63D3-4AB2-9863-8385D0BD0A13.features_labels.csv.gz |X26374-Y26374 / timestamps 26374 / feature_names 225 / label_names 51
+11B5EC4D-4133-4289-B475-4E737182A406.features_labels.csv.gz |X35219-Y35219 / timestamps 35219 / feature_names 225 / label_names 51
+136562B6-95B2-483D-88DC-065F28409FD2.features_labels.csv.gz |X41437-Y41437 / timestamps 41437 / feature_names 225 / label_names 51
+1538C99F-BA1E-4EFB-A949-6C7C47701B20.features_labels.csv.gz |X47986-Y47986 / timestamps 47986 / feature_names 225 / label_names 51
+1DBB0F6F-1F81-4A50-9DF4-CD62ACFA4842.features_labels.csv.gz |X55361-Y55361 / timestamps 55361 / feature_names 225 / label_names 51
+end
+KFold(n_splits=5, random_state=None, shuffle=False)
+Testing Kfold 1
+== Training with 39334 examples. For label 'Walking' we have 4646 positive and 34688 negative examples.
+== Testing with 9555 examples. For label 'Walking' we have 475 positive and 9080 negative examples.
+----------
+Accuracy*:         0.96
+Sensitivity (TPR): 0.57
+Specificity (TNR): 0.98
+Balanced accuracy: 0.77
+Precision**:       0.61
+F-Score:           0.96
+--- Confusion Matrix ---
+[[8910  170]
+ [ 205  270]]
+----------
+<><><><><><><><><><><><><><><><><><><><>
+
+
+Testing Kfold 2
+== Training with 38835 examples. For label 'Walking' we have 3289 positive and 35546 negative examples.
+== Testing with 10054 examples. For label 'Walking' we have 1832 positive and 8222 negative examples.
+----------
+Accuracy*:         0.86
+Sensitivity (TPR): 0.39
+Specificity (TNR): 0.96
+Balanced accuracy: 0.68
+Precision**:       0.68
+F-Score:           0.84
+--- Confusion Matrix ---
+[[7893  329]
+ [1117  715]]
+----------
+<><><><><><><><><><><><><><><><><><><><>
+
+
+Testing Kfold 3
+== Training with 40344 examples. For label 'Walking' we have 4684 positive and 35660 negative examples.
+== Testing with 8545 examples. For label 'Walking' we have 437 positive and 8108 negative examples.
+----------
+Accuracy*:         0.96
+Sensitivity (TPR): 0.50
+Specificity (TNR): 0.99
+Balanced accuracy: 0.74
+Precision**:       0.70
+F-Score:           0.96
+--- Confusion Matrix ---
+[[8016   92]
+ [ 218  219]]
+----------
+<><><><><><><><><><><><><><><><><><><><>
+
+
+Testing Kfold 4
+== Training with 38941 examples. For label 'Walking' we have 3855 positive and 35086 negative examples.
+== Testing with 9948 examples. For label 'Walking' we have 1266 positive and 8682 negative examples.
+----------
+Accuracy*:         0.91
+Sensitivity (TPR): 0.42
+Specificity (TNR): 0.98
+Balanced accuracy: 0.70
+Precision**:       0.72
+F-Score:           0.89
+--- Confusion Matrix ---
+[[8470  212]
+ [ 732  534]]
+----------
+<><><><><><><><><><><><><><><><><><><><>
+
+
+Testing Kfold 5
+== Training with 38102 examples. For label 'Walking' we have 4010 positive and 34092 negative examples.
+== Testing with 10787 examples. For label 'Walking' we have 1111 positive and 9676 negative examples.
+----------
+Accuracy*:         0.91
+Sensitivity (TPR): 0.42
+Specificity (TNR): 0.97
+Balanced accuracy: 0.69
+Precision**:       0.62
+F-Score:           0.91
+--- Confusion Matrix ---
+[[9391  285]
+ [ 648  463]]
+----------
+<><><><><><><><><><><><><><><><><><><><>
+
+
+Testing model again a single user 1
+== Testing with 5468 examples. For label 'Walking' we have 187 positive and 5281 negative examples.
+----------
+Accuracy*:         0.97
+Sensitivity (TPR): 0.68
+Specificity (TNR): 0.98
+Balanced accuracy: 0.83
+Precision**:       0.56
+F-Score:           0.97
+--- Confusion Matrix ---
+[[5181  100]
+ [  60  127]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ KFold(n_splits=5, random_state=None, shuffle=False)
+Testing Kfold 1
+== Training with 7778 examples. For label 'Walking' we have 5121 positive and 2657 negative examples.
+== Testing with 1802 examples. For label 'Walking' we have 0 positive and 1802 negative examples.
+C:\FYP\2019-05-11\extra sensor\example_notebook.py:777: RuntimeWarning: invalid value encountered in true_divide
+  sensitivity = float(tp) / (tp+fn);
+C:\Program Files\Python36\lib\site-packages\sklearn\metrics\classification.py:1145: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true samples.
+  'recall', 'true', average, warn_for)
+----------
+Accuracy*:         0.75
+Sensitivity (TPR): nan
+Specificity (TNR): 0.75
+Balanced accuracy: nan
+Precision**:       0.00
+F-Score:           0.86
+--- Confusion Matrix ---
+[[1353  449]
+ [   0    0]]
+----------
+<><><><><><><><><><><><><><><><><><><><>
+
+
+Testing Kfold 2
+== Training with 7788 examples. For label 'Walking' we have 5121 positive and 2667 negative examples.
+== Testing with 1792 examples. For label 'Walking' we have 0 positive and 1792 negative examples.
+C:\FYP\2019-05-11\extra sensor\example_notebook.py:777: RuntimeWarning: invalid value encountered in true_divide
+  sensitivity = float(tp) / (tp+fn);
+C:\Program Files\Python36\lib\site-packages\sklearn\metrics\classification.py:1145: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true samples.
+  'recall', 'true', average, warn_for)
+----------
+Accuracy*:         0.74
+Sensitivity (TPR): nan
+Specificity (TNR): 0.74
+Balanced accuracy: nan
+Precision**:       0.00
+F-Score:           0.85
+--- Confusion Matrix ---
+[[1320  472]
+ [   0    0]]
+----------
+<><><><><><><><><><><><><><><><><><><><>
+
+
+Testing Kfold 3
+== Training with 7690 examples. For label 'Walking' we have 4096 positive and 3594 negative examples.
+== Testing with 1890 examples. For label 'Walking' we have 1025 positive and 865 negative examples.
+----------
+Accuracy*:         0.82
+Sensitivity (TPR): 0.80
+Specificity (TNR): 0.85
+Balanced accuracy: 0.82
+Precision**:       0.86
+F-Score:           0.82
+--- Confusion Matrix ---
+[[732 133]
+ [206 819]]
+----------
+<><><><><><><><><><><><><><><><><><><><>
+
+
+Testing Kfold 4
+== Training with 7532 examples. For label 'Walking' we have 3073 positive and 4459 negative examples.
+== Testing with 2048 examples. For label 'Walking' we have 2048 positive and 0 negative examples.
+C:\FYP\2019-05-11\extra sensor\example_notebook.py:778: RuntimeWarning: invalid value encountered in true_divide
+  specificity = float(tn) / (tn+fp);
+C:\Program Files\Python36\lib\site-packages\sklearn\metrics\classification.py:1145: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true samples.
+  'recall', 'true', average, warn_for)
+----------
+Accuracy*:         0.71
+Sensitivity (TPR): 0.71
+Specificity (TNR): nan
+Balanced accuracy: nan
+Precision**:       1.00
+F-Score:           0.83
+--- Confusion Matrix ---
+[[   0    0]
+ [ 600 1448]]
+----------
+<><><><><><><><><><><><><><><><><><><><>
+
+
+Testing Kfold 5
+== Training with 7532 examples. For label 'Walking' we have 3073 positive and 4459 negative examples.
+== Testing with 2048 examples. For label 'Walking' we have 2048 positive and 0 negative examples.
+C:\FYP\2019-05-11\extra sensor\example_notebook.py:778: RuntimeWarning: invalid value encountered in true_divide
+  specificity = float(tn) / (tn+fp);
+C:\Program Files\Python36\lib\site-packages\sklearn\metrics\classification.py:1145: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true samples.
+  'recall', 'true', average, warn_for)
+----------
+Accuracy*:         0.45
+Sensitivity (TPR): 0.45
+Specificity (TNR): nan
+Balanced accuracy: nan
+Precision**:       1.00
+F-Score:           0.62
+--- Confusion Matrix ---
+[[   0    0]
+ [1122  926]]
+----------
+<><><><><><><><><><><><><><><><><><><><>
+
+
+Testing model again a single user 4
+== Testing with 7476 examples. For label 'Walking' we have 1532 positive and 5944 negative examples.
+----------
+Accuracy*:         0.74
+Sensitivity (TPR): 0.77
+Specificity (TNR): 0.74
+Balanced accuracy: 0.75
+Precision**:       0.43
+F-Score:           0.76
+--- Confusion Matrix ---
+[[4369 1575]
+ [ 352 1180]]
+ 

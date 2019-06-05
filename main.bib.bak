@@ -78,4 +78,17 @@
   url       = {https://www.amazon.com/Machine-Learning-Tom-M-Mitchell/dp/0070428077?SubscriptionId=AKIAIOBINVZYXZQZ2U3A&tag=chimbori05-20&linkCode=xm2&camp=2025&creative=165953&creativeASIN=0070428077},
 }
 
+@Article{Vaizman2017,
+  author    = {Yonatan Vaizman and Katherine Ellis and Gert Lanckriet},
+  title     = {Recognizing Detailed Human Context in the Wild from Smartphones and Smartwatches},
+  journal   = {{IEEE} Pervasive Computing},
+  year      = {2017},
+  volume    = {16},
+  number    = {4},
+  pages     = {62--74},
+  month     = {oct},
+  doi       = {10.1109/mprv.2017.3971131},
+  publisher = {Institute of Electrical and Electronics Engineers ({IEEE})},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}

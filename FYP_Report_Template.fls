@@ -161,12 +161,6 @@ INPUT C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty
-INPUT c:\FYP\report\FYP_Report_Template.out
-INPUT c:\FYP\report\FYP_Report_Template.out
-INPUT c:\FYP\report\FYP_Report_Template.out
-INPUT c:\FYP\report\FYP_Report_Template.out
-INPUT c:\FYP\report\FYP_Report_Template.out
-INPUT c:\FYP\report\FYP_Report_Template.out
 OUTPUT c:\FYP\report\FYP_Report_Template.out
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\bookmark.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\bookmark.sty
@@ -214,19 +208,16 @@ INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmss10.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmssbx10.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmssbx10.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmssbx10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmbx10.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmr9.tfm
 INPUT C:\Users\Administrator\AppData\Local\MiKTeX\2.9\pdftex\config\pdftex.map
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmssbx10.tfm
-INPUT C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd
-INPUT C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmsy10.tfm
-INPUT c:\FYP\report\FYP_Report_Template.toc
-INPUT c:\FYP\report\FYP_Report_Template.toc
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmr8.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmr6.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmmi10.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmmi8.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmmi6.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmsy10.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmsy8.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmsy6.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmex10.tfm
@@ -241,7 +232,6 @@ INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
 INPUT C:\Users\Administrator\AppData\Local\MiKTeX\2.9\fonts\tfm\public\rsfs\rsfs10.tfm
 INPUT C:\Users\Administrator\AppData\Local\MiKTeX\2.9\fonts\tfm\public\rsfs\rsfs10.tfm
 INPUT C:\Users\Administrator\AppData\Local\MiKTeX\2.9\fonts\tfm\public\rsfs\rsfs5.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmbx10.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmbx8.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmbx6.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmmib10.tfm
@@ -250,6 +240,8 @@ INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\cmextra\cmmib6.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmbsy10.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\cmextra\cmbsy8.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\cmextra\cmbsy6.tfm
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd
 OUTPUT c:\FYP\report\FYP_Report_Template.toc
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmssbx10.tfm
 INPUT c:\FYP\report\Figures\treeDiagram.png
@@ -360,8 +352,6 @@ INPUT c:\FYP\report\Code\tensorflow_cnn.py
 INPUT c:\FYP\report\Code\tensorflow_cnn.py
 INPUT c:\FYP\report\Code\tensorflow_cnn.py
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmtt10.tfm
-INPUT c:\FYP\report\FYP_Report_Template.bbl
-INPUT c:\FYP\report\FYP_Report_Template.bbl
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmti10.tfm
 INPUT c:\FYP\report\Figures\feature_important_just_audio2.png
 INPUT c:\FYP\report\Figures\feature_important_just_audio2.png
@@ -390,6 +380,8 @@ INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmbx10.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmbx10.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi10.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi10.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi8.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi8.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr12.pfb
