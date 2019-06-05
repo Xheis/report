@@ -215,7 +215,7 @@ The Quad of Aims is a tool used to explore 4 critical, high level aspects of the
                 Stakeholders & University, Author’s Work \\
                 Deliverables & Documentation, recommendations, FYP report, proof-of-concept \\
                 Measure of Success & Review of Documentation by SMEs, review of FYP report, dry and wet run of proof-of-concept \\
-                \\ \hline
+                \hline
             \end{tabular}
         }
     \end{center}
@@ -350,7 +350,7 @@ I helped with 30\% of the overall programming, and code reviewed the product alo
 
 \subsubsection{Data collected during project vs ExtraSensory datset}
 The table \ref{tab:ProjectData} shows a snippet of the Comma-Seperated Values (csv) data produced from the app. The id is a unique count, %the attr\_time is a timestamp from the Android system, and attr\_x, attr\_y, and attr\_z are the raw output of the. 
-The table \ref{tab:ExtraSensoryData} shows a snippet of the csv data from the ExtraSensory dataset. 
+The table \ref{tab:ExtraSensoryDataExample} shows a snippet of the csv data from the ExtraSensory dataset. 
 
 Both datasets share the same timestamp format, so a \inlineQuote{Time} column has been added to the table for illustration purposes only.
 
@@ -380,7 +380,7 @@ Both datasets share the same timestamp format, so a \inlineQuote{Time} column ha
 \end{table}
 
 
-\begin{table}[]\label{tab:ExtraSensoryData}
+\begin{table}[]\label{tab:ExtraSensoryDataExample}
     \begin{center}
         \begin{tabular}{lllllll}
             \hline\hline timestamp  & Time & raw\_acc:mean & raw\_acc:std & raw\_acc:moment3 & raw\_acc:moment4 \\\hline 
@@ -553,7 +553,34 @@ Due to the sample size of the dataset (AudioSet's large database, but smaller ba
 % \end{itemize}
 
 \subsection{Data Training and Evaluation Set}
-The ExtraSensory dataset is
+The ExtraSensory dataset contains 
+
+\begin{table}[h]
+    \begin{center}  
+        \caption{ExtraSensory Data Breakdown \cite{Vaizman2017}}\label{tab:ExtraSensoryDataBreakdown}
+        \begin{tabular}{lllll}
+            \hline\hline 
+                       & Range     & Average & (standard deviation) &  \\
+            \hline 
+            Age        & 18-42     & 24.7    & -5.6                 &  \\
+            Height     & 145-188   & 171     & -9                   &  \\
+            Weight     & 50-93     & 66      & -11                  &  \\
+            Body       & 18-32     & 23      &                      &  \\
+            Labeled    & 685-9,706 & 5,139   & -2,332               &  \\
+            Additional & 2-6,218   & 1,150   & -1,246               &  \\
+            Average    & 1.1-9.7   & 3.8     & -1.4                 &  \\
+            Days       & 2.9-28.1  & 7.6     & -3.2 \\
+            \hline  
+            \end{tabular}
+    \end{center}
+\end{table}
+
+% \hline\hline timestamp  & Time & raw\_acc:mean & raw\_acc:std & raw\_acc:moment3 & raw\_acc:moment4 \\\hline 
+% 1464129912 & 2016-05-24 22:45 & 1.011438                       & 0.012573                      & 0.023013                          & 0.04124      \\
+% 1464129950 & 2016-05-24 22:45 & 1.011233                       & 0.009356                      & -0.005622                         & 0.016687     \\
+% 1464130031 & 2016-05-24 22:47 & 1.013422                       & 0.018068                      & -0.008593                         & 0.039286     \\
+% 1464130109 & 2016-05-24 22:48 & 1.014891                       & 0.0164                        & 0.021383                          & 0.038825     \\
+% 1464130130 & 2016-05-24 22:48 & 1.017487                       & 0.022632                      & -0.012891                         & 0.037226    \\\hline 
 % \begin{itemize}
 %     \item AudioSet and maybe the DCASE2018 Task 4 data set.
 %     \item Ideally, start pulling training and evaluation from smartphone app. 
@@ -566,8 +593,35 @@ The ExtraSensory dataset is
 
 %%%%%%%%%%%%%%%%%%%%%%%
 \section{Results and Discussion}
+\subsection{With all}
+% 665514DE-49DC-421F-8DCB-145D0B2609AD.features_labels.csv.gz
+% == Projected the features to 95 features from the sensors: Aud, Acc, Gyro, Loc
+% C:\FYP\2019-05-11\extra sensor\example_notebook.py:625: RuntimeWarning: invalid value encountered in greater
+%   normalizers = np.where(std_vec > 0., std_vec, 1.).reshape((1,-1));
+== Testing with 7402 examples. For label 'Walking' we have 1181 positive and 6221 negative examples.
+----------
+Accuracy*:         0.87
+Sensitivity (TPR): 0.26
+Specificity (TNR): 0.98
+Balanced accuracy: 0.62
+Precision**:       0.72
+F-Score:           0.84
 
-
+\subsection{without all}
+% 665514DE-49DC-421F-8DCB-145D0B2609AD.features_labels.csv.gz
+% == Projected the features to 26 features from the sensors: Aud
+% == Testing with 7402 examples. For label 'Walking' we have 1181 positive and 6221 negative examples.
+% C:\FYP\2019-05-11\extra sensor\example_notebook.py:762: RuntimeWarning: invalid value encountered in true_divide
+%   precision = float(tp) / (tp+fp);
+% C:\Program Files\Python36\lib\site-packages\sklearn\metrics\classification.py:1143: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no predicted samples.
+%   'precision', 'predicted', average, warn_for)
+----------
+Accuracy*:         0.84
+Sensitivity (TPR): 0.00
+Specificity (TNR): 1.00
+Balanced accuracy: 0.50
+Precision**:       nan
+F-Score:           0.77
 %%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}\label{sec:Conclusion}
 This is one of the most important parts of the report. In the conclusion section, you  should 
@@ -744,7 +798,7 @@ True \cite{TFwebsite2}
 \section{Full Extracts of Journals}
 N/A
 \section{Reflection}
-
+about several of the Engineers Australia 16 competencies.  \flagforreview
 I'll write this from the first person perspective.
 This project was a whirlwind. Taken over the 2018 S2, 2019 S1 period, including the Christmas Holidays, the project was a learning experience. The outcome I got is barely quantifiable past a common sense guess, but I can take pride in knowing the outcome is quantified and based on the `360 hours' minimum of work to get to that result. I learnt a lot starting with\dots
 \subsection{Lessons Learnt}
