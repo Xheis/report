@@ -146,6 +146,8 @@ INPUT C:\Program Files\MiKTeX 2.9\tex\latex\tools\shellesc.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\tools\shellesc.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\float\float.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\float\float.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\enumitem\enumitem.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\enumitem\enumitem.sty
 INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstlang1.sty
 INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstlang1.sty
 INPUT c:\FYP\report\FYP_Report_Template.aux
@@ -380,8 +382,6 @@ INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmbx10.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmbx10.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi10.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi10.pfb
-INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi8.pfb
-INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi8.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr12.pfb

@@ -14,25 +14,27 @@
 
 \usepackage{csvsimple} % For tables from CSV
 \usepackage{float} % Used for forcing diagrams to the [H] action
+
+
+\usepackage[shortlabels]{enumitem} % Custom lists
+
+
+
+\newcommand{\SentenceCaseSubSection}[1]{\subsection{\SentenceCase{#1}}}
+}
+
+\newcommand\SentenceCase[1]{%
+  \caselower[e]{#1}%
+  \capitalize[q]{\thestring}%
+}
+
 % Wikipedia-style "citation needed" macro source: https://gist.github.com/martinarroyo/b9e0a963ad27169a6eee
 \newcommand{\citationneeded}{\textsuperscript{\color{blue} [citation needed]}}
-% \renewcommand{\floatpagefraction}
-%from/for unicode-math
-%\setmathfont{texgyrepagella-math.otf}[math-style=TeX]
-
 % New macro to make defining labels easier.
 \newcommand{\flagforreview}{\textsuperscript{\color{red} [FLAGGED FOR REVIEW]}}
 \newcommand{\inlineQuote}[1]{``#1''}
-
-\newcommand{\fancyquote}[1]{
-    \begin{quotation}
-        \inlineQuote{#1}
-    \end{quotation}
-}
-
-
+\newcommand{\fancyquote}[1]{\begin{quotation}\inlineQuote{#1}\end{quotation}}
 \newcommand{\fref}[1] {Figure \ref{#1}}
-
 \newcommand{\fFigure}[3]{
 	\begin{figure}[h]
         \begin{center}  
@@ -118,7 +120,7 @@
 \firstpage{1}    % Set page number for first page
 \UoNMCHAreportNo{MECH4841 Part B} %Report number
 \UoNMCHAyear{2019}   % Year
-\shorttitle{FYP Report - TRecS} %For odd pages
+\shorttitle{FYP Report - CCAELLI} %For odd pages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \title{FYP Report - Trackfile Recording System \\ \ \\
@@ -136,14 +138,17 @@ E-mail: \href{mailto:Christopher.Caelli@uon.edu.au}{\textsf{Christopher.Caelli@u
 \vspace{-5mm}
 \section*{Mandatory Dot Point Summary}
 \vspace{-3mm}
+
 flagforreview \flagforreview \\
 citationneeded \citationneeded \\
+Tense: Past, Future etc. Search "was", "is" "ed" etc.
+
 As per the FYP Handbook: \\
 I did:
 \begin{itemize}
-    \item I learnt and prototyped a machine learning algorithm for classifying physical actions from an audio input
-    \item I investigated prototyping a machine learning solution that takes audio and physical data (GPS, accelerometer, gyroscope) to compare whether subject matter insight could improve the classification of sound. That is, would a mechatronics understanding help in pre-processing or improving the data source, resulting in better classification?
-    \item I used my mechatronics subject matter learnings to best apply machine learning to this problem. This includes Mechatronics Design (trade off and evaluations from MCHA3000), sound pre-processing, preprocessing Inertial Measuring Unit data, and how Audio waveforms can be treated as energy.
+    \item I learnt and prototyped a machine learning solution that takes audio and physical data (GPS, accelerometer, gyroscope) to compare whether the supplementary data could improve the classification of sound, as measured by the F1 score.
+    \item I learnt and prototyped a pipeline to record data, process it, classify it, and output it.
+    \item I used my mechatronics subject matter learnings to best apply machine learning to this problem. This includes Mechatronics Design (trade off and evaluations from MCHA3000), sound pre-processing, preprocessing Inertial Measuring Unit data, and how Audio waveforms can be treated as energy, and statistics from MECH2450/MCHA3900.
     \item I learnt and used System Engineering techniques to elicit requirements from my university and work stakeholders
 \end{itemize}
 I helped:
@@ -315,24 +320,60 @@ The winning model used in the DCASE2018 Task 4 challenge used a â€œMean-teacherâ
 
 %%%%%%%%%%%%%%%%%%%%%%%
 \section{Method}
-The method for learning and prototyping the Machine Learning interface was driven by reading [some textbook], and then building up the network in small stages. The desired topology was the Mean Teacher topology from DCASE 2018, however it was beneficial to work up slowly to this goal.  The main tasks required to build the classifier are as follows:
+\subsection{Introduction to the Method}
+In a traditional machine learning problem there are 5 stages to the method; 
+
+\begin{enumerate}[start=1,label={Stage \arabic*:}]
+    \item Data
+    \item Preprocessing
+    \item Model
+    \item Fitting/Training
+    \item Evaluation
+\end{enumerate}
+
+\citationneeded.
+
+\subsubsection{Stage 1}
+Stage 1 is choosing what raw data is available and what information the model must product. This is the inputs and the outputs that you want from the system, and the expected result.
+
+\subsubsection{Stage 2}
+Stage 2 is preprocessing. This is about taking the data available transforming it. This could be optimising, filtering, feature building (producing refined data of interest to the model e.g. MFFCs from raw Audio) and in many other options. Preliminary features are also evaluated in this stage to ascertain their quality and effectiveness in a preliminary model.
+
+\subsubsection{Stage 3}
+Stage 3 is picking the model. The method of picking a model may be based on doing research into what is best practice for your particular problem, looking at recent papers and investigating whether the particular topic demands any special requirements. Once a model is picked, the parameters of the model must be chosen (or evaluated) before a final model can be selected. This is done in the following two stages.
+
+\subsubsection{Stage 4}
+Stage 4 is fitting the model. The selected algorithm may need to be trained or fitted. This is the process of taking labelled input / output data (denoted as X, y) and supervising the model as it attempts to reproduce y from X. A common method to achieve this is to cost Stochastic Gradient Descent (SGD) and back propagation\cite{lecun2012efficient}. In summary, it's the process of changing the weights proportionally to their contribution to the error. Equation \ref{eq:BP_grad_dec} adapted from \cite{lecun2012efficient} demonstrates this, where W is the Machine Learning weights for a given topology, $\eta$ is the proportional factor or step size, and the partial represents how each weight contributes to error.\\
+
+\begin{gather}\label{eq:BP_grad_dec}
+    W(t) = W(t-1) - \eta\frac{\partial E}{\partial W} 
+\end{gather}
+Once trained on a training set, the next stage is validating whether the model is sufficiently fit.
+
+\subsubsection{Stage 5}
+Stage 5 is validation. Validation is the process of checking the performance of the against certain criteria. For instance, a model may be checked for overfitting, underfitting, bias, sensitivity, specificity, accuracy, precision, AUC (area under the (ROC) curve), and F1 score to name a few. F1 score will be used as the primary measure because the F1 has been is the research industry standard for evaluating algorithms. \\
+
+It is beneficial to work up slowly to this goal. external to the method of building the machine learning classifier is the work involved in developing the pipeline associated with it. The main tasks to implement a machine learning classifier are as follows:
 
 \begin{itemize}
     \item Develop the use-case, and identify the output
-    \item Investigate what datasets are available, and whether further data would be beneficial
+    \item Investigate what data is available, and whether further data/datasets would be beneficial
     \item Choose a framework/technology to implement the machine learning algorithm in
-    \item Build the machine learning, and test it's effectiveness
-    \item Refine the network using the F-Score
-    \item Take the classified output, and append it to the input trackfile
+    \item Build the machine learning classifier as described above, and test it's effectiveness
+    \item Validate the whole system by using the classifier in the pipeline (by take the classified output, and appending it to the trackfile)
 \end{itemize}
+% for us we will be a stage one choosing a dotted be that which is defined in al preprocessing data stage 4.1 we will pre-process our data as described in full point to preprocessing data we will choose a model which will be an MLP classifier which has been selected due to it's verbose robust fitness to potentially why range wide ranges of data and due to our use of tabular data in stage 5 we will validate our data by doing a k fold to pick hyperparameters for the mlpclassifier this is the process of refining what are chosen models parameters are and finally will use the F1 score as a primary metric which will help determine what what our classifier is finally we will then report on these results as well as run through some through user 59 user 60 which has been dedicated to be out final evaluation example
+
+
+% The method for learning and prototyping the Machine Learning interface was driven by reading [some textbook], and then building up the network in small stages. The desired topology was the Mean Teacher topology from DCASE 2018, however 
 
 \subsection{Required Data}
 The Machine Learning uses GPS, accelerometer, gyroscope, and audio. A Google Pixel 2 was selected as the model data acquisition, which table /ref{} below shows.
-\begin{table}[h!]
+\begin{table}[h!] 
     \begin{center}
-        \caption{Data Available\citationneeded}\label{tab:AndroidDataAvailable}
+        \caption{Data Available\citationneeded \flagforreview}\label{tab:AndroidDataAvailable}
         {\footnotesize
-            \begin{tabular}{c l l l|}
+            \begin{tabular}{clll}
                 \hline\hline Sensor & Description \\ \hline 
                 GPS & The Pixel 2 uses the Snapdragon 835 System on Chip GPS receiver\\
                 Accelerometer / Gyroscope & The Pixel 2 uses a bosch BMI160 \\
@@ -520,12 +561,16 @@ For the purpose of this project, the data collected through the Android App appl
 \subsubsection{Audio}
 
 \subsection{Classification and Network Topology}
-The classification libraries used were Google's TensorFlow and scikit-learn. Both libraries are python based (supporting both Python 3.0, and Python 2.7) \cite{TFpythonVer} \cite{scikit-learn-pyV}.
+The classification libraries used were Google's TensorFlow and scikit-learn. Both libraries are python based (supporting both Python 3.0, and Python 2.7) \cite{scikitlearnpythonVer} \cite{TFpythonVer}%\cite{TFpythonVer} \cite{scikit-learn-pyV}.
 
 \subsubsection{TensorFlow}
 TensorFlow is an opensource machine learning framework, primarily developed by Google.
-\inlineQuote{It has a comprehensive, flexible ecosystem of tools, libraries and community resources that lets researchers push the state-of-the-art in ML and developers easily build and deploy ML powered applications.}\cite{TFwebsite}. TensorFlow in conjunction with with Keras was used to prototype the inital pipeline. According to the textbook, \inlineQuote{Hands on Machine Learning with Scikit, Keras \& TensorFlow}, a pipeline is \begin{quote}
-A sequence of data processing components is called a data pipeline. Pipelines are very common in Machine Learning systems, since there is a lot of data to manipulate and many data transformations to apply\cite{HandsOnMLTextbook}\end{quote}. TensorFlow and Keras were selected to initially design the classifier due it's ability to run on the TensorFlow Lite. The code snippet \ref{lst:pythonlisting} shows how a model converts.
+\inlineQuote{It has a comprehensive, flexible ecosystem of tools, libraries and community resources that lets researchers push the state-of-the-art in ML and developers easily build and deploy ML powered applications.}\cite{TFwebsite}. TensorFlow in conjunction with with Keras was used to prototype the inital pipeline. According to the textbook, \inlineQuote{Hands on Machine Learning with Scikit, Keras \& TensorFlow}, a pipeline is 
+\fancyquote{
+A sequence of data processing components is called a data pipeline. Pipelines are very common in Machine Learning systems, since there is a lot of data to manipulate and many data transformations to apply\cite{HandsOnMLTextbook}.
+}
+
+TensorFlow and Keras were selected to initially design the classifier due it's ability to run on the TensorFlow Lite. The code snippet \ref{lst:pythonlisting} shows how a model converts.
 
 \lstinputlisting[
     language=python,
@@ -604,7 +649,7 @@ The kfold creates creates 2 groups. A single test group and many training groups
 
 The question of whether supplementary data will improve the classifier's F1 score is best answered by deciding on an appropriate classifier, and testing it with and without the supplementary data. As discussed, the appropriate classifier could be chosen via hyperparameter testing against a validation set, however the feature analysis carried out above will also influence classifier design. The unbalanced nature of the dataset is also a factor.
 
-The MLPClassifier using solver='lbfgs' alpha=1e-5, hidden_layer_sizes=(80, 10) was settled on as the classifier to use for evaluation.
+The MLPClassifier is a feedforward neural network, trainded via backpropegation. It was set up using the \inlineQuote{lbfgs} solver, an alpha equal to $1e-5$, and was handselected to have 80 by 10 hidden layers (80 long, 10 deep). This was the classifier to use for evaluation.
 % \hline\hline timestamp  & Time & raw\_acc:mean & raw\_acc:std & raw\_acc:moment3 & raw\_acc:moment4 \\\hline 
 % 1464129912 & 2016-05-24 22:45 & 1.011438                       & 0.012573                      & 0.023013                          & 0.04124      \\
 % 1464129950 & 2016-05-24 22:45 & 1.011233                       & 0.009356                      & -0.005622                         & 0.016687     \\
@@ -627,34 +672,34 @@ The MLPClassifier using solver='lbfgs' alpha=1e-5, hidden_layer_sizes=(80, 10) w
 \subsection{With all}
 
 all sensors
-== Training with 31897 examples. For label 'Walking' we have 17735 positive and 14162 negative examples.
-== Projected the features to 95 features from the sensors: Aud, Acc, Gyro, Loc
-== Testing with 8000 examples. For label 'Walking' we have 4401 positive and 3599 negative examples.
-----------
-Accuracy*:         0.83
-Sensitivity (TPR): 0.85
-Specificity (TNR): 0.81
-Balanced accuracy: 0.83
-Precision**:       0.85
-F-Score:           0.83
---- Confusion Matrix ---
-[[2914  685]
- [ 648 3753]]
-
- just Audio
- == Training with 31918 examples. For label 'Walking' we have 17641 positive and 14277 negative examples.
-== Projected the features to 26 features from the sensors: Aud
-== Testing with 8023 examples. For label 'Walking' we have 4495 positive and 3528 negative examples.
-----------
-Accuracy*:         0.79
-Sensitivity (TPR): 0.83
-Specificity (TNR): 0.73
-Balanced accuracy: 0.78
-Precision**:       0.80
-F-Score:           0.78
---- Confusion Matrix ---
-[[2581  947]
- [ 775 3720]]
+\\ == Training with 31897 examples. For label 'Walking' we have 17735 positive and 14162 negative examples.
+\\ == Projected the features to 95 features from the sensors: Aud, Acc, Gyro, Loc
+\\ == Testing with 8000 examples. For label 'Walking' we have 4401 positive and 3599 negative examples.
+\\ ----------
+\\ Accuracy*:         0.83
+\\ Sensitivity (TPR): 0.85
+\\ Specificity (TNR): 0.81
+\\ Balanced accuracy: 0.83
+\\ Precision**:       0.85
+\\ F-Score:           0.83
+\\ --- Confusion Matrix ---
+\\ $[[2914 | 685]$
+\\  $[ 648 | 3753]]$
+\\ 
+\\  just Audio
+\\  == Training with 31918 examples. For label 'Walking' we have 17641 positive and 14277 negative examples.
+\\ == Projected the features to 26 features from the sensors: Aud
+\\ == Testing with 8023 examples. For label 'Walking' we have 4495 positive and 3528 negative examples.
+\\ ----------
+\\ Accuracy*:         0.79
+\\ Sensitivity (TPR): 0.83
+\\ Specificity (TNR): 0.73
+\\ Balanced accuracy: 0.78
+\\ Precision**:       0.80
+\\ F-Score:           0.78
+\\ --- Confusion Matrix ---
+\\ $[[2581 | 947]$
+\\  $[ 775 | 3720]]$
 
 \begin{table}[h]
     \begin{center}  
@@ -937,6 +982,13 @@ On that note, I lastly reflect on the skills I've learnt, and the perspective I'
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Writing you're not sure if you want to keep}
+
+
+\subsection{Funny Future Work}
+A suggested option for Future Work could include a adapting the Bogosort, which is a increasing popular area of research \cite{Bogo_Gruber2007} \cite{Bogo_Holzer2018} \cite{Bogo_max}. The suggested method for using the Bogo search would be iterate over the hyperparameters of the network, then iterate over the neuron weights. If successfully applied, it could be the first instance of the Bogosort being applied in the Machine Learning sphere.
+
+
+
 \subsection{Development Tools and Technologies}
 Windows 10, i7-7500U and GeForce 940MX, Nvidia 1080Ti, VS Code, LaTeX, Python, Matlab, sklearn, numpy, ExtraSensory dataset, git.
 
