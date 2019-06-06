@@ -140,4 +140,28 @@
   publisher = {Schloss Dagstuhl - Leibniz-Zentrum fuer Informatik GmbH, Wadern/Saarbruecken, Germany},
 }
 
+@Unpublished{Bogo_max,
+  author = {Max Sherman},
+  title  = {Bogo-sort is Sort of Slow},
+  month  = jun,
+  year   = {2013},
+}
+
+@Article{NFL_quote,
+  author   = {Magdon-Ismail, Malik},
+  title    = {No Free Lunch for Noise Prediction},
+  journal  = {Neural Computation},
+  year     = {2000},
+  volume   = {12},
+  number   = {3},
+  pages    = {547-564},
+  abstract = { No-free-lunch theorems have shown that learning algorithms cannot be universally good. We show that no free funch exists for noise prediction as well. We show that when the noise is additive and the prior over target functions is uniform, a prior on the noise distribution cannot be updated, in the Bayesian sense, from any finite data set. We emphasize the importance of a prior over the target function in order to justify superior performance for learning systems. },
+  doi      = {10.1162/089976600300015709},
+  eprint   = {https://doi.org/10.1162/089976600300015709},
+  url      = { 
+        https://doi.org/10.1162/089976600300015709
+    
+},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
