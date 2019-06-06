@@ -20,13 +20,13 @@
 
 
 
-\newcommand{\SentenceCaseSubSection}[1]{\subsection{\SentenceCase{#1}}}
-}
+% \newcommand{\SentenceCaseSubSection}[1]{\subsection{\SentenceCase{#1}}}
+% }
 
-\newcommand\SentenceCase[1]{%
-  \caselower[e]{#1}%
-  \capitalize[q]{\thestring}%
-}
+% \newcommand\SentenceCase[1]{%
+%   \caselower[e]{#1}%
+%   \capitalize[q]{\thestring}%
+% }
 
 % Wikipedia-style "citation needed" macro source: https://gist.github.com/martinarroyo/b9e0a963ad27169a6eee
 \newcommand{\citationneeded}{\textsuperscript{\color{blue} [citation needed]}}
@@ -142,6 +142,9 @@ E-mail: \href{mailto:Christopher.Caelli@uon.edu.au}{\textsf{Christopher.Caelli@u
 flagforreview \flagforreview \\
 citationneeded \citationneeded \\
 Tense: Past, Future etc. Search "was", "is" "ed" etc.
+
+check for our, we, I, they're, your, you, etc.
+
 
 As per the FYP Handbook: \\
 I did:
@@ -600,9 +603,27 @@ A Random Tree Classifier was used to evaluate feature importance. Random Tree Cl
     ]{Code/tensorflow_cnn.py}
 
 
-\subsection{scikit-learn}
+\subsubsection{scikit-learn}
 
 Scikit-learn is a statistics and machine learning for Python. It was selected due to it's ease of use, and has been used to analyse, prototype and produce the results of this paper.
+
+
+\subsubsection{Model Selection}
+The model required for this project 
+
+\subparagraph{Convultion Neural Networks}
+CNN convolution neural networks are primarily designed and received the best results for image-based classification problems this is because the architecture has been designed with computer vision in mind for for our project
+
+\subparagraph{Recursive Neural Networks}
+he rnn recursive neural network is also not well suited to tabular data this is because and this will not be used because it has been designed for producing multi-class probabilities we are we could use a recursive neural network to generate a probability output that is to say use it as a regression out progressive algorithm to output all a probabilities however we are after a binary classification and fast it is not relevant more important what the classifier deems as an appropriate probability before it classifies for future work this may in fact be a very useful extension as the tailoring of the sensitivity and 
+
+\subparagraph{Mulilayer Perceptron Feed Forward Neural Network}
+The multilayer perceptron classifier has been selected this
+
+For our project we are using tabular time-invariant data using this Snapchat data in a tabular format means that we will not see the benefits of a convolution neural network in a deep learning environment vs the more simple mlpclassifier which trains faster will receive the better result and is expected to compress better we will also
+
+\subparagraph{final model}
+The MLPClassifier is a feedforward neural network, trainded via backpropegation. It was set up using the \inlineQuote{lbfgs} solver, an alpha equal to $1e-5$, and was handselected to have 80 by 10 hidden layers (80 long, 10 deep). This was the classifier to use for evaluation.
 
 % \begin{itemize}
 %     \item Mean-teacher*
@@ -619,7 +640,7 @@ The ExtraSensory dataset contains 60 CSVs (with 278 features), as shown in \ref{
 
 The dataset was considered for use in 2 ways; training on a per user instance, or training on a per minute snapshot instance. The benefits of per user is to isolate recording hardware, to minimise it's impact in evaluation. However this is the benefit of training on a per snapshot instance basis. As we kfold\flagforreview the dataset for training, by working on a per snapshot instance, we can increase the likelyhood of the random selection to incorporate a larger variance of noise.
 
-\subsection{\inlineQuote{kfold} Cross validation}
+\subsubsection{\inlineQuote{kfold} Cross validation}
 kfold Cross Validation can be described as:
 \fancyquote{
     ... approach involves randomly dividing the set of observations into k groups, or folds, of approximately equal size. The first fold is treated as a validation set (sic), and the method is fit on the remaining k - 1 folds. 
@@ -649,7 +670,11 @@ The kfold creates creates 2 groups. A single test group and many training groups
 
 The question of whether supplementary data will improve the classifier's F1 score is best answered by deciding on an appropriate classifier, and testing it with and without the supplementary data. As discussed, the appropriate classifier could be chosen via hyperparameter testing against a validation set, however the feature analysis carried out above will also influence classifier design. The unbalanced nature of the dataset is also a factor.
 
-The MLPClassifier is a feedforward neural network, trainded via backpropegation. It was set up using the \inlineQuote{lbfgs} solver, an alpha equal to $1e-5$, and was handselected to have 80 by 10 hidden layers (80 long, 10 deep). This was the classifier to use for evaluation.
+
+% \subsection{}
+
+% The MLPClassifier is a feedforward neural network, trainded via backpropegation. It was set up using the \inlineQuote{lbfgs} solver, an alpha equal to $1e-5$, and was handselected to have 80 by 10 hidden layers (80 long, 10 deep). This was the classifier to use for evaluation.
+
 % \hline\hline timestamp  & Time & raw\_acc:mean & raw\_acc:std & raw\_acc:moment3 & raw\_acc:moment4 \\\hline 
 % 1464129912 & 2016-05-24 22:45 & 1.011438                       & 0.012573                      & 0.023013                          & 0.04124      \\
 % 1464129950 & 2016-05-24 22:45 & 1.011233                       & 0.009356                      & -0.005622                         & 0.016687     \\
@@ -786,7 +811,7 @@ This is one of the most important parts of the report. In the conclusion section
 \end{itemize}
 
 The results achieved showed audio as a sole input for determining physical actions to be a viable but also shows room for improvement. The focus was on what data to use, preprocessing and finally classification. 
-Data use settled on Google's AudioSet for ease of use, where as the IMU data was needed was recorded through a bespoke app created by myself and a colleague. Preprocessing took some domain knowledge learnt through out Mechatronics, and processed (mel power coeffecients). Classification was through machine learning (RNN, known topologies etc.). 
+Data use settled on Google's AudioSet \flagforreview for ease of use, where as the IMU data was needed was recorded through a bespoke app created by myself and a colleague. Preprocessing took some domain knowledge learnt through out Mechatronics, and processed (mel power coeffecients). Classification was through machine learning (RNN, known topologies etc.). 
 The work presented does demonstrates a contribution to the audio processing space and explores how mechatronics domain knowledge impacts and extends machine learning.
 Based on the work presented, it's clear that audio data processing will be a major tool and research topic into the future. The niche explored in this FYP, of amalgamating traditional audio processing with physical sensor input looks to be of limited use, to limited applications. More over, without large datasets of audio paired with physical sensor data, the machine learning tools explored in this FYP will not be able to be used. As such, the rise of audio recording equipped equipment should be the basis for further research into this space. 
 Future work from here would be to look at the larger role of data acquisition. This is both because it was one of the larger hurdles I had to face, plus it enables further research into the effectiveness of what a diverse dataset can bring. Industry will reasonably expect to take aspects of data fusion and machine learning. To know what

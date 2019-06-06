@@ -170,13 +170,26 @@ To import the figures from Matlab, follow the following procedure:
 Figure~\ref{fig:Sinc} shows a shows a plot of the function $\sin(x)/x$. 
 
 If I need to make a simple diagram, I use powerpoint and select the drawing and save it as a pdf. For example, look at Figure~\ref{fig:MechaSys}.
-\begin{figure}[ht]
+
+
+This refs stuff in \fref{TEST.png}
+\fFigure{TEST.png}{Here goes the caption.}{0.8}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+This refs stuff in Figure~\ref{fig:Sinc}
+
+\begin{figure}[ht][0.8]
     \begin{center}
-        \includegraphics[width=.6\linewidth]{Figures/MechaSys}
+        \includegraphics[width=.6\linewidth]{Figures/TEST.png}
         \caption{Here goes the caption.}
         \label{fig:MechaSys}
     \end{center}
 \end{figure}
+
+
+
+
 %%%%%%%
 \newpage
 \subsection{Lists}
