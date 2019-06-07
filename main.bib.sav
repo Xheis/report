@@ -185,6 +185,7 @@
 @Article{Snoek2012,
   author      = {Jasper Snoek and Hugo Larochelle and Ryan P. Adams},
   title       = {Practical Bayesian Optimization of Machine Learning Algorithms},
+  year        = {2012},
   abstract    = {Machine learning algorithms frequently require careful tuning of model hyperparameters, regularization terms, and optimization parameters. Unfortunately, this tuning is often a "black art" that requires expert experience, unwritten rules of thumb, or sometimes brute-force search. Much more appealing is the idea of developing automatic approaches which can optimize the performance of a given learning algorithm to the task at hand. In this work, we consider the automatic tuning problem within the framework of Bayesian optimization, in which a learning algorithm's generalization performance is modeled as a sample from a Gaussian process (GP). The tractable posterior distribution induced by the GP leads to efficient use of the information gathered by previous experiments, enabling optimal choices about what parameters to try next. Here we show how the effects of the Gaussian process prior and the associated inference procedure can have a large impact on the success or failure of Bayesian optimization. We show that thoughtful choices can lead to results that exceed expert-level performance in tuning machine learning algorithms. We also describe new algorithms that take into account the variable cost (duration) of learning experiments and that can leverage the presence of multiple cores for parallel experimentation. We show that these proposed algorithms improve on previous automatic procedures and can reach or surpass human expert-level optimization on a diverse set of contemporary algorithms including latent Dirichlet allocation, structured SVMs and convolutional neural networks.},
   date        = {2012-06-13},
   eprint      = {http://arxiv.org/abs/1206.2944v2},
@@ -192,6 +193,19 @@
   eprinttype  = {arXiv},
   file        = {:http\://arxiv.org/pdf/1206.2944v2:PDF},
   keywords    = {stat.ML, cs.LG},
+}
+
+@Article{Brochu2010,
+  author      = {Eric Brochu and Vlad M. Cora and Nando de Freitas},
+  title       = {A Tutorial on Bayesian Optimization of Expensive Cost Functions, with Application to Active User Modeling and Hierarchical Reinforcement Learning},
+  year        = {2010},
+  abstract    = {We present a tutorial on Bayesian optimization, a method of finding the maximum of expensive cost functions. Bayesian optimization employs the Bayesian technique of setting a prior over the objective function and combining it with evidence to get a posterior function. This permits a utility-based selection of the next observation to make on the objective function, which must take into account both exploration (sampling from areas of high uncertainty) and exploitation (sampling areas likely to offer improvement over the current best observation). We also present two detailed extensions of Bayesian optimization, with experiments---active user modelling with preferences, and hierarchical reinforcement learning---and a discussion of the pros and cons of Bayesian optimization based on our experiences.},
+  date        = {2010-12-12},
+  eprint      = {http://arxiv.org/abs/1012.2599v1},
+  eprintclass = {cs.LG},
+  eprinttype  = {arXiv},
+  file        = {:http\://arxiv.org/pdf/1012.2599v1:PDF},
+  keywords    = {cs.LG, G.1.6; G.3; I.2.6},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}

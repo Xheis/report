@@ -125,7 +125,7 @@ E-mail: \href{mailto:Christopher.Caelli@uon.edu.au}{\textsf{Christopher.Caelli@u
 flagforreview \flagforreview \\
 citationneeded \citationneeded \\
 Tense: Past, Future etc. Search "was", "is" "ed" etc.
-
+Check contraction. it's, don't etc.
 check for our, we, I, they're, your, you, etc.
 
 
@@ -670,8 +670,71 @@ A Random Search builds upon the Grid Search, but aims to reduce the computation 
 Due to the simplicity of the multilayer perceptron model selected, random search was primarily used for hyperparameter optimisation.
 
 \subparagraph{Bayesian Hyperparameter Optimisation}
-Bayesian Hyperparameter Optimisation 
-\cite{Snoek2012}
+Bayesian Hyperparameter Optimisation is the principle of allowing a search to be influenced by previous experience. This is applied when the cost of the sample, such as a model's F1-score from a particular combination of hyperparameters, is computationally expensive to calculate. A more formal description can be found in Brochu's 2010 paper, "A Tutorial on Bayesian Optimization ...".
+
+\fancyquote{Bayesian optimization employs the Bayesian technique of setting a prior over the objective function and combining it with evidence to get a posterior function. \cite{Brochu2010}}
+
+Bayesian Optimisation for hyperparameter selection was not tested, as it is suggested it is best suited for optimising more complex networks. \cite{Snoek2012} \cite{Brochu2010} It is however an excellent tie in to the MCH3900 Bayesian lectures, and could consitute a future package of work.
+
+\subsection{Final output}
+Below are snippets of the an implemented Random Search for an MLP classifier. Of note is the parameters included are listed in the table below:
+
+
+
+\begin{table}[h]
+    \begin{center}  
+    \caption{Random Search Hyperparameters}\label{tab:RandCV_HyperOptions}
+        \begin{tabular}{lllllll}
+            \hline\hline 
+            Hyperparameters        & \multicolumn{6}{c}{Options}                                     \\
+            \hline 
+            'learning\_rate'       & "constant" & "invscaling" & "adaptive" &        &        &      \\
+            'hidden\_layer\_sizes' & (145,)     & (147,)       & (149,)     & (151,) & (153), &      \\
+            'alpha'                & 0.09       & 0.11         & 0.13       & 0.15   & 0.17   & 0.19 \\
+            'activation'           & "logistic" & "relu"       & "Tanh"     &        &        &      \\
+            \hline 
+        \end{tabular}
+    \end{center}
+\end{table}
+
+
+% \begin{table}[h]
+%     \begin{center}  
+%         \caption{ExtraSensory Data Breakdown \cite{Vaizman2017}}\label{tab:ExtraSensoryDataBreakdown}
+%         \begin{tabular}{lllllll}
+
+%                        & Hyperparameter     & Options &  &  \\
+%             'learning\_rate'       & "constant" & "invscaling" & "adaptive" &        &        &      \\
+%             'hidden\_layer\_sizes' & (145,)     & (147,)       & (149,)     & (151,) & (153), &      \\
+%             'alpha'                & 0.09       & 0.11         & 0.13       & 0.15   & 0.17   & 0.19 \\
+%             'activation'           & "logistic" & "relu"       & "Tanh"     &        &        &      \\
+%                                    &            &              &            &        &        &      \\
+%                                    &            &              &            &        &        &     
+%             \hline  
+%             \end{tabular}
+%     \end{center}
+% \end{table}
+
+
+\begin{lstlisting}
+    parameters={'learning_rate': ["constant", "invscaling", "adaptive"],
+    'hidden_layer_sizes': [(145,), (147,), (149,), (151,), (153)],
+    'alpha': [0.09, 0.11, 0.13, 0.15, 0.17, 0.19],
+    'activation': ["logistic", "relu", "Tanh"]}
+    mlpc = MLPClassifier(verbose=False, learning_rate='adaptive',max_iter=1000)
+    clf = RandomizedSearchCV(estimator=mlpc, scoring='f1',param_distributions=parameters,n_jobs=-1,verbose=1,cv=3);
+    clf.fit(X_train,y);
+    print(clf.score(X_train, y))
+    print(clf.best_params_)
+\end{lstlisting}
+
+and the results of which were
+
+\begin{lstlisting}
+    
+\end{lstlisting}
+
+Details of a Grid Search can be found in Appendix \ref{apx:GSAttempt}.
 
 \subsection{Data Training, Testing and Evaluation Set}
 The ExtraSensory dataset contains 60 CSVs (with 278 features), as shown in \ref{tab:ExtraSensoryDataExample}. The dataset is unbalanced, and contains multiple labels. Further details about the users themselves can be found in \ref{tab:ExtraSensoryDataBreakdown}.
@@ -1042,6 +1105,25 @@ On that note, I lastly reflect on the skills I've learnt, and the perspective I'
 \section{Trade-Review of "Online vs Offline" processing}\label{sec:TradeReview}
 
 
+\section{GridSearch Attempts}\label{apx:GSAttempt}
+This shows how a Grid Search was used for hyperparameter optimisation. In particular, this is an example of an iteritive process where the grid was manually narrowed and precision increase. 
+\begin{lstlisting}
+    parameters={'hidden_layer_sizes': [(145,), (147,), (149,), (151,), (153)],
+                'alpha': [0.09, 0.11, 0.13, 0.15, 0.17, 0.19]}
+    mlpc = MLPClassifier(verbose=False, learning_rate='adaptive',max_iter=1000)
+    clf = GridSearchCV(estimator=mlpc, scoring='f1',param_grid=parameters,n_jobs=-1,verbose=1,cv=3);
+    clf.fit(X_train,y);
+    print(clf.score(X_train, y))
+    print(clf.best_params_)
+\end{lstlisting}
+\begin{lstlisting}
+    Fitting 3 folds for each of 30 candidates, totalling 90 fits
+    [Parallel(n_jobs=-1)]: Using backend LokyBackend with 4 concurrent workers.
+    [Parallel(n_jobs=-1)]: Done  42 tasks      | elapsed:  7.8min
+    [Parallel(n_jobs=-1)]: Done  90 out of  90 | elapsed: 14.4min finished
+    0.8249400479616308
+    {'alpha': 0.11, 'hidden_layer_sizes': (151,)}
+\end{lstlisting}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
