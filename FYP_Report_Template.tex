@@ -637,7 +637,10 @@ The classifier selected is validated on the data by doing a k fold. to pick hype
  Machine learning is about learning, and adjusting, the internal parameters of a classifier. A hyperparameter is a parameter that cannot be learnt from backpropegation, as it is external to the classifier. These are parameters such as hidden layer size, training rates, classifier specific strategy, etc. The way to choose these hyperparameters is therefore an optimisation problem.
 
  \subparagraph{Manual Search}
- Hyperparameters could be manually selected and adjusted, in a search for a more optimal solution. This may be a valid option for interrogating what each hyperparameter does, and the impact on the classification score. This however would not be a valid solution for finding the optimal hyperparameters.
+ Hyperparameters could be manually selected and adjusted, in a search for a more optimal solution. This may be a valid option for interrogating what each hyperparameter does, and the impact on the classification score. This however would not be a valid solution for finding the optimal hyperparameters. \\
+
+This was tried and yielded mediocre results from default hyperparameter settings on various algorithms.
+
 
  \subparagraph{Brute Force Search}
 To improve upon the Manual Search, one could attempt to try every option available in your parameter space.
@@ -649,13 +652,26 @@ To improve upon the Manual Search, one could attempt to try every option availab
         }
     }
 \end{lstlisting}
-This improves on the Manual Search, but is very inefficent ($O(n^2)$), and thus extremely slow.
+This improves on the Manual Search, but is very inefficent ($O(n^2)$), and thus extremely slow. \\
 
- \subparagraph{Grid Search}
-If the Brute Force Search method attempts to try every combination, then an improvement on this is to better specify the set from which a combination is formed. This is called a Grid Search. A Grid Search iterates through every combination provided. A 2d example shown in \fref{gridsearch.png} shows a grid is generated based on the x and y intervals provided.
+This was not tried during this project, but highlgihts the importance of the following algorithms.
 
-\fFigure{gridsearch.png}{3 options for Hyperparameter 1 and 2 have been selected. Each combination will be evaluated, as denonted by the green `x'.}{0.5}
+\subparagraph{Grid Search (Manual Gride Search)}
+If the Brute Force Search method attempts to try every combination, then an improvement on this is to better specify the set from which a combination is formed. This is called a Grid Search. A Grid Search iterates through every combination provided. A 2d example shown in \fref{gridsearch.png} shows a grid is generated based on the hyperparameters intervals selected. A power element of Grid Search is the capacity to select non-equidistant intervals. \\
 
+\fFigure{gridsearch.png}{3 options for Hyperparameter 1 and 2 have been selected. Each combination will be evaluated, as denonted by the green `x'.}{0.5} 
+
+Grid Search was used for early implementations across both TensorFlow + Keras, and Scikit-learn.
+
+\subparagraph{Random Search (Random Grid Search)}
+A Random Search builds upon the Grid Search, but aims to reduce the computation time required to find an optimal set of hyperparameters. This is especially true in higher dimensions\citationneeded. The key difference between the two searches, is Random Search will not attempt to try every combination. It will sample random number of combinations, which has been \inlineQuote{show[n that] empirically and theoretically, randomly chosen trials are more efficient for hyper-parameter optimization than trials on a grid}\cite{bergstra2012random}. In part, this is due to a principle known as \inlineQuote{Embarrassingly parallel}.\\
+\inlineQuote{Embarrassingly parallel}\cite{MauriceHerlihy2012} is a critical concept in Machine Learning that allows the Random and Grid searches to be run in parallel. The concept is, because running a trial of 1 point does not have a dependence on any other point, they can be run in parallel. This is where mass parallel computing (such as the operations of a Graphic Processing Units, or GPU) allows very large hyperparameter optimisation searches to be run in parallel. \\
+
+Due to the simplicity of the multilayer perceptron model selected, random search was primarily used for hyperparameter optimisation.
+
+\subparagraph{Bayesian Hyperparameter Optimisation}
+Bayesian Hyperparameter Optimisation 
+\cite{Snoek2012}
 
 \subsection{Data Training, Testing and Evaluation Set}
 The ExtraSensory dataset contains 60 CSVs (with 278 features), as shown in \ref{tab:ExtraSensoryDataExample}. The dataset is unbalanced, and contains multiple labels. Further details about the users themselves can be found in \ref{tab:ExtraSensoryDataBreakdown}.

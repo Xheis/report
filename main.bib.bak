@@ -158,10 +158,17 @@
   abstract = { No-free-lunch theorems have shown that learning algorithms cannot be universally good. We show that no free funch exists for noise prediction as well. We show that when the noise is additive and the prior over target functions is uniform, a prior on the noise distribution cannot be updated, in the Bayesian sense, from any finite data set. We emphasize the importance of a prior over the target function in order to justify superior performance for learning systems. },
   doi      = {10.1162/089976600300015709},
   eprint   = {https://doi.org/10.1162/089976600300015709},
-  url      = { 
-        https://doi.org/10.1162/089976600300015709
-    
-},
+  url      = {https://doi.org/10.1162/089976600300015709},
+}
+
+@Article{bergstra2012random,
+  author  = {Bergstra, James and Bengio, Yoshua},
+  title   = {Random search for hyper-parameter optimization},
+  journal = {Journal of Machine Learning Research},
+  year    = {2012},
+  volume  = {13},
+  number  = {Feb},
+  pages   = {281--305},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}
