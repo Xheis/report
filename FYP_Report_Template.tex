@@ -106,13 +106,13 @@
 \shorttitle{FYP Report - CCAELLI} %For odd pages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-\title{FYP Report - Trackfile Recording System \\ \ \\
-{\small Final Year Project Report - MECH4841 Part B  \\MAY 2019}}
+\title{The effect of supplementary data on Acoustic Event Classification through Machine Learning \\ \ \\
+{\small Final Year Project Report - MECH4841 Part B  \\JUNE 2019}}
 \author[UoNMCHA]{Christopher Caelli}
 \address[UoNMCHA]{
 Student of Mechatronics Engineering,\\
 The University of Newcastle, Callaghan, NSW 2308, AUSTRALIA \\
-Student Number: 3206246 \\
+% Student Number: 3206246 \\
 E-mail: \href{mailto:Christopher.Caelli@uon.edu.au}{\textsf{Christopher.Caelli@uon.edu.au}}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \maketitle
@@ -127,7 +127,7 @@ citationneeded \citationneeded \\
 Tense: Past, Future etc. Search "was", "is" "ed" etc.
 Check contraction. it's, don't etc.
 check for our, we, I, they're, your, you, etc.
-
+check for st-ray - inca-se the-y block sh-t
 
 As per the FYP Handbook: \\
 I did:
@@ -149,7 +149,7 @@ I helped:
 \vspace{-5mm}
 \section*{Executive summary}
 \vspace{-3mm}
-The project investigated whether using data from an Inertial Measurement Unit (IMU) and GPS data as additional data points in an Acoustic Event Detection / Classification (AED/C) problem would improve a classifier's ability to classify an “acoustic event”. The motivation behind this was to improve AED/C without onerous microphone requirements. The project began documenting the process of evaluating the research problem for a car use case (specific tasks such as putting on a seatbelt, closing doors, indicating, horn use, etc.). This includes the requirements, data collection, data pre-processing, design and training of the classifier, and evaluating the results. Due to a lack of data, the public ExtraSensory dataset was used for the AED/C for similar events such as walking, driving, sleeping, computer work, etc. to demonstrate the researched technologies. Results show the supplementary data improved classification. This research shows multi-sensor AED/C is effective but requires more datasets.
+The project investigated whether using data from an Inertial Measurement Unit (IMU) and GPS data as additional data points in an Acoustic Event Detection / Classification (AED/C) problem would improve a classifier's ability to classify an “acoustic event”. The motivation behind this was to improve AED/C without onerous microphone requirements. The project began documenting the process of evaluating the research problem for a car use case (specific tasks such as putting on a seatbelt, closing doors, indicating, horn use, etc.). This includes the requirements, data collection, data pre-processing, design and training of the classifier, and evaluating the results. Due to a lack of data, the public ExtraSensory dataset was used for the AED/C for similar events such as walking, driving, sleeping, computer work, etc. to demonstrate the researched technologies. Results show the supplementary data improved classification. This research shows multi-sensor AED/C is effective but requires more datasets. \flagforreview
 % This document will cover the author's progress through the Final Year Project. The scope of the project is a portable data recording system coupled with offline processing to track and identify specific physical events in close proximity that occurred during recording. Acoustic Event Detection and Classification is the focus of this paper, and the goal of this FYP report is exploring and validating current research techniques in an uncontrolled environment for a specific use case. The content of this paper will start with, system engineering, problem analysis, a review into the current research and will expand to document python implementation, machine learning, data pre-processing, app development and progress in developing the proof of concept to take logged data from a phone and process it on a sever to create a “trackfile” (special csv file).
 
 %%%%%%%%%%%%%%
@@ -165,7 +165,7 @@ I'd also like to thank each and every mechatronics Academic staff member at the 
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
-Debriefing is a tool used to educate an individual, inform a collective and create a holistic historical recording of an event. Wikipedia defines the process of debriefing as: (1) Receiving an explanation, (2) Receiving information and situation-based reminders of context, (3) Reporting of measures of performance, and/or opportunities to further investigate the results of a study, investigation, or assessment of performance after participation in an immersive activity is complete\citationneeded. Traditionally this is done through a collection of primary sources (where available) and secondary sources. In the information age, these primary sources have expanded to include large datasets, recordings and other digital forensics. This new and increasing range of primary sources provides the potential to significantly improve the steps of debriefing, and ultimately improve debriefing outcomes.
+Debriefing is a tool used to educate an individual, inform a collective and create a holistic historical recording of an event. Wikipedia defines the process of debriefing as: (1) Receiving an explanation, (2) Receiving information and situation-based reminders of context, (3) Reporting of measures of performance, and/or opportunities to further investigate the results of a study, investigation, or assessment of performance after participation in an immersive activity is complete \cite{Wiki}\flagforreview. Traditionally this is done through a collection of primary sources (where available) and secondary sources. In the information age, these primary sources have expanded to include large datasets, recordings and other digital forensics. This new and increasing range of primary sources provides the potential to significantly improve the steps of debriefing, and ultimately improve debriefing outcomes.
 
 This paper will report on the Author’s progress of harnessing this new potential and is organised as follows: section 2 will discuss how the scope has been analysed and reduced, section 3 will review the literature of this research topic, section 4 will discuss the method of implementing the technology, section 5 will discuss the evaluation methodology, and section 6 will discuss the results of the proof-of-concept.
 
@@ -181,7 +181,7 @@ This paper will report on the Author’s progress of harnessing this new potenti
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Problem Analysis}\label{sec:ProblemAnalysis}
 
-This project approached the problem through a System Engineering perspective, a process which “is a structured and systematic methodology providing greater visibility and control over … new system[s]” \citationneeded [2]. This perspective was informed by ISO 15288 \citationneeded [3] and Burge Hughes Walsh’s System Engineering Toolbox \citationneeded [4]. The tools adapted and applied throughout this section are primarily derived from that \inlineQuote{System Engineering Toolbox}. 
+This project approached the problem through a System Engineering perspective, a process which “is a structured and systematic methodology providing greater visibility and control over … new system[s]” \cite{limited2018systems}. This perspective was informed by ISO/IEC/IEEE 15288 \cite{IEEE15288} and Burge Hughes Walsh’s System Engineering Toolbox \cite{SysThink2015}. The tools adapted and applied throughout this section are primarily derived from that \inlineQuote{System Engineering Toolbox}. 
 
 % \subsection{Purpose of Problem Analysis} %should this be a 
 The purpose of Problem Analysis is to define the scope of this project to be achievable, measurable and practical to implement. This took 2-4 weeks through June 2018, and remains an ongoing task. 
@@ -261,7 +261,7 @@ The purpose of the project is to hypothesis and produce a proof-of-concept of ho
 
 %%%%%%%%%%%%%%%%%%%%%%%
 \section{Review Of Literature}
-A literature review of the current research was conducted with guidance from University of Queensland’s guide to Literature reviews [5] \citationneeded . There are 3 nested areas of research that are of interest to this project. The wider classification and regression research topic, the machine learning topic that covers many various fields of implemented and theoretical machine learning applications, and finally the specific field of Acoustic Event Detection and Classification (AED/AEC); this field has traditionally relied on older techniques, and is undergoing a revolution with machine learning. 
+A literature review of the current research was conducted with guidance from University of Queensland’s guide to Literature reviews \cite{QueenslandReview} . There are 3 nested areas of research that are of interest to this project. The wider classification and regression research topic, the machine learning topic that covers many various fields of implemented and theoretical machine learning applications, and finally the specific field of Acoustic Event Detection and Classification (AED/AEC); this field has traditionally relied on older techniques, and is undergoing a revolution with machine learning. 
 \fFigure{niche.png}{The literature for this project is a niche topic in the Machine Learning area of research}{0.8}
 
 \subsection{Machine Learning}
@@ -275,15 +275,15 @@ This definition of Machine Learning can be applied to this project; the task T (
 The computer program described in this project has been produced in Python, using the sklearn and TensorFlow libraries. \flagforreview
 
 \subsection{Acoustic Event Detection and Acoustic Event Classification}
-Historically the technologies for AED/AEC have been Support vector machine (SVMs), Hidden Markov Models (HHMs), and more generally, basic DSP (Digital Signal Processing) classifiers. But in the last 8 years, AED and AEC research has emerged as a hot topic of research. Research focuses on the two key tasks: Detection (when did an acoustic event occur in the au-dio, and when did it stop?) and classification (what sound oc-curred?). New research papers are often the result of DCASE competitions, which is an official IEEE Audio and Acoustic Signal Processing (AASP) competition. \fref{F1_score.png}.
+Historically the technologies for AED/AEC have been Support vector machine (SVMs), Hidden Markov Models (HHMs), and more generally, basic DSP (Digital Signal Processing) classifiers. But in the last 8 years, AED and AEC research has emerged as a hot topic of research. Research focuses on the two key tasks: Detection (when did an acoustic event occur in the audio, and when did it stop?) and classification (what sound oc-curred?). New research papers are often the result of DCASE competitions, which is an official IEEE Audio and Acoustic Signal Processing (AASP) competition. \fref{F1_score.png}.
 
-\fFigure{F1_score.png}{DCASE Researcher Toni Heittola's F1 Results reflect the AED/AEC field of research with drastic improvements over the last 8 years. \citationneeded}{0.8}
+\fFigure{F1_score.png}{DCASE Researcher Toni Heittola's F1 Results reflect the AED/AEC field of research with drastic improvements over the last 8 years.\cite{ToniWebsite}}{0.8}
 
 \subsection{DCASE Competitions (Detection and Classification of Acoustic Scenes and Events)}
-The DCASE competitions format started 2013, had its second competition in 2016, and since then has been a yearly event. Since 2017, there has been a new format where the competition starts march, formal results are released by September, and a workshop for participants on the best team’s work in November [7]\citationneeded. 2016 was the first to feature Machine Learning (win-ning teams incorporated machine learning into ensemble mod-els/classifiers). By 2017 all entries utilised machine learning. Recently the results from DCASE2018 have been published; progress in the AED/AEC field has allowed more sophisticated, real-world applications to be evaluated (Challenge Task \#4) [8]\citationneeded. The complexity of the dataset, the number of acoustic classes and fidelity of output are unprecedented in the AEC field. The winning results at this level of complexity are not as high quality compared to last year’s more controlled environment/dataset (2017 had a 41.7\% F1 score [9]\citationneeded vs 2018’s 32.4\% [8]\citationneeded), but pre-sent the best precedent for the problem addressed in this paper.
+The DCASE competitions format started 2013, had its second competition in 2016, and since then has been a yearly event. Since 2017, there has been a new format where the competition starts march, formal results are released by September, and a workshop for participants on the best team’s work in November\cite{2018Schedule}. 2016 was the first to feature Machine Learning (winning teams incorporated machine learning into ensemble mod-els/classifiers). By 2017 all entries utilised machine learning. Recently the results from DCASE2018 have been published; progress in the AED/AEC field has allowed more sophisticated, real-world applications to be evaluated (Challenge Task \#4)\cite{2018n}. The complexity of the dataset, the number of acoustic classes and fidelity of output are unprecedented in the AEC field. The winning results at this level of complexity are not as high quality compared to last year’s more controlled environment/dataset (2017 had a 41.7\% F1 score\cite{2017results} vs 2018’s 32.4\%\cite{2018n}), but pre-sent the best precedent for the problem addressed in this paper.
 
 \subsection{Leading Research, DCASE2018 Task 4 Winner}
-The winning model used in the DCASE2018 Task 4 challenge used a “Mean-teacher” model for classification (useful abstract results averaging applicable to a range of classifier models), a CNN for context gating (a pre-classifier step to improve flaws in training methodologies for some machine learning models [10]\citationneeded) and a bidirectional recurrent neural network (RNN) to improve the utilisation of unlabelled, unbalanced training da-tasets [11]\citationneeded; this last component is important for this paper, as the leading dataset outside of DCASE challenges is the weakly labelled Google AudioSet, of which only small percentage of is balanced.
+The winning model used in the DCASE2018 Task 4 challenge used a “Mean-teacher” model for classification (useful abstract results averaging applicable to a range of classifier models), a CNN for context gating (a pre-classifier step to improve flaws in training methodologies for some machine learning models\cite{Yan16}) and a bidirectional recurrent neural network (RNN) to improve the utilisation of unlabelled, unbalanced training datasets\cite{winners}; this last component is important for this paper, as the leading dataset outside of DCASE challenges is the weakly labelled Google AudioSet, of which only small percentage of is balanced.
 
 \begin{table}[h!]
     \begin{center}
@@ -358,7 +358,7 @@ It is beneficial to work up slowly to this goal. external to the method of build
 The Machine Learning uses GPS, accelerometer, gyroscope, and audio. A Google Pixel 2 was selected as the model data acquisition, which table /ref{} below shows.
 \begin{table}[h!] 
     \begin{center}
-        \caption{Data Available\citationneeded \flagforreview}\label{tab:AndroidDataAvailable}
+        \caption{Data Available \cite{pixelteardown}}\label{tab:AndroidSensorsAvailable}
         {\footnotesize
             \begin{tabular}{clll}
                 \hline\hline Sensor & Description \\ \hline 
@@ -397,7 +397,7 @@ Both datasets share the same timestamp format, so a \inlineQuote{Time} column ha
     numbers=left,
     xleftmargin=1cm,
     frame=shadowbox,
-    caption={Code snippet for getting Accelerometer data from the Android System as above \citationneeded above},
+    caption={Code snippet for getting Accelerometer data from the Android System as above \cite{androidMotionsensors} above},
     morekeywords={try,catch}
     ]{Code/accel_example.c}
 
@@ -546,6 +546,43 @@ For the purpose of this project, the data collected through the Android App appl
 
 %https://developer.android.com/guide/topics/sensors/sensors_motion
 \subsubsection{Audio}
+
+
+\subsection{Data Training, Testing and Evaluation Set}
+The ExtraSensory dataset contains over 300,000 samples across 60 Users (in a CSV format with 278 feature columns), as shown in \ref{tab:ExtraSensoryDataExample}. Each row contains an a 'snapshot' of the sensors at a frequency of once a minute. There are large non-continuities across each user. The dataset is unbalanced, and has had it's labels cleaned by the researchers involved. Further details about the users themselves can be found in \ref{tab:ExtraSensoryDataBreakdown}, or at it paper \cite{Vaizman2017}.
+
+\begin{table}[h]
+    \begin{center}  
+        \caption{ExtraSensory Data Breakdown \cite{Vaizman2017}}\label{tab:ExtraSensoryDataBreakdown}
+        \begin{tabular}{lllll}
+            \hline\hline 
+                       & Range     & Average & (standard deviation) &  \\
+            \hline 
+            Age        & 18-42     & 24.7    & -5.6                 &  \\
+            Height     & 145-188   & 171     & -9                   &  \\
+            Weight     & 50-93     & 66      & -11                  &  \\
+            Body       & 18-32     & 23      &                      &  \\
+            Labeled    & 685-9,706 & 5,139   & -2,332               &  \\
+            Additional & 2-6,218   & 1,150   & -1,246               &  \\
+            Average    & 1.1-9.7   & 3.8     & -1.4                 &  \\
+            Days       & 2.9-28.1  & 7.6     & -3.2 \\
+            \hline  
+            \end{tabular}
+    \end{center}
+\end{table}
+
+The dataset was considered for use in 2 ways; training on a per user instance, or training on a per sample instance. The benefits of per user is to isolate recording hardware, and other plant noise. However this is undesirable, as this can result in a low variance in $\epsilon$ (bias), which increases the likelyhood of the learnt function ($\hat{f}$) to overfit the signal of the training users ($ \hat{f} = f(x) + \epsilon$) This, to minimise it's impact in evaluation. Thus is the benefit of training on a per sample basis. By introducing other user noise into a training set, we minimise overfitting \inlineQuote{for free}. Finally as a \inlineQuote{kfold} (or other Cross-Validate methods) is applied to the whole training dataset for training + validation purposes, the likelyhood of the random selection incorporating a larger variance of noise incrases. As a result, the data is used on as a per sample basis.
+
+\subsubsection{\inlineQuote{kfold} Cross validation}
+kfold Cross Validation can be described as:
+\fancyquote{
+    ... approach involves randomly dividing the set of observations into k groups, or folds, of approximately equal size. The first fold is treated as a validation set, and the method is fit on the remaining k - 1 folds. 
+    }\cite{James2017}
+A key element expanding on this is the ability to cycle through `k folds', changing which group is the validation, or test set, and training on the rest.
+% The kfold creates creates 2 groups. A single test group and many training groups. Each training group gets tested via the single test group. Then, test group changes each 'fold'.
+
+The question of whether supplementary data will improve the classifier's F1 score is best answered by deciding on an appropriate classifier, and testing it with and without the supplementary data. As discussed, the appropriate classifier could be chosen via hyperparameter testing against a validation set, however the feature analysis carried out above will also influence classifier design. The unbalanced nature of the dataset is also a factor.
+
 
 \subsection{Classification and Network Topology}
 The classification libraries used were Google's TensorFlow and scikit-learn. Both libraries are python based (supporting both Python 3.0, and Python 2.7) \cite{scikitlearnpythonVer} \cite{TFpythonVer}%\cite{TFpythonVer} \cite{scikit-learn-pyV}.
@@ -729,52 +766,13 @@ and the results of which were
 
 Details of a Grid Search can be found in Appendix \ref{apx:GSAttempt}.
 
-\subsection{Data Training, Testing and Evaluation Set}
-The ExtraSensory dataset contains 60 Users (in a format CSV with 278 feature columns), as shown in \ref{tab:ExtraSensoryDataExample}. The dataset is unbalanced, and contains multiple labels. Further details about the users themselves can be found in \ref{tab:ExtraSensoryDataBreakdown}.
 
-The dataset was considered for use in 2 ways; training on a per user instance, or training on a per minute snapshot instance. The benefits of per user is to isolate recording hardware, to minimise it's impact in evaluation. However this is the benefit of training on a per snapshot instance basis. As we kfold\flagforreview the dataset for training, by working on a per snapshot instance, we can increase the likelyhood of the random selection to incorporate a larger variance of noise.
-
-\subsubsection{\inlineQuote{kfold} Cross validation}
-kfold Cross Validation can be described as:
-\fancyquote{
-    ... approach involves randomly dividing the set of observations into k groups, or folds, of approximately equal size. The first fold is treated as a validation set (sic), and the method is fit on the remaining k - 1 folds. 
-    }\cite{James2017}
-A key element expanding on this is the ability to cycle through k 'folds', changing which group is the \inlineQuote{validation}, or test set.
-The kfold creates creates 2 groups. A single test group and many training groups. Each training group gets tested via the single test group. Then, test group changes each 'fold'.
-
-\begin{table}[h]
-    \begin{center}  
-        \caption{ExtraSensory Data Breakdown \cite{Vaizman2017}}\label{tab:ExtraSensoryDataBreakdown}
-        \begin{tabular}{lllll}
-            \hline\hline 
-                       & Range     & Average & (standard deviation) &  \\
-            \hline 
-            Age        & 18-42     & 24.7    & -5.6                 &  \\
-            Height     & 145-188   & 171     & -9                   &  \\
-            Weight     & 50-93     & 66      & -11                  &  \\
-            Body       & 18-32     & 23      &                      &  \\
-            Labeled    & 685-9,706 & 5,139   & -2,332               &  \\
-            Additional & 2-6,218   & 1,150   & -1,246               &  \\
-            Average    & 1.1-9.7   & 3.8     & -1.4                 &  \\
-            Days       & 2.9-28.1  & 7.6     & -3.2 \\
-            \hline  
-            \end{tabular}
-    \end{center}
-\end{table}
-
-The question of whether supplementary data will improve the classifier's F1 score is best answered by deciding on an appropriate classifier, and testing it with and without the supplementary data. As discussed, the appropriate classifier could be chosen via hyperparameter testing against a validation set, however the feature analysis carried out above will also influence classifier design. The unbalanced nature of the dataset is also a factor.
 
 
 % \subsection{}
 
 % The MLPClassifier is a feedforward neural network, trainded via backpropegation. It was set up using the \inlineQuote{lbfgs} solver, an alpha equal to $1e-5$, and was handselected to have 80 by 10 hidden layers (80 long, 10 deep). This was the classifier to use for evaluation.
 
-% \hline\hline timestamp  & Time & raw\_acc:mean & raw\_acc:std & raw\_acc:moment3 & raw\_acc:moment4 \\\hline 
-% 1464129912 & 2016-05-24 22:45 & 1.011438                       & 0.012573                      & 0.023013                          & 0.04124      \\
-% 1464129950 & 2016-05-24 22:45 & 1.011233                       & 0.009356                      & -0.005622                         & 0.016687     \\
-% 1464130031 & 2016-05-24 22:47 & 1.013422                       & 0.018068                      & -0.008593                         & 0.039286     \\
-% 1464130109 & 2016-05-24 22:48 & 1.014891                       & 0.0164                        & 0.021383                          & 0.038825     \\
-% 1464130130 & 2016-05-24 22:48 & 1.017487                       & 0.022632                      & -0.012891                         & 0.037226    \\\hline 
 % \begin{itemize}
 %     \item AudioSet and maybe the DCASE2018 Task 4 data set.
 %     \item Ideally, start pulling training and evaluation from smartphone app. 
