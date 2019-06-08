@@ -363,7 +363,7 @@ The Machine Learning uses GPS, accelerometer, gyroscope, and audio. A Google Pix
             \begin{tabular}{clll}
                 \hline\hline Sensor & Description \\ \hline 
                 GPS & The Pixel 2 uses the Snapdragon 835 System on Chip GPS receiver\\
-                Accelerometer / Gyroscope & The Pixel 2 uses a bosch BMI160 \\
+                Accelerometer / Gyroscope & The Pixel 2 uses a Bosch BMI160 \\
                 Audio & The Pixel 2 uses a Qualcom WCD9395 Audio Codec chip and a NXP TFA9891UK Audio Amplifier \\ \hline
             \end{tabular}
         }
@@ -429,7 +429,7 @@ Both datasets share the same timestamp format, so a \inlineQuote{Time} column ha
     \end{center}
 \end{table}
 
-The ExtraSensory dataset is compiled from 60 users with a diverse range of phones (\inlineQuote{34 iPhone users, 26 Android users.}\citationneeded http:\/\/extrasensory.ucsd.edu\/). This is in contrast to this project's phone range, which was limited to 2 Android devices, a Samsung S6 and a Lenovo Zuk Z2. The Samsung uses a InvenSense MPU-6500, the Lenovo Zuk Z2 unknown.
+The ExtraSensory dataset is compiled from 60 users with a diverse range of phones (\inlineQuote{34 iPhone users, 26 Android users.}\cite{Vaizman2017}. This is in contrast to this project's phone range, which was limited to 2 Android devices, a Samsung S6 and a Lenovo Zuk Z2. The Samsung uses a InvenSense MPU-6500, the Lenovo Zuk Z2 unknown.
 
 \fancyquote{
     \underline{Devices:}
@@ -438,7 +438,6 @@ The ExtraSensory dataset is compiled from 60 users with a diverse range of phone
     iPhone operating system versions ranging from iOS-7 to iOS-9.
     Android devices: Samsung, Nexus, HTC, moto G, LG, Motorola, One Plus One, Sony.
 }
-
 
 \subsection{Data Pre-Processing}
 Python was used to process the data before the Machine Learning modules of code, and Matlab was used with GPS, IMU to prototype the algorithms. 
