@@ -128,6 +128,7 @@ Tense: Past, Future etc. Search "was", "is" "ed" etc.
 Check contraction. it's, don't etc.
 check for our, we, I, they're, your, you, etc.
 check for st-ray - inca-se the-y block sh-t
+check ref and replace with fref, tref, aref etc.
 
 As per the FYP Handbook: \\
 I did:
@@ -305,7 +306,7 @@ The winning model used in the DCASE2018 Task 4 challenge used a â€œMean-teacherâ
 \end{gather*}
 
 %%%%%%%%%%%%%%%%%%%%%%%
-\section{Method}
+\section{Method}\ref{sec:Method}
 \subsection{Introduction to the Method}
 In a traditional machine learning problem there are 5 stages to the method; 
 
@@ -648,7 +649,7 @@ The MLPClassifier is a feedforward neural network, trained via backpropegation. 
 
 
 \subsection{Model Validation}
-Validation is the process of optimisating the hyperparameters of a model on the hold-out validation set of data. This is an important aspect of machine learning process because model validation cannot be learnt from data. That is to say, hyperparameter optimisation is out of the scope of training via traditional gradient decent and back propagation. Due to the "No Free Lunch" theorem, a model will be chosen and must be optimised before training begins. This is an extension of trying to find the optimal model for the solution. 
+Validation is the process of optimisation the hyperparameters of a model on the hold-out validation set of data. This is an important aspect of machine learning process because model validation cannot be learnt from data. That is to say, hyperparameter optimisation is out of the scope of training via traditional gradient decent and back propagation. Due to the "No Free Lunch" theorem, a model will be chosen and must be optimised before training begins. This is an extension of trying to find the optimal model for the solution. 
 
 \paragraph{Model Performance Metrics}
 Before the hyperparameters can be optimised, a metrics to optimise the network on must be selected, of which there are many ways to do it which will now discussed. \\
@@ -667,17 +668,74 @@ These four terms are the main parameters in the following formula
 
 \subparagraph{Accuracy} 
 Accuracy is the measure of how many samples the classifier correctly classified across it's operation, as shown in \ref{eq:Accur}.
-\begin{gather}%\label{eq:Accur}
-    \frac{TP+TN}{TP+FP+TN+FN}
+\begin{gather}\label{eq:Accur}
+    Accuracy = \frac{TP+TN}{TP+FP+TN+FN}
 \end{gather}
 
-Accuracy is a very poor metric for machine learning due to it's formula attach that simply takes the simply takes the number of classes and checks how many were correctly classified this is a poor choice in this is a poor choice as a metric because it because the innate hypothetical situation a perfect classifier would classify everything is the target class in this way accuracy would then demonstrate that this perfect classifier successfully had an accuracy of 100\% because it was able to correctly and accurately assess every class next we have true positives and false positives true positive is how many how many positives were how many real positives that we tried to classify were in the in the final prediction divide that by the number of true positives as well as the number of false positives please give us a ratio of how many correct classifications were correct this is a very useful metric because vis this could be a key tunable element depending on your use case of the model for instance if you are working on a medical scanning device in the health industry you may want a very high true positive also called specificity or something I'm not sure you may want a very high true positive because you won't want to miss any any missed positive classes in this case you might be happy to make the tradeoff for trade-off in false positive readings conversely you have the metric which is true false is which room negativesverification and extending on verification code to verify model we got those of those unless not against machine learning because model validation drive Powell we train and most important stuff training on model in this way what would doing is trying to find the optimal models for a solution there many way to do it which will now just got flash evaluate best option accuracy accuracy is a very cool metric full machine learning to do it you know it's full Mila attached that simply take the simply take the number or Claus's and check how many with correctly classified this is a pool choice in this is cool choice as a metric because it because you night hypothetical situation upset classify I would classify everything is to Target claw in this way accuracy with then demonstrate that these posts classify successfully had and extra see all 100\% because he was able to correctly and extra late set everyonebest affinity for both negative is another metric very similarly to propose to accessibility this is very important Drexel whenfor when false negatives are reported a situation where this might be important is manufacturing capability where you might you might have quality assurance further down the line this is useful for when you want to maximize the number of correctly rejected units that is to say minimise the amount of units rejected without harming other stuff and no other option for model metrics is the area under the curve the area under the curve shows the reduced error in the model that is to say area under the curve is a graph that shows where how the error rate decrease is overtime this is most commonly used in conjunction with the something under the curve which shows overfitting of the model when used in conjunction the optimal solution for the model and that's how to validate the model is to pick is to pick a set of model parameters that minimises the area under the curve as well as minimises the area of the other curve but I can't remember in this way you are able to produce the model that will generalise well as well as having a high precision precision is another metric which is used to specify what something that I'll have to have a look at the actual formula F1 score is a industry standard that is important to evaluate a model's accuracy it does not however evaluate the overfitting as a broad metric it may indicate through a horror results based on the data set and conversely as with overfitting it may not demonstrate what level of generalisation is available in the model in this way the F1 school could be used in conjunction with other metrics
+Accuracy is used when a dataset is balanced (or close to balanced), and when there's no specific weighting on False Positives or False Negatives. Situations where you may have specific weightings on False Positive and False Negatives rates could be the medical industry, where a false positive will have a cost associated with it (the cost of further tests, or screenings) vs a false negative (where by a patient's health outcomes could be severely impacted by the incorrect diagnosis).
+
+In this project, accuracy would be a very poor metric for machine learning because the ExtraSensory dataset compromises 51 labels. When performing a binary classification on any individual label the majority class will be blank/negative. As such, a classifier which would classify every sample as blank/negative would still achieve a high accuracy rate (due to achieving a high True Negative rate).
+
+\subparagraph{Confusion Matrix}
+A confusion matrix is a 4 cell table that lists TP, FP, FN, TN. This is a great visual tool to aid human evaluation of the model, as shown in \fref{confusion_matrix.png}. The matrix can be normalised across the rows, as to show what portion of samples were correctly classified. The capacity to directly penalising (and optimise about) the False Positives, and False Negatives, could be an essential tool for a project. 
+
+\fFigure{confusion_matrix.png}{A confusion matrix of the Iris Database.\cite{scikitlearnConMatrix}}{0.6}
+
+In this project, the Confusion Matrix gets generated to sanity check, and contextualise, other performance measures. It is an important tool for weighing up the validity of classifier before accepting it for real world use.
+
+\subparagraph{Recall (or sensitivity)}
+
+Building upon the direct use of the 4 factors, TP, FP, FN, TN, one can measure the ability of a a classifer to \inlineQuote{Recall} the true positive rate of a dataset as defined in \ref{eq:Recall}.
+This is the ratio of predicted positives vs the \inlineQuote{True} positive rate.
+
+\begin{gather}\label{eq:Recall}
+    Recall = \frac{TP}{TP+FN}
+\end{gather}
+
+In this project, the Recall rate is of importance as the user case is to document an Acoustic event, upon which any False Positives could be disregarded by the user, or provide interesting new insight into the behaviour observed.
+
+\subparagraph{Precision}
+In contrast to Recall, precision is the measure of the error in Positives classification. That is, out of the samples classifed as Positive, how many were actually positive, or the Ratio of correct predictions vs all predictions.
+
+\begin{gather}\label{eq:Precision}
+    Precision = \frac{TP}{TP+FP}
+\end{gather}
+
+In this project, this is less important as discussed above. Precision may be important when a high degree of statistical confidence is needed for a decision, but missed opportunities may not be important. 
+
+\subparagraph{Specificity}
+Specificity is the compliment of to Recall. It is the ratio of correctly negative classifications vs the total number of negative classifications. This is another important metric for training models that are required to be highly \inlineQuote{specific} it the model's predictions.
+
+\begin{gather}\label{eq:Specificity}
+    Precision = \frac{TN}{TN+FP}
+\end{gather}
+
+In this project, the specificity will ideally be traded off against the Recall rate. For the reasons already discussed, the risk from false positives are negligible. 
+
+\subparagraph{F1 Score}
+An F1 Score is an industry standard approach to evaluating a model. It is formally defined as the harmonic mean of the Precision and Recall, as shown in \ref{eq:F1Score}. This score is a method of evaluating a model's Recall and Precision with equal weighing, but punishing an imbalance between the two scores. 
+
+\begin{gather}\label{eq:F1Score}
+    F1 Score = \frac{2 \times (Precision \times Recall)}{Precision + Recall}
+\end{gather}
+
+This project will use the F1 Score as it's prime metric for evaluating the model, and the effect of supplementary data on the Acoustic Event Detection/Classification task in question. A further extention of the F1 Score is required to apply to a multi class or multilabel problem. This is often done through a sum of F1 Scores across each class or label. For best precision, a weighted could be applied to sum to best reflect (and optimise) the intent of the classifier. 
+
+\subparagraph{Area Under the Reciever Operating Characteristics (AUROC) Curve}
+Lastly, the Area Under the Reciever Operating Characteristics (AUROC) is an important measure of the a classifiers overall performance. The AUROC demonstrates how confident a classifier is across all class-classification thresholds.
+
+In a more formal sense, the Reciever Operating Characteristics (ROC) is the relation between the True Positive rate against the False Positive rate, and how it changes when you change the classification decision threshold. To calculate the ROC, a sample of TP and FP is taken for a varying threshold (the threshold needed for the classifier to classify a sample as positive or negative). 
+
+\fFigure{ROCCurve.png}{A ROC Curve example from Google's Machine Learning shortcourse\cite{TF_ROC}}{0.5}
+
+In this project, the AUROC will not be extensively used, except for educational purposes. The purpose of a AUROC is to demonstrate, and optimise the confidence in classification based on thresholds applied. The AUROC can be used to demonstrate a quanitative assessment of any particular sample (similar to a Regression problem).
 
 
-The classifier selected is validated on the data by doing a k fold. to pick hyperparameters\flagforreview for the mlpclassifier this is the process of refining what are chosen models parameters are and finally will use the F1 score as a primary metric which will help determine what what our classifier is finally we will then report on these results as well as run through some through user 59 user 60 which has been dedicated to be out final evaluation example
+% metric very similarly to propose to accessibility this is very important Drexel whenfor when false negatives are reported a situation where this might be important is manufacturing capability where you might you might have quality assurance further down the line this is useful for when you want to maximize the number of correctly rejected units that is to say minimise the amount of units rejected without harming other stuff and no other option for model metrics is the area under the curve the area under the curve shows the reduced error in the model that is to say area under the curve is a graph that shows where how the error rate decrease is overtime this is most commonly used in conjunction with the something under the curve which shows overfitting of the model when used in conjunction the optimal solution for the model and that's how to validate the model is to pick is to pick a set of model parameters that minimises the area under the curve as well as minimises the area of the other curve but I can't remember in this way you are able to produce the model that will generalise well as well as having a high precision precision is another metric which is used to specify what something that I'll have to have a look at the actual formula F1 score is a industry standard that is important to evaluate a model's accuracy it does not however evaluate the overfitting as a broad metric it may indicate through a horror results based on the data set and conversely as with overfitting it may not demonstrate what level of generalisation is available in the model in this way the F1 school could be used in conjunction with other metrics
+
 
 \subsubsection{Hyperparameter Optimisisation}
- Machine learning is about learning, and adjusting, the internal parameters of a classifier. A hyperparameter is a parameter that cannot be learnt from backpropegation, as it is external to the classifier. These are parameters such as hidden layer size, training rates, classifier specific strategy, etc. The way to choose these hyperparameters is therefore an optimisation problem.
+ Machine learning is about learning, and adjusting, the internal parameters of a classifier. A hyperparameter is a parameter that cannot be learnt from backpropegation, as it is external to the classifier. These are parameters such as hidden layer size, training rates, classifier specific strategy, etc. The way to choose these hyperparameters is therefore an optimisation problem. The problem is to maximise the score selected above, by trialing different hyperparameters. The following describe methods of finding the optimal hyperparameters.
 
  \subparagraph{Manual Search}
  Hyperparameters could be manually selected and adjusted, in a search for a more optimal solution. This may be a valid option for interrogating what each hyperparameter does, and the impact on the classification score. This however would not be a valid solution for finding the optimal hyperparameters. \\
@@ -750,7 +808,7 @@ These parameters are then placed into a python Dict, and passed into the scikit 
                 'hidden_layer_sizes': [(145,), (147,), (149,), (151,), (153)],
                 'alpha': [0.09, 0.11, 0.13, 0.15, 0.17, 0.19],
                 'activation': ["logistic", "relu", "Tanh"]}
-    mlpc = MLPClassifier(verbose=False, learning_rate='adaptive',max_iter=1000)
+    mlpc = MLPClassifier(verbose=False, early_stopping=True, learning_rate='adaptive',max_iter=1000)
     clf = RandomizedSearchCV(estimator=mlpc, scoring='f1',param_distributions=parameters,
                              n_jobs=-1,verbose=1,cv=3);
     clf.fit(X_train,y);    
@@ -817,7 +875,24 @@ A Random Tree Classifier was used to evaluate feature importance. Random Tree Cl
 
 Scikit-learn is a statistics and machine learning for Python. It was selected due to it's ease of use, and has been used to analyse, prototype and produce the results of this paper.
 
-% \subsection{}
+\subsection{Method Summary}
+
+The method details selecting the desired output, the required data input, a metric to score by, a classifier, optimising hyperparameters against the previous options, and finally training and validating aginst the data. \\
+
+{\itshape For this project}
+\begin{enumerate}
+    \item The desired output is a label (or labels) detailing the Acoustic Event in the sample (e.g. The labels found in \ref{apx:ExtraSensoryLabels} like `Walking').
+    \item The required data is the ExtraSensory dataset, or a custom dataset as recorded by the project's App.
+    \item The score selected is the F1 score. This is due to it being an industry standard.
+    \item The classifier chosen is the MLPClassifier which is a feedforward neural network, trainded via backpropegation.
+    \item Hyperparameters of the MLPClassifier are chosen via a Random Search Cross Validation.
+    \item Training and Validation was run with Early Stopping using a 10\% validation set, using 59 out of the 60 ExtraSensory users.
+    \item Final testing is done with the 60\textsuperscript{th} user.
+\end{enumerate}
+
+
+% to pick hyperparameters\flagforreview for the mlpclassifier this is the process of refining what are chosen models parameters are and finally will use the F1 score as a primary metric which will help determine what what our classifier is finally we will then report on these results as well as run through some through user 59 user 60 which has been dedicated to be out final evaluation example
+
 
 % The MLPClassifier is a feedforward neural network, trainded via backpropegation. It was set up using the \inlineQuote{lbfgs} solver, an alpha equal to $1e-5$, and was handselected to have 80 by 10 hidden layers (80 long, 10 deep). This was the classifier to use for evaluation.
 
@@ -834,37 +909,56 @@ Scikit-learn is a statistics and machine learning for Python. It was selected du
 %%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
 
-\subsection{With all}
+The desired results are a demonstratable difference (or lack thereof) in the F1 score, after comparing a classifier with and without supplementary data.
+This will answer the question, and title of the report, \inlineQuote{[What is] the  effect of supplementary data on Acoustic Event Classification through Machine Learning}. To this effect, the results will analyse the F1 Scores of a binary MLPClassifier, and a multi-label MLPClassifier, both trained on the ExtraSensory dataset using the extact method described in Section \ref{sec:Method}.
+Additionally, the output of the classifiers will be analysed for \inlineQuote{validity}. Does the classifier successfully detect and classify an Acoustic Event?
 
-all sensors
-\\ == Training with 31897 examples. For label 'Walking' we have 17735 positive and 14162 negative examples.
-\\ == Projected the features to 95 features from the sensors: Aud, Acc, Gyro, Loc
-\\ == Testing with 8000 examples. For label 'Walking' we have 4401 positive and 3599 negative examples.
-\\ ----------
-\\ Accuracy*:         0.83
-\\ Sensitivity (TPR): 0.85
-\\ Specificity (TNR): 0.81
-\\ Balanced accuracy: 0.83
-\\ Precision**:       0.85
-\\ F-Score:           0.83
-\\ --- Confusion Matrix ---
-\\ $[[2914 | 685]$
-\\  $[ 648 | 3753]]$
-\\ 
-\\  just Audio
-\\  == Training with 31918 examples. For label 'Walking' we have 17641 positive and 14277 negative examples.
-\\ == Projected the features to 26 features from the sensors: Aud
-\\ == Testing with 8023 examples. For label 'Walking' we have 4495 positive and 3528 negative examples.
-\\ ----------
-\\ Accuracy*:         0.79
-\\ Sensitivity (TPR): 0.83
-\\ Specificity (TNR): 0.73
-\\ Balanced accuracy: 0.78
-\\ Precision**:       0.80
-\\ F-Score:           0.78
-\\ --- Confusion Matrix ---
-\\ $[[2581 | 947]$
-\\  $[ 775 | 3720]]$
+
+\subsection{Binary MLPClassifier (Audio Only)}
+
+\begin{lstlisting}[
+    language=python,
+    float=h,
+    numbers=none,
+    frame=shadowbox]
+== Training with 31918 examples. For label 'Walking' we have 17641 positive and 14277 negative examples.
+== Projected the features to 26 features from the sensors: Aud
+== Testing with 8023 examples. For label 'Walking' we have 4495 positive and 3528 negative examples.
+----------
+Accuracy*:         0.79
+Sensitivity (TPR): 0.83
+Specificity (TNR): 0.73
+Balanced accuracy: 0.78
+Precision**:       0.80
+F-Score:           0.78
+--- Confusion Matrix ---
+$[[2581 | 947]$
+$[ 775 | 3720]]$
+\end{lstlisting}
+
+\subsection{Binary MLPClassifier (Audio, Accelerometer, Gyroscope, GPS)}
+
+\begin{lstlisting}[
+    language=python,
+    float=h,
+    numbers=none,
+    frame=shadowbox]
+== Training with 31897 examples. For label 'Walking' we have 17735 positive and 14162 negative examples.
+== Projected the features to 95 features from the sensors: Aud, Acc, Gyro, Loc
+== Testing with 8000 examples. For label 'Walking' we have 4401 positive and 3599 negative examples.
+----------
+Accuracy*:         0.83
+Sensitivity (TPR): 0.85
+Specificity (TNR): 0.81
+Balanced accuracy: 0.83
+Precision**:       0.85
+F-Score:           0.83
+--- Confusion Matrix ---
+$[[2914 | 685]$
+$[ 648 | 3753]]$
+\end{lstlisting}
+
+
 
 \begin{table}[h]
     \begin{center}  
@@ -1149,7 +1243,7 @@ This shows how a Grid Search was used for hyperparameter optimisation. In partic
 \begin{lstlisting}
     parameters={'hidden_layer_sizes': [(145,), (147,), (149,), (151,), (153)],
                 'alpha': [0.09, 0.11, 0.13, 0.15, 0.17, 0.19]}
-    mlpc = MLPClassifier(verbose=False, learning_rate='adaptive',max_iter=1000)
+    mlpc = MLPClassifier(verbose=False, early_stopping=True, learning_rate='adaptive',max_iter=1000)
     clf = GridSearchCV(estimator=mlpc, scoring='f1',param_grid=parameters,n_jobs=-1,verbose=1,cv=3);
     clf.fit(X_train,y);
     print(clf.score(X_train, y))

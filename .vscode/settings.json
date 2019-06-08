@@ -4,6 +4,7 @@
         "Keras",
         "Lite",
         "MCHA",
+        "hyperparameters",
         "matplotlib",
         "overfit",
         "overfitting",
