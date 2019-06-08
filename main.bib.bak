@@ -112,7 +112,7 @@
 }
 
 @InCollection{lecun2012efficient,
-  author    = {LeCun, Yann A and Bottou, L{\'e}on and Orr, Genevieve B and M{\"u}ller, Klaus-Robert},
+  author    = {LeCun, Yann A and Bottou, Leon and Orr, Genevieve B and Muller, Klaus-Robert},
   title     = {Efficient backprop},
   booktitle = {Neural networks: Tricks of the trade},
   publisher = {Springer},
@@ -226,7 +226,6 @@
   title  = {Research: Sound Event Detection},
   year   = {2018},
   author = {Heittola, T.},
-  url    = {http://www.cs.tut.fi/\~heittolt/research-sound-event-detection},
 }
 
  @comment{ DCASE2018. (n.d.). DCASE Challenge2018. Retrieved from 
@@ -236,7 +235,6 @@
   title     = {(n},
   publisher = {d.)},
   year      = {2018},
-  url       = {http://dcase.community/challenge2018/task-large-scale-weakly-labeled-semi-supervised-sound-event-detection#results},
 }
 
  @comment{ DCASE2017 Results. (n.d.). DCASE2017. Retrieved from 
@@ -246,10 +244,10 @@
   title     = {Results},
   publisher = {(n. d.). {DCASE}2017},
   year      = {2017},
-  url       = {http://www.cs.tut.fi/sgn/arg/dcase2017/challenge/task-sound-event-detection-in-real-life-audio#results},
+  url       = {http://www.cs.tut.fi/sgn/arg/dcase2017/challenge/task-sound-event-detection-in-real-life-audio\#results},
 }
 
-@comment{ Google. (2018). AudioSet. (Google) Retrieved from 
+ @comment{ Google. (2018). AudioSet. (Google) Retrieved from 
            https://research.google.com/audioset/dataset/car.html }
 
 @Book{google2018,
@@ -258,7 +256,7 @@
   author    = {Google},
 }
 
-@comment{ DCASE. (2018). Schedule. Retrieved from http://dcase.community/ }
+ @comment{ DCASE. (2018). Schedule. Retrieved from http://dcase.community/ }
 
 @Book{2018Schedule,
   title     = {(2018)},
@@ -323,7 +321,6 @@ http://www.k-jahn.de/files/bibtex.xslhttp://www.k-jahn.de/files/bibtex.xslhttp:/
   author = {Toni Heittola},
   title  = {Research: Sound Event Detection},
   year   = {2018},
-  note   = {[Online]. Available: http://www.cs.tut.fi/~heittolt/research-sound-event-detection.},
 }
 
 @Misc{pixelteardown,
@@ -331,14 +328,25 @@ http://www.k-jahn.de/files/bibtex.xslhttp://www.k-jahn.de/files/bibtex.xslhttp:/
   title  = {Google Pixel XL Teardown},
   month  = oct,
   year   = {2016},
-  note   = {https://www.electronicproducts.com/Google_Pixel-whatsinside_text-205.aspx},
+  note   = {https://www.electronicproducts.com/Google\_Pixel-whatsinside\_text-205.aspx},
 }
 
 @Misc{androidMotionsensors,
   author = {Google},
   title  = {Sensors Motion},
   year   = {2019},
-  note   = {https://developer.android.com/guide/topics/sensors/sensors_motion},
 }
 
+ @comment{ D. A. Huffman, "The Synthesis of Sequential Switching Circuits," J. 
+           Franklin Institute, vol. 257, no. 3, pp. 161-190, March 1954. }
+@article{huffman1954the,
+ author = "D. A. Huffman",
+ title = "The Synthesis of Sequential Switching Circuits",
+ journal = "J. {Franklin} {Institute}, vol. 257, no",
+ volume = "257",
+ number = "3",
+ month = mar,
+ pages = "161--190",
+ year = 1954
+}
 @Comment{jabref-meta: databaseType:bibtex;}

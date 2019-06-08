@@ -446,7 +446,7 @@ Python was used to process the data before the Machine Learning modules of code,
  \sout{The data from the ExtraSensory dataset is provided in it's raw format, which is best option is for the data to be raw, as this allows platform independent filtering, smoothing and sensor fusion\citationneeded.} 
 
 \subsubsection{Audio}
-Data preprocessing of the Audio was done by Mel Frequency Cepstral Coefficents (MFCC). Start with a recorded .wav sample, and split the whole sample into smaller sections via the sliding window method\citationneeded. Take each window and calculate the Fourier transform. This in turn is both \inlineQuote{Feature Engineering}, as well as preprocessing to be training compatible. 
+Data preprocessing of the Audio was done by Mel Frequency Cepstral Coefficents (MFCCs). Start with a recorded .wav sample, and split the whole sample into smaller sections via the sliding window method\citationneeded. Take each window and calculate the Fourier transform. This in turn is both \inlineQuote{Feature Engineering}, as well as preprocessing to be training compatible. 
 \begin{gather}%\label{eq:EquationLine}
     WindowSample(t) \xrightarrow{\mathscr{F}}  WindowSample(\omega)
 \end{gather}
@@ -583,50 +583,35 @@ A key element expanding on this is the ability to cycle through `k folds', chang
 The question of whether supplementary data will improve the classifier's F1 score is best answered by deciding on an appropriate classifier, and testing it with and without the supplementary data. As discussed, the appropriate classifier could be chosen via hyperparameter testing against a validation set, however the feature analysis carried out above will also influence classifier design. The unbalanced nature of the dataset is also a factor.
 
 
-\subsection{Classification and Network Topology}
-The classification libraries used were Google's TensorFlow and scikit-learn. Both libraries are python based (supporting both Python 3.0, and Python 2.7) \cite{scikitlearnpythonVer} \cite{TFpythonVer}%\cite{TFpythonVer} \cite{scikit-learn-pyV}.
+\subsection{Classifier}
 
-\subsubsection{TensorFlow}
-TensorFlow is an opensource machine learning framework, primarily developed by Google.
-\inlineQuote{It has a comprehensive, flexible ecosystem of tools, libraries and community resources that lets researchers push the state-of-the-art in ML and developers easily build and deploy ML powered applications.}\cite{TFwebsite}. TensorFlow in conjunction with with Keras was used to prototype the inital pipeline. According to the textbook, \inlineQuote{Hands on Machine Learning with Scikit, Keras \& TensorFlow}, a pipeline is 
-\fancyquote{
-A sequence of data processing components is called a data pipeline. Pipelines are very common in Machine Learning systems, since there is a lot of data to manipulate and many data transformations to apply\cite{HandsOnMLTextbook}.
-}
+A classifier by definition classifies things. A more thorough understanding is that a classifier takes some input data and maps it to an output category, or label. In a Machine Learning context, this mapping is done via the $\hat{f}$ learnt function. For this project the classifier is a learnt function that takes audio, accelerometer, gyroscope and GPS data and maps that data to a label one of the labels found in Appendix \ref{apx:ExtraSensoryLabels}, table \ref{tab:ExtraSensoryLabels}. 
 
-TensorFlow and Keras were selected to initially design the classifier due it's ability to run on the TensorFlow Lite. The code snippet \ref{lst:pythonlisting} shows how a model converts.
+\subparagraph{Binary, Multi-class, and  Multi-Label classifiers}
+If a classifier is to map data to a label, it stands to reason that the label must be well defined. A binary classifier as the name suggests will categorise input as 1, or 0 against a label. This could be result in "Car" or "Not Car", but it can also be extended to multiple classes, for example "Not Car", "Holden", "Ford" etc. This can be done via a ensemble of binary classifiers (combing together the output of the same dataset that has been parsed into a "Ford" classifier, a "Holden" classifier etc.), or more recently through a \inlineQuote{One Hot}\cite{huffman1954the} encoded output array as seen in table \ref{tab:HotOneEnc}. A key element of multi-class classifiers are that the classes are mutually exclusive. The car brands in \ref{tab:HotOneEnc} are mutually exclusive.
 
-\lstinputlisting[
-    language=python,
-    float=h,
-    numbers=left,
-    xleftmargin=1cm,
-    frame=shadowbox,
-    caption={Code snippet for converting the classifier model to TensorFlow Lite for mobile operation \cite{convertTF}\label{lst:pythonlisting}},
-    ]{Code/tensorflow_convert.py}
+\begin{table}[h]
+    \begin{center}  
+    \caption{Example Hot One Encoding}\label{tab:HotOneEnc}
+        \begin{tabular}{llll}
+                           & Holden & Ford & Other \\
+            Ford Fiesta    & 0      & 1    & 0     \\
+            VW Golf        & 0      & 0    & 1     \\
+            Holden Captiva & 1      & 0    & 0    
+        \end{tabular}
+    \end{center}
+\end{table}
 
-The original prototyping for audio only classification with TensorFlow and Keras was to use matplotlib to plot the spectrogram of each audio sample, and use a sequential CNN to process the spectrograms. A code snippet for that design is shown in \ref{lst:cnnpythonlisting}.
+However there is another type of classifier called the multi-label classifier. An example of a multi label classifier is this project. The project may want to label whether signal in the provided data represents jogging, walking, talking, eating etc. For these labels, they are not mutually exclusive and could all be occurring at the same time.
 
-Due to the sample size of the dataset (AudioSet's large database, but smaller balanced datasets for the specific use-cases identified), and the use of GPS, Acceleration and Gyroscope data, the classifier could have been prone to overfitting. \citationneeded Dropout layers are method of regularisation, which is used to help prevent overfitting in machine learning. Dropout layers work by "randomly dropping units (along with their connections) from the neural network during training" \cite{witten2016data}. The purpose of dropout layers in this classifier is to prevent the classifier from overfitting by reducing the over reliance on any individual neuron, but also to reduce the over reliance on any individual data source. This is important because the Audio feature has the highest fidelity (MFCCs across N-bins), and the classifier could have a heavy bias towards it and as a result overfit. Dropout layers will help minimise this overfit. To test this hypothesis, a Random Forest classifier (estimators = 300) was trained on all users to weigh the features, to help identify the design choices. Appendix \ref{apx:FeatureImportance} shows each feature importance breakdown, where \fref{feature_important_just_combined_big_colour.png} shows the scikit Random Trees feature importance of the set (Audio, Accelerometer, Gyroscope, GPS).
-% These should go to Appendix
-
-A Random Tree Classifier was used to evaluate feature importance. Random Tree Classifier's perform poorly on unbalanced datasets. like on  on a the ExtraSensory after random undersampled dataset, during the design phase of the main classifier. Features were Audio (Blue, 26 bins), Accelerometer (Orange, 26 features), Gyroscope (Red, 26 features), GPS (Green, 17 features)
-
-\fFigure{feature_important_just_combined_big_colour.png}{A Random Tree Classifier was used to evaluate feaure importance on a the ExtraSensory after random undersampled dataset, during the design phase of the main classifier. Features were Audio (Blue, 26 bins), Accelerometer (Orange, 26 features), Gyroscope (Red, 26 features), GPS (Green, 17 features)}{1}
-
-\lstinputlisting[
-    language=python,
-    float=h,
-    numbers=left,
-    xleftmargin=1cm,
-    frame=shadowbox,
-    caption={Code snippet for the early CNN model\label{lst:cnnpythonlisting}},
-    ]{Code/tensorflow_cnn.py}
+For this project, a binary classifier and a multi-label classifier will be used and evaluated. The reason for this is because the intent of the project is to answer the question does supplementary data assist in classifying an Acoustic Event Detection and Classification (AEC/D) problem, and a binary classifier is a valid and succinct way to answer this question. However for most realistic use cases, what is important is whether the result is valid in a multi-label classifier. For this reason, the methodology section will be applied to creating a multi-label variant of the network. This will use the same hyperparameter optimisation as the binary classifier and will be discussed in the results. 
 
 
-\subsubsection{scikit-learn}
-
-Scikit-learn is a statistics and machine learning for Python. It was selected due to it's ease of use, and has been used to analyse, prototype and produce the results of this paper.
-
+% * What is a classifier - maps data into categories, or in our case audio/imu data in AEC/AED labels.
+% * What is binary, multilabel, multiclass etc.
+% * What are we going to use? Binary, multilabel
+%     * The result we're investigating is whether supplementary data in audio assists classification. We only need a binary classifier for this. However, the most realistic usecase would be required multiple classifications through either a ensamble of classifiers, or a multilabel classifier with manual mutual exclusion post-processing (e.g. driving and walking are muturally exclusive)
+%     * This is because our problem has mutliple output predictions, and not every label is exclusive (e.g. a different class), thus we can live with having this be a multilabel classifier
 
 \subsubsection{Model Selection}
 Model selection is an important aspect of Machine Learning, because of what is known as a the "No Free Lunch" theorem. 
@@ -650,7 +635,7 @@ The multilayer perceptron classifier has been selected this
 
 For our project we are using tabular time-invariant data using a snapshot data in a tabular format means that we will not see the benefits of a convolution neural network in a deep learning environment vs the more simple mlpclassifier which trains faster will receive the better result and is expected to compress better winNetwork(parametee will also
 
-\subparagraph{Final Model}
+\subparagraph{Final Model} \flagforreview fix the details
 The MLPClassifier is a feedforward neural network, trained via backpropegation. It was set up using the \inlineQuote{lbfgs} solver, an alpha equal to $1e-5$, and was handselected to have 80 by 10 hidden layers (80 long, 10 deep). This was the classifier to use for evaluation.
 
 % \begin{itemize}
@@ -663,8 +648,30 @@ The MLPClassifier is a feedforward neural network, trained via backpropegation. 
 
 
 \subsection{Model Validation}
-Validation is the process of testing a trained model on the hold-out test set of data. This is an important aspect of machine learning process because model validation train and most importantly stop training our model. In this way what we're doing is trying to find the optimal model for our solution. There are many ways to do it which we will now discuss / evaluate. \\
-First option accuracy. Accuracy is a very poor metric for machine learning due to it's due to it's formula attach that simply takes the simply takes the number of classes and checks how many were correctly classified this is a poor choice in this is a poor choice as a metric because it because the innate hypothetical situation a perfect classifier would classify everything is the target class in this way accuracy would then demonstrate that this perfect classifier successfully had an accuracy of 100\% because it was able to correctly and accurately assess every class next we have true positives and false positives true positive is how many how many positives were how many real positives that we tried to classify were in the in the final prediction divide that by the number of true positives as well as the number of false positives please give us a ratio of how many correct classifications were correct this is a very useful metric because vis this could be a key tunable element depending on your use case of the model for instance if you are working on a medical scanning device in the health industry you may want a very high true positive also called specificity or something I'm not sure you may want a very high true positive because you won't want to miss any any missed positive classes in this case you might be happy to make the tradeoff for trade-off in false positive readings conversely you have the metric which is true false is which room negativesverification and extending on verification code to verify model we got those of those unless not against machine learning because model validation drive Powell we train and most important stuff training on model in this way what would doing is trying to find the optimal models for a solution there many way to do it which will now just got flash evaluate best option accuracy accuracy is a very cool metric full machine learning to do it you know it's full Mila attached that simply take the simply take the number or Claus's and check how many with correctly classified this is a pool choice in this is cool choice as a metric because it because you night hypothetical situation upset classify I would classify everything is to Target claw in this way accuracy with then demonstrate that these posts classify successfully had and extra see all 100\% because he was able to correctly and extra late set everyonebest affinity for both negative is another metric very similarly to propose to accessibility this is very important Drexel whenfor when false negatives are reported a situation where this might be important is manufacturing capability where you might you might have quality assurance further down the line this is useful for when you want to maximize the number of correctly rejected units that is to say minimise the amount of units rejected without harming other stuff and no other option for model metrics is the area under the curve the area under the curve shows the reduced error in the model that is to say area under the curve is a graph that shows where how the error rate decrease is overtime this is most commonly used in conjunction with the something under the curve which shows overfitting of the model when used in conjunction the optimal solution for the model and that's how to validate the model is to pick is to pick a set of model parameters that minimises the area under the curve as well as minimises the area of the other curve but I can't remember in this way you are able to produce the model that will generalise well as well as having a high precision precision is another metric which is used to specify what something that I'll have to have a look at the actual formula F1 score is a industry standard that is important to evaluate a model's accuracy it does not however evaluate the overfitting as a broad metric it may indicate through a horror results based on the data set and conversely as with overfitting it may not demonstrate what level of generalisation is available in the model in this way the F1 school could be used in conjunction with other metrics
+Validation is the process of optimisating the hyperparameters of a model on the hold-out validation set of data. This is an important aspect of machine learning process because model validation cannot be learnt from data. That is to say, hyperparameter optimisation is out of the scope of training via traditional gradient decent and back propagation. Due to the "No Free Lunch" theorem, a model will be chosen and must be optimised before training begins. This is an extension of trying to find the optimal model for the solution. 
+
+\paragraph{Model Performance Metrics}
+Before the hyperparameters can be optimised, a metrics to optimise the network on must be selected, of which there are many ways to do it which will now discussed. \\
+
+
+\subparagraph{Terminology} 
+Before evaluating metrics, the Terminology of the following formula must be formaulised. The first is what a "correct" classification is. The following terminology will be used:
+\begin{itemize}
+    \item True Positives (TP) - A correctly classified positive sample
+    \item True Negatives (TN) - A correctly classified negative sample
+    \item False Positives (FP) - A negative example incorrectly classified as positive
+    \item False Negatives (FN) - A positive example incorrectly classified as negative
+\end{itemize}
+
+These four terms are the main parameters in the following formula
+
+\subparagraph{Accuracy} 
+Accuracy is the measure of how many samples the classifier correctly classified across it's operation, as shown in \ref{eq:Accur}.
+\begin{gather}%\label{eq:Accur}
+    \frac{TP+TN}{TP+FP+TN+FN}
+\end{gather}
+
+Accuracy is a very poor metric for machine learning due to it's formula attach that simply takes the simply takes the number of classes and checks how many were correctly classified this is a poor choice in this is a poor choice as a metric because it because the innate hypothetical situation a perfect classifier would classify everything is the target class in this way accuracy would then demonstrate that this perfect classifier successfully had an accuracy of 100\% because it was able to correctly and accurately assess every class next we have true positives and false positives true positive is how many how many positives were how many real positives that we tried to classify were in the in the final prediction divide that by the number of true positives as well as the number of false positives please give us a ratio of how many correct classifications were correct this is a very useful metric because vis this could be a key tunable element depending on your use case of the model for instance if you are working on a medical scanning device in the health industry you may want a very high true positive also called specificity or something I'm not sure you may want a very high true positive because you won't want to miss any any missed positive classes in this case you might be happy to make the tradeoff for trade-off in false positive readings conversely you have the metric which is true false is which room negativesverification and extending on verification code to verify model we got those of those unless not against machine learning because model validation drive Powell we train and most important stuff training on model in this way what would doing is trying to find the optimal models for a solution there many way to do it which will now just got flash evaluate best option accuracy accuracy is a very cool metric full machine learning to do it you know it's full Mila attached that simply take the simply take the number or Claus's and check how many with correctly classified this is a pool choice in this is cool choice as a metric because it because you night hypothetical situation upset classify I would classify everything is to Target claw in this way accuracy with then demonstrate that these posts classify successfully had and extra see all 100\% because he was able to correctly and extra late set everyonebest affinity for both negative is another metric very similarly to propose to accessibility this is very important Drexel whenfor when false negatives are reported a situation where this might be important is manufacturing capability where you might you might have quality assurance further down the line this is useful for when you want to maximize the number of correctly rejected units that is to say minimise the amount of units rejected without harming other stuff and no other option for model metrics is the area under the curve the area under the curve shows the reduced error in the model that is to say area under the curve is a graph that shows where how the error rate decrease is overtime this is most commonly used in conjunction with the something under the curve which shows overfitting of the model when used in conjunction the optimal solution for the model and that's how to validate the model is to pick is to pick a set of model parameters that minimises the area under the curve as well as minimises the area of the other curve but I can't remember in this way you are able to produce the model that will generalise well as well as having a high precision precision is another metric which is used to specify what something that I'll have to have a look at the actual formula F1 score is a industry standard that is important to evaluate a model's accuracy it does not however evaluate the overfitting as a broad metric it may indicate through a horror results based on the data set and conversely as with overfitting it may not demonstrate what level of generalisation is available in the model in this way the F1 school could be used in conjunction with other metrics
 
 
 The classifier selected is validated on the data by doing a k fold. to pick hyperparameters\flagforreview for the mlpclassifier this is the process of refining what are chosen models parameters are and finally will use the F1 score as a primary metric which will help determine what what our classifier is finally we will then report on these results as well as run through some through user 59 user 60 which has been dedicated to be out final evaluation example
@@ -767,6 +774,48 @@ Details of a Grid Search can be found in Appendix \ref{apx:GSAttempt}.
 
 
 
+The classification libraries used were Google's TensorFlow and scikit-learn. Both libraries are python based (supporting both Python 3.0, and Python 2.7) \cite{scikitlearnpythonVer} \cite{TFpythonVer}%\cite{TFpythonVer} \cite{scikit-learn-pyV}.
+
+\subsubsection{TensorFlow}
+TensorFlow is an opensource machine learning framework, primarily developed by Google.
+\inlineQuote{It has a comprehensive, flexible ecosystem of tools, libraries and community resources that lets researchers push the state-of-the-art in ML and developers easily build and deploy ML powered applications.}\cite{TFwebsite}. TensorFlow in conjunction with with Keras was used to prototype the inital pipeline. According to the textbook, \inlineQuote{Hands on Machine Learning with Scikit, Keras \& TensorFlow}, a pipeline is 
+\fancyquote{
+A sequence of data processing components is called a data pipeline. Pipelines are very common in Machine Learning systems, since there is a lot of data to manipulate and many data transformations to apply\cite{HandsOnMLTextbook}.
+}
+
+TensorFlow and Keras were selected to initially design the classifier due it's ability to run on the TensorFlow Lite. The code snippet \ref{lst:pythonlisting} shows how a model converts.
+
+\lstinputlisting[
+    language=python,
+    float=h,
+    numbers=left,
+    xleftmargin=1cm,
+    frame=shadowbox,
+    caption={Code snippet for converting the classifier model to TensorFlow Lite for mobile operation \cite{convertTF}\label{lst:pythonlisting}},
+    ]{Code/tensorflow_convert.py}
+
+The original prototyping for audio only classification with TensorFlow and Keras was to use matplotlib to plot the spectrogram of each audio sample, and use a sequential CNN to process the spectrograms. A code snippet for that design is shown in \ref{lst:cnnpythonlisting}.
+
+Due to the sample size of the dataset (AudioSet's large database, but smaller balanced datasets for the specific use-cases identified), and the use of GPS, Acceleration and Gyroscope data, the classifier could have been prone to overfitting. \citationneeded Dropout layers are method of regularisation, which is used to help prevent overfitting in machine learning. Dropout layers work by "randomly dropping units (along with their connections) from the neural network during training" \cite{witten2016data}. The purpose of dropout layers in this classifier is to prevent the classifier from overfitting by reducing the over reliance on any individual neuron, but also to reduce the over reliance on any individual data source. This is important because the Audio feature has the highest fidelity (MFCCs across N-bins), and the classifier could have a heavy bias towards it and as a result overfit. Dropout layers will help minimise this overfit. To test this hypothesis, a Random Forest classifier (estimators = 300) was trained on all users to weigh the features, to help identify the design choices. Appendix \ref{apx:FeatureImportance} shows each feature importance breakdown, where \fref{feature_important_just_combined_big_colour.png} shows the scikit Random Trees feature importance of the set (Audio, Accelerometer, Gyroscope, GPS).
+% These should go to Appendix
+
+A Random Tree Classifier was used to evaluate feature importance. Random Tree Classifier's perform poorly on unbalanced datasets. like on  on a the ExtraSensory after random undersampled dataset, during the design phase of the main classifier. Features were Audio (Blue, 26 bins), Accelerometer (Orange, 26 features), Gyroscope (Red, 26 features), GPS (Green, 17 features)
+
+\fFigure{feature_important_just_combined_big_colour.png}{A Random Tree Classifier was used to evaluate feaure importance on a the ExtraSensory after random undersampled dataset, during the design phase of the main classifier. Features were Audio (Blue, 26 bins), Accelerometer (Orange, 26 features), Gyroscope (Red, 26 features), GPS (Green, 17 features)}{1}
+
+\lstinputlisting[
+    language=python,
+    float=h,
+    numbers=left,
+    xleftmargin=1cm,
+    frame=shadowbox,
+    caption={Code snippet for the early CNN model\label{lst:cnnpythonlisting}},
+    ]{Code/tensorflow_cnn.py}
+
+
+\subsubsection{scikit-learn}
+
+Scikit-learn is a statistics and machine learning for Python. It was selected due to it's ease of use, and has been used to analyse, prototype and produce the results of this paper.
 
 % \subsection{}
 
@@ -1114,6 +1163,69 @@ This shows how a Grid Search was used for hyperparameter optimisation. In partic
     0.8249400479616308
     {'alpha': 0.11, 'hidden_layer_sizes': (151,)}
 \end{lstlisting}
+
+
+\section{Table of ExtraSensory Labels}\label{apx:ExtraSensoryLabels}
+\begin{table}[h]
+\begin{center}  
+\caption{ExtraSensory Labels \cite{Vaizman2017}}\label{tab:ExtraSensoryLabels}
+\begin{tabular}{ll}
+    \hline\hline
+\# & Label Description            \\ \hline 
+1  & LYING\_DOWN                  \\
+2  & SITTING                      \\
+3  & FIX\_walking                 \\
+4  & FIX\_running                 \\
+5  & BICYCLING                    \\
+6  & SLEEPING                     \\
+7  & LAB\_WORK                    \\
+8  & IN\_CLASS                    \\
+9  & IN\_A\_MEETING               \\
+10 & LOC\_main\_workplace         \\
+11 & OR\_indoors                  \\
+12 & OR\_outside                  \\
+13 & IN\_A\_CAR                   \\
+14 & ON\_A\_BUS                   \\
+15 & DRIVE\_-\_I\_M\_THE\_DRIVER  \\
+16 & DRIVE\_-\_I\_M\_A\_PASSENGER \\
+17 & LOC\_home                    \\
+18 & FIX\_restaurant              \\
+19 & PHONE\_IN\_POCKET            \\
+20 & OR\_exercise                 \\
+21 & COOKING                      \\
+22 & SHOPPING                     \\
+23 & STROLLING                    \\
+24 & DRINKING\_\_ALCOHOL\_        \\
+25 & BATHING\_-\_SHOWER           \\
+26 & CLEANING                     \\
+27 & DOING\_LAUNDRY               \\
+28 & WASHING\_DISHES              \\
+29 & WATCHING\_TV                 \\
+30 & SURFING\_THE\_INTERNET       \\
+31 & AT\_A\_PARTY                 \\
+32 & AT\_A\_BAR                   \\
+33 & LOC\_beach                   \\
+34 & SINGING                      \\
+35 & TALKING                      \\
+36 & COMPUTER\_WORK               \\
+37 & EATING                       \\
+38 & TOILET                       \\
+39 & GROOMING                     \\
+40 & DRESSING                     \\
+41 & AT\_THE\_GYM                 \\
+42 & STAIRS\_-\_GOING\_UP         \\
+43 & STAIRS\_-\_GOING\_DOWN       \\
+44 & ELEVATOR                     \\
+45 & OR\_standing                 \\
+46 & AT\_SCHOOL                   \\
+47 & PHONE\_IN\_HAND              \\
+48 & PHONE\_IN\_BAG               \\
+49 & PHONE\_ON\_TABLE             \\
+50 & WITH\_CO-WORKERS             \\
+51 & WITH\_FRIENDS                \\ \hline 
+\end{tabular}    
+\end{center}
+\end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
