@@ -150,9 +150,31 @@ I helped:
 \vspace{-5mm}
 \section*{Executive summary}
 \vspace{-3mm}
-The project investigated whether using data from an Inertial Measurement Unit (IMU) and GPS data as additional data points in an Acoustic Event Detection / Classification (AED/C) problem would improve a classifier's ability to classify an “acoustic event”. The motivation behind this was to improve AED/C without onerous microphone requirements. The project began documenting the process of evaluating the research problem for a car use case (specific tasks such as putting on a seatbelt, closing doors, indicating, horn use, etc.). This includes the requirements, data collection, data pre-processing, design and training of the classifier, and evaluating the results. Due to a lack of data, the public ExtraSensory dataset was used for the AED/C for similar events such as walking, driving, sleeping, computer work, etc. to demonstrate the researched technologies. Results show the supplementary data improved classification. This research shows multi-sensor AED/C is effective but requires more datasets. \flagforreview
-% This document will cover the author's progress through the Final Year Project. The scope of the project is a portable data recording system coupled with offline processing to track and identify specific physical events in close proximity that occurred during recording. Acoustic Event Detection and Classification is the focus of this paper, and the goal of this FYP report is exploring and validating current research techniques in an uncontrolled environment for a specific use case. The content of this paper will start with, system engineering, problem analysis, a review into the current research and will expand to document python implementation, machine learning, data pre-processing, app development and progress in developing the proof of concept to take logged data from a phone and process it on a sever to create a “trackfile” (special csv file).
+The project investigated whether supplementary data (Accelerometer, Gyroscope, GPS) will improve a classifiers ability to classify an "Acoustic Event" in an Acoustic Event Detection / Classification (AED/C) problem. The motivation behind this was to improve AED/C without onerous microphone requirements, to enable more wide spread comerical use of AED/C. \\
 
+Section \ref{sec:ProblemAnalysis} of the project begins by evaluating the research problem for a car use case, and eliciting the design requirements through system engineering principles. \\
+
+Section \ref{sec:LitReview} reviews current research. Presently the field is expanding with broader advances in the wider machine learning community, however AED/C still remains a non-trivial problem that doesn't have a viable solution yet. Comparatively to the wider machine learning community, Acoustic Event Detection is very limited in active researchers. This specific issue hasn't been explicitly answered. \\
+
+Section \ref{sec:Method} details selecting the desired output, the required data input, a metric to score by, a classifier, optimising hyperparameters against the previous options, and finally training and validating aginst the data. For this project:
+{\small
+\begin{itemize}
+    \item The desired output is a label (or labels) detailing the Acoustic Event in the sample (e.g. The labels found in \ref{apx:ExtraSensoryLabels} like `Walking').
+    \item The required data is the ExtraSensory dataset, or a custom dataset as recorded by the project's App.
+    \item The score selected is the F1 score. This is due to it being an industry standard.
+    \item The classifier chosen is the MLPClassifier which is a feedforward neural network, trainded via backpropegation.
+    \item Hyperparameters of the MLPClassifier are chosen via a Random Search Cross Validation.
+    \item Training and Validation was run with Early Stopping using a 10\% validation set, using 59 out of the 60 ExtraSensory users.
+    \item Final testing is done with the 60\textsuperscript{th} user.
+\end{itemize}
+}
+Section \ref{sec:Results} the desired results are a  difference \flagforreview in the F1 score, after comparing a classifier with and without the supplementary data. This is calculated through analysis of F1 Scores of a binary MLPClassifier, and a multi-label MLPClassifier, both trained on the ExtraSensory dataset using the extact method described in Section \ref{sec:Method}. The output of the classifiers are also analysed and found to be a valid multilabel classifier for realworld use.
+
+Section \ref{sec:Discussion} evaluates the effect supplementary data had on improving classification. It will discuss how multi-sensor AED/C is effective but requires more datasets to test smaller, more specific tasks. \flagforreview
+
+Section \ref{sec:Conclusion} will present how these results will contribute to the field, and suggested future work into new datasets with a greater number of labels.
+% This document will cover the author's progress through the Final Year Project. The scope of the project is a portable data recording system coupled with offline processing to track and identify specific physical events in close proximity that occurred during recording. Acoustic Event Detection and Classification is the focus of this paper, and the goal of this FYP report is exploring and validating current research techniques in an uncontrolled environment for a specific use case. The content of this paper will start with, system engineering, problem analysis, a review into the current research and will expand to document python implementation, machine learning, data pre-processing, app development and progress in developing the proof of concept to take logged data from a phone and process it on a sever to create a “trackfile” (special csv file).
+\newpage
 %%%%%%%%%%%%%%
 \vspace{-2mm}
 \section*{Acknowledgements}
@@ -166,6 +188,12 @@ I'd also like to thank each and every mechatronics Academic staff member at the 
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
+This project aims to answer the question \inlineQuote{[What is] the effect of supplementary data on Acoustic Event Classification through Machine Learning}. To do this, results will analyse the F1 Scores of a binary MLPClassifier, and a multi-label MLPClassifier, both trained on the ExtraSensory dataset using the extact method described in Section \ref{sec:Method}.
+Additionally, the output of the classifiers will be analysed for \inlineQuote{validity}. Does the classifier successfully detect and classify an Acoustic Event?
+
+The desired results are a demonstratable difference (or lack thereof) in the F1 score, after comparing a classifier with and without supplementary data.
+This will 
+
 Debriefing is a tool used to educate an individual, inform a collective and create a holistic historical recording of an event. Wikipedia defines the process of debriefing as: (1) Receiving an explanation, (2) Receiving information and situation-based reminders of context, (3) Reporting of measures of performance, and/or opportunities to further investigate the results of a study, investigation, or assessment of performance after participation in an immersive activity is complete \cite{Wiki}\flagforreview. Traditionally this is done through a collection of primary sources (where available) and secondary sources. In the information age, these primary sources have expanded to include large datasets, recordings and other digital forensics. This new and increasing range of primary sources provides the potential to significantly improve the steps of debriefing, and ultimately improve debriefing outcomes.
 
 This paper will report on the Author’s progress of harnessing this new potential and is organised as follows: section 2 will discuss how the scope has been analysed and reduced, section 3 will review the literature of this research topic, section 4 will discuss the method of implementing the technology, section 5 will discuss the evaluation methodology, and section 6 will discuss the results of the proof-of-concept.
@@ -261,8 +289,9 @@ A matrix diagram was made to review the now more refined, reduced scope as shown
 The purpose of the project is to hypothesis and produce a proof-of-concept of how digital technologies could improve debriefing processes and outcomes. This seems achievable within 1 year, and should provide an excellent learning opportunity for the author.
 
 %%%%%%%%%%%%%%%%%%%%%%%
-\section{Review Of Literature}
+\section{Review Of Literature}\label{sec:LitReview}
 A literature review of the current research was conducted with guidance from University of Queensland’s guide to Literature reviews \cite{QueenslandReview} . There are 3 nested areas of research that are of interest to this project. The wider classification and regression research topic, the machine learning topic that covers many various fields of implemented and theoretical machine learning applications, and finally the specific field of Acoustic Event Detection and Classification (AED/AEC); this field has traditionally relied on older techniques, and is undergoing a revolution with machine learning. 
+
 \fFigure{niche.png}{The literature for this project is a niche topic in the Machine Learning area of research}{0.8}
 
 \subsection{Machine Learning}
@@ -306,7 +335,7 @@ The winning model used in the DCASE2018 Task 4 challenge used a “Mean-teacher�
 \end{gather*}
 
 %%%%%%%%%%%%%%%%%%%%%%%
-\section{Method}\ref{sec:Method}
+\section{Method} \label{sec:Method}
 \subsection{Introduction to the Method}
 In a traditional machine learning problem there are 5 stages to the method; 
 
@@ -907,7 +936,7 @@ The method details selecting the desired output, the required data input, a metr
 
 
 %%%%%%%%%%%%%%%%%%%%%%%
-\section{Results}
+\section{Results} \label{sec:Results}
 
 The desired results are a demonstratable difference (or lack thereof) in the F1 score, after comparing a classifier with and without supplementary data.
 This will answer the question, and title of the report, \inlineQuote{[What is] the  effect of supplementary data on Acoustic Event Classification through Machine Learning}. To this effect, the results will analyse the F1 Scores of a binary MLPClassifier, and a multi-label MLPClassifier, both trained on the ExtraSensory dataset using the extact method described in Section \ref{sec:Method}.
@@ -921,19 +950,25 @@ Additionally, the output of the classifiers will be analysed for \inlineQuote{va
     float=h,
     numbers=none,
     frame=shadowbox]
-== Training with 31918 examples. For label 'Walking' we have 17641 positive and 14277 negative examples.
-== Projected the features to 26 features from the sensors: Aud
+--- Training Metrics ---
+Samples: 31918 . 
+Label: 'Walking'
+TP: 17641 
+TN: 14277
+Sensors: Aud
+Features: 26 features 
+
 == Testing with 8023 examples. For label 'Walking' we have 4495 positive and 3528 negative examples.
-----------
-Accuracy*:         0.79
-Sensitivity (TPR): 0.83
-Specificity (TNR): 0.73
-Balanced accuracy: 0.78
-Precision**:       0.80
-F-Score:           0.78
+
+--- Performance Metrics ---
+Accuracy: 0.79
+Recall(sensitivity): 0.83
+Precision: 0.80
+Specificity: 0.73
+F-Score: 0.78
 --- Confusion Matrix ---
-$[[2581 | 947]$
-$[ 775 | 3720]]$
+[[2581 | 947]
+[ 775 | 3720]]
 \end{lstlisting}
 
 \subsection{Binary MLPClassifier (Audio, Accelerometer, Gyroscope, GPS)}
@@ -954,8 +989,8 @@ Balanced accuracy: 0.83
 Precision**:       0.85
 F-Score:           0.83
 --- Confusion Matrix ---
-$[[2914 | 685]$
-$[ 648 | 3753]]$
+[[2914 | 685]
+[ 648 | 3753]]
 \end{lstlisting}
 
 
