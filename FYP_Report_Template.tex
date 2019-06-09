@@ -948,6 +948,12 @@ Additionally, the output of the classifiers will be analysed for \inlineQuote{va
 
 \subsection{Binary MLPClassifier}
 
+A Binary MLP Classifier was run using the following settings:
+\begin{lstlisting}
+    {'solver': 'adam', 'learning_rate': 'adaptive', 'hidden_layer_sizes': (150, 100, 50), 'alpha': 0.03, 'activation': 'tanh'}
+\end{lstlisting}
+It was trained to classifiy label 2.
+
 \paragraph{Results from Audio Only}
 \begin{lstlisting}[
     language=python,
@@ -989,8 +995,20 @@ F-Score: 0.84
  [ 609 3707]]
 \end{lstlisting}
 
+\subparagraph{Area Under Reciever Operating Characteristics (AUROC)}
+The AUROC was calculated and plotted for the binary MLP classifier.
+\fFigure{both_ROC.png}{AUROC of Audio+Extra}{1}
+% \fFigure{ROC_audio.png}{AUROC of Audio only}{0.6}
+
+The AUROC was not calculated for the multilabel, as the AUROC is a comparison on a per-class classification basis, and would be represented by the 20 labels evaluated.
+
 \subsection{Multilabel MLPClassifier}
 
+A Multilabel MLP Classifier was run using the following settings:
+\begin{lstlisting}
+    {'solver': 'adam', 'learning_rate': 'invscaling', 'hidden_layer_sizes': (151, 52, 26), 'alpha': 0.07, 'activation': 'tanh'}
+\end{lstlisting}
+It was trained to classifiy labels 2 through 22 inclusive.
 
 \paragraph{Results from Audio Only}
 \begin{lstlisting}
@@ -1113,8 +1131,10 @@ The results above aim to demonstrate a quanitative difference in F1 score across
 
 \subparagraph{Assumptions}
 The results were 
+
 \subparagraph{Confidence and Qualatitive Evaluation of Result}
 The result had been analysed using the Area Under Reciever Operating Characteristics (AUROC) plot, to determine how the classifier would operate over different decision boundries. The AUROC plots This was done to ensure that the results produced were not the result of a classifier optimised about the 
+
 
 AUROC curve here metrics.roc\_curve(y\_pred,), discuss the validity of the 
 
@@ -1545,6 +1565,7 @@ layer sizes
 Fitting 3 folds for each of 30 candidates, totalling 90 fits
 [Parallel(n_jobs=-1)]: Using backend LokyBackend with 4 concurrent workers.
 F-Score: 0.60
+{'solver': 'adam', 'learning_rate': 'invscaling', 'hidden_layer_sizes': (151, 52, 26), 'alpha': 0.07, 'activation': 'tanh'}
 ----------
 ----------
 --- Training Metrics ---

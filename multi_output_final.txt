@@ -62,8 +62,9 @@ end
 layer sizes
 Fitting 3 folds for each of 30 candidates, totalling 90 fits
 [Parallel(n_jobs=-1)]: Using backend LokyBackend with 4 concurrent workers.
-
 F-Score: 0.60
+{'solver': 'adam', 'learning_rate': 'invscaling', 'hidden_layer_sizes': (151, 52, 26), 'alpha': 0.07, 'activation': 'tanh'}
+
 == Projected the features to 95 features from the sensors: Aud, Acc, Gyro, Loc
 C:\Program Files\Python36\lib\site-packages\sklearn\metrics\classification.py:1143: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no predicted samples.
   'precision', 'predicted', average, warn_for)

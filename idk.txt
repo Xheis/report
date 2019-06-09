@@ -1,0 +1,89 @@
+== Training with 31897 examples. For label 'Walking' we have 17735 positive and 14162 negative examples.
+== Projected the features to 95 features from the sensors: Aud, Acc, Gyro, Loc
+== Testing with 8000 examples. For label 'Walking' we have 4401 positive and 3599 negative examples.
+----------
+Accuracy*:         0.83
+Sensitivity (TPR): 0.85
+Specificity (TNR): 0.81
+Balanced accuracy: 0.83
+Precision**:       0.85
+F-Score:           0.83
+--- Confusion Matrix ---
+$[[2914 | 685]$
+$[ 648 | 3753]]$
+
+just Audio
+== Training with 31918 examples. For label 'Walking' we have 17641 positive and 14277 negative examples.
+== Projected the features to 26 features from the sensors: Aud
+== Testing with 8023 examples. For label 'Walking' we have 4495 positive and 3528 negative examples.
+----------
+Accuracy*:         0.79
+Sensitivity (TPR): 0.83
+Specificity (TNR): 0.73
+Balanced accuracy: 0.78
+Precision**:       0.80
+F-Score:           0.78
+--- Confusion Matrix ---
+$[[2581 | 947]$
+$[ 775 | 3720]]$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- Training Metrics ---
+Samples: 126
+Label: Walking
+TP: 70
+TN: 170
+Sensors: ['Aud', 'Acc', 'Gyro', 'Loc']
+Features: 126 features
+--- Performance Metrics ---
+Accuracy: 0.95
+Recall(sensitivity): 0.91
+Precision: 0.93
+Specificity: 0.97
+F-Score: 0.92
+--- Confusion Matrix CLASS 2 ---
+[[44  5]
+ [ 7 70]]
+--- Confusion Matrix CLASS 3 ---
+[[126]]
+== Projected the features to 95 features from the sensors: Aud, Acc, Gyro, Loc
+C:\Program Files\Python36\lib\site-packages\sklearn\metrics\classification.py:1143: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no predicted samples.
+  'precision', 'predicted', average, warn_for)
+C:\Program Files\Python36\lib\site-packages\sklearn\metrics\classification.py:1145: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true samples.
+  'recall', 'true', average, warn_for)
+== Projected the features to 95 features from the sensors: Aud, Acc, Gyro, Loc
+----------
+----------
+--- Training Metrics ---
+Samples: 2158
+Label: Walking
+TP: 187
+TN: 3537
+Sensors: ['Aud', 'Acc', 'Gyro', 'Loc']
+Features: 2158 features
+--- Performance Metrics ---
+Accuracy: 0.86
+Recall(sensitivity): 0.84
+Precision: 0.25
+Specificity: 0.86
+F-Score: 0.39
+--- Confusion Matrix CLASS 2 ---
+[[1379  556]
+ [  36  187]]
+--- Confusion Matrix CLASS 3 ---
+[[2158]]
