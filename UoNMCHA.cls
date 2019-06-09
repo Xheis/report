@@ -12,6 +12,7 @@
 \RequirePackage{lastpage}
 \RequirePackage{url}
 \RequirePackage{graphicx} % For graphics
+\RequirePackage{datetime}
 
 \AtBeginDocument{\setcounter{page}{\@firstpage}}
 
@@ -21,8 +22,8 @@
 \pagestyle{fancy}
 %% Ordinary pages
 \fancyhf{}
-\fancyhead[CE]{School of Engineering, Discipline of Mechanical Engineering and Mechatronics}
-\fancyhead[CO]{\usebox{\shorttitlebox}}
+\fancyhead[CE]{Last Updated: \today : \currenttime} %%School of Engineering, Discipline of Mechanical Engineering and Mechatronics}
+\fancyhead[CO]{Last Updated: \today : \currenttime} %%\usebox{\shorttitlebox} 
 \fancyfoot[LE]{\thepage}
 \fancyfoot[RO]{\thepage}
 %% First page
