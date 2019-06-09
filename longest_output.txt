@@ -1,0 +1,148 @@
+F-Score: 0.81
+{'solver': 'adam', 'learning_rate': 'invscaling', 'hidden_layer_sizes': (151, 52, 26), 'alpha': 0.07, 'activation': 'tanh'}
+== Projected the features to 95 features from the sensors: Aud, Acc, Gyro, Loc
+C:\Program Files\Python36\lib\site-packages\sklearn\metrics\classification.py:1143: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no predicted samples.
+  'precision', 'predicted', average, warn_for)
+== Projected the features to 95 features from the sensors: Aud, Acc, Gyro, Loc
+----------
+----------
+--- Training Metrics ---
+Samples: 7865
+Label: Walking
+TP: 10431
+TN: 132216
+Sensors: ['Aud', 'Acc', 'Gyro', 'Loc']
+Features: 7865 features
+--- Performance Metrics ---
+Accuracy: 0.95
+Recall(sensitivity): 0.71
+Precision: 0.81
+Specificity: 0.98
+F-Score: 0.74
+--- Confusion Matrix CLASS 2 ---
+[[2681  847]
+ [ 523 3814]]
+--- Confusion Matrix CLASS 3 ---
+[[7856    0]
+ [   9    0]]
+--- Confusion Matrix CLASS 4 ---
+[[7788    6]
+ [  45   26]]
+--- Confusion Matrix CLASS 5 ---
+[[6738  104]
+ [ 252  771]]
+--- Confusion Matrix CLASS 6 ---
+[[7796    9]
+ [  48   12]]
+--- Confusion Matrix CLASS 7 ---
+[[7766    3]
+ [  92    4]]
+--- Confusion Matrix CLASS 8 ---
+[[7790    3]
+ [  72    0]]
+--- Confusion Matrix CLASS 9 ---
+[[7080  111]
+ [ 318  356]]
+--- Confusion Matrix CLASS 10 ---
+[[4547  358]
+ [ 776 2184]]
+--- Confusion Matrix CLASS 11 ---
+[[6191  312]
+ [ 594  768]]
+--- Confusion Matrix CLASS 12 ---
+[[7783    5]
+ [  75    2]]
+--- Confusion Matrix CLASS 13 ---
+[[7838    1]
+ [  26    0]]
+--- Confusion Matrix CLASS 14 ---
+[[7747   16]
+ [  80   22]]
+--- Confusion Matrix CLASS 15 ---
+[[7838    1]
+ [  26    0]]
+--- Confusion Matrix CLASS 16 ---
+[[5280  328]
+ [ 536 1721]]
+--- Confusion Matrix CLASS 17 ---
+[[7827    1]
+ [  37    0]]
+--- Confusion Matrix CLASS 18 ---
+[[6241  301]
+ [ 668  655]]
+--- Confusion Matrix CLASS 19 ---
+[[7735   11]
+ [  78   41]]
+--- Confusion Matrix CLASS 20 ---
+[[7694   17]
+ [  99   55]]
+== Projected the features to 95 features from the sensors: Aud, Acc, Gyro, Loc
+C:\Program Files\Python36\lib\site-packages\sklearn\metrics\classification.py:1143: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no predicted samples.
+  'precision', 'predicted', average, warn_for)
+C:\Program Files\Python36\lib\site-packages\sklearn\metrics\classification.py:1145: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true samples.
+  'recall', 'true', average, warn_for)
+== Projected the features to 95 features from the sensors: Aud, Acc, Gyro, Loc
+----------
+----------
+--- Training Metrics ---
+Samples: 2158
+Label: Walking
+TP: 588
+TN: 37017
+Sensors: ['Aud', 'Acc', 'Gyro', 'Loc']
+Features: 2158 features
+--- Performance Metrics ---
+Accuracy: 0.92
+Recall(sensitivity): 0.47
+Precision: 0.18
+Specificity: 0.93
+F-Score: 0.43
+--- Confusion Matrix CLASS 2 ---
+[[1163  772]
+ [   9  214]]
+--- Confusion Matrix CLASS 3 ---
+[[2158]]
+--- Confusion Matrix CLASS 4 ---
+[[2158]]
+--- Confusion Matrix CLASS 5 ---
+[[1960  198]
+ [   0    0]]
+--- Confusion Matrix CLASS 6 ---
+[[2088   70]
+ [   0    0]]
+--- Confusion Matrix CLASS 7 ---
+[[2158]]
+--- Confusion Matrix CLASS 8 ---
+[[2158]]
+--- Confusion Matrix CLASS 9 ---
+[[1811  347]
+ [   0    0]]
+--- Confusion Matrix CLASS 10 ---
+[[1602  556]
+ [   0    0]]
+--- Confusion Matrix CLASS 11 ---
+[[2131   27]
+ [   0    0]]
+--- Confusion Matrix CLASS 12 ---
+[[2147   11]
+ [   0    0]]
+--- Confusion Matrix CLASS 13 ---
+[[2158]]
+--- Confusion Matrix CLASS 14 ---
+[[2011    0]
+ [  92   55]]
+--- Confusion Matrix CLASS 15 ---
+[[2158]]
+--- Confusion Matrix CLASS 16 ---
+[[1705  453]
+ [   0    0]]
+--- Confusion Matrix CLASS 17 ---
+[[2158]]
+--- Confusion Matrix CLASS 18 ---
+[[978 302]
+ [559 319]]
+--- Confusion Matrix CLASS 19 ---
+[[2157    1]
+ [   0    0]]
+--- Confusion Matrix CLASS 20 ---
+[[2158]]
