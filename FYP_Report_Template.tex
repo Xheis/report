@@ -31,6 +31,9 @@
 \newcommand{\inlineQuote}[1]{``#1''}
 \newcommand{\fancyquote}[1]{\begin{quotation}\inlineQuote{#1}\end{quotation}}
 \newcommand{\fref}[1] {Figure \ref{#1}}
+\newcommand{\sref}[1] {Section \ref{#1}}
+\newcommand{\tref}[1] {Table \ref{#1}}
+\newcommand{\aref}[1] {Appendix \ref{#1}}
 \newcommand{\fFigure}[3]{
 	\begin{figure}[h]
         \begin{center}  
@@ -997,7 +1000,7 @@ F-Score: 0.84
 
 \subparagraph{Area Under Reciever Operating Characteristics (AUROC)}
 The AUROC was calculated and plotted for the binary MLP classifier.
-\fFigure{both_ROC.png}{AUROC of Audio+Extra}{1}
+\fFigure{both_ROC.png}{ROCs for Audio, Audio+Extra}{1}
 % \fFigure{ROC_audio.png}{AUROC of Audio only}{0.6}
 
 The AUROC was not calculated for the multilabel, as the AUROC is a comparison on a per-class classification basis, and would be represented by the 20 labels evaluated.
@@ -1127,28 +1130,25 @@ The results achieved (shown in \ref{tab:F1Results}) demonstrate that the supplem
 
 
 \section{Discussion}\label{sec:Discussion}
-The results above aim to demonstrate a quanitative difference in F1 score across 2 the classifier with and without Accelerometer, Gyroscope and GPS data. The results achieved did produce a quanitative difference of 10.5\% and 11.9\% \flagforreview for the Binary and Multilabel result respectively. This came with some constraints, 
+The results above aim to demonstrate a quanitative difference in F1 score across 2 the classifier with and without Accelerometer, Gyroscope and GPS data. The results achieved did produce a quanitative relative improvement of 10.5\% and 11.9\% for the Binary and Multilabel result respectively.
 
 \subparagraph{Assumptions}
-The results were 
+The results are constrainted by the assumptions made in \sref{sec:Method}. One assumption is that the \inlineQuote{No Free Lunch} theorem infers that no individual classifier is theoretically better than another pre-training. This assumption infers that the results of this project will affect all models, but the quanitative impact may vary post-training. Simiarly so, there is no assumption on the strength of this result on application to other projects; the dataset and training may significantly affect the the strength of this result.
 
 \subparagraph{Confidence and Qualatitive Evaluation of Result}
-The result had been analysed using the Area Under Reciever Operating Characteristics (AUROC) plot, to determine how the classifier would operate over different decision boundries. The AUROC plots This was done to ensure that the results produced were not the result of a classifier optimised about the 
-
-
-AUROC curve here metrics.roc\_curve(y\_pred,), discuss the validity of the 
+The result had been analysed using the Area Under Reciever Operating Characteristics (AUROC) plot, to determine how the classifier would operate over different decision boundries. The AUROC plots shown in \fref{both_ROC.png} show the consistancy of the model. This is demonstrated via the smooth continuity of the ROC curve (no major jumps in TP performance). This sanity check ensures that the results produced were not the result of a classifier optimised about artefact of the post-training model.
 
 \subparagraph{Changing Hyperparameters}
-The results make the assumption that using static hyperparameters across the Audio, and Audio+Extra classifier would be an invalid strategy of testing the hyposthesis. It would be expected that optimising the hyperparameters for one classifier would result in the other classifier perofmring worse without, resulting in a convolution of the effect from the extra data, and a classifier with poorly optimised hyperparameters.
+The results make the assumption that using static hyperparameters across the Audio, and Audio+Extra classifiers would be an invalid strategy of testing the hyposthesis. It would be expected that optimising the hyperparameters for one classifier and not the other would result in the other classifier performing worse. This would result in a convolution of the effect from the extra data, and a classifier with poorly optimised hyperparameters. As such, there is an inverse assumption that optimising both classifiers seperately, but using the same methodology is a fair strategy to minimise the model and it's hyperparameter's effect on F1 Score.
 
 \subparagraph{Complexity} 
-The complexity of the classification task was low compared to similar studies \cite{Tseng2017} \cite{Virtanen2010} due to the limited and broad labels available, but the number of classes compare to previous studies (61 classes, Virtanen 2010\cite{Virtanen2010}). To improve these results, the complexity of the labels could be reviewed through promising new techniques to generate labels, and train a network on weakly supervised data. \cite{Tseng2017}. This would allow a more compelx dataset, such as AudioSet \cite{Audiosetgoogle2018} to reprocess the ExtraSensory database to have a larger number of classes. 
+The complexity of the classification task was low compared to similar studies \cite{Tseng2017} \cite{Virtanen2010} due to the limited and broad labels available in the ExtraSensory dataset. However the number of classes are comparative to previous studies (61 classes, Virtanen 2010 \cite{Virtanen2010}). To improve these results, the complexity of the labels could be improved. A promising new technique is to train a network on weakly supervised data \cite{Tseng2017}, which could extend to generating/classifying new labels on the ExtraSensory dataset. This would allow a more complex dataset, such as AudioSet \cite{Audiosetgoogle2018} to reprocess the ExtraSensory database to have a larger number of classes. 
 
 \subparagraph{Casuastion}
-The direct increase in percentage could occur in 2 areas. The first is during hyperparameter optimisation, in which the hyperparameters are fitted to our activation model using Audio and/or the supplementary data. The second is in the fitting itself, where the supplementary data may contain a signal that could be benefiting the F1 score of the model. If this hyposthesis is correct, then these results will hold valid across other classifiers that require hyperparameter optimisation and fitting of training data.
+The increase in F1 score could occur in 2 areas. The first is during hyperparameter optimisation, in which the hyperparameters are fitted to our activation model using Audio and/or the supplementary data, optimised about the F1 score. The second is in the fitting itself, where the supplementary data may contain a signal that could be benefiting the F1 score of the model. If this hyposthesis is correct, then these results will hold valid across other classifiers that require hyperparameter optimisation and fitting of training data.
 
 \subparagraph{Acoustic Event Detection}
-The validity of the result also holds true for Acoustic Event Classification, however, no Acoustic Event Detection was carried out. That is, a sound sample was classified as an Acoustic Event as a binary output, rather than identifying when the Acoustic Event occured in the sound sample. Phaun discusses this in a paper called \inlineQuote{What Makes Audio Event Detection Harder than Classification?}\cite{Phan2016}. This result of this paper may be valid Acoustic Event Detection, as a detection pipeline is build upon the classifier.
+The validity of the result holds true for Acoustic Event Classification, however, no Acoustic Event \inlineQuote{Detection} was carried out. That is, a sound sample was classified as an Acoustic Event as a binary output, rather than identifying when the Acoustic Event occured in the sound sample. Phaun discusses this in a paper called \inlineQuote{What Makes Audio Event Detection Harder than Classification?}\cite{Phan2016}. This result of this paper may be valid Acoustic Event Detection, as a detection pipeline is build upon the classifier.
 
 
 * making sure that they evaluate their results;
