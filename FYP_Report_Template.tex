@@ -44,11 +44,17 @@
 	\end{figure}
 }
 
-
-\newcommand\SentenceCase[1]{%
-  \caselower[e]{#1}%
-  \capitalize[q]{\thestring}%
+\newcommand{\NewSection}[1]{
+    \clearpage 
+    \section{#1}
 }
+
+% \newcommand\SentenceCase[1]{%
+%   \caselower[e]{#1}%
+%   \capitalize[q]{\thestring}%
+% }
+% \titleformat{\section}
+%   {\normalfont\Large\bfseries}{\thesection}{1em}{\SentenceCase{#1}\thestring}
 
 % \newcommand{\SentenceCaseSubSection}[1]{\subsection{\SentenceCase{#1}}}
 % \newcommand{\SentenceCaseSubParagraph}[1]{\subparagraph{}{\SentenceCase{#1}}}
@@ -191,7 +197,7 @@ I'd also like to thank each and every mechatronics Academic staff member at the 
 \tableofcontents
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Introduction}
+\NewSection{Introduction}
 This project aims to answer the question \inlineQuote{[What is] the effect of supplementary data on Acoustic Event Classification through Machine Learning}. To do this, results will analyse the F1 Scores of a binary MLPClassifier, and a multi-label MLPClassifier, both trained on the ExtraSensory dataset using the method described in Section \ref{sec:Method}.
 Additionally, the output of the classifiers will be analysed for \inlineQuote{validity}. Does the classifier successfully detect and classify an Acoustic Event?
 
@@ -205,15 +211,19 @@ The capacity to identify a physical event in the real world using sound would op
 Debriefing is effectively an education tool used to educate an individual, a group or record a more holistic history of an event, for purposes of performance feedback \cite{recentAAR}.
 %The After Action Report style of debriefing is one where an educator works with a student to go through the following steps: an explanation of an event, e, reporting of measures of performance, and/or opportunities to further investigate the results of a study, investigation, or assessment of performance after participation in an immersive activity is complete.
 The formal debrief originated from the World War 2, with SLA Marshell's "interviews after combat" \cite{DebriefAAR}. Since then, the "After Action Report" was developed by the US Army as ...
-\fancyquote{a professional discussion of an event, focused on performance standards, that enables soldiers to discover for themselves what happened, why it happened and how to sustain strengths and improve on weaknesses.\cite{TC2520}}
-This is a key tool in training after any group activity, and has been extended to many industry, most notably in the training of Doctors\cite{johnson2011debriefing}.
+\fancyquote{a professional discussion of an event, focused on performance standards, that enables soldiers to discover for themselves what happened, why it happened and how to sustain strengths and improve on weaknesses. \cite{TC2520}}
+This is a key tool in training after any group activity, and has been extended to many industry, most notably in the training of Doctors \cite{johnson2011debriefing}.
 \cite{Wiki}\flagforreview. Traditionally this is done through a collection of primary sources (where available) and secondary sources. In the information age, these primary sources have expanded to include large datasets, recordings and other digital forensics. This new and increasing range of primary sources provides the potential to significantly improve the steps of debriefing, and ultimately improve debriefing outcomes \cite{PsychologicalDebriefing2012}.
 
 \paragraph{Introduction to the Field from a Mecatronics Perspective}
-Machine Learning will be the focus of this report. Machine Learning is a field of Engineering and Computer Science concerned with automating an the discovery and modelling of a process. In a nutshell, it is about training a computer algorithm to learn from data. It's application in this report is that of almost akin to that of a traditional optimisation problem in mechatronics: Given a \inlineQuote{plant} (or, a neural network), can you \inlineQuote{optimise} it's \inlineQuote{parameters} (both weightings and hyperparameters) as to
-of the form of an activation function (such as a sigmoid, ReLu, etc), can you \inlineQuote{optimise} it until it's function best fits a process model that identifies sounds?
+Machine Learning will be the focus of this report. Machine Learning is a field of Engineering and Computer Science concerned with automating the discovery and modelling of a process. This process is usually a classification or regression function. In a nutshell, it is about training a computer algorithm to learn from data.\\
 
-It is more broadly an aspect of artificial intelligence based on the idea that systems can learn from data, identify patterns and make decisions with minimal human intervention.
+It's application in this report is that of almost akin to that of a traditional optimisation problem in mechatronics: Given a \inlineQuote{plant} {\itshape(or, a neural network)}, how can someone \inlineQuote{optimise} {\itshape(train)} the plant's \inlineQuote{parameters} {\itshape(both weightings and hyperparameters)} as to \inlineQuote{minimise an error} {\itshape(or, maximise a classification/regression score)}?
+
+
+% of the form of an activation function (such as a sigmoid, ReLu, etc), can you \inlineQuote{optimise} it until it's function best fits a process model that identifies sounds?
+
+% It is more broadly an aspect of artificial intelligence based on the idea that systems can learn from data, identify patterns and make decisions with minimal human intervention.
 % This paper will report on the Author’s progress of harnessing this new potential and is organised as follows: \sref{sec:ProblemAnalysis} will discuss how the scope has been analysed and reduced, \sref{sec:LitReview} will review the literature of this research topic, \sref{sec:Method} will discuss the method of implementing the technology, \sref{sec:Results} will discuss the results, and \sref{sec:Discussion} will discuss the results of the proof-of-concept.
 
 % To organise your introduction section you can use the following structure:
@@ -226,7 +236,8 @@ It is more broadly an aspect of artificial intelligence based on the idea that s
 %
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Problem Analysis}\label{sec:ProblemAnalysis}
+
+\NewSection{Problem Analysis}\label{sec:ProblemAnalysis}
 
 This project approached the problem through a System Engineering perspective, a process which “is a structured and systematic methodology providing greater visibility and control over … new system[s]” \cite{limited2018systems}. This perspective was informed by ISO/IEC/IEEE 15288 \cite{IEEE15288} and Burge Hughes Walsh’s System Engineering Toolbox \cite{SysThink2015}. The tools adapted and applied throughout this section are primarily derived from that \inlineQuote{System Engineering Toolbox}. 
 
@@ -307,7 +318,8 @@ A matrix diagram was made to review the now more refined, reduced scope as shown
 The purpose of the project is to hypothesis and produce a proof-of-concept of how digital technologies could improve debriefing processes and outcomes. This seems achievable within 1 year, and should provide an excellent learning opportunity for the author.
 
 %%%%%%%%%%%%%%%%%%%%%%%
-\section{Review Of Literature}\label{sec:LitReview}
+\newpage
+\NewSection{Review Of Literature}\label{sec:LitReview}
 A literature review of the current research was conducted with guidance from University of Queensland’s guide to Literature reviews \cite{QueenslandReview} . There are 3 nested areas of research that are of interest to this project. The wider classification and regression research topic, the machine learning topic that covers many various fields of implemented and theoretical machine learning applications, and finally the specific field of Acoustic Event Detection and Classification (AED/AEC); this field has traditionally relied on older techniques, and is undergoing a revolution with machine learning. 
 
 \fFigure{niche.png}{The literature for this project is a niche topic in the Machine Learning area of research}{0.8}
@@ -353,7 +365,7 @@ The winning model used in the DCASE2018 Task 4 challenge used a “Mean-teacher�
 \end{gather*}
 
 %%%%%%%%%%%%%%%%%%%%%%%
-\section{Method} \label{sec:Method}
+\NewSection{Method} \label{sec:Method}
 \subsection{Introduction to the Method}
 In a traditional machine learning problem there are 5 stages to the method; 
 
@@ -931,7 +943,7 @@ The method details selecting the desired output, the required data input, a metr
 \end{enumerate}
 
 
-\section{Results} \label{sec:Results}
+\NewSection{Results} \label{sec:Results}
 
 The desired results are a demonstratable difference (or lack thereof) in the F1 score, after comparing a classifier with and without supplementary data.
 This will answer the question, and title of the report, \inlineQuote{[What is] the  effect of supplementary data on Acoustic Event Classification through Machine Learning}. To this effect, the results will analyse the F1 Scores of a binary MLPClassifier, and a multi-label MLPClassifier, both trained on the ExtraSensory dataset using the method described in Section \ref{sec:Method}.
@@ -1027,7 +1039,7 @@ F-Score: 0.75
 
 \end{lstlisting}
 
-\section{Summary of Results}
+\NewSection{Summary of Results}
 The results achieved (shown in \ref{tab:F1Results}) demonstrate that the supplementary data used in accordance with the method described in Section \ref{sec:Method}, contribute to an 8\% increase to the F1 score in both the Binary MLP Classifier, and the Multilabel classifier. This a relative increase of 10.5\% and 11.9\% respectively. 
 
 \begin{table}[h]
@@ -1045,7 +1057,7 @@ The results achieved (shown in \ref{tab:F1Results}) demonstrate that the supplem
 \end{table}
 
 
-\section{Discussion}\label{sec:Discussion}
+\NewSection{Discussion}\label{sec:Discussion}
 The results above aim to demonstrate a quanitative difference in F1 score across 2 the classifier with and without Accelerometer, Gyroscope and GPS data. The results achieved did produce a quanitative relative improvement of 10.5\% and 11.9\% for the Binary and Multilabel result respectively.
 
 \subparagraph{Assumptions}
@@ -1077,7 +1089,7 @@ The results from this project aim to present a peer-reviewable benchmark for the
 4 including the additional data points of accelerometer data gyroscope data and GPS data what it doesn't highlight is how optimal that data is nor does it evaluate the preprocessing of that data nor does it evaluate the generalisation of this methodology to new data sets what it does answer is the original question of does including supplementary data of mu staff increase the F1 score and the answer is yes what is important is to discuss how you would evaluate the generalisation of this model you would also discuss what what impact the model quality has on this result if we've used a different model which we have and we will show this result what is the difference in the improvement is there any improvement how do you evaluate whether a model will benefit from this extra data points there are some models specifically which you do need to do feature reduction and feature analysis on to ensure you don't over specify the features even if you low weight the features you may still have an issue of having too much data and this is just in terms of a performance another element of this is what we got the results what was the cost so we have increase the amount of data we need to use increase the data we need to process increase the data we need to collect to train we are also looking at a larger model file size which for a use case of potentially online processing would be very detrimental so what's the results of 5\% are based on solid evidence they may not actually be a valid application or a valid progress for achieving a 5\% increase for instance how do we only change the data set and retrain revalidated and then re-evaluated this process would we see similar numbers that is the model likely wouldn't produce the exact same if one school so is our 5\% related or proportional to the original benefit had we not done hyperparameter searching to optimise our model potentially we would have seen a much larger game in F1 score from the addition of the additional data points that hypothetical would be because if l model is already underperforming / are an optimised then the additional data points May introduce that additional optimisation needed similes conclusion in conclusion what we're looking at is a 5\% increase in F1 school which is relevant for this approach for this data set because this data set does closely match our target use case this is actually a valid result and this is a worthy increase to the field what this does raise however is how does hell result generalise across other applications because this project had a specific use case it was not within the scope to evaluate whether or not supplementary data would improve audio event classification and detection in other audio sets simile so the number of audio sets the database database is available is limited and the format of that data all the data selection would play a role so whilst we discussed supplementary data to specific data that we use was axela on the data a gyroscope data GPS however it did not attempt to evaluate other supplementary data is for instance the magna mater other accelerometer data video etcetera this data set is also a 1 minutes sample time snap what we did was we recorded across the day and time time-invariant snapshot of our data why that's important is because would time variance significantly affect this outcome that is something probably to put in the discussion section but in conclusion this seems to be a valid strategy and the next next step you would take is to look at trying a larger data set when available and 2 validate this on hardware in a actual environment further so there were other methods to approach the same problem and it should be considered whether or not those other methods would drastically change the app for instant whilst we used a model that was well well chosen for the purpose of a single binary flag to create an ensemble of classifiersconclusion in conclusion what would looking at is a 5\% increase in Heflin school which is relevant for visa parts for this. Affect because the status that sounds call claim at at Target use case this is actually a valid result in this is a wuzzy increase to the failed what is thugs raise however is how does have result general on across the applications because it's project hi to specific use case it was not with him the Skype still valley light weather I'm not supplementary Dada would improve audio event classification inspection in other warriors that simile so the number of audio set device. Basis available is limited and the format of that. Orthodontist election would play a role boat well sweet discussed supplementary gotta to specific daughter that we used was XL alarm the Dada gyroscope. GPS however it did not attempt to evaluate all the supplementary. It Francis magnetic element get to work today sometime and burien shops all out. Why that's important who's because would come variant significantly effects did outcome that is something 0n
 
 
-\section{Conclusion}\label{sec:Conclusion}
+\NewSection{Conclusion}\label{sec:Conclusion}
 This is one of the most important parts of the report. In the conclusion section, you  should 
 \begin{itemize}
 \item briefly summarise the results,
@@ -1092,7 +1104,7 @@ The work presented does demonstrates a contribution to the audio processing spac
 Based on the work presented, it's clear that audio data processing will be a major tool and research topic into the future. The niche explored in this FYP, of amalgamating traditional audio processing with physical sensor input looks to be of limited use, to limited applications. More over, without large datasets of audio paired with physical sensor data, the machine learning tools explored in this FYP will not be able to be used. As such, the rise of audio recording equipped equipment should be the basis for further research into this space. 
 Future work from here would be to look at the larger role of data acquisition. This is both because it was one of the larger hurdles I had to face, plus it enables further research into the effectiveness of what a diverse dataset can bring. Industry will reasonably expect to take aspects of data fusion and machine learning. To know what
 
-\section{Future Work}
+\NewSection{Future Work}
 \paragraph{Discern what impact each additional datasource had on the result}
 
 \paragraph{Use another AEC/D to label this dataset}
@@ -1241,7 +1253,7 @@ A suggested option for Future Work could include adapting the Bogosort to Machin
 %    ]{Code/serialtest.m}
 %
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{References and Citations}\label{sec:RefCite}
+\NewSection{References and Citations}\label{sec:RefCite}
 % To generate the bibliography look at the end of this document in .tex file. To make reference to the bibliography use the commands \verb|\citet{}| and \verb|\citep{}| \citep{strunk2007elements}. You can combine more than one reference in a single citation \citep{troyka1999simon, jay1995write}.
 
 % True \cite{TFwebsite2}
@@ -1255,10 +1267,10 @@ A suggested option for Future Work could include adapting the Bogosort to Machin
 
 \newpage
 \appendix
-\section{Full Extracts of Journals}
+\NewSection{Full Extracts of Journals}
 N/A, email correspondance available on request.
 
-\section{Reflection}
+\NewSection{Reflection}
 about several of the Engineers Australia 16 competencies.  \flagforreview
 I'll write this from the first person perspective.
 This project was a whirlwind. Taken over the 2018 S2, 2019 S1 period, including the Christmas Holidays, the project was a learning experience. The outcome I got is barely quantifiable past a common sense guess, but I can take pride in knowing the outcome is quantified and based on the `360 hours' minimum of work to get to that result. I learnt a lot starting with\dots
@@ -1275,7 +1287,7 @@ The FYP has made me appreciate Subject Matter Expertise. In MCHA3900, I focused 
 On that note, I lastly reflect on the skills I've learnt, and the perspective I've gained in how complex the field is, and how much more there is to learn.
 
 
-\section{Full Result Output}
+\NewSection{Full Result Output}
 
 \subsection{Binary Classifier}
 \begin{lstlisting}
@@ -1768,19 +1780,19 @@ F-Score: 0.29
 [[2158]]
 \end{lstlisting}
 
-\section{Dataset Feature Importance}\label{apx:FeatureImportance}
-\fFigure{feature_important_just_audio2.png}{A Random Tree Classifier was used to evaluate feaure importance, during the design phase of the main classifier. Features were Audio (26 bins), Accelerometer (), Gyroscope, GPS ()}{0.5}
+\NewSection{Dataset Feature Importance}\label{apx:FeatureImportance}
+\fFigure{feature_important_just_audio2.png}{A Random Tree Classifier was used to evaluate feaure importance, during the design phase of the main classifier. Features were Audio (26 bins)}{0.5}
 
-\fFigure{feature_important_just_accel.png}{A Random Tree Classifier was used to evaluate feaure importance, during the design phase of the main classifier. Features were Audio (26 bins), Accelerometer (), Gyroscope (), GPS ()}{0.5}
+\fFigure{feature_important_just_accel.png}{A Random Tree Classifier was used to evaluate feaure importance, during the design phase of the main classifier. Features were Accelerometer(26)}{0.5}
 
-\fFigure{feature_important_just_Gyro.png}{A Random Tree Classifier was used to evaluate feaure importance, during the design phase of the main classifier. Features were Audio (26 bins), Accelerometer (), Gyroscope (), GPS ()}{0.5}
+\fFigure{feature_important_just_Gyro.png}{A Random Tree Classifier was used to evaluate feaure importance, during the design phase of the main classifier. Features were Gyroscope(26)}{0.5}
 
-\fFigure{feature_important_just_GPS2.png}{A Random Tree Classifier was used to evaluate feaure importance, during the design phase of the main classifier. Features were Audio (26 bins), Accelerometer (), Gyroscope (), GPS ()}{0.5}
+\fFigure{feature_important_just_GPS2.png}{A Random Tree Classifier was used to evaluate feaure importance, during the design phase of the main classifier. Features were GPS (16)}{0.5}
 
-\section{Trade-Review of "Online vs Offline" processing}\label{sec:TradeReview}
+\NewSection{Trade-Review of "Online vs Offline" processing}\label{sec:TradeReview}
 
 
-\section{GridSearch Attempts}\label{apx:GSAttempt}
+\NewSection{GridSearch Attempts}\label{apx:GSAttempt}
 This shows how a Grid Search was used for hyperparameter optimisation. In particular, this is an example of an iteritive process where the grid was manually narrowed and precision increase. 
 \begin{lstlisting}
     parameters={'hidden_layer_sizes': [(145,), (147,), (149,), (151,), (153)],
@@ -1801,7 +1813,7 @@ This shows how a Grid Search was used for hyperparameter optimisation. In partic
 \end{lstlisting}
 
 
-\section{Table of ExtraSensory Labels}\label{apx:ExtraSensoryLabels}
+\NewSection{Table of ExtraSensory Labels}\label{apx:ExtraSensoryLabels}
 \begin{table}[h]
 \begin{center}  
 \caption{ExtraSensory Labels \cite{Vaizman2017}}\label{tab:ExtraSensoryLabels}
@@ -1865,7 +1877,7 @@ This shows how a Grid Search was used for hyperparameter optimisation. In partic
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \section{Writing you're not sure if you want to keep}
+% \NewSection{Writing you're not sure if you want to keep}
 
 
 

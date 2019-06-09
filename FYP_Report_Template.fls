@@ -273,6 +273,7 @@ INPUT C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd
 INPUT c:\FYP\report\FYP_Report_Template.toc
 INPUT c:\FYP\report\FYP_Report_Template.toc
 OUTPUT c:\FYP\report\FYP_Report_Template.toc
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmti10.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmssbx10.tfm
 INPUT c:\FYP\report\Figures\treeDiagram.png
 INPUT c:\FYP\report\Figures\treeDiagram.png
@@ -401,7 +402,6 @@ INPUT c:\FYP\report\Figures\feature_important_just_combined_big_colour.png
 INPUT c:\FYP\report\Code\tensorflow_cnn.py
 INPUT c:\FYP\report\Code\tensorflow_cnn.py
 INPUT c:\FYP\report\Code\tensorflow_cnn.py
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmti10.tfm
 INPUT c:\FYP\report\Figures\both_ROC.png
 INPUT c:\FYP\report\Figures\both_ROC.png
 INPUT c:\FYP\report\Figures\both_ROC.png
