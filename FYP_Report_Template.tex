@@ -47,8 +47,8 @@
   \capitalize[q]{\thestring}%
 }
 
-\newcommand{\SentenceCaseSubSection}[1]{\subsection{\SentenceCase{#1}}}
-\newcommand{\SentenceCaseSubParagraph}[1]{\subparagraph{}{\SentenceCase{#1}}}
+% \newcommand{\SentenceCaseSubSection}[1]{\subsection{\SentenceCase{#1}}}
+% \newcommand{\SentenceCaseSubParagraph}[1]{\subparagraph{}{\SentenceCase{#1}}}
 
  
 
@@ -69,7 +69,7 @@
 %    pdfmenubar=true,        % show AcrobatÕs menu?
 %    pdffitwindow=false,     % window fit to page when opened
 %    pdfstartview={FitH},    % fits the width of the page to the window
-    pdftitle={FYP Report - Trackfile Recording System},    % title
+    pdftitle={Chris Caelli | FYP Part B Report},    % title
     pdfauthor={Chris Caelli},     % author
     pdfsubject={FYP PART B},   % subject of the document
 %    pdfcreator={Creator},   % creator of the document
@@ -684,7 +684,7 @@ Validation is the process of optimisation the hyperparameters of a model on the 
 Before the hyperparameters can be optimised, a metrics to optimise the network on must be selected, of which there are many ways to do it which will now discussed. \\
 
 
-\subparagraph{Terminology} 
+\subsection{Terminology} 
 Before evaluating metrics, the Terminology of the following formula must be formaulised. The first is what a "correct" classification is. The following terminology will be used:
 \begin{itemize}
     \item True Positives (TP) - A correctly classified positive sample
@@ -860,17 +860,18 @@ and the results of which were
 Details of a Grid Search can be found in Appendix \ref{apx:GSAttempt}.
 
 
+\subsection{Machine Learning Libraries Used}
 
 The classification libraries used were Google's TensorFlow and scikit-learn. Both libraries are python based (supporting both Python 3.0, and Python 2.7) \cite{scikitlearnpythonVer} \cite{TFpythonVer}%\cite{TFpythonVer} \cite{scikit-learn-pyV}.
 
-\subsubsection{TensorFlow}
+\subparagraph{TensorFlow}
 TensorFlow is an opensource machine learning framework, primarily developed by Google.
 \inlineQuote{It has a comprehensive, flexible ecosystem of tools, libraries and community resources that lets researchers push the state-of-the-art in ML and developers easily build and deploy ML powered applications.}\cite{TFwebsite}. TensorFlow in conjunction with with Keras was used to prototype the inital pipeline. According to the textbook, \inlineQuote{Hands on Machine Learning with Scikit, Keras \& TensorFlow}, a pipeline is 
 \fancyquote{
 A sequence of data processing components is called a data pipeline. Pipelines are very common in Machine Learning systems, since there is a lot of data to manipulate and many data transformations to apply\cite{HandsOnMLTextbook}.
 }
 
-TensorFlow and Keras were selected to initially design the classifier due it's ability to run on the TensorFlow Lite. The code snippet \ref{lst:pythonlisting} shows how a model converts.
+TensorFlow and Keras were selected to initially design the classifier due it's ability to run on the TensorFlow Lite. This is inline with the motivation of the project to allow widespread use of an AED/C solution. The code snippet \ref{lst:pythonlisting} shows how a model converts.
 
 \lstinputlisting[
     language=python,
@@ -900,9 +901,11 @@ A Random Tree Classifier was used to evaluate feature importance. Random Tree Cl
     ]{Code/tensorflow_cnn.py}
 
 
-\subsubsection{scikit-learn}
+\subparagraph{scikit-learn}
+Scikit-learn is an extensive machine learning Python library. The purpose of the library is to remove much of the \inlineQuote{boilerplate} code associated with and in implimenting machine learning networks and algorithms. It also provides an extensive list of machine learning support functions.
+When combined with other Python libraries such as numpy,matlibplot and others, it allows for succinct and consistent reproduction of the results this project aims to deduce. It is for this reason that libraries for machine learning have been utilised in contrast with writing a framework from scratch.
 
-Scikit-learn is a statistics and machine learning for Python. It was selected due to it's ease of use, and has been used to analyse, prototype and produce the results of this paper.
+% Scikit-learn is a statistics and machine learning for Python. It was selected due to it's ease of use, and has been used to analyse, prototype and produce the results of this paper.
 
 \subsection{Method Summary}
 
@@ -1230,10 +1233,10 @@ Future work from here would be to look at the larger role of data acquisition. T
 %
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{References and Citations}\label{sec:RefCite}
-To generate the bibliography look at the end of this document in .tex file. To make reference to the bibliography use the commands \verb|\citet{}| and \verb|\citep{}| \citep{strunk2007elements}. You can combine more than one reference in a single citation \citep{troyka1999simon, jay1995write}.
+% To generate the bibliography look at the end of this document in .tex file. To make reference to the bibliography use the commands \verb|\citet{}| and \verb|\citep{}| \citep{strunk2007elements}. You can combine more than one reference in a single citation \citep{troyka1999simon, jay1995write}.
 
-True \cite{TFwebsite2}
-\citet{TFwebsite2}
+% True \cite{TFwebsite2}
+% \citet{TFwebsite2}
 % \cit
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \bibliographystyle{ieeetr}%harvard}
@@ -1244,7 +1247,8 @@ True \cite{TFwebsite2}
 \newpage
 \appendix
 \section{Full Extracts of Journals}
-N/A
+N/A, email correspondance available on request.
+
 \section{Reflection}
 about several of the Engineers Australia 16 competencies.  \flagforreview
 I'll write this from the first person perspective.
