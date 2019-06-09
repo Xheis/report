@@ -1114,12 +1114,21 @@ F-Score: 0.29
 The results achieved demonstrate that the supplementary data used in accordance with the method described in Section \ref{sec:Method}, contribute to a 5\% increase to the F1 score in a Binary MLP Classifier, and an 8\% increase in the Multilabel classifier.
 
 \section{Discussion}\label{sec:Discussion}
-The results above aim to demonstrate a quanitative difference in F1 score across 2 common applications of Machine Learning based on whether cross domain data is introduced in the way of Accelerometer, Gyroscope and GPS data. 
-The results achieved did produce a quanitative difference of 5\% and 8\% \flagforreview for the Binary and Multilabel result respectively. The complexity of the classification task was low compared to similar studies \cite{Tseng2017} \cite{Virtanen2010} due to the broad labels available, but the number of classes compare to previous studies (61 classes, Virtanen 2010\cite{Virtanen2010}). To improve these results, the complexity of the labels could be reviewed through promising new techniques to generate labels, and train a network on weakly supervised data. \cite{Tseng2017}. This would allow a more compelx dataset, such as AudioSet \cite{Audiosetgoogle2018} to reprocess the ExtraSensory database to have a larger number of classes. 
+The results above aim to demonstrate a quanitative difference in F1 score across 2 the classifier with and without Accelerometer, Gyroscope and GPS data. The results achieved did produce a quanitative difference of 5\% and 8\% \flagforreview for the Binary and Multilabel result respectively. 
 
-The direct increase in percentage could occur in 2 areas. The first is during hyperparameter optimisation, in which the hyperparameters are fitted to our activation model using Audio and/or the supplementary data. The second is in the fitting itself, where the supplementary data may contain a signal that could be benefiting the F1 score of the model.
+\subparagraph{Vonfidence and Qualatitive Result}
+AUROC curve here metrics.roc\_curve(y\_pred,), discuss the validity of the 
 
+
+\subparagraph{Complexity} 
+The complexity of the classification task was low compared to similar studies \cite{Tseng2017} \cite{Virtanen2010} due to the limited and broad labels available, but the number of classes compare to previous studies (61 classes, Virtanen 2010\cite{Virtanen2010}). To improve these results, the complexity of the labels could be reviewed through promising new techniques to generate labels, and train a network on weakly supervised data. \cite{Tseng2017}. This would allow a more compelx dataset, such as AudioSet \cite{Audiosetgoogle2018} to reprocess the ExtraSensory database to have a larger number of classes. 
+
+\subparagraph{Casuastion}
+The direct increase in percentage could occur in 2 areas. The first is during hyperparameter optimisation, in which the hyperparameters are fitted to our activation model using Audio and/or the supplementary data. The second is in the fitting itself, where the supplementary data may contain a signal that could be benefiting the F1 score of the model. If this hyposthesis is correct, then these results will hold valid across other classifiers that require hyperparameter optimisation and fitting of training data.
+
+\subparagraph{Acoustic Event Detection}
 The validity of the result also holds true for Acoustic Event Classification, however, no Acoustic Event Detection was carried out. That is, a sound sample was classified as an Acoustic Event as a binary output, rather than identifying when the Acoustic Event occured in the sound sample. Phaun discusses this in a paper called \inlineQuote{What Makes Audio Event Detection Harder than Classification?}\cite{Phan2016}. This result of this paper may be valid Acoustic Event Detection, as a detection pipeline is build upon the classifier.
+
 
 * making sure that they evaluate their results;
 * compare them to other research;
