@@ -62,6 +62,10 @@ end
 layer sizes
 Fitting 3 folds for each of 30 candidates, totalling 90 fits
 [Parallel(n_jobs=-1)]: Using backend LokyBackend with 4 concurrent workers.
+[Parallel(n_jobs=-1)]: Done  90 out of  90 | elapsed: 73.1min finished
+#F-Score: 0.91
+#{'solver': 'adam', 'learning_rate': 'invscaling', 'hidden_layer_sizes': (150, 200), 'alpha': 0.07, 'activation': 'relu'}
+
 F-Score: 0.60
 {'solver': 'adam', 'learning_rate': 'invscaling', 'hidden_layer_sizes': (151, 52, 26), 'alpha': 0.07, 'activation': 'tanh'}
 

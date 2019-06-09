@@ -132,13 +132,13 @@ Check contraction. it's, don't etc.
 check for our, we, I, they're, your, you, etc.
 check for st-ray - inca-se the-y block sh-t
 check ref and replace with fref, tref, aref etc.
-
+fix header to og %School of Engineering, Discipline of Mechanical Engineering and Mechatronics
 As per the FYP Handbook: \\
 I did:
 \begin{itemize}
-    \item I learnt and prototyped a machine learning solution that takes audio and physical data (GPS, accelerometer, gyroscope) to compare whether the supplementary data could improve the classification of sound, as measured by the F1 score.
+    \item I learnt and prototyped two machine learning solutions that takes audio and physical data (GPS, accelerometer, gyroscope) to compare whether the supplementary data could improve the classification of an acoustic event, as measured by the F1 score.
     \item I learnt and prototyped a pipeline to record data, process it, classify it, and output it.
-    \item I used my mechatronics subject matter learnings to best apply machine learning to this problem. This includes Mechatronics Design (trade off and evaluations from MCHA3000), sound pre-processing, preprocessing Inertial Measuring Unit data, and how Audio waveforms can be treated as energy, and statistics from MECH2450/MCHA3900.
+    \item I used my mechatronics subject matter learnings to best apply machine learning to this problem. This includes Mechatronics Design (trade off and evaluations from MCHA3000), sound pre-processing, preprocessing Inertial Measuring Unit data, and how Audio waveforms can be treated as energy, and statistics from MECH2450/MCHA3900. \flagforreview
     \item I learnt and used System Engineering techniques to elicit requirements from my university and work stakeholders
 \end{itemize}
 I helped:
@@ -155,14 +155,14 @@ I helped:
 \vspace{-3mm}
 The project investigated whether supplementary data (Accelerometer, Gyroscope, GPS) will improve a classifiers ability to classify an "Acoustic Event" in an Acoustic Event Detection / Classification (AED/C) problem. The motivation behind this was to improve AED/C without onerous microphone requirements, to enable more wide spread comerical use of AED/C. \\
 
-Section \ref{sec:ProblemAnalysis} of the project begins by evaluating the research problem for a car use case, and eliciting the design requirements through system engineering principles. \\
+\sref{sec:ProblemAnalysis} of the project begins by evaluating the research problem for a car use case, and eliciting the design requirements through system engineering principles. \\
 
-Section \ref{sec:LitReview} reviews current research. Presently the field is expanding with broader advances in the wider machine learning community, however AED/C still remains a non-trivial problem that doesn't have a viable solution yet. Comparatively to the wider machine learning community, Acoustic Event Detection is very limited in active researchers. This specific issue hasn't been explicitly answered. \\
+\sref{sec:LitReview} reviews current research. Presently the field is expanding with broader advances in the wider machine learning community, however AED/C still remains a non-trivial problem that doesn't have a viable solution yet. Comparatively to the wider machine learning community, Acoustic Event Detection is very limited in active researchers. This specific issue hasn't been explicitly answered. \\
 
-Section \ref{sec:Method} details selecting the desired output, the required data input, a metric to score by, a classifier, optimising hyperparameters against the previous options, and finally training and validating aginst the data. For this project:
+\sref{sec:Method} details selecting the desired output, the required data input, a metric to score by, a classifier, optimising hyperparameters against the previous options, and finally training and validating aginst the data. For this project:
 {\small
 \begin{itemize}
-    \item The desired output is a label (or labels) detailing the Acoustic Event in the sample (e.g. The labels found in \ref{apx:ExtraSensoryLabels} like `Walking').
+    \item The desired output is a label (or labels) detailing the Acoustic Event in the sample (e.g. The labels found in \aref{apx:ExtraSensoryLabels} like `Walking').
     \item The required data is the ExtraSensory dataset, or a custom dataset as recorded by the project's App.
     \item The score selected is the F1 score. This is due to it being an industry standard.
     \item The classifier chosen is the MLPClassifier which is a feedforward neural network, trainded via backpropegation.
@@ -171,11 +171,11 @@ Section \ref{sec:Method} details selecting the desired output, the required data
     \item Final testing is done with the 60\textsuperscript{th} user.
 \end{itemize}
 }
-Section \ref{sec:Results} the desired results are a  difference \flagforreview in the F1 score, after comparing a classifier with and without the supplementary data. This is calculated through analysis of F1 Scores of a binary MLPClassifier, and a multi-label MLPClassifier, both trained on the ExtraSensory dataset using the extact method described in Section \ref{sec:Method}. The output of the classifiers are also analysed and found to be a valid multilabel classifier for realworld use.
+\sref{sec:Results} the desired results are a 10.5\% and 11.9\% relative improvement in F1 score for a Binary and Multilabel classifier respectively. This is calculated through analysis of F1 Scores of a binary MLPClassifier, and a multi-label MLPClassifier, both trained on the ExtraSensory dataset using the method described in \sref{sec:Method}. The output of the classifiers are also analysed and found to be valid classifiers for realworld use. \flagforreview
 
-Section \ref{sec:Discussion} evaluates the effect supplementary data had on improving classification. It will discuss how multi-sensor AED/C is effective but requires more datasets to test smaller, more specific tasks. \flagforreview
+\sref{sec:Discussion} evaluates and discusses limitations of the results. It will discuss how multi-sensor AED/C is effective but requires more datasets to test smaller, more specific tasks. \flagforreview It also discusses why the result will be valid in other projects.
 
-Section \ref{sec:Conclusion} will present how these results will contribute to the field, and suggested future work into new datasets with a greater number of labels.
+\sref{sec:Conclusion} will present how these results will contribute to the field, and suggested future work into new datasets with a greater number of labels.
 % This document will cover the author's progress through the Final Year Project. The scope of the project is a portable data recording system coupled with offline processing to track and identify specific physical events in close proximity that occurred during recording. Acoustic Event Detection and Classification is the focus of this paper, and the goal of this FYP report is exploring and validating current research techniques in an uncontrolled environment for a specific use case. The content of this paper will start with, system engineering, problem analysis, a review into the current research and will expand to document python implementation, machine learning, data pre-processing, app development and progress in developing the proof of concept to take logged data from a phone and process it on a sever to create a “trackfile” (special csv file).
 \newpage
 %%%%%%%%%%%%%%
@@ -381,11 +381,6 @@ It is beneficial to work up slowly to this goal. external to the method of build
     \item Build the machine learning classifier as described above, and test it's effectiveness
     \item Validate the whole system by using the classifier in the pipeline (by take the classified output, and appending it to the trackfile)
 \end{itemize}
-% for us we will be a stage one choosing a dotted be that which is defined in al preprocessing data stage 4.1 we will pre-process our data as described in full point to preprocessing data we will choose a model which will be an MLP classifier which has been selected due to it's verbose robust fitness to potentially why range wide ranges of data and due to our use of tabular data in stage 5 
-
-
-
-% The method for learning and prototyping the Machine Learning interface was driven by reading [some textbook], and then building up the network in small stages. The desired topology was the Mean Teacher topology from DCASE 2018, however 
 
 \subsection{Required Data}
 The Machine Learning uses GPS, accelerometer, gyroscope, and audio. A Google Pixel 2 was selected as the model data acquisition, which table /ref{} below shows.
@@ -407,7 +402,6 @@ The Machine Learning uses GPS, accelerometer, gyroscope, and audio. A Google Pix
 
 The choice of what data to collected and use was found through the first problem analysis step. As the goal is to maximise the accuracy of the classifier (whilst still being an achievable goal), the data chosen for use and collection was GPS, accelerometer, gyroscope, and audio. As described in the problem analysis phase, the best platform for this would be a smartphone as shown in section \ref{sec:ProblemAnalysis} and appendix \ref{sec:TradeReview}. 
 
-% The choice of what data to collected and use was found through the first problem analysis step. As the goal is to maximise the accuracy of the classifier (whilst still being an achievable goal), the data chosen for use and collection was GPS, accelerometer, gyroscope, and audio. As described in the problem analysis phase, the best platform for this would be a smartphone as shown in section \ref{sec:ProblemAnalysis} and appendix \ref{sec:TradeReview}. 
 
 Android was chosen as the platform as it had significant support for reading from the on-board sensors. The data available from the Android API can be seen in table \ref{tab:AndroidDataAvailable}, of which GPS and acceleration will be used. It was also chosen due to it's support for C/C++ through the Native Development Kit (NDK). The programming language C is required knowledge for many courses in the University of Newcastle Bachelor of Mechatronics degree. 
 
@@ -762,10 +756,6 @@ In a more formal sense, the Reciever Operating Characteristics (ROC) is the rela
 
 In this project, the AUROC will not be extensively used, except for educational purposes. The purpose of a AUROC is to demonstrate, and optimise the confidence in classification based on thresholds applied. The AUROC can be used to demonstrate a quanitative assessment of any particular sample (similar to a Regression problem).
 
-
-% metric very similarly to propose to accessibility this is very important Drexel whenfor when false negatives are reported a situation where this might be important is manufacturing capability where you might you might have quality assurance further down the line this is useful for when you want to maximize the number of correctly rejected units that is to say minimise the amount of units rejected without harming other stuff and no other option for model metrics is the area under the curve the area under the curve shows the reduced error in the model that is to say area under the curve is a graph that shows where how the error rate decrease is overtime this is most commonly used in conjunction with the something under the curve which shows overfitting of the model when used in conjunction the optimal solution for the model and that's how to validate the model is to pick is to pick a set of model parameters that minimises the area under the curve as well as minimises the area of the other curve but I can't remember in this way you are able to produce the model that will generalise well as well as having a high precision precision is another metric which is used to specify what something that I'll have to have a look at the actual formula F1 score is a industry standard that is important to evaluate a model's accuracy it does not however evaluate the overfitting as a broad metric it may indicate through a horror results based on the data set and conversely as with overfitting it may not demonstrate what level of generalisation is available in the model in this way the F1 school could be used in conjunction with other metrics
-
-
 \subsubsection{Hyperparameter Optimisisation}
  Machine learning is about learning, and adjusting, the internal parameters of a classifier. A hyperparameter is a parameter that cannot be learnt from backpropegation, as it is external to the classifier. These are parameters such as hidden layer size, training rates, classifier specific strategy, etc. The way to choose these hyperparameters is therefore an optimisation problem. The problem is to maximise the score selected above, by trialing different hyperparameters. The following describe methods of finding the optimal hyperparameters.
 
@@ -926,28 +916,10 @@ The method details selecting the desired output, the required data input, a metr
 \end{enumerate}
 
 
-% to pick hyperparameters\flagforreview for the mlpclassifier this is the process of refining what are chosen models parameters are and finally will use the F1 score as a primary metric which will help determine what what our classifier is finally we will then report on these results as well as run through some through user 59 user 60 which has been dedicated to be out final evaluation example
-
-
-% The MLPClassifier is a feedforward neural network, trainded via backpropegation. It was set up using the \inlineQuote{lbfgs} solver, an alpha equal to $1e-5$, and was handselected to have 80 by 10 hidden layers (80 long, 10 deep). This was the classifier to use for evaluation.
-
-% \begin{itemize}
-%     \item AudioSet and maybe the DCASE2018 Task 4 data set.
-%     \item Ideally, start pulling training and evaluation from smartphone app. 
-%     \item Lock down a use case and rewrite paper with that in mind.
-% \end{itemize}
-
-%%%%%%%%%%%%%%%%%%%%%%%
-% \section{Evaluation}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results} \label{sec:Results}
 
 The desired results are a demonstratable difference (or lack thereof) in the F1 score, after comparing a classifier with and without supplementary data.
-This will answer the question, and title of the report, \inlineQuote{[What is] the  effect of supplementary data on Acoustic Event Classification through Machine Learning}. To this effect, the results will analyse the F1 Scores of a binary MLPClassifier, and a multi-label MLPClassifier, both trained on the ExtraSensory dataset using the extact method described in Section \ref{sec:Method}.
-Additionally, the output of the classifiers will be analysed for \inlineQuote{validity}. Does the classifier successfully detect and classify an Acoustic Event?
-
+This will answer the question, and title of the report, \inlineQuote{[What is] the  effect of supplementary data on Acoustic Event Classification through Machine Learning}. To this effect, the results will analyse the F1 Scores of a binary MLPClassifier, and a multi-label MLPClassifier, both trained on the ExtraSensory dataset using the method described in Section \ref{sec:Method}.
 
 \subsection{Binary MLPClassifier}
 
@@ -955,7 +927,7 @@ A Binary MLP Classifier was run using the following settings:
 \begin{lstlisting}
     {'solver': 'adam', 'learning_rate': 'adaptive', 'hidden_layer_sizes': (150, 100, 50), 'alpha': 0.03, 'activation': 'tanh'}
 \end{lstlisting}
-It was trained to classifiy label 2.
+It was trained to classifiy label 2. Average training time was for Audio only was 42.9 minutes, whilst Audio+Extra was 53.6 minutes. This does not reflect the full training time, but rather the final optimising and training time after manual refinment of the Random Search Cross Validation hyperparameter range.
 
 \paragraph{Results from Audio Only}
 \begin{lstlisting}[
@@ -1009,9 +981,9 @@ The AUROC was not calculated for the multilabel, as the AUROC is a comparison on
 
 A Multilabel MLP Classifier was run using the following settings:
 \begin{lstlisting}
-    {'solver': 'adam', 'learning_rate': 'invscaling', 'hidden_layer_sizes': (151, 52, 26), 'alpha': 0.07, 'activation': 'tanh'}
+    {'solver': 'adam', 'learning_rate': 'invscaling', 'hidden_layer_sizes': (150, 200), 'alpha': 0.07, 'activation': 'relu'}
 \end{lstlisting}
-It was trained to classifiy labels 2 through 22 inclusive.
+It was trained to classifiy labels 2 through 22 inclusive. Average training time was for Audio only was 60.6 minutes, whilst Audio+Extra was 73.1 minutes. This does not reflect the full optimising and training time, but rather the final training time after manual refinment of the Random Search Cross Validation hyperparameter range.
 
 \paragraph{Results from Audio Only}
 \begin{lstlisting}
@@ -1040,77 +1012,6 @@ F-Score: 0.75
 
 \end{lstlisting}
 
-% \begin{table}[h]
-%     \begin{center}  
-%         \caption{ExtraSensory Data Breakdown \cite{Vaizman2017}}\label{tab:ExtraSensoryDataBreakdown}
-%         \begin{tabular}{llllll}
-%             \hline\hline 
-%                 kfold             & 1    & 2    & 3    & 4    & 5    \\
-%                 \hline 
-%                 Accuracy          & 0.92 & 0.93 & 0.95 & 0.94 & 0.95 \\
-%                 Sensitivity (TPR) & 0.26 & 0.35 & 0.33 & 0.29 & 0.38 \\
-%                 F-Score           & 0.9  & 0.93 & 0.94 & 0.93 & 0.95 \\
-%             \hline  
-%             \end{tabular}
-%     \end{center}
-% \end{table}
-
-% Testing Kfold 3
-% == Training with 31874 examples. For label 'Walking' we have 17708 positive and 14166 negative examples.
-% == Testing with 7896 examples. For label 'Walking' we have 4428 positive and 3468 negative examples.
-% ----------
-% Accuracy*:         0.78
-% Sensitivity (TPR): 0.77
-% Specificity (TNR): 0.79
-% Balanced accuracy: 0.78
-% Precision**:       0.83
-% F-Score:           0.78
-% --- Confusion Matrix ---
-% [[2757  711]
-%  [1022 3406]]
-% ----------
-% <><><><><><><><><><><><><><><><><><><><>
-
-
-% \lstinputlisting[
-%     language=sh,
-%     float=h,
-%     numbers=left,
-%     xleftmargin=1cm,
-%     frame=shadowbox,
-%     caption={Results of 5-fold CV on a ExtraTreesClassifier \label{lst:kfold_results}},
-%     morekeywords={try,catch}
-%     ]{code/5foldResults.txt}
-
-% % 665514DE-49DC-421F-8DCB-145D0B2609AD.features_labels.csv.gz
-% % == Projected the features to 95 features from the sensors: Aud, Acc, Gyro, Loc
-% % C:\FYP\2019-05-11\extra sensor\example_notebook.py:625: RuntimeWarning: invalid value encountered in greater
-% %   normalizers = np.where(std_vec > 0., std_vec, 1.).reshape((1,-1));
-% == Testing with 7402 examples. For label 'Walking' we have 1181 positive and 6221 negative examples.
-% ----------
-% Accuracy*:         0.87
-% Sensitivity (TPR): 0.26
-% Specificity (TNR): 0.98
-% Balanced accuracy: 0.62
-% Precision**:       0.72
-% F-Score:           0.84
-
-% \subsection{without all}
-% % 665514DE-49DC-421F-8DCB-145D0B2609AD.features_labels.csv.gz
-% % == Projected the features to 26 features from the sensors: Aud
-% % == Testing with 7402 examples. For label 'Walking' we have 1181 positive and 6221 negative examples.
-% % C:\FYP\2019-05-11\extra sensor\example_notebook.py:762: RuntimeWarning: invalid value encountered in true_divide
-% %   precision = float(tp) / (tp+fp);
-% % C:\Program Files\Python36\lib\site-packages\sklearn\metrics\classification.py:1143: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no predicted samples.
-% %   'precision', 'predicted', average, warn_for)
-% ----------
-% Accuracy*:         0.84
-% Sensitivity (TPR): 0.00
-% Specificity (TNR): 1.00
-% Balanced accuracy: 0.50
-% Precision**:       nan
-% F-Score:           0.77
-%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary of Results}
 The results achieved (shown in \ref{tab:F1Results}) demonstrate that the supplementary data used in accordance with the method described in Section \ref{sec:Method}, contribute to an 8\% increase to the F1 score in both the Binary MLP Classifier, and the Multilabel classifier. This a relative increase of 10.5\% and 11.9\% respectively. 
 
@@ -1148,8 +1049,10 @@ The complexity of the classification task was low compared to similar studies \c
 The increase in F1 score could occur in 2 areas. The first is during hyperparameter optimisation, in which the hyperparameters are fitted to our activation model using Audio and/or the supplementary data, optimised about the F1 score. The second is in the fitting itself, where the supplementary data may contain a signal that could be benefiting the F1 score of the model. If this hyposthesis is correct, then these results will hold valid across other classifiers that require hyperparameter optimisation and fitting of training data.
 
 \subparagraph{Acoustic Event Detection}
-The validity of the result holds true for Acoustic Event Classification, however, no Acoustic Event \inlineQuote{Detection} was carried out. That is, a sound sample was classified as an Acoustic Event as a binary output, rather than identifying when the Acoustic Event occured in the sound sample. Phaun discusses this in a paper called \inlineQuote{What Makes Audio Event Detection Harder than Classification?}\cite{Phan2016}. This result of this paper may be valid Acoustic Event Detection, as a detection pipeline is build upon the classifier.
+The validity of the result holds true for Acoustic Event Classification, however, no Acoustic Event \inlineQuote{Detection} was carried out. That is, a sound sample was classified as an Acoustic Event as a binary output, rather than identifying when the Acoustic Event occured in the sound sample. Phaun discusses the differences and complexities involved in AEC vs AED in a paper called \inlineQuote{What Makes Audio Event Detection Harder than Classification?}\cite{Phan2016}. This suggests that this project's result may be valid Acoustic Event Detection, given AEC is a crucial element of the detection pipeline.
 
+\subparagraph{Importance}
+The results from this project aim to present a peer-reviewable benchmark for the impact of the supplementary datasources of an accelerometer, gyroscope and GPS. Of note is no effort was made to discern the impact each of the 3 additional datasources played in the 10.5\% and 11.9\% improvements obtain in the results. This was a contcious effort, as these datasources are prevalant, and commnonly found together. It could be inferred from \aref{apx:FeatureImportance} that accelerometer was likely the most impactful element. It would be left to future work to investigate discern the specific impact each sensor had, and the cost of including \inlineQuote{less important} features vs training time.
 
 * making sure that they evaluate their results;
 * compare them to other research;
@@ -1175,6 +1078,8 @@ Based on the work presented, it's clear that audio data processing will be a maj
 Future work from here would be to look at the larger role of data acquisition. This is both because it was one of the larger hurdles I had to face, plus it enables further research into the effectiveness of what a diverse dataset can bring. Industry will reasonably expect to take aspects of data fusion and machine learning. To know what
 
 \section{Future Work}
+\paragraph{Discern what impact each additional datasource had on the result}
+
 \paragraph{Use another AEC/D to label this dataset}
 
 \paragraph{Novel use of Bogosort as Optimisation strategy}
