@@ -1115,11 +1115,11 @@ The results achieved demonstrate that the supplementary data used in accordance 
 
 \section{Discussion}\label{sec:Discussion}
 The results above aim to demonstrate a quanitative difference in F1 score across 2 common applications of Machine Learning based on whether cross domain data is introduced in the way of Accelerometer, Gyroscope and GPS data. 
-The results achieved did produce a quanitative difference of 5\% and 8\% for the Binary and Multilabel result respectively. 
+The results achieved did produce a quanitative difference of 5\% and 8\% for the Binary and Multilabel result respectively. The complexity of the classification task was low compared to similar studies \cite{Tseng2017} \cite{Virtanen2010} due to the broad labels available, but the number of classes compare to previous studies (61 classes, Virtanen 2010\cite{Virtanen2010}). To improve these results, the complexity of the labels could be reviewed through promising new techniques to generate labels, and train a network on weakly supervised data. \cite{Tseng2017}. This would allow a more compelx dataset, such as AudioSet \cite{Audiosetgoogle2018} to reprocess the ExtraSensory database to have a larger number of classes. 
 
 The direct increase in percentage could occur in 2 areas. The first is during hyperparameter optimisation, in which the hyperparameters are fitted to our activation model using Audio and/or the supplementary data. The second is in the fitting itself, where the supplementary data may contain a signal that could be benefiting the F1 score of the model.
 
-The validity of the result also holds true for Acoustic Event Classification, however due to the nature of the classifier build, no Acoustic Event Detection was carried out. That is, a sound sample was classified as an Acoustic Event as a binary output, rather than identifying when the Acoustic Event occured in the sound sample. Phaun discusses this in a paper called \inlineQuote{What Makes Audio Event Detection Harder than Classification?}\cite{Phan2016}
+The validity of the result also holds true for Acoustic Event Classification, however, no Acoustic Event Detection was carried out. That is, a sound sample was classified as an Acoustic Event as a binary output, rather than identifying when the Acoustic Event occured in the sound sample. Phaun discusses this in a paper called \inlineQuote{What Makes Audio Event Detection Harder than Classification?}\cite{Phan2016}. This result of this paper may be valid Acoustic Event Detection, as a detection pipeline is build upon the classifier.
 
 * making sure that they evaluate their results;
 * compare them to other research;
