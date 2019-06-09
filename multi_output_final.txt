@@ -1,0 +1,366 @@
+PS C:\FYP\2019-05-11\extra sensor> .\culled_python.py
+00EABED2-271D-49D8-B599-1D4A09240601.features_labels.csv.gz |X2287-Y2287 / timestamps 2287 / feature_names 225 / label_names 51
+098A72A5-E3E5-4F54-A152-BBDA0DF7B694.features_labels.csv.gz |X9100-Y9100 / timestamps 9100 / feature_names 225 / label_names 51
+0A986513-7828-4D53-AA1F-E02D6DF9561B.features_labels.csv.gz |X13060-Y13060 / timestamps 13060 / feature_names 225 / label_names 51
+0BFC35E2-4817-4865-BFA7-764742302A2D.features_labels.csv.gz |X16168-Y16168 / timestamps 16168 / feature_names 225 / label_names 51
+0E6184E1-90C0-48EE-B25A-F1ECB7B9714E.features_labels.csv.gz |X23689-Y23689 / timestamps 23689 / feature_names 225 / label_names 51
+1155FF54-63D3-4AB2-9863-8385D0BD0A13.features_labels.csv.gz |X26374-Y26374 / timestamps 26374 / feature_names 225 / label_names 51
+11B5EC4D-4133-4289-B475-4E737182A406.features_labels.csv.gz |X35219-Y35219 / timestamps 35219 / feature_names 225 / label_names 51
+136562B6-95B2-483D-88DC-065F28409FD2.features_labels.csv.gz |X41437-Y41437 / timestamps 41437 / feature_names 225 / label_names 51
+1538C99F-BA1E-4EFB-A949-6C7C47701B20.features_labels.csv.gz |X47986-Y47986 / timestamps 47986 / feature_names 225 / label_names 51
+1DBB0F6F-1F81-4A50-9DF4-CD62ACFA4842.features_labels.csv.gz |X55361-Y55361 / timestamps 55361 / feature_names 225 / label_names 51
+24E40C4C-A349-4F9F-93AB-01D00FB994AF.features_labels.csv.gz |X60132-Y60132 / timestamps 60132 / feature_names 225 / label_names 51
+27E04243-B138-4F40-A164-F40B60165CF3.features_labels.csv.gz |X65059-Y65059 / timestamps 65059 / feature_names 225 / label_names 51
+2C32C23E-E30C-498A-8DD2-0EFB9150A02E.features_labels.csv.gz |X73575-Y73575 / timestamps 73575 / feature_names 225 / label_names 51
+33A85C34-CFE4-4732-9E73-0A7AC861B27A.features_labels.csv.gz |X79747-Y79747 / timestamps 79747 / feature_names 225 / label_names 51
+3600D531-0C55-44A7-AE95-A7A38519464E.features_labels.csv.gz |X84950-Y84950 / timestamps 84950 / feature_names 225 / label_names 51
+40E170A7-607B-4578-AF04-F021C3B0384A.features_labels.csv.gz |X92599-Y92599 / timestamps 92599 / feature_names 225 / label_names 51
+481F4DD2-7689-43B9-A2AA-C8772227162B.features_labels.csv.gz |X99290-Y99290 / timestamps 99290 / feature_names 225 / label_names 51
+4E98F91F-4654-42EF-B908-A3389443F2E7.features_labels.csv.gz |X102540-Y102540 / timestamps 102540 / feature_names 225 / label_names 51
+4FC32141-E888-4BFF-8804-12559A491D8C.features_labels.csv.gz |X107519-Y107519 / timestamps 107519 / feature_names 225 / label_names 51
+5119D0F8-FCA8-4184-A4EB-19421A40DE0D.features_labels.csv.gz |X114136-Y114136 / timestamps 114136 / feature_names 225 / label_names 51
+5152A2DF-FAF3-4BA8-9CA9-E66B32671A53.features_labels.csv.gz |X120753-Y120753 / timestamps 120753 / feature_names 225 / label_names 51
+59818CD2-24D7-4D32-B133-24C2FE3801E5.features_labels.csv.gz |X126700-Y126700 / timestamps 126700 / feature_names 225 / label_names 51
+59EEFAE0-DEB0-4FFF-9250-54D2A03D0CF2.features_labels.csv.gz |X134242-Y134242 / timestamps 134242 / feature_names 225 / label_names 51
+5EF64122-B513-46AE-BCF1-E62AAC285D2C.features_labels.csv.gz |X138153-Y138153 / timestamps 138153 / feature_names 225 / label_names 51
+61359772-D8D8-480D-B623-7C636EAD0C81.features_labels.csv.gz |X144232-Y144232 / timestamps 144232 / feature_names 225 / label_names 51
+61976C24-1C50-4355-9C49-AAE44A7D09F6.features_labels.csv.gz |X152962-Y152962 / timestamps 152962 / feature_names 225 / label_names 51
+665514DE-49DC-421F-8DCB-145D0B2609AD.features_labels.csv.gz |X162129-Y162129 / timestamps 162129 / feature_names 225 / label_names 51
+74B86067-5D4B-43CF-82CF-341B76BEA0F4.features_labels.csv.gz |X169427-Y169427 / timestamps 169427 / feature_names 225 / label_names 51
+78A91A4E-4A51-4065-BDA7-94755F0BB3BB.features_labels.csv.gz |X181423-Y181423 / timestamps 181423 / feature_names 225 / label_names 51
+797D145F-3858-4A7F-A7C2-A4EB721E133C.features_labels.csv.gz |X185016-Y185016 / timestamps 185016 / feature_names 225 / label_names 51
+7CE37510-56D0-4120-A1CF-0E23351428D2.features_labels.csv.gz |X194777-Y194777 / timestamps 194777 / feature_names 225 / label_names 51
+7D9BB102-A612-4E2A-8E22-3159752F55D8.features_labels.csv.gz |X196377-Y196377 / timestamps 196377 / feature_names 225 / label_names 51
+8023FE1A-D3B0-4E2C-A57A-9321B7FC755F.features_labels.csv.gz |X205566-Y205566 / timestamps 205566 / feature_names 225 / label_names 51
+806289BC-AD52-4CC1-806C-0CDB14D65EB6.features_labels.csv.gz |X214808-Y214808 / timestamps 214808 / feature_names 225 / label_names 51
+81536B0A-8DBF-4D8A-AC24-9543E2E4C8E0.features_labels.csv.gz |X221215-Y221215 / timestamps 221215 / feature_names 225 / label_names 51
+83CF687B-7CEC-434B-9FE8-00C3D5799BE6.features_labels.csv.gz |X230754-Y230754 / timestamps 230754 / feature_names 225 / label_names 51
+86A4F379-B305-473D-9D83-FC7D800180EF.features_labels.csv.gz |X241492-Y241492 / timestamps 241492 / feature_names 225 / label_names 51
+96A358A0-FFF2-4239-B93E-C7425B901B47.features_labels.csv.gz |X247311-Y247311 / timestamps 247311 / feature_names 225 / label_names 51
+9759096F-1119-4E19-A0AD-6F16989C7E1C.features_labels.csv.gz |X257270-Y257270 / timestamps 257270 / feature_names 225 / label_names 51
+99B204C0-DD5C-4BB7-83E8-A37281B8D769.features_labels.csv.gz |X263308-Y263308 / timestamps 263308 / feature_names 225 / label_names 51
+9DC38D04-E82E-4F29-AB52-B476535226F2.features_labels.csv.gz |X272994-Y272994 / timestamps 272994 / feature_names 225 / label_names 51
+A5A30F76-581E-4757-97A2-957553A2C6AA.features_labels.csv.gz |X274661-Y274661 / timestamps 274661 / feature_names 225 / label_names 51
+A5CDF89D-02A2-4EC1-89F8-F534FDABDD96.features_labels.csv.gz |X280701-Y280701 / timestamps 280701 / feature_names 225 / label_names 51
+A7599A50-24AE-46A6-8EA6-2576F1011D81.features_labels.csv.gz |X284599-Y284599 / timestamps 284599 / feature_names 225 / label_names 51
+A76A5AF5-5A93-4CF2-A16E-62353BB70E8A.features_labels.csv.gz |X292119-Y292119 / timestamps 292119 / feature_names 225 / label_names 51
+B09E373F-8A54-44C8-895B-0039390B859F.features_labels.csv.gz |X300253-Y300253 / timestamps 300253 / feature_names 225 / label_names 51
+B7F9D634-263E-4A97-87F9-6FFB4DDCB36C.features_labels.csv.gz |X309636-Y309636 / timestamps 309636 / feature_names 225 / label_names 51
+B9724848-C7E2-45F4-9B3F-A1F38D864495.features_labels.csv.gz |X317262-Y317262 / timestamps 317262 / feature_names 225 / label_names 51
+BE3CA5A6-A561-4BBD-B7C9-5DF6805400FC.features_labels.csv.gz |X325571-Y325571 / timestamps 325571 / feature_names 225 / label_names 51
+BEF6C611-50DA-4971-A040-87FB979F3FC1.features_labels.csv.gz |X329022-Y329022 / timestamps 329022 / feature_names 225 / label_names 51
+C48CE857-A0DD-4DDB-BEA5-3A25449B2153.features_labels.csv.gz |X334114-Y334114 / timestamps 334114 / feature_names 225 / label_names 51
+CA820D43-E5E2-42EF-9798-BE56F776370B.features_labels.csv.gz |X341979-Y341979 / timestamps 341979 / feature_names 225 / label_names 51
+CCAF77F0-FABB-4F2F-9E24-D56AD0C5A82F.features_labels.csv.gz |X350451-Y350451 / timestamps 350451 / feature_names 225 / label_names 51
+CDA3BBF7-6631-45E8-85BA-EEB416B32A3C.features_labels.csv.gz |X353311-Y353311 / timestamps 353311 / feature_names 225 / label_names 51
+CF722AA9-2533-4E51-9FEB-9EAC84EE9AAC.features_labels.csv.gz |X356926-Y356926 / timestamps 356926 / feature_names 225 / label_names 51
+D7D20E2E-FC78-405D-B346-DBD3FD8FC92B.features_labels.csv.gz |X363136-Y363136 / timestamps 363136 / feature_names 225 / label_names 51
+E65577C1-8D5D-4F70-AF23-B3ADB9D3DBA3.features_labels.csv.gz |X366577-Y366577 / timestamps 366577 / feature_names 225 / label_names 51
+ECECC2AB-D32F-4F90-B74C-E12A1C69BBE2.features_labels.csv.gz |X370107-Y370107 / timestamps 370107 / feature_names 225 / label_names 51
+F50235E0-DD67-4F2A-B00B-1F31ADA998B9.features_labels.csv.gz |X372373-Y372373 / timestamps 372373 / feature_names 225 / label_names 51
+end
+layer sizes
+Fitting 3 folds for each of 30 candidates, totalling 90 fits
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 4 concurrent workers.
+
+F-Score: 0.60
+== Projected the features to 95 features from the sensors: Aud, Acc, Gyro, Loc
+C:\Program Files\Python36\lib\site-packages\sklearn\metrics\classification.py:1143: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no predicted samples.
+  'precision', 'predicted', average, warn_for)
+== Projected the features to 95 features from the sensors: Aud, Acc, Gyro, Loc
+----------
+----------
+--- Training Metrics ---
+Samples: 7891
+Label: 2:20
+TP: 10706
+TN: 132399
+Sensors: ['Aud', 'Acc', 'Gyro', 'Loc']
+Features: 7891 features
+--- Performance Metrics ---
+Accuracy: 0.95
+Recall(sensitivity): 0.73
+Precision: 0.79
+Specificity: 0.98
+F-Score: 0.75
+--- Confusion Matrix CLASS 2 ---
+[[2874  633]
+ [ 709 3675]]
+--- Confusion Matrix CLASS 3 ---
+[[7876    0]
+ [  15    0]]
+--- Confusion Matrix CLASS 4 ---
+[[7812    2]
+ [  45   32]]
+--- Confusion Matrix CLASS 5 ---
+[[6639  214]
+ [ 178  860]]
+--- Confusion Matrix CLASS 6 ---
+[[7822    5]
+ [  60    4]]
+--- Confusion Matrix CLASS 7 ---
+[[7801    8]
+ [  71   11]]
+--- Confusion Matrix CLASS 8 ---
+[[7811    0]
+ [  80    0]]
+--- Confusion Matrix CLASS 9 ---
+[[7102  132]
+ [ 292  365]]
+--- Confusion Matrix CLASS 10 ---
+[[4375  585]
+ [ 603 2328]]
+--- Confusion Matrix CLASS 11 ---
+[[6234  362]
+ [ 532  763]]
+--- Confusion Matrix CLASS 12 ---
+[[7795   14]
+ [  65   17]]
+--- Confusion Matrix CLASS 13 ---
+[[7867    0]
+ [  24    0]]
+--- Confusion Matrix CLASS 14 ---
+[[7757   36]
+ [  72   26]]
+--- Confusion Matrix CLASS 15 ---
+[[7853    1]
+ [  36    1]]
+--- Confusion Matrix CLASS 16 ---
+[[5155  511]
+ [ 411 1814]]
+--- Confusion Matrix CLASS 17 ---
+[[7861    0]
+ [  30    0]]
+--- Confusion Matrix CLASS 18 ---
+[[6297  266]
+ [ 631  697]]
+--- Confusion Matrix CLASS 19 ---
+[[7757    5]
+ [  85   44]]
+--- Confusion Matrix CLASS 20 ---
+[[7711   31]
+ [  80   69]]
+== Projected the features to 95 features from the sensors: Aud, Acc, Gyro, Loc
+C:\Program Files\Python36\lib\site-packages\sklearn\metrics\classification.py:1143: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no predicted samples.
+  'precision', 'predicted', average, warn_for)
+C:\Program Files\Python36\lib\site-packages\sklearn\metrics\classification.py:1145: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true samples.
+  'recall', 'true', average, warn_for)
+== Projected the features to 95 features from the sensors: Aud, Acc, Gyro, Loc
+----------
+----------
+--- Training Metrics ---
+Samples: 2158
+Label: 2:20
+TP: 537
+TN: 36996
+Sensors: ['Aud', 'Acc', 'Gyro', 'Loc']
+Features: 2158 features
+--- Performance Metrics ---
+Accuracy: 0.92
+Recall(sensitivity): 0.43
+Precision: 0.16
+Specificity: 0.93
+F-Score: 0.42
+--- Confusion Matrix CLASS 2 ---
+[[1374  561]
+ [   7  216]]
+--- Confusion Matrix CLASS 3 ---
+[[2158]]
+--- Confusion Matrix CLASS 4 ---
+[[2156    2]
+ [   0    0]]
+--- Confusion Matrix CLASS 5 ---
+[[1998  160]
+ [   0    0]]
+--- Confusion Matrix CLASS 6 ---
+[[2041  117]
+ [   0    0]]
+--- Confusion Matrix CLASS 7 ---
+[[2155    3]
+ [   0    0]]
+--- Confusion Matrix CLASS 8 ---
+[[2158]]
+--- Confusion Matrix CLASS 9 ---
+[[1685  473]
+ [   0    0]]
+--- Confusion Matrix CLASS 10 ---
+[[1502  656]
+ [   0    0]]
+--- Confusion Matrix CLASS 11 ---
+[[2024  134]
+ [   0    0]]
+--- Confusion Matrix CLASS 12 ---
+[[2125   33]
+ [   0    0]]
+--- Confusion Matrix CLASS 13 ---
+[[2158]]
+--- Confusion Matrix CLASS 14 ---
+[[2011    0]
+ [  89   58]]
+--- Confusion Matrix CLASS 15 ---
+[[2154    4]
+ [   0    0]]
+--- Confusion Matrix CLASS 16 ---
+[[1731  427]
+ [   0    0]]
+--- Confusion Matrix CLASS 17 ---
+[[2158]]
+--- Confusion Matrix CLASS 18 ---
+[[1096  184]
+ [ 615  263]]
+--- Confusion Matrix CLASS 19 ---
+[[2154    4]
+ [   0    0]]
+--- Confusion Matrix CLASS 20 ---
+[[2158]]
+layer sizes
+
+ ------ REMOVING  --- SUPPLEMENTARY  --- DATA --- ---
+
+F-Score: 0.42
+== Projected the features to 26 features from the sensors: Aud
+C:\Program Files\Python36\lib\site-packages\sklearn\metrics\classification.py:1143: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no predicted samples.
+  'precision', 'predicted', average, warn_for)
+== Projected the features to 26 features from the sensors: Aud
+----------
+----------
+--- Training Metrics ---
+Samples: 7903
+Label: 2:20
+TP: 9233
+TN: 132687
+Sensors: ['Aud']
+Features: 7903 features
+--- Performance Metrics ---
+Accuracy: 0.95
+Recall(sensitivity): 0.63
+Precision: 0.76
+Specificity: 0.98
+F-Score: 0.67
+--- Confusion Matrix CLASS 2 ---
+[[2364 1126]
+ [ 691 3722]]
+--- Confusion Matrix CLASS 3 ---
+[[7891    0]
+ [  12    0]]
+--- Confusion Matrix CLASS 4 ---
+[[7828    2]
+ [  68    5]]
+--- Confusion Matrix CLASS 5 ---
+[[6744  160]
+ [ 306  693]]
+--- Confusion Matrix CLASS 6 ---
+[[7848    1]
+ [  47    7]]
+--- Confusion Matrix CLASS 7 ---
+[[7822    0]
+ [  81    0]]
+--- Confusion Matrix CLASS 8 ---
+[[7810    0]
+ [  93    0]]
+--- Confusion Matrix CLASS 9 ---
+[[7133  100]
+ [ 453  217]]
+--- Confusion Matrix CLASS 10 ---
+[[4610  489]
+ [ 833 1971]]
+--- Confusion Matrix CLASS 11 ---
+[[6297  255]
+ [ 807  544]]
+--- Confusion Matrix CLASS 12 ---
+[[7813    2]
+ [  88    0]]
+--- Confusion Matrix CLASS 13 ---
+[[7881    0]
+ [  22    0]]
+--- Confusion Matrix CLASS 14 ---
+[[7798    7]
+ [  92    6]]
+--- Confusion Matrix CLASS 15 ---
+[[7865    0]
+ [  38    0]]
+--- Confusion Matrix CLASS 16 ---
+[[5344  405]
+ [ 658 1496]]
+--- Confusion Matrix CLASS 17 ---
+[[7860    0]
+ [  43    0]]
+--- Confusion Matrix CLASS 18 ---
+[[6274  314]
+ [ 813  502]]
+--- Confusion Matrix CLASS 19 ---
+[[7784    8]
+ [ 102    9]]
+--- Confusion Matrix CLASS 20 ---
+[[7721   12]
+ [ 109   61]]
+== Projected the features to 26 features from the sensors: Aud
+C:\Program Files\Python36\lib\site-packages\sklearn\metrics\classification.py:1143: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no predicted samples.
+  'precision', 'predicted', average, warn_for)
+C:\Program Files\Python36\lib\site-packages\sklearn\metrics\classification.py:1145: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true samples.
+  'recall', 'true', average, warn_for)
+== Projected the features to 26 features from the sensors: Aud
+----------
+----------
+--- Training Metrics ---
+Samples: 2158
+Label: 2:20
+TP: 380
+TN: 37523
+Sensors: ['Aud']
+Features: 2158 features
+--- Performance Metrics ---
+Accuracy: 0.92
+Recall(sensitivity): 0.30
+Precision: 0.15
+Specificity: 0.94
+F-Score: 0.29
+--- Confusion Matrix CLASS 2 ---
+[[1307  628]
+ [  12  211]]
+--- Confusion Matrix CLASS 3 ---
+[[2158]]
+--- Confusion Matrix CLASS 4 ---
+[[2158]]
+--- Confusion Matrix CLASS 5 ---
+[[1845  313]
+ [   0    0]]
+--- Confusion Matrix CLASS 6 ---
+[[2127   31]
+ [   0    0]]
+--- Confusion Matrix CLASS 7 ---
+[[2158]]
+--- Confusion Matrix CLASS 8 ---
+[[2158]]
+--- Confusion Matrix CLASS 9 ---
+[[2139   19]
+ [   0    0]]
+--- Confusion Matrix CLASS 10 ---
+[[1389  769]
+ [   0    0]]
+--- Confusion Matrix CLASS 11 ---
+[[2156    2]
+ [   0    0]]
+--- Confusion Matrix CLASS 12 ---
+[[2149    9]
+ [   0    0]]
+--- Confusion Matrix CLASS 13 ---
+[[2158]]
+--- Confusion Matrix CLASS 14 ---
+[[2009    2]
+ [ 133   14]]
+--- Confusion Matrix CLASS 15 ---
+[[2158]]
+--- Confusion Matrix CLASS 16 ---
+[[1780  378]
+ [   0    0]]
+--- Confusion Matrix CLASS 17 ---
+[[2158]]
+--- Confusion Matrix CLASS 18 ---
+[[1201   79]
+ [ 723  155]]
+--- Confusion Matrix CLASS 19 ---
+[[2157    1]
+ [   0    0]]
+--- Confusion Matrix CLASS 20 ---
+[[2158]]
