@@ -250,7 +250,7 @@
  @comment{ Google. (2018). AudioSet. (Google) Retrieved from 
            https://research.google.com/audioset/dataset/car.html }
 
-@Book{google2018,
+@Book{Audiosetgoogle2018,
   title     = {AudioSet: An Ontology and Human-labeled dataset for audio events},
   publisher = {Google},
   year      = {2018},
@@ -293,6 +293,8 @@ http://www.k-jahn.de/files/bibtex.xslhttp://www.k-jahn.de/files/bibtex.xslhttp:/
 }
 
 @TechReport{Wiki,
+  author = {Wikipedia},
+  year   = {2019},
 }
 
 @Manual{IEEE15288,
@@ -415,4 +417,41 @@ http://www.k-jahn.de/files/bibtex.xslhttp://www.k-jahn.de/files/bibtex.xslhttp:/
   keywords    = {cs.SD, eess.AS},
 }
 
+@Book{PsychologicalDebriefing2012,
+  title     = {Psychological Debriefing},
+  publisher = {Cambridge University Press},
+  year      = {2012},
+  isbn      = {0521647002},
+  date      = {2012-05-17},
+  ean       = {9780521647007},
+  pagetotal = {388},
+  url       = {https://www.ebook.de/de/product/3766790/psychological_debriefing.html},
+}
+
+@TechReport{DebriefAAR,
+  author      = {Morrison, John E. ; Meliza, Larry L.},
+  title       = {Foundations of the After Action Review Process},
+  institution = {INSTITUTE FOR DEFENSE ANALYSES ALEXANDRIA VA},
+  year        = {1999},
+}
+
+@PhdThesis{recentAAR,
+  author = {Jeffrey Kaliner},
+  title  = {WHEN WILL WE EVER LEARN? THE AFTER ACTION REVIEW, LESSONS LEARNED AND THE NEXT STEPS IN TRAINING AND EDUCATING THE HOMELAND SECURITY ENTERPRISE FOR THE 21ST CENTURY},
+  school = {NAVAL POSTGRADUATE SCHOOL MONTEREY, CALIFORNIA},
+  year   = {2013},
+}
+
+@TechReport{TC2520,
+  author      = {HEADQUARTERS, Department of the Army},
+  title       = {Circular (TC) 25-20: A Leader’s Guide to After Action Reviews},
+  institution = {Department of the Army},
+  year        = {1993},
+}
+
+@article{johnson2011debriefing,
+  title={Debriefing after simulation: Guidelines for faculty and students},
+  author={Johnson Pivec, Cynthia Renee},
+  year={2011}
+}
 @Comment{jabref-meta: databaseType:bibtex;}

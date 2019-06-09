@@ -133,6 +133,7 @@ check for our, we, I, they're, your, you, etc.
 check for st-ray - inca-se the-y block sh-t
 check ref and replace with fref, tref, aref etc.
 fix header to og %School of Engineering, Discipline of Mechanical Engineering and Mechatronics
+check \\refs\{\} for whether the fullstop is before or after
 As per the FYP Handbook: \\
 I did:
 \begin{itemize}
@@ -191,15 +192,29 @@ I'd also like to thank each and every mechatronics Academic staff member at the 
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
-This project aims to answer the question \inlineQuote{[What is] the effect of supplementary data on Acoustic Event Classification through Machine Learning}. To do this, results will analyse the F1 Scores of a binary MLPClassifier, and a multi-label MLPClassifier, both trained on the ExtraSensory dataset using the extact method described in Section \ref{sec:Method}.
+This project aims to answer the question \inlineQuote{[What is] the effect of supplementary data on Acoustic Event Classification through Machine Learning}. To do this, results will analyse the F1 Scores of a binary MLPClassifier, and a multi-label MLPClassifier, both trained on the ExtraSensory dataset using the method described in Section \ref{sec:Method}.
 Additionally, the output of the classifiers will be analysed for \inlineQuote{validity}. Does the classifier successfully detect and classify an Acoustic Event?
 
-The desired results are a demonstratable difference (or lack thereof) in the F1 score, after comparing a classifier with and without supplementary data.
-This will 
+The desired results are a demonstrable difference (or lack thereof) in the F1 score, after comparing a classifier with and without supplementary data.
 
-Debriefing is a tool used to educate an individual, inform a collective and create a holistic historical recording of an event. Wikipedia defines the process of debriefing as: (1) Receiving an explanation, (2) Receiving information and situation-based reminders of context, (3) Reporting of measures of performance, and/or opportunities to further investigate the results of a study, investigation, or assessment of performance after participation in an immersive activity is complete \cite{Wiki}\flagforreview. Traditionally this is done through a collection of primary sources (where available) and secondary sources. In the information age, these primary sources have expanded to include large datasets, recordings and other digital forensics. This new and increasing range of primary sources provides the potential to significantly improve the steps of debriefing, and ultimately improve debriefing outcomes.
+\paragraph{Motivation for the problem}
+The capacity to identify a physical event in the real world using sound would open the door to a whole new realm of data. The potential implications and applications are limitless; assistance and closed captioning for the hearing impaired, improved security closed loop TV, increased transparency and documentation of a ride sharing trip, and early detection of potential accidents or medical emergencies to name a few. The primary focus of the new potential is to review AEC/D as a method of debriefing across multiple industries. \\
 
-This paper will report on the Author’s progress of harnessing this new potential and is organised as follows: section 2 will discuss how the scope has been analysed and reduced, section 3 will review the literature of this research topic, section 4 will discuss the method of implementing the technology, section 5 will discuss the evaluation methodology, and section 6 will discuss the results of the proof-of-concept.
+\subparagraph{Debreifing (or After Action Report)}
+
+Debriefing is effectively an education tool used to educate an individual, a group or record a more holistic history of an event, for purposes of performance feedback \cite{recentAAR}.
+%The After Action Report style of debriefing is one where an educator works with a student to go through the following steps: an explanation of an event, e, reporting of measures of performance, and/or opportunities to further investigate the results of a study, investigation, or assessment of performance after participation in an immersive activity is complete.
+The formal debrief originated from the World War 2, with SLA Marshell's "interviews after combat" \cite{DebriefAAR}. Since then, the "After Action Report" was developed by the US Army as ...
+\fancyquote{a professional discussion of an event, focused on performance standards, that enables soldiers to discover for themselves what happened, why it happened and how to sustain strengths and improve on weaknesses.\cite{TC2520}}
+This is a key tool in training after any group activity, and has been extended to many industry, most notably in the training of Doctors\cite{johnson2011debriefing}.
+\cite{Wiki}\flagforreview. Traditionally this is done through a collection of primary sources (where available) and secondary sources. In the information age, these primary sources have expanded to include large datasets, recordings and other digital forensics. This new and increasing range of primary sources provides the potential to significantly improve the steps of debriefing, and ultimately improve debriefing outcomes \cite{PsychologicalDebriefing2012}.
+
+\paragraph{Introduction to the Field from a Mecatronics Perspective}
+Machine Learning will be the focus of this report. Machine Learning is a field of Engineering and Computer Science concerned with automating an the discovery and modelling of a process. In a nutshell, it is about training a computer algorithm to learn from data. It's application in this report is that of almost akin to that of a traditional optimisation problem in mechatronics: Given a \inlineQuote{plant} (or, a neural network), can you \inlineQuote{optimise} it's \inlineQuote{parameters} (both weightings and hyperparameters) as to
+of the form of an activation function (such as a sigmoid, ReLu, etc), can you \inlineQuote{optimise} it until it's function best fits a process model that identifies sounds?
+
+It is more broadly an aspect of artificial intelligence based on the idea that systems can learn from data, identify patterns and make decisions with minimal human intervention.
+% This paper will report on the Author’s progress of harnessing this new potential and is organised as follows: \sref{sec:ProblemAnalysis} will discuss how the scope has been analysed and reduced, \sref{sec:LitReview} will review the literature of this research topic, \sref{sec:Method} will discuss the method of implementing the technology, \sref{sec:Results} will discuss the results, and \sref{sec:Discussion} will discuss the results of the proof-of-concept.
 
 % To organise your introduction section you can use the following structure:
 % \begin{itemize}
