@@ -1111,11 +1111,15 @@ The results achieved (shown in \ref{tab:F1Results}) demonstrate that the supplem
 \section{Discussion}\label{sec:Discussion}
 The results above aim to demonstrate a quanitative difference in F1 score across 2 the classifier with and without Accelerometer, Gyroscope and GPS data. The results achieved did produce a quanitative difference of 5\% and 8\% \flagforreview for the Binary and Multilabel result respectively. 
 
+\subparagraph{Assumptions}
+
 \subparagraph{Confidence and Qualatitive Evaluation of Result}
 The result had been analysed using the Area Under Reciever Operating Characteristics (AUROC) plot, to determine how the classifier would operate over different decision boundries. The AUROC plots This was done to ensure that the results produced were not the result of a classifier optimised about the 
 
 AUROC curve here metrics.roc\_curve(y\_pred,), discuss the validity of the 
 
+\subparagraph{Changing Hyperparameters}
+The results make the assumption that using static hyperparameters across the Audio, and Audio+Extra classifier would be an invalid strategy of testing the hyposthesis. It would be expected that optimising the hyperparameters for one classifier would result in the other classifier perofmring worse without, resulting in a convolution of the effect from the extra data, and a classifier with poorly optimised hyperparameters.
 
 \subparagraph{Complexity} 
 The complexity of the classification task was low compared to similar studies \cite{Tseng2017} \cite{Virtanen2010} due to the limited and broad labels available, but the number of classes compare to previous studies (61 classes, Virtanen 2010\cite{Virtanen2010}). To improve these results, the complexity of the labels could be reviewed through promising new techniques to generate labels, and train a network on weakly supervised data. \cite{Tseng2017}. This would allow a more compelx dataset, such as AudioSet \cite{Audiosetgoogle2018} to reprocess the ExtraSensory database to have a larger number of classes. 
@@ -1150,7 +1154,11 @@ The work presented does demonstrates a contribution to the audio processing spac
 Based on the work presented, it's clear that audio data processing will be a major tool and research topic into the future. The niche explored in this FYP, of amalgamating traditional audio processing with physical sensor input looks to be of limited use, to limited applications. More over, without large datasets of audio paired with physical sensor data, the machine learning tools explored in this FYP will not be able to be used. As such, the rise of audio recording equipped equipment should be the basis for further research into this space. 
 Future work from here would be to look at the larger role of data acquisition. This is both because it was one of the larger hurdles I had to face, plus it enables further research into the effectiveness of what a diverse dataset can bring. Industry will reasonably expect to take aspects of data fusion and machine learning. To know what
 
+\section{Future Work}
+\paragraph{Use another AEC/D to label this dataset}
 
+\paragraph{Novel use of Bogosort as Optimisation strategy}
+A suggested option for Future Work could include adapting the Bogosort to Machine Learning, as it is an increasingly popular area of research \cite{Bogo_Gruber2007} \cite{Bogo_Holzer2018} \cite{Bogo_max}. The suggested method for using the Bogo search would be iterate over the hyperparameters of the network, then iterate over the neuron weights. If successfully applied, it could be the first instance of the Bogosort being applied in the Machine Learning sphere.
 \newpage 
 %\LaTeX \ is very good for writing Mathematics. You can write mathematics in the middle of a sentence, like for example $y=m x + h$. Or you can use the \verb|equation| environment as indicated in \eqref{eq:EquationLine} below.
 %
@@ -1916,71 +1924,53 @@ This shows how a Grid Search was used for hyperparameter optimisation. In partic
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Writing you're not sure if you want to keep}
-
-
-\subsection{Funny Future Work}
-A suggested option for Future Work could include a adapting the Bogosort, which is a increasing popular area of research \cite{Bogo_Gruber2007} \cite{Bogo_Holzer2018} \cite{Bogo_max}. The suggested method for using the Bogo search would be iterate over the hyperparameters of the network, then iterate over the neuron weights. If successfully applied, it could be the first instance of the Bogosort being applied in the Machine Learning sphere.
-
-
-
-\subsection{Development Tools and Technologies}
-Windows 10, i7-7500U and GeForce 940MX, Nvidia 1080Ti, VS Code, LaTeX, Python, Matlab, sklearn, numpy, ExtraSensory dataset, git.
-
-Visual Studio was used for developing the Python project
-
-\subsection{Discussion on practical aspects of IMU and Audio}
-
-\begin{itemize}
-    \item I'm not sure if it's practical to try and be recording IMU plus audio
-    \item It's a case of POV; if you can record IMU, you can also record audio from the POV of your user. This theoretically suggests a higher fidelity in classification, especially in determining whether an event was local (POV) or whether it was an external event (someone else)
-    \item whilst IMU is helpful, the level of understanding
-\end{itemize}
-
-Python was chosen for this project due to its ease of use, ease of analysis, ease of learning and its low maintenance. Choosing which dataset was the most difficult was not difficult for me as I have worked heavily with it and its great use cases are pretty straightforward for large data sets. In fact I even wrote a Python for it recently. Although it is still an early, immature project it works quite well for training models and will be the foundation of others as well. There are very few data in the dataset I could not predict the results from. This gives me confidence that the model is accurate from the start and can be used across all datasets and in other languages.
-
-When the dataset was large the results tended to cluster around the 50th and 75th percentile. From this dataset I learned a bit of things. First off, the most recent observations are generally much better aligned and consistent than the average number of observations. And second this isn't a problem for every one of the training data! It seems most of the time we end up with some data which has better variance and the better alignments in the data. If these outl
+% \section{Writing you're not sure if you want to keep}
 
 
 
 
 
-To summarize what we did :
-We load and processed the dataset
-We got familiar with the dataset by plotting some histograms and a correlation heat map of the features
-We used a deep neural network with three hidden layers each one has 256 nodes.
-We used a linear activation function on the output layer
-We trained the model then test it on Kaggle.
-We also tested two other models
-Our deep neural network was able to outscore these two models
-We believe that these two models could beat the deep neural network model if we tweak their hyperparameters.https://towardsdatascience.com/deep-neural-networks-for-regression-problems-81321897ca33
 
+% \subsection{Development Tools and Technologies}
+% Windows 10, i7-7500U and GeForce 940MX, Nvidia 1080Ti, VS Code, LaTeX, Python, Matlab, sklearn, numpy, ExtraSensory dataset, git.
 
-\subsection{Nearest Neighbour}
-Nearest Neighbour was chosen as a classification method to test against, and evaluate the other methods. Nearest Neighbour would not be used as a primary method as does not generalise well\citationneeded \footnote{https://scikit-learn.org/stable/modules/neighbors.html}
+% Visual Studio was used for developing the Python project
 
+% \subsection{Discussion on practical aspects of IMU and Audio}
 
-
-ciation:
-
-Vaizman2017a	
-Vaizman, Y., Ellis, K., and Lanckriet, G. "Recognizing Detailed Human Context In-the-Wild from Smartphones and Smartwatches". IEEE Pervasive Computing, vol. 16, no. 4, October-December 2017, pp. 62-74. doi:10.1109/MPRV.2017.3971131
-*Cite this paper if you use the ExtraSensory Dataset for any publication!
+% \begin{itemize}
+%     \item I'm not sure if it's practical to try and be recording IMU plus audio
+%     \item It's a case of POV; if you can record IMU, you can also record audio from the POV of your user. This theoretically suggests a higher fidelity in classification, especially in determining whether an event was local (POV) or whether it was an external event (someone else)
+%     \item whilst IMU is helpful, the level of understanding
+% \end{itemize}
 
 
 
-
-sounds like dropout is great for making sure accelerometer data is used
-
-Dropout
-
-Unlike these methods mentioned above, dropout in my understanding is tricky but practical. Like the figure shown below, the dropout will randomly mute some neurons in the neural network and we therefore have a sparse network which hugely decreases the possibility of overfitting.More importantly, the dropout will make the weights spread over the input features instead of focusing on some features.
-
-The possibility of muting neurons is often set as 0.5 though you can feel free to make it 0.3 or 1.0. When the dropout is 1.0, then you simply don't drop out any neurons. But our experience tells us 0.5 is usually the best choice.
-
-ExtraSensory Data BreakdoAfter finishing the training, it is important to turn off the dropout during development and testing. Otherwise, the prediction of this model is not stable since dropout add uncertainties to it.
+% \subsection{Nearest Neighbour}
+% Nearest Neighbour was chosen as a classification method to test against, and evaluate the other methods. Nearest Neighbour would not be used as a primary method as does not generalise well\citationneeded \footnote{https://scikit-learn.org/stable/modules/neighbors.html}
 
 
-\newpage
+
+% ciation:
+
+% Vaizman2017a	
+% Vaizman, Y., Ellis, K., and Lanckriet, G. "Recognizing Detailed Human Context In-the-Wild from Smartphones and Smartwatches". IEEE Pervasive Computing, vol. 16, no. 4, October-December 2017, pp. 62-74. doi:10.1109/MPRV.2017.3971131
+% *Cite this paper if you use the ExtraSensory Dataset for any publication!
+
+
+
+
+% sounds like dropout is great for making sure accelerometer data is used
+
+% Dropout
+
+% Unlike these methods mentioned above, dropout in my understanding is tricky but practical. Like the figure shown below, the dropout will randomly mute some neurons in the neural network and we therefore have a sparse network which hugely decreases the possibility of overfitting.More importantly, the dropout will make the weights spread over the input features instead of focusing on some features.
+
+% The possibility of muting neurons is often set as 0.5 though you can feel free to make it 0.3 or 1.0. When the dropout is 1.0, then you simply don't drop out any neurons. But our experience tells us 0.5 is usually the best choice.
+
+% ExtraSensory Data BreakdoAfter finishing the training, it is important to turn off the dropout during development and testing. Otherwise, the prediction of this model is not stable since dropout add uncertainties to it.
+
+
+% \newpage
 
 \end{document}
