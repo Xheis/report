@@ -131,8 +131,8 @@ E-mail: \href{mailto:Christopher.Caelli@uon.edu.au}{\textsf{Christopher.Caelli@u
 \section*{Mandatory Dot Point Summary}
 \vspace{-3mm}
 
-flagforreview \flagforreview \\
-citationneeded \citationneeded \\
+check all flagforreview \flagforreview \\
+check all citationneeded \citationneeded \\
 Tense: Past, Future etc. Search "was", "is" "ed" etc.
 Check contraction. it's, don't etc.
 check for our, we, I, they're, your, you, etc.
@@ -140,6 +140,7 @@ check for st-ray - inca-se the-y block sh-t
 check ref and replace with fref, tref, aref etc.
 fix header to og %School of Engineering, Discipline of Mechanical Engineering and Mechatronics
 check \\refs\{\} for whether the fullstop is before or after
+review the use of section vs paragraph vs subsection etc.
 As per the FYP Handbook: \\
 I did:
 \begin{itemize}
@@ -499,7 +500,7 @@ Python was used to process the data before the Machine Learning modules of code,
 
  \sout{The data from the ExtraSensory dataset is provided in its raw format, which is best option is for the data to be raw, as this allows platform independent filtering, smoothing and sensor fusion\citationneeded.} 
 
-\subsubsection{Audio}
+\subparagraph{Audio}
 Data preprocessing of the Audio was done by Mel Frequency Cepstral Coefficients (MFCCs). Start with a recorded .wav sample, and split the whole sample into smaller sections via the sliding window method\citationneeded. Take each window and calculate the Fourier transform. This in turn is both \inlineQuote{Feature Engineering}, as well as preprocessing to be training compatible. 
 \begin{gather}%\label{eq:EquationLine}
     WindowSample(t) \xrightarrow{\mathscr{F}}  WindowSample(\omega)
@@ -531,11 +532,11 @@ Audio to a .wav file and record raw GPS lat/long/alt, raw accelerometer, and raw
 Extract the log mel-spectrogram from the audio clips by 128-bin, 2048-window and 365-hop (1683- overlap)”
 Aka classic sliding window, but this specifies some good over-lap, data density etc.
 
-\subsubsection{GPS}
+\subparagraph{GPS}
 \sout{Talk about what a GPS is, and how we get the signal}
 The GPS signal is requested by the "Fused Location Provider", in the Google Play services location API and comes heavily prefiltered\citationneeded. Further filtering is possible by a Kalman filter with the other physical sensors.
 
-\subsubsection{IMU}
+\subparagraph{IMU}
 For the purpose of this project, the data collected through the Android App applied a Low Pass Filter\citationneeded. A Kalman Filter was considered but wasn't used to avoid modelling the specific android sensor plant dynamics.
 
 \fref{AndroidDataExample.png}
@@ -601,7 +602,7 @@ For the purpose of this project, the data collected through the Android App appl
 \subsubsection{Audio}
 
 
-\subsection{Data Training, Testing and Evaluation Set}
+\subparagraph{Data Training, Testing and Evaluation Set}
 The ExtraSensory dataset contains over 300,000 samples across 60 Users (in a CSV format with 278 feature columns), as shown in \ref{tab:ExtraSensoryDataExample}. Each row contains an a 'snapshot' of the sensors at a frequency of once a minute. There are large non-continuities across each user. The dataset is unbalanced, and has had its labels cleaned by the researchers involved. Further details about the users themselves can be found in \ref{tab:ExtraSensoryDataBreakdown}, or at it paper \cite{Vaizman2017}.
 
 \begin{table}[h]
@@ -626,7 +627,7 @@ The ExtraSensory dataset contains over 300,000 samples across 60 Users (in a CSV
 
 The dataset was considered for use in 2 ways; training on a per user instance, or training on a per sample instance. The benefits of per user is to isolate recording hardware, and other plant noise. However this is undesirable, as this can result in a low variance in $\epsilon$ (bias), which increases the likelihood  of the learnt function ($\hat{f}$) to overfit the signal of the training users ($ \hat{f} = f(x) + \epsilon$) This, to minimise its impact in evaluation. Thus is the benefit of training on a per sample basis. By introducing other user noise into a training set, we minimise overfitting \inlineQuote{for free}. Finally as a \inlineQuote{kfold} (or other Cross-Validate methods) is applied to the whole training dataset for training + validation purposes, the likelihood  of the random selection incorporating a larger variance of noise increases. As a result, the data is used on as a per sample basis.
 
-\subsubsection{\inlineQuote{kfold} Cross validation}
+\subparagraph{\inlineQuote{kfold} Cross validation} \flagforreview
 kfold Cross Validation can be described as:
 \fancyquote{
     ... approach involves randomly dividing the set of observations into k groups, or folds, of approximately equal size. The first fold is treated as a validation set, and the method is fit on the remaining k - 1 folds. 
@@ -701,7 +702,7 @@ The MLPClassifier is a feedforward neural network, trained via backpropagation. 
 % \end{itemize}
 
 
-\subsection{Model Validation}
+\subsection{Model Validation}\label{subsec:ModelVal}
 Validation is the process of optimisation the hyperparameters of a model on the hold-out validation set of data. This is an important aspect of machine learning process because model validation cannot be learnt from data. That is to say, hyperparameter optimisation is out of the scope of training via traditional gradient decent and back propagation. Due to the "No Free Lunch" theorem, a model will be chosen and must be optimised before training begins. This is an extension of trying to find the optimal model for the solution. 
 
 \paragraph{Model Performance Metrics}
@@ -1080,19 +1081,35 @@ The validity of the result holds true for Acoustic Event Classification, however
 
 \subparagraph{Significance}
 The results from this project aim to present a peer-reviewable benchmark for the impact of the supplementary datasources of an accelerometer, gyroscope and GPS. The key significance is that the qualitative result can be taken and applied to similar projects.\\
-Of note, no effort was made to discern the impact each of the 3 additional datasources played in the 10.5\% and 11.9\% improvements obtain in the results. This was a conscious effort, as these datasources are prevalent, and commonly found together. It could be inferred from \aref{apx:FeatureImportance} that accelerometer was likely the most impactful element. It would be left to future work to investigate discern the specific impact each sensor had, and the cost of including \inlineQuote{less important} features vs training time. 
-
-* making sure that they evaluate their results;
-* compare them to other research;
-* emphasise the importance of the results;
-* identify limitations of the study.
+Of note, no effort was made to discern the impact each of the 3 additional datasources played in the 10.5\% and 11.9\% improvements obtain in the results. This was a conscious effort, as these datasources are prevalent, and commonly found together. It could be inferred from \aref{apx:FeatureImportance} that accelerometer was likely the most impactful element. It would be left to future work to investigate and discern the specific impact each sensor had, and the cost of including \inlineQuote{less important} features vs training time. 
 
 \subparagraph{Quality of Data}
-ExtraSensory was used as the dataset for this project. As a result of using the a public dataset, there was no investigation into the quality of the data within the dataset, beyond reading the original study \cite{Vaizman2017}. This is a key limitation with analysing the quantitative result. This limitation does not invalid the result however because the dataset was collected with mobile phones. Mobile phones would likely be the main datasource for any future dataset involving audio, accelerometer, gyroscope and GPS data.\\
+ExtraSensory was used as the dataset for this project. As a result of using the a public dataset, there was no investigation into the quality of the data within the dataset, beyond reading the original study. The quality of the recording device, any preproccessing, nor whether they generalised well has been checked. This is a key limitation with analysing the quantitative result. This limitation does not invalid the result however because the dataset was collected with mobile phones. Mobile phones would likely be the main datasource for any future dataset involving audio, accelerometer, gyroscope and GPS data.\\
 
-Furthermore, no effort was made to audit the labels provided in the dataset, as it was assumped that the dataset was 100\% accurate. If this was not the case, this assumption would affect the expected relative improvement in the result. 
+Furthermore, no effort was made to audit the labels provided in the dataset, as it was assumed that the dataset was 100\% accurate. If this was not the case, this assumption would affect the expected relative improvement in the result. The labels were self-reported and cleaned up by the researchers \cite{Vaizman2017}. Whilst this introducing human error into the dataset, all datasets will required a decision boundry that may be controversial. The ensure the quality of the decision boundry, one would take guidance from their use case in real world use, or would take guidance from similar studies for their decision boundry. 
 
-4 including the additional data points of accelerometer data gyroscope data and GPS data what it doesn't highlight is how optimal that data is nor does it evaluate the preprocessing of that data nor does it evaluate the generalisation of this methodology to new data sets what it does answer is the original question of does including supplementary data of mu staff increase the F1 score and the answer is yes what is important is to discuss how you would evaluate the generalisation of this model you would also discuss what what impact the model quality has on this result if we've used a different model which we have and we will show this result what is the difference in the improvement is there any improvement how do you evaluate whether a model will benefit from this extra data points there are some models specifically which you do need to do feature reduction and feature analysis on to ensure you don't over specify the features even if you low weight the features you may still have an issue of having too much data and this is just in terms of a performance another element of this is what we got the results what was the cost so we have increase the amount of data we need to use increase the data we need to process increase the data we need to collect to train we are also looking at a larger model file size which for a use case of potentially online processing would be very detrimental so what's the results of 5\% are based on solid evidence they may not actually be a valid application or a valid progress for achieving a 5\% increase for instance how do we only change the data set and retrain revalidated and then re-evaluated this process would we see similar numbers that is the model likely wouldn't produce the exact same if one school so is our 5\% related or proportional to the original benefit had we not done hyperparameter searching to optimise our model potentially we would have seen a much larger game in F1 score from the addition of the additional data points that hypothetical would be because if l model is already underperforming / are an optimised then the additional data points May introduce that additional optimisation needed similes conclusion in conclusion what we're looking at is a 5\% increase in F1 school which is relevant for this approach for this data set because this data set does closely match our target use case this is actually a valid result and this is a worthy increase to the field what this does raise however is how does hell result generalise across other applications because this project had a specific use case it was not within the scope to evaluate whether or not supplementary data would improve audio event classification and detection in other audio sets simile so the number of audio sets the database database is available is limited and the format of that data all the data selection would play a role so whilst we discussed supplementary data to specific data that we use was axela on the data a gyroscope data GPS however it did not attempt to evaluate other supplementary data is for instance the magna mater other accelerometer data video etcetera this data set is also a 1 minutes sample time snap what we did was we recorded across the day and time time-invariant snapshot of our data why that's important is because would time variance significantly affect this outcome that is something probably to put in the discussion section but in conclusion this seems to be a valid strategy and the next next step you would take is to look at trying a larger data set when available and 2 validate this on hardware in a actual environment further so there were other methods to approach the same problem and it should be considered whether or not those other methods would drastically change the app for instant whilst we used a model that was well well chosen for the purpose of a single binary flag to create an ensemble of classifiersconclusion in conclusion what would looking at is a 5\% increase in Heflin school which is relevant for visa parts for this. Affect because the status that sounds call claim at at Target use case this is actually a valid result in this is a wuzzy increase to the failed what is thugs raise however is how does have result general on across the applications because its project hi to specific use case it was not with him the Skype still valley light weather I'm not supplementary Dada would improve audio event classification inspection in other warriors that simile so the number of audio set device. Basis available is limited and the format of that. Orthodontist election would play a role boat well sweet discussed supplementary gotta to specific daughter that we used was XL alarm the Dada gyroscope. GPS however it did not attempt to evaluate all the supplementary. It Francis magnetic element get to work today sometime and burien shops all out. Why that's important who's because would come variant significantly effects did outcome that is something 0n
+\subparagraph{Choice in Frameworks}
+The choice in machine learning frameworks (and their implimentation) could effect the result. An assumption is made that this will be a minimal impact, and the results would stand valid across other frameworks.
+
+
+\subparagraph{Details of the Audio Data}
+A key assumption was the audio data provided (mono-channel recorded from a mobile phone) is representative of all audio data for use in Machine Learning. Furthermore, the audio was processed into MFFCs, which are a leading way to process audio data. The report did not attempt to test the results against different types of Audio data (such as multi channel, higher dynamic ranges, etc). The report did not attempt to review the results with other approaches of processing audio data (such as spectrograms with computer vision / machine learning), which may significantly differ the decision boundry which supplementary data would assist.
+
+\subparagraph{Types of Supplementary Data}
+The report took the assumption that "supplementary data" in the AEC/D field would be defined as accelerometer, gyroscope, and GPS data. A limitation of this result is whether the result would transfer and compare with different supplementary data sources; video, metadata, multiple datasources for one sample etc. 
+
+\subparagraph{Model Optimisation}
+A key assumption was that the model selected had been close to fully optimised, to the extent as to \sref{sec:Method} allowed. This assumption infers that any improvement in F1 Score with the addition of supplementary data can determined to be from the introduction of the data itself, and not a result of better hyperparameter optimisation.
+
+\subparagraph{F1 Score as a Metric}
+The project sought to measure a decernable difference in F1 score by the introduction of supplementary data. An assumption that F1 score is the most appropriate indicator of a positive result is made. It could be noted that F1 score is the harmonic mean of the true positive and true negative rate. Had the project selected a different metric from \sref{subsec:ModelVal}, the intent of the question would remain but the realtive increase in performance would be vastly different. A limitation of this result is that the validity of the result working in another project assumes that an improvement in F1 score throughout hyperparameter optimisation and backpropagation/training of the model is desireable in the other project.
+
+\subparagraph{Limiting Model Choice to Avoid Excessive Feature}
+Some machine learning models are senstive to feature \citationneeded \flagforreview
+
+
+4 including the additional data points of accelerometer data gyroscope data and GPS data what it doesn't highlight 
+is how optimal that data is nor does it evaluate the preprocessing of that data nor does it evaluate the generalisation of this methodology to new data sets what it does answer is the original question of does including supplementary data of mu staff increase the F1 score and the answer is yes what is important is to discuss how you would evaluate the generalisation of this model you would also discuss what what impact the model quality has on this result if we've used a different model which we have and we will show this result what is the difference in the improvement is there any improvement how do you evaluate whether a model will benefit from this extra data points there are some models specifically which you do need to do feature reduction and feature analysis on to ensure you don't over specify the features even if you low weight the features you may still have an issue of having too much data and this is just in terms of a performance another element of this is what we got the results what was the cost so we have increase the amount of data we need to use increase the data we need to process increase the data we need to collect to train we are also looking at a larger model file size which for a use case of potentially online processing would be very detrimental so what's the results of 5\% are based on solid evidence they may not actually be a valid application or a valid progress for achieving a 5\% increase for instance how do we only change the data set and retrain revalidated and then re-evaluated this process would we see similar numbers that is the model likely wouldn't produce the exact same if one school so is our 5\% related or proportional to the original benefit had we not done hyperparameter searching to optimise our model potentially we would have seen a much larger game in F1 score from the addition of the additional data points that hypothetical would be because if l model is already underperforming / are an optimised then the additional data points May introduce that additional optimisation needed similes conclusion in conclusion what we're looking at is a 5\% increase in F1 school which is relevant for this approach for this data set because this data set does closely match our target use case this is actually a valid result and this is a worthy increase to the field what this does raise however is how does hell result generalise across other applications because this project had a specific use case it was not within the scope to evaluate whether or not supplementary data would improve audio event classification and detection in other audio sets simile so the number of audio sets the database database is available is limited and the format of that data all the data selection would play a role so whilst we discussed supplementary data to specific data that we use was axela on the data a gyroscope data GPS however it did not attempt to evaluate other supplementary data is for instance the magna mater other accelerometer data video etcetera this data set is also a 1 minutes sample time snap what we did was we recorded across the day and time time-invariant snapshot of our data why that's important is because would time variance significantly affect this outcome that is something probably to put in the discussion section but in conclusion this seems to be a valid strategy and the next next step you would take is to look at trying a larger data set when available and 2 validate this on hardware in a actual environment further so there were other methods to approach the same problem and it should be considered whether or not those other methods would drastically change the app for instant whilst we used a model that was well well chosen for the purpose of a single binary flag to create an ensemble of classifiersconclusion in conclusion what would looking at is a 5\% increase in Heflin school which is relevant for visa parts for this. Affect because the status that sounds call claim at at Target use case this is actually a valid result in this is a wuzzy increase to the failed what is thugs raise however is how does have result general on across the applications because its project hi to specific use case it was not with him the Skype still valley light weather I'm not supplementary Dada would improve audio event classification inspection in other warriors that simile so the number of audio set device. Basis available is limited and the format of that. Orthodontist election would play a role boat well sweet discussed supplementary gotta to specific daughter that we used was XL alarm the Dada gyroscope. GPS however it did not attempt to evaluate all the supplementary. It Francis magnetic element get to work today sometime and burien shops all out. Why that's important who's because would come variant significantly effects did outcome that is something 0n
 
 
 \NewSection{Conclusion}\label{sec:Conclusion}
@@ -1118,153 +1135,11 @@ Future work from here would be to look at the larger role of data acquisition. T
 \paragraph{Novel use of Bogosort as Optimisation strategy}
 A suggested option for Future Work could include adapting the Bogosort to Machine Learning, as it is an increasingly popular area of research \cite{Bogo_Gruber2007} \cite{Bogo_Holzer2018} \cite{Bogo_max}. The suggested method for using the Bogo search would be iterate over the hyperparameters of the network, then iterate over the neuron weights. If successfully applied, it could be the first instance of the Bogosort being applied in the Machine Learning sphere.
 \newpage 
-%\LaTeX \ is very good for writing Mathematics. You can write mathematics in the middle of a sentence, like for example $y=m x + h$. Or you can use the \verb|equation| environment as indicated in \eqref{eq:EquationLine} below.
-%
-%\begin{equation}\label{eq:EquationLine}
-%    y=m x + h.
-%\end{equation}
-%You can also use equations and tell LaTeX not to number an equation:
-%\begin{equation*}
-%    z=m_z x^2 + h_z.
-%\end{equation*}
-%You can use the split command as in \eqref{eq:SS1} below (split gives you only one equation number):
-%\begin{equation}\label{eq:SS1}
-%    \begin{split}
-%        \dot{\mathbf{x}} &= \mathbf{A} \mathbf{x} + \mathbf{B} \mathbf{u}, \\
-%        \mathbf{y} &= \mathbf{C} \mathbf{x} + \mathbf{D} \mathbf{u},
-%    \end{split}
-%\end{equation}
-%and you also use numbers for each equation and refer to them separately like in \eqref{eq:State} and \eqref{eq:Output} below:
-%\begin{align}
-%    \dot{\mathbf{x}} &= \mathbf{A} \mathbf{x} + \mathbf{B} \mathbf{u},  \label{eq:State} \\
-%    \mathbf{y} &= \mathbf{C} \mathbf{x} + \mathbf{D} \mathbf{u}. \label{eq:Output} 
-%\end{align}
-%You can write a matrix like
-%\begin{equation*}
-%    \mathbf{A} =
-%    \begin{bmatrix}
-%        A_{11} & A_{12} & \dots & &A_{1n} \\
-%        A_{21} & A_{22} &  \dots & &\vdots \\
-%        \vdots & \vdots & \ddots& &  \vdots\\
-%        A_{m1} & A_{m2} & \dots & &A_{mn}
-%    \end{bmatrix}.
-%\end{equation*}
-%If you want to distinguish vectors from scalars you can use \textbf{bold} for vectors and matrices:
-%\begin{equation*} 
-%    \begin{split}
-%        \dot{\mathbf{x}} &= \mathbf{A} \mathbf{x} + \mathbf{B} u, \\
-%        y &= \mathbf{C} \mathbf{x} + \mathbf{D} u,
-%    \end{split}
-%\end{equation*}
-%where $u$ and $y$ are scalar variables and $\mathbf{x}$ is a vector variable.
-%You can also write Greek letters in bold: $\boldsymbol{\alpha}$.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\subsection{Figures}
-%To import the figures from Matlab, follow the following procedure:
-%\begin{enumerate}
-%    \item Add labels and legends (don't forget to include units in the labels of each axis.)
-%    \item From the file menu tag on the figure select export set up
-%    \item Change the font size to 14 and click apply to figure
-%    \item Export the figure as eps
-%    \item Import it in LaTeX using the include graphics within a \verb|figure| environment.
-%\end{enumerate}
-%%
-%\begin{figure}[ht]
-%    \begin{center}
-%        \includegraphics[width=.6\linewidth]{Figures/SincPlot}
-%        \caption{Here goes the caption.}
-%        \label{fig:Sinc}
-%    \end{center}
-%\end{figure}
-%Figure~\ref{fig:Sinc} shows a shows a plot of the function $\sin(x)/x$. 
-%
-%If I need to make a simple diagram, I use powerpoint and select the drawing and save it as a pdf. For example, look at Figure~\ref{fig:MechaSys}.
-%\begin{figure}[ht]
-%    \begin{center}
-%        \includegraphics[width=.6\linewidth]{Figures/MechaSys}
-%        \caption{Here goes the caption.}
-%        \label{fig:MechaSys}
-%    \end{center}
-%\end{figure}
-%%%%%%%%
-%\newpage
-%\subsection{Lists}
-%To create lists use the environments \verb|itemize|, \verb|enumerate|, or \verb|description|
-%
-%The following is generated using \emph{itemize}
-%\begin{itemize}
-%    \item This is item 1 
-%    \item This is item 2
-%\end{itemize}
-%%
-%The following is generated using \emph{enumerate}
-%\begin{enumerate}[1)]
-%    \item This is item 1 
-%    \begin{enumerate}[a)]
-%        \item Subitem a
-%        \item Subitem b
-%        \begin{enumerate}[i)]
-%            \item Subsubitem i
-%            \item Subsubitem ii
-%        \end{enumerate}
-%    \end{enumerate}
-%    \item This is item 2
-%\end{enumerate}
-%%
-%The following is generated using \emph{description}
-%\begin{description}
-%    \item[foo)] This is item 1 
-%    \item[bar)] This is item 2
-%\end{description}
-%
-%\subsection{Code listings}
-%
-%To include a syntax-highlighted code listing, you can use the \emph{listings} package. The default options are specified by the \verb|\lstset| command. There are 3 main commands, all of which can include options to override the defaults:
-%\begin{enumerate}
-%    \item \verb|\lstinline|: Command for including code fragments inline with the text, as an alternative to \verb|\verb|. For example, we might describe function prototypes such as \lstinline[language=C,breaklines=true]|int main(int argc, char *argv[])|.
-%    \item \verb|\begin{lstlisting}|,\ldots,\verb|\end{lstlisting}|: Environment for including a source code listing---embedded in the LaTeX source---in a box or floating environment. An example is shown in Listing~\ref{lst:sqrt}.
-%    \item \verb|\lstinputlisting|: Command for including a source code listing---loaded from an external file---in a box or floating environment. This method is preferred over including the code source within the LaTeX file, since the code and its documentation can always be kept in sync. An example is shown in Listing~\ref{lst:matlabserial}.
-%\end{enumerate}
-%
-%\begin{lstlisting}[
-%    language=C,
-%    float=h,
-%    numbers=none,
-%    xleftmargin=1cm,
-%    frame=none,
-%    caption={A winning entry from the 16th International Obfuscated C Code Contest, that computes the square root of its input.\label{lst:sqrt}}
-%    ]
-%#include <stdio.h>
-%int l;int main(int o,char **O,
-%int I){char c,*D=O[1];if(o>0){
-%for(l=0;D[l              ];D[l
-%++]-=10){D   [l++]-=120;D[l]-=
-%110;while   (!main(0,O,l))D[l]
-%+=   20;   putchar((D[l]+1032)
-%/20   )   ;}putchar(10);}else{
-%c=o+     (D[I]+82)%10-(I>l/2)*
-%(D[I-l+I]+72)/10-9;D[I]+=I<0?0
-%:!(o=main(c/10,O,I-1))*((c+999
-%)%10-(D[I]+92)%10);}return o;}
-%\end{lstlisting}
-%
-%\lstinputlisting[
-%    language=Matlab,
-%    float=h,
-%    numbers=left,
-%    xleftmargin=1cm,
-%    frame=shadowbox,
-%    caption={Matlab serial communication example.\label{lst:matlabserial}},
-%    morekeywords={try,catch}
-%    ]{Code/serialtest.m}
-%
+
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NewSection{References and Citations}\label{sec:RefCite}
 % To generate the bibliography look at the end of this document in .tex file. To make reference to the bibliography use the commands \verb|\citet{}| and \verb|\citep{}| \citep{strunk2007elements}. You can combine more than one reference in a single citation \citep{troyka1999simon, jay1995write}.
 
-% True \cite{TFwebsite2}
-% \citet{TFwebsite2}
-% \cit
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \bibliographystyle{ieeetr}%harvard}
 % \bibliography{chris} % This is the .bib file where the bibliography database is stored
