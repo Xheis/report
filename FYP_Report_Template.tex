@@ -150,7 +150,7 @@ I did:
 \end{itemize}
 I helped:
 \begin{itemize}
-   \item I managed and worked with another employee to implement a proof of concept app to record data as an input into a this project. This involved using my software engineering skills and project management skills to create a schema, develop the android app, and present it to the relevant stakeholders.
+   \item I managed and worked with another employee to implement a proof of concept app to record data as an input into this project. This involved using my software engineering skills and project management skills to create a schema, develop the android app, and present it to the relevant stakeholders.
 %    \item 
 %     \item \sout{I helped integrate this proof of concept with a larger C\# replay system at my work. This involved lat/long coordinate calculations for display playback, leading the configuration management with a local git server, and helping develop the data pipeline where the proof of concept feeds through my machine learning classifier, and into the larger replay system.}
 \end{itemize}
@@ -160,25 +160,25 @@ I helped:
 \vspace{-5mm}
 \section*{Executive summary}
 \vspace{-3mm}
-The project investigated whether supplementary data (Accelerometer, Gyroscope, GPS) will improve a classifiers ability to classify an "Acoustic Event" in an Acoustic Event Detection / Classification (AED/C) problem. The motivation behind this was to improve AED/C without onerous microphone requirements, to enable more wide spread comerical use of AED/C. \\
+The project investigated whether supplementary data (Accelerometer, Gyroscope, GPS) will improve a classifiers ability to classify an "Acoustic Event" in an Acoustic Event Detection / Classification (AED/C) problem. The motivation behind this was to improve AED/C without onerous microphone requirements, to enable more widespread commercial use of AED/C. \\
 
 \sref{sec:ProblemAnalysis} of the project begins by evaluating the research problem for a car use case, and eliciting the design requirements through system engineering principles. \\
 
-\sref{sec:LitReview} reviews current research. Presently the field is expanding with broader advances in the wider machine learning community, however AED/C still remains a non-trivial problem that doesn't have a viable solution yet. Comparatively to the wider machine learning community, Acoustic Event Detection is very limited in active researchers. This specific issue hasn't been explicitly answered. \\
+\sref{sec:LitReview} reviews current research. Presently the field is expanding with broader advances in the wider machine learning community, however AED/C remains a non-trivial problem that doesn't have a viable solution yet. Comparatively to the wider machine learning community, Acoustic Event Detection is very limited in active researchers. This specific issue hasn't been explicitly answered. \\
 
-\sref{sec:Method} details selecting the desired output, the required data input, a metric to score by, a classifier, optimising hyperparameters against the previous options, and finally training and validating aginst the data. For this project:
+\sref{sec:Method} details selecting the desired output, the required data input, a metric to score by, a classifier, optimising hyperparameters against the previous options, and finally training and validating against the data. For this project:
 {\small
 \begin{itemize}
     \item The desired output is a label (or labels) detailing the Acoustic Event in the sample (e.g. The labels found in \aref{apx:ExtraSensoryLabels} like `Walking').
     \item The required data is the ExtraSensory dataset, or a custom dataset as recorded by the project's App.
     \item The score selected is the F1 score. This is due to it being an industry standard.
-    \item The classifier chosen is the MLPClassifier which is a feedforward neural network, trainded via backpropegation.
+    \item The classifier chosen is the MLPClassifier which is a feedforward neural network, trained via backpropagation.
     \item Hyperparameters of the MLPClassifier are chosen via a Random Search Cross Validation.
     \item Training and Validation was run with Early Stopping using a 10\% validation set, using 59 out of the 60 ExtraSensory users.
     \item Final testing is done with the 60\textsuperscript{th} user.
 \end{itemize}
-}
-\sref{sec:Results} the desired results are a 10.5\% and 11.9\% relative improvement in F1 score for a Binary and Multilabel classifier respectively. This is calculated through analysis of F1 Scores of a binary MLPClassifier, and a multi-label MLPClassifier, both trained on the ExtraSensory dataset using the method described in \sref{sec:Method}. The output of the classifiers are also analysed and found to be valid classifiers for realworld use. \flagforreview
+
+\sref{sec:Results} the desired results are a 10.5\% and 11.9\% relative improvement in F1 score for a Binary and Multi-label classifier respectively. This is calculated through analysis of F1 Scores of a binary MLPClassifier, and a multi-label MLPClassifier, both trained on the ExtraSensory dataset using the method described in \sref{sec:Method}. The output of the classifiers are also analysed and found to be valid classifiers for real-world use. \flagforreview
 
 \sref{sec:Discussion} evaluates and discusses limitations of the results. It will discuss how multi-sensor AED/C is effective but requires more datasets to test smaller, more specific tasks. \flagforreview It also discusses why the result will be valid in other projects.
 
@@ -215,7 +215,7 @@ The formal debrief originated from the World War 2, with SLA Marshell's "intervi
 This is a key tool in training after any group activity, and has been extended to many industry, most notably in the training of Doctors \cite{johnson2011debriefing}.
 \cite{Wiki}\flagforreview. Traditionally this is done through a collection of primary sources (where available) and secondary sources. In the information age, these primary sources have expanded to include large datasets, recordings and other digital forensics. This new and increasing range of primary sources provides the potential to significantly improve the steps of debriefing, and ultimately improve debriefing outcomes \cite{PsychologicalDebriefing2012}.
 
-\paragraph{Introduction to the Field from a Mecatronics Perspective}
+\paragraph{Introduction to the Field from a Mechatronics Perspective}
 Machine Learning will be the focus of this report. Machine Learning is a field of Engineering and Computer Science concerned with automating the discovery and modelling of a process. This process is usually a classification or regression function. In a nutshell, it is about training a computer algorithm to learn from data.\\
 
 It's application in this report is that of almost akin to that of a traditional optimisation problem in mechatronics: Given a \inlineQuote{plant} {\itshape(or, a neural network)}, how can someone \inlineQuote{optimise} {\itshape(train)} the plant's \inlineQuote{parameters} {\itshape(both weightings and hyperparameters)} as to \inlineQuote{minimise an error} {\itshape(or, maximise a classification/regression score)}?
@@ -260,7 +260,7 @@ With the new understanding of what the project is, a Tree Diagram was drafted to
 \subsection{Quad of Aims}
 The Quad of Aims is a tool used to explore 4 critical, high level aspects of the project as explained in table \ref{tab:QuadOfAims}, and shown in \fref{QuadOfAims2.png}.
 
-\fFigure{QuadOfAims2.png}{A Quad of Aims for the project might be A3 in size and would have the relevant information embedded. It may also be completed on a white-board.}{1}
+\fFigure{QuadOfAims2.png}{A Quad of Aims for the project might be A3 in size and would have the relevant information embedded. It may also be completed on a whiteboard.}{1}
 
  \begin{table}[h]
     \begin{center}
@@ -287,7 +287,7 @@ The Input Output Analysis of the system informs the bounds and requirements to o
 
 
 \subsection{Affinity Diagram}
-An Affinity Diagram helps to solidify the high level, vague ideas, requirements and tests into a more detailed view. There is a focus on putting tangible measurements onto requirements. During this process, system architecture decisions were made such as a trade review into online vs offline processing, and subsequently splitting the system into smaller modules. Our primary system had 2 key sub-systems: The recording, and the processing systems. An Affinity Diagram of the top-level sys-tem was created, and the 2 affinity diagrams of the sub-systems were informed and made from this. After this was complete, previous work was updated to reflect these changes. \fref{AffinityDiagram.png}. \citationneeded
+An Affinity Diagram helps to solidify the high level, vague ideas, requirements and tests into a more detailed view. There is a focus on putting tangible measurements onto requirements. During this process, system architecture decisions were made such as a trade review into online vs offline processing, and subsequently splitting the system into smaller modules. Our primary system had 2 key sub-systems: The recording, and the processing systems. An Affinity Diagram of the top-level system was created, and the 2 affinity diagrams of the sub-systems were informed and made from this. After this was complete, previous work was updated to reflect these changes. \fref{AffinityDiagram.png}. \citationneeded
 \fFigure{AffinityDiagram.png}{The Affinity Diagrams for the full system architecture}{1}
 
 \subsection{Systems Map}
@@ -297,7 +297,7 @@ A Systems Map takes the Affinity Diagram, Input Output Analysis, and Tree-Diagra
 
 \subsection{Sequence Diagram}
 A Sequence Diagram was developed to analyse the flow of data through the processes identified in the System Map. This is shown in \fref{SequenceDiagram.png}. This helped to predict and manage any potential complexities and logistics related to the specific needs of each process. 
-Originally, This Sequence Diagram was used to justify removing data fusion from the scope due to the large workload required to implement alongside machine learning. Later in the project, it was brought back into the scope of the project to help compare and evaluate it's effectiveness in improving the overall system. 
+Originally, This Sequence Diagram was used to justify removing data fusion from the scope due to the large workload required to implement alongside machine learning. Later in the project, it was brought back into the scope of the project to help compare and evaluate its effectiveness in improving the overall system. 
 \fFigure{SequenceDiagram.png}{A basic Sequence Diagram for the project}{0.8}
 
 
@@ -330,17 +330,17 @@ A definition for Machine learning is taken from Tom M. Mitchell's 1997 textbook,
     A computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E. \cite{Mitchell1997}
 \end{quote}
 
-This definition of Machine Learning can be applied to this project; the task T (AED/C), the E (Audo, IMU, GPS), and P (a traditional F1 score). 
+This definition of Machine Learning can be applied to this project; the task T (AED/C), the E (Audio, IMU, GPS), and P (a traditional F1 score). 
 
 The computer program described in this project has been produced in Python, using the sklearn and TensorFlow libraries. \flagforreview
 
 \subsection{Acoustic Event Detection and Acoustic Event Classification}
-Historically the technologies for AED/AEC have been Support vector machine (SVMs), Hidden Markov Models (HHMs), and more generally, basic DSP (Digital Signal Processing) classifiers. But in the last 8 years, AED and AEC research has emerged as a hot topic of research. Research focuses on the two key tasks: Detection (when did an acoustic event occur in the audio, and when did it stop?) and classification (what sound oc-curred?). New research papers are often the result of DCASE competitions, which is an official IEEE Audio and Acoustic Signal Processing (AASP) competition. \fref{F1_score.png}.
+Historically the technologies for AED/AEC have been Support vector machine (SVMs), Hidden Markov Models (HHMs), and more generally, basic DSP (Digital Signal Processing) classifiers. But in the last 8 years, AED and AEC research has emerged as a hot topic of research. Research focuses on the two key tasks: Detection (when did an acoustic event occur in the audio, and when did it stop?) and classification (what sound occurred?). New research papers are often the result of DCASE competitions, which is an official IEEE Audio and Acoustic Signal Processing (AASP) competition. \fref{F1_score.png}.
 
 \fFigure{F1_score.png}{DCASE Researcher Toni Heittola's F1 Results reflect the AED/AEC field of research with drastic improvements over the last 8 years.\cite{ToniWebsite}}{0.8}
 
 \subsection{DCASE Competitions (Detection and Classification of Acoustic Scenes and Events)}
-The DCASE competitions format started 2013, had its second competition in 2016, and since then has been a yearly event. Since 2017, there has been a new format where the competition starts march, formal results are released by September, and a workshop for participants on the best team’s work in November\cite{2018Schedule}. 2016 was the first to feature Machine Learning (winning teams incorporated machine learning into ensemble mod-els/classifiers). By 2017 all entries utilised machine learning. Recently the results from DCASE2018 have been published; progress in the AED/AEC field has allowed more sophisticated, real-world applications to be evaluated (Challenge Task \#4)\cite{2018n}. The complexity of the dataset, the number of acoustic classes and fidelity of output are unprecedented in the AEC field. The winning results at this level of complexity are not as high quality compared to last year’s more controlled environment/dataset (2017 had a 41.7\% F1 score\cite{2017results} vs 2018’s 32.4\%\cite{2018n}), but pre-sent the best precedent for the problem addressed in this paper.
+The DCASE competitions format started 2013, had its second competition in 2016, and since then has been a yearly event. Since 2017, there has been a new format where the competition starts march, formal results are released by September, and a workshop for participants on the best team’s work in November\cite{2018Schedule}. 2016 was the first to feature Machine Learning (winning teams incorporated machine learning into ensemble models/classifiers). By 2017 all entries utilised machine learning. Recently the results from DCASE2018 have been published; progress in the AED/AEC field has allowed more sophisticated, real-world applications to be evaluated (Challenge Task \#4)\cite{2018n}. The complexity of the dataset, the number of acoustic classes and fidelity of output are unprecedented in the AEC field. The winning results at this level of complexity are not as high quality compared to last year’s more controlled environment/dataset (2017 had a 41.7\% F1 score\cite{2017results} vs 2018’s 32.4\%\cite{2018n}), but pre-sent the best precedent for the problem addressed in this paper.
 
 \subsection{Leading Research, DCASE2018 Task 4 Winner}
 The winning model used in the DCASE2018 Task 4 challenge used a “Mean-teacher” model for classification (useful abstract results averaging applicable to a range of classifier models), a CNN for context gating (a pre-classifier step to improve flaws in training methodologies for some machine learning models\cite{Yan16}) and a bidirectional recurrent neural network (RNN) to improve the utilisation of unlabelled, unbalanced training datasets\cite{winners}; this last component is important for this paper, as the leading dataset outside of DCASE challenges is the weakly labelled Google AudioSet, of which only small percentage of is balanced.
@@ -389,7 +389,7 @@ Stage 2 is preprocessing. This is about taking the data available transforming i
 Stage 3 is picking the model. The method of picking a model may be based on doing research into what is best practice for your particular problem, looking at recent papers and investigating whether the particular topic demands any special requirements. Once a model is picked, the parameters of the model must be chosen (or evaluated) before a final model can be selected. This is done in the following two stages.
 
 \subparagraph{Stage 4}
-Stage 4 is fitting the model. The selected algorithm may need to be trained or fitted. This is the process of taking labelled input / output data (denoted as X, y) and supervising the model as it attempts to reproduce y from X. A common method to achieve this is to cost Stochastic Gradient Descent (SGD) and back propagation\cite{lecun2012efficient}. In summary, it's the process of changing the weights proportionally to their contribution to the error. Equation \ref{eq:BP_grad_dec} adapted from \cite{lecun2012efficient} demonstrates this, where W is the Machine Learning weights for a given topology, $\eta$ is the proportional factor or step size, and the partial represents how each weight contributes to error.\\
+Stage 4 is fitting the model. The selected algorithm may need to be trained or fitted. This is the process of taking labelled input / output data (denoted as X, y) and supervising the model as it attempts to reproduce y from X. A common method to achieve this is to cost Stochastic Gradient Descent (SGD) and back propagation\cite{lecun2012efficient}. In summary, it is the process of changing the weights proportionally to their contribution to the error. Equation \ref{eq:BP_grad_dec} adapted from \cite{lecun2012efficient} demonstrates this, where W is the Machine Learning weights for a given topology, $\eta$ is the proportional factor or step size, and the partial represents how each weight contributes to error.\\
 
 \begin{gather}\label{eq:BP_grad_dec}
     W(t) = W(t-1) - \eta\frac{\partial E}{\partial W} 
@@ -405,7 +405,7 @@ It is beneficial to work up slowly to this goal. external to the method of build
     \item Develop the use-case, and identify the output
     \item Investigate what data is available, and whether further data/datasets would be beneficial
     \item Choose a framework/technology to implement the machine learning algorithm in
-    \item Build the machine learning classifier as described above, and test it's effectiveness
+    \item Build the machine learning classifier as described above, and test its effectiveness
     \item Validate the whole system by using the classifier in the pipeline (by take the classified output, and appending it to the trackfile)
 \end{itemize}
 
@@ -430,16 +430,16 @@ The Machine Learning uses GPS, accelerometer, gyroscope, and audio. A Google Pix
 The choice of what data to collected and use was found through the first problem analysis step. As the goal is to maximise the accuracy of the classifier (whilst still being an achievable goal), the data chosen for use and collection was GPS, accelerometer, gyroscope, and audio. As described in the problem analysis phase, the best platform for this would be a smartphone as shown in section \ref{sec:ProblemAnalysis} and appendix \ref{sec:TradeReview}. 
 
 
-Android was chosen as the platform as it had significant support for reading from the on-board sensors. The data available from the Android API can be seen in table \ref{tab:AndroidDataAvailable}, of which GPS and acceleration will be used. It was also chosen due to it's support for C/C++ through the Native Development Kit (NDK). The programming language C is required knowledge for many courses in the University of Newcastle Bachelor of Mechatronics degree. 
+Android was chosen as the platform as it had significant support for reading from the on-board sensors. The data available from the Android API can be seen in table \ref{tab:AndroidDataAvailable}, of which GPS and acceleration will be used. It was also chosen due to its support for C/C++ through the Native Development Kit (NDK). The programming language C is required knowledge for many courses in the University of Newcastle Bachelor of Mechatronics degree. 
 
-The app development took 5 weeks to get to a useful state. It is able to record Audio to a .wav file and record raw GPS lat/long/alt, raw accelerometer, and raw gyroscope to a csv. There are technical issues still present in the app (notably that the screen must be unlocked to record).
+The app development took 5 weeks to get to a useful state. It can record Audio to a .wav file and record raw GPS lat/long/alt, raw accelerometer, and raw gyroscope to a csv. There are technical issues still present in the app (notably that the screen must be unlocked to record).
 
 During this time, an Atlassian JIRA environment was set up to facilitate management (using concepts from ENG3500 - Project Management). The Atlassian "Git-Flow" methodology was also learnt and used.
 
 I helped with 30\% of the overall programming, and code reviewed the product along with other colleagues. Credit goes to [Sebastian Wallman].
 
-\subsubsection{Data collected during project vs ExtraSensory datset}
-The table \ref{tab:ProjectData} shows a snippet of the Comma-Seperated Values (csv) data produced from the app. The id is a unique count, %the attr\_time is a timestamp from the Android system, and attr\_x, attr\_y, and attr\_z are the raw output of the. 
+\subsubsection{Data collected during project vs ExtraSensory dataset}
+The table \ref{tab:ProjectData} shows a snippet of the Comma-Separated Values (csv) data produced from the app. The id is a unique count, %the attr\_time is a timestamp from the Android system, and attr\_x, attr\_y, and attr\_z are the raw output of the. 
 The table \ref{tab:ExtraSensoryDataExample} shows a snippet of the csv data from the ExtraSensory dataset. 
 
 Both datasets share the same timestamp format, so a \inlineQuote{Time} column has been added to the table for illustration purposes only.
@@ -497,10 +497,10 @@ The ExtraSensory dataset is compiled from 60 users with a diverse range of phone
 Python was used to process the data before the Machine Learning modules of code, and Matlab was used with GPS, IMU to prototype the algorithms. 
 
 
- \sout{The data from the ExtraSensory dataset is provided in it's raw format, which is best option is for the data to be raw, as this allows platform independent filtering, smoothing and sensor fusion\citationneeded.} 
+ \sout{The data from the ExtraSensory dataset is provided in its raw format, which is best option is for the data to be raw, as this allows platform independent filtering, smoothing and sensor fusion\citationneeded.} 
 
 \subsubsection{Audio}
-Data preprocessing of the Audio was done by Mel Frequency Cepstral Coefficents (MFCCs). Start with a recorded .wav sample, and split the whole sample into smaller sections via the sliding window method\citationneeded. Take each window and calculate the Fourier transform. This in turn is both \inlineQuote{Feature Engineering}, as well as preprocessing to be training compatible. 
+Data preprocessing of the Audio was done by Mel Frequency Cepstral Coefficients (MFCCs). Start with a recorded .wav sample, and split the whole sample into smaller sections via the sliding window method\citationneeded. Take each window and calculate the Fourier transform. This in turn is both \inlineQuote{Feature Engineering}, as well as preprocessing to be training compatible. 
 \begin{gather}%\label{eq:EquationLine}
     WindowSample(t) \xrightarrow{\mathscr{F}}  WindowSample(\omega)
 \end{gather}
@@ -536,7 +536,7 @@ Aka classic sliding window, but this specifies some good over-lap, data density 
 The GPS signal is requested by the "Fused Location Provider", in the Google Play services location API and comes heavily prefiltered\citationneeded. Further filtering is possible by a Kalman filter with the other physical sensors.
 
 \subsubsection{IMU}
-For the purpose of this project, the data collected through the Android App applied a Low Pass Filter\citationneeded. A Kalman Filter was considered, but wasn't used to avoid modelling the specific android sensor plant dynamics.
+For the purpose of this project, the data collected through the Android App applied a Low Pass Filter\citationneeded. A Kalman Filter was considered but wasn't used to avoid modelling the specific android sensor plant dynamics.
 
 \fref{AndroidDataExample.png}
 \fFigure{AndroidDataExample.png}{Results of Low Pass Filter vs Raw accelerometer data}{0.8}
@@ -602,7 +602,7 @@ For the purpose of this project, the data collected through the Android App appl
 
 
 \subsection{Data Training, Testing and Evaluation Set}
-The ExtraSensory dataset contains over 300,000 samples across 60 Users (in a CSV format with 278 feature columns), as shown in \ref{tab:ExtraSensoryDataExample}. Each row contains an a 'snapshot' of the sensors at a frequency of once a minute. There are large non-continuities across each user. The dataset is unbalanced, and has had it's labels cleaned by the researchers involved. Further details about the users themselves can be found in \ref{tab:ExtraSensoryDataBreakdown}, or at it paper \cite{Vaizman2017}.
+The ExtraSensory dataset contains over 300,000 samples across 60 Users (in a CSV format with 278 feature columns), as shown in \ref{tab:ExtraSensoryDataExample}. Each row contains an a 'snapshot' of the sensors at a frequency of once a minute. There are large non-continuities across each user. The dataset is unbalanced, and has had its labels cleaned by the researchers involved. Further details about the users themselves can be found in \ref{tab:ExtraSensoryDataBreakdown}, or at it paper \cite{Vaizman2017}.
 
 \begin{table}[h]
     \begin{center}  
@@ -624,7 +624,7 @@ The ExtraSensory dataset contains over 300,000 samples across 60 Users (in a CSV
     \end{center}
 \end{table}
 
-The dataset was considered for use in 2 ways; training on a per user instance, or training on a per sample instance. The benefits of per user is to isolate recording hardware, and other plant noise. However this is undesirable, as this can result in a low variance in $\epsilon$ (bias), which increases the likelyhood of the learnt function ($\hat{f}$) to overfit the signal of the training users ($ \hat{f} = f(x) + \epsilon$) This, to minimise it's impact in evaluation. Thus is the benefit of training on a per sample basis. By introducing other user noise into a training set, we minimise overfitting \inlineQuote{for free}. Finally as a \inlineQuote{kfold} (or other Cross-Validate methods) is applied to the whole training dataset for training + validation purposes, the likelyhood of the random selection incorporating a larger variance of noise incrases. As a result, the data is used on as a per sample basis.
+The dataset was considered for use in 2 ways; training on a per user instance, or training on a per sample instance. The benefits of per user is to isolate recording hardware, and other plant noise. However this is undesirable, as this can result in a low variance in $\epsilon$ (bias), which increases the likelihood  of the learnt function ($\hat{f}$) to overfit the signal of the training users ($ \hat{f} = f(x) + \epsilon$) This, to minimise its impact in evaluation. Thus is the benefit of training on a per sample basis. By introducing other user noise into a training set, we minimise overfitting \inlineQuote{for free}. Finally as a \inlineQuote{kfold} (or other Cross-Validate methods) is applied to the whole training dataset for training + validation purposes, the likelihood  of the random selection incorporating a larger variance of noise increases. As a result, the data is used on as a per sample basis.
 
 \subsubsection{\inlineQuote{kfold} Cross validation}
 kfold Cross Validation can be described as:
@@ -639,7 +639,7 @@ The question of whether supplementary data will improve the classifier's F1 scor
 
 \subsection{Classifier}
 
-A classifier by definition classifies things. A more thorough understanding is that a classifier takes some input data and maps it to an output category, or label. In a Machine Learning context, this mapping is done via the $\hat{f}$ learnt function. For this project the classifier is a learnt function that takes audio, accelerometer, gyroscope and GPS data and maps that data to a label one of the labels found in Appendix \ref{apx:ExtraSensoryLabels}, table \ref{tab:ExtraSensoryLabels}. 
+A classifier by definition classifies (or, categorises) things. A more thorough understanding is that a classifier takes some input data and maps it to an output category, or label. In a Machine Learning context, this mapping is done via the $\hat{f}$ learnt function. For this project the classifier is a learnt function that takes audio, accelerometer, gyroscope and GPS data and maps that data to a label one of the labels found in Appendix \ref{apx:ExtraSensoryLabels}, table \ref{tab:ExtraSensoryLabels}. 
 
 \subparagraph{Binary, Multi-class, and  Multi-Label classifiers}
 If a classifier is to map data to a label, it stands to reason that the label must be well defined. A binary classifier as the name suggests will categorise input as 1, or 0 against a label. This could be result in "Car" or "Not Car", but it can also be extended to multiple classes, for example "Not Car", "Holden", "Ford" etc. This can be done via a ensemble of binary classifiers (combing together the output of the same dataset that has been parsed into a "Ford" classifier, a "Holden" classifier etc.), or more recently through a \inlineQuote{One Hot}\cite{huffman1954the} encoded output array as seen in table \ref{tab:HotOneEnc}. A key element of multi-class classifiers are that the classes are mutually exclusive. The car brands in \ref{tab:HotOneEnc} are mutually exclusive.
@@ -656,9 +656,9 @@ If a classifier is to map data to a label, it stands to reason that the label mu
     \end{center}
 \end{table}
 
-However there is another type of classifier called the multi-label classifier. An example of a multi label classifier is this project. The project may want to label whether signal in the provided data represents jogging, walking, talking, eating etc. For these labels, they are not mutually exclusive and could all be occurring at the same time.
+However, there is another type of classifier called the multi-label classifier. An example of a multi label classifier is this project. The project may want to label whether signal in the provided data represents jogging, walking, talking, eating etc. For these labels, they are not mutually exclusive, and could all be occurring at the same time.
 
-For this project, a binary classifier and a multi-label classifier will be used and evaluated. The reason for this is because the intent of the project is to answer the question does supplementary data assist in classifying an Acoustic Event Detection and Classification (AEC/D) problem, and a binary classifier is a valid and succinct way to answer this question. However for most realistic use cases, what is important is whether the result is valid in a multi-label classifier. For this reason, the methodology section will be applied to creating a multi-label variant of the network. This will use the same hyperparameter optimisation as the binary classifier and will be discussed in the results. 
+For this project, a binary classifier and a multi-label classifier will be used and evaluated. The reason for this is because the intent of the project is to answer the question does supplementary data assist in classifying an Acoustic Event Detection and Classification (AEC/D) problem, and a binary classifier is a valid and succinct way to answer this question. However, for most realistic use cases, what is important is whether the result is valid in a multi-label classifier. For this reason, the methodology section will be applied to creating a multi-label variant of the network. This will use the same hyperparameter optimisation as the binary classifier and will be discussed in the results. 
 
 
 % * What is a classifier - maps data into categories, or in our case audio/imu data in AEC/AED labels.
@@ -677,12 +677,12 @@ The model required for the project will have to take into consideration several 
 \fFigure{modelselection.png}{Scikit-learn's suggested model selection process}{0.8}
 
 
-\subparagraph{Convultion Neural Networks}
-CNN convolution neural networks are primarily designed and received the best results for image-based classification problems this is because the architecture has been designed with computer vision in mind for for our project
+\subparagraph{Convolution Neural Networks}
+CNN convolution neural networks are primarily designed and received the best results for image-based classification problems this is because the architecture has been designed with computer vision in mind for our project
 
 \subparagraph{Recursive Neural Networks}
 The recursive neural network (RNN) is not well suited to tabular data this is because and this will not be used because it has been designed for producing multi-class probabilities we are we could use a recursive neural network to generate a probability output that is to say use it as a regression out progressive algorithm to output all a probabilities however we are after a binary classification and fast it is not relevant more important what the classifier deems as an appropriate probability before it classifies for future work this may in fact be a very useful extension as the tailoring of the sensitivity and specificity probability thresholds of the recursive neural network. This could also be used in conjunction with a soft Max layer\flagforreview to produce a normalised a labelling classifier this
-However it will not be used due to the extra complexity which is not needed by the use case. Other options include a random Forest classifier which have been used to great success by Phan, \cite{Phan2015}. However a random Forest classifier is not well suited to unbalanced data sets and would prevent a much bigger problem with for training the future the random forest classifier has been evaluated for comparison in the results section however as a architectural decision it will not be used simile so scikit-learn also has the algorithm extra trees classifier citation needed which can be used in a similar way to the random Forest Hill that you eat better handles label caissons which is important for our use case ll use case is evaluating a binary class against the potential list
+However it will not be used due to the extra complexity which is not needed by the use case. Other options include a random Forest classifier which have been used to great success by Phan, \cite{Phan2015}. However a random Forest classifier is not well suited to unbalanced data sets and would prevent a much bigger problem with for training the future the random forest classifier has been evaluated for comparison in the results section however as a architectural decision it will not be used simile so scikit-learn also has the algorithm extra trees classifier citation needed which can be used in a similar way to the random Forest Hill that you eat better handles label caissons which is important for our use case ll use case is evaluating a binary class against the potential list \flagforreview
 
 \subparagraph{Mulilayer Perceptron Feed Forward Neural Network}
 The multilayer perceptron classifier has been selected this
@@ -690,7 +690,7 @@ The multilayer perceptron classifier has been selected this
 For our project we are using tabular time-invariant data using a snapshot data in a tabular format means that we will not see the benefits of a convolution neural network in a deep learning environment vs the more simple mlpclassifier which trains faster will receive the better result and is expected to compress better winNetwork(parametee will also
 
 \subparagraph{Final Model} \flagforreview fix the details
-The MLPClassifier is a feedforward neural network, trained via backpropegation. It was set up using the \inlineQuote{lbfgs} solver, an alpha equal to $1e-5$, and was handselected to have 80 by 10 hidden layers (80 long, 10 deep). This was the classifier to use for evaluation.
+The MLPClassifier is a feedforward neural network, trained via backpropagation. It was set up using the \inlineQuote{lbfgs} solver, an alpha equal to $1e-5$, and was hand selected to have 80 by 10 hidden layers (80 long, 10 deep). This was the classifier to use for evaluation.
 
 % \begin{itemize}
 %     \item Mean-teacher*
@@ -709,7 +709,7 @@ Before the hyperparameters can be optimised, a metrics to optimise the network o
 
 
 \subsection{Terminology} 
-Before evaluating metrics, the Terminology of the following formula must be formaulised. The first is what a "correct" classification is. The following terminology will be used:
+Before evaluating metrics, the Terminology of the following formula must be formalised. The first is what a "correct" classification is. The following terminology will be used:
 \begin{itemize}
     \item True Positives (TP) - A correctly classified positive sample
     \item True Negatives (TN) - A correctly classified negative sample
@@ -720,7 +720,7 @@ Before evaluating metrics, the Terminology of the following formula must be form
 These four terms are the main parameters in the following formula
 
 \subparagraph{Accuracy} 
-Accuracy is the measure of how many samples the classifier correctly classified across it's operation, as shown in \ref{eq:Accur}.
+Accuracy is the measure of how many samples the classifier correctly classified across its operation, as shown in \ref{eq:Accur}.
 \begin{gather}\label{eq:Accur}
     Accuracy = \frac{TP+TN}{TP+FP+TN+FN}
 \end{gather}
@@ -738,7 +738,7 @@ In this project, the Confusion Matrix gets generated to sanity check, and contex
 
 \subparagraph{Recall (or sensitivity)}
 
-Building upon the direct use of the 4 factors, TP, FP, FN, TN, one can measure the ability of a a classifer to \inlineQuote{Recall} the true positive rate of a dataset as defined in \ref{eq:Recall}.
+Building upon the direct use of the 4 factors, TP, FP, FN, TN, one can measure the ability of a classifier  to \inlineQuote{Recall} the true positive rate of a dataset as defined in \ref{eq:Recall}.
 This is the ratio of predicted positives vs the \inlineQuote{True} positive rate.
 
 \begin{gather}\label{eq:Recall}
@@ -748,7 +748,7 @@ This is the ratio of predicted positives vs the \inlineQuote{True} positive rate
 In this project, the Recall rate is of importance as the user case is to document an Acoustic event, upon which any False Positives could be disregarded by the user, or provide interesting new insight into the behaviour observed.
 
 \subparagraph{Precision}
-In contrast to Recall, precision is the measure of the error in Positives classification. That is, out of the samples classifed as Positive, how many were actually positive, or the Ratio of correct predictions vs all predictions.
+In contrast to Recall, precision is the measure of the error in Positives classification. That is, out of the samples classified  as Positive, how many were suppose to be positive, or the ratio of correct predictions over all predictions.
 
 \begin{gather}\label{eq:Precision}
     Precision = \frac{TP}{TP+FP}
@@ -772,19 +772,19 @@ An F1 Score is an industry standard approach to evaluating a model. It is formal
     F1 Score = \frac{2 \times (Precision \times Recall)}{Precision + Recall}
 \end{gather}
 
-This project will use the F1 Score as it's prime metric for evaluating the model, and the effect of supplementary data on the Acoustic Event Detection/Classification task in question. A further extention of the F1 Score is required to apply to a multi class or multilabel problem. This is often done through a sum of F1 Scores across each class or label. For best precision, a weighted could be applied to sum to best reflect (and optimise) the intent of the classifier. 
+This project will use the F1 Score as its prime metric for evaluating the model, and the effect of supplementary data on the Acoustic Event Detection/Classification task in question. A further extension of the F1 Score is required to apply to a multi class or multilabel problem. This is often done through a sum of F1 Scores across each class or label. For best precision, a weighted could be applied to sum to best reflect (and optimise) the intent of the classifier. 
 
-\subparagraph{Area Under the Reciever Operating Characteristics (AUROC) Curve}
-Lastly, the Area Under the Reciever Operating Characteristics (AUROC) is an important measure of the a classifiers overall performance. The AUROC demonstrates how confident a classifier is across all class-classification thresholds.
+\subparagraph{Area Under the Receiver Operating Characteristics (AUROC) Curve}
+Lastly, the Area Under the Receiver Operating Characteristics (AUROC) is an important measure of the a classifiers overall performance. The AUROC demonstrates how confident a classifier is across all class-classification thresholds.
 
-In a more formal sense, the Reciever Operating Characteristics (ROC) is the relation between the True Positive rate against the False Positive rate, and how it changes when you change the classification decision threshold. To calculate the ROC, a sample of TP and FP is taken for a varying threshold (the threshold needed for the classifier to classify a sample as positive or negative). 
+In a more formal sense, the Receiver Operating Characteristics (ROC) is the relation between the True Positive rate against the False Positive rate, and how it changes when you change the classification decision threshold. To calculate the ROC, a sample of TP and FP is taken for a varying threshold (the threshold needed for the classifier to classify a sample as positive or negative). 
 
 \fFigure{ROCCurve.png}{A ROC Curve example from Google's Machine Learning shortcourse\cite{TF_ROC}}{0.5}
 
-In this project, the AUROC will not be extensively used, except for educational purposes. The purpose of a AUROC is to demonstrate, and optimise the confidence in classification based on thresholds applied. The AUROC can be used to demonstrate a quanitative assessment of any particular sample (similar to a Regression problem).
+In this project, the AUROC will not be extensively used, except for educational purposes. The purpose of a AUROC is to demonstrate, and optimise the confidence in classification based on thresholds applied. The AUROC can be used to demonstrate a quantitative assessment of any particular sample (similar to a Regression problem).
 
-\subsubsection{Hyperparameter Optimisisation}
- Machine learning is about learning, and adjusting, the internal parameters of a classifier. A hyperparameter is a parameter that cannot be learnt from backpropegation, as it is external to the classifier. These are parameters such as hidden layer size, training rates, classifier specific strategy, etc. The way to choose these hyperparameters is therefore an optimisation problem. The problem is to maximise the score selected above, by trialing different hyperparameters. The following describe methods of finding the optimal hyperparameters.
+\subsubsection{Hyperparameter Optimisation}
+ Machine learning is about learning, and adjusting, the internal parameters of a classifier. A hyperparameter is a parameter that cannot be learnt from backpropagation, as it is external to the classifier. These are parameters such as hidden layer size, training rates, classifier specific strategy, etc. The way to choose these hyperparameters is therefore an optimisation problem. The problem is to maximise the score selected above, by trialling  different hyperparameters. The following describe methods of finding the optimal hyperparameters.
 
  \subparagraph{Manual Search}
  Hyperparameters could be manually selected and adjusted, in a search for a more optimal solution. This may be a valid option for interrogating what each hyperparameter does, and the impact on the classification score. This however would not be a valid solution for finding the optimal hyperparameters. \\
@@ -802,14 +802,14 @@ To improve upon the Manual Search, one could attempt to try every option availab
         }
     }
 \end{lstlisting}
-This improves on the Manual Search, but is very inefficent ($O(n^2)$), and thus extremely slow. \\
+This improves on the Manual Search, but is very inefficient ($O(n^2)$), and thus extremely slow. \\
 
-This was not tried during this project, but highlgihts the importance of the following algorithms.
+This was not tried during this project, but highlights the importance of the following algorithms.
 
-\subparagraph{Grid Search (Manual Gride Search)}
+\subparagraph{Grid Search (Manual Grid Search)}
 If the Brute Force Search method attempts to try every combination, then an improvement on this is to better specify the set from which a combination is formed. This is called a Grid Search. A Grid Search iterates through every combination provided. A 2d example shown in \fref{gridsearch.png} shows a grid is generated based on the hyperparameters intervals selected. A power element of Grid Search is the capacity to select non-equidistant intervals. \\
 
-\fFigure{gridsearch.png}{3 options for Hyperparameter 1 and 2 have been selected. Each combination will be evaluated, as denonted by the green `x'.}{0.5} 
+\fFigure{gridsearch.png}{3 options for Hyperparameter 1 and 2 have been selected. Each combination will be evaluated, as denoted by the green `x'.}{0.5} 
 
 Grid Search was used for early implementations across both TensorFlow + Keras, and Scikit-learn.
 
@@ -824,10 +824,10 @@ Bayesian Hyperparameter Optimisation is the principle of allowing a search to be
 
 \fancyquote{Bayesian optimization employs the Bayesian technique of setting a prior over the objective function and combining it with evidence to get a posterior function. \cite{Brochu2010}}
 
-Bayesian Optimisation for hyperparameter selection was not tested, as it is suggested it is best suited for optimising more complex networks. \cite{Snoek2012} \cite{Brochu2010} It is however an excellent tie in to the MCH3900 Bayesian lectures, and could consitute a future package of work.
+Bayesian Optimisation for hyperparameter selection was not tested, as it is suggested it is best suited for optimising more complex networks. \cite{Snoek2012} \cite{Brochu2010} It is however an excellent tie in to the MCH3900 Bayesian lectures, and could constitute a future package of work.
 
 \subparagraph{Final Hyperparameter output}
-Below are snippets of the an implemented Random Search for an MLP classifier. Of note is the parameters included are listed in the table \ref{tab:RandCV_HyperOptions} below. The hyperparameter options listed are a part of an iteritive process where the range was manually narrowed after successive RandomSearches. This is a method to increase precision without high inital ranges that would be inefficent. 
+Below are snippets of the an implemented Random Search for an MLP classifier. Of note is the parameters included are listed in the table \ref{tab:RandCV_HyperOptions} below. The hyperparameter options listed are a part of an iterative process where the range was manually narrowed after successive RandomSearches. This is a method to increase precision without high initial ranges that would be inefficient. 
 
 \begin{table}[h]
     \begin{center}  
@@ -886,12 +886,12 @@ The classification libraries used were Google's TensorFlow and scikit-learn. Bot
 
 \subparagraph{TensorFlow}
 TensorFlow is an opensource machine learning framework, primarily developed by Google.
-\inlineQuote{It has a comprehensive, flexible ecosystem of tools, libraries and community resources that lets researchers push the state-of-the-art in ML and developers easily build and deploy ML powered applications.}\cite{TFwebsite}. TensorFlow in conjunction with with Keras was used to prototype the inital pipeline. According to the textbook, \inlineQuote{Hands on Machine Learning with Scikit, Keras \& TensorFlow}, a pipeline is 
+\inlineQuote{It has a comprehensive, flexible ecosystem of tools, libraries and community resources that lets researchers push the state-of-the-art in ML and developers easily build and deploy ML powered applications.}\cite{TFwebsite}. TensorFlow in conjunction with with Keras was used to prototype the initial pipeline. According to the textbook, \inlineQuote{Hands on Machine Learning with Scikit, Keras \& TensorFlow}, a pipeline is 
 \fancyquote{
 A sequence of data processing components is called a data pipeline. Pipelines are very common in Machine Learning systems, since there is a lot of data to manipulate and many data transformations to apply\cite{HandsOnMLTextbook}.
 }
 
-TensorFlow and Keras were selected to initially design the classifier due it's ability to run on the TensorFlow Lite. This is inline with the motivation of the project to allow widespread use of an AED/C solution. The code snippet \ref{lst:pythonlisting} shows how a model converts.
+TensorFlow and Keras were selected to initially design the classifier due its ability to run on the TensorFlow Lite. This is inline with the motivation of the project to allow widespread use of an AED/C solution. The code snippet \ref{lst:pythonlisting} shows how a model converts.
 
 \lstinputlisting[
     language=python,
@@ -909,7 +909,7 @@ Due to the sample size of the dataset (AudioSet's large database, but smaller ba
 
 A Random Tree Classifier was used to evaluate feature importance. Random Tree Classifier's perform poorly on unbalanced datasets. like on  on a the ExtraSensory after random undersampled dataset, during the design phase of the main classifier. Features were Audio (Blue, 26 bins), Accelerometer (Orange, 26 features), Gyroscope (Red, 26 features), GPS (Green, 17 features)
 
-\fFigure{feature_important_just_combined_big_colour.png}{A Random Tree Classifier was used to evaluate feaure importance on a the ExtraSensory after random undersampled dataset, during the design phase of the main classifier. Features were Audio (Blue, 26 bins), Accelerometer (Orange, 26 features), Gyroscope (Red, 26 features), GPS (Green, 17 features)}{1}
+\fFigure{feature_important_just_combined_big_colour.png}{A Random Tree Classifier was used to evaluate feature importance on a the ExtraSensory after random undersampled dataset, during the design phase of the main classifier. Features were Audio (Blue, 26 bins), Accelerometer (Orange, 26 features), Gyroscope (Red, 26 features), GPS (Green, 17 features)}{1}
 
 \lstinputlisting[
     language=python,
@@ -922,21 +922,21 @@ A Random Tree Classifier was used to evaluate feature importance. Random Tree Cl
 
 
 \subparagraph{scikit-learn}
-Scikit-learn is an extensive machine learning Python library. The purpose of the library is to remove much of the \inlineQuote{boilerplate} code associated with and in implimenting machine learning networks and algorithms. It also provides an extensive list of machine learning support functions.
+Scikit-learn is an extensive machine learning Python library. The purpose of the library is to remove much of the \inlineQuote{boilerplate} code associated with and in implementing machine learning networks and algorithms. It also provides an extensive list of machine learning support functions.
 When combined with other Python libraries such as numpy,matlibplot and others, it allows for succinct and consistent reproduction of the results this project aims to deduce. It is for this reason that libraries for machine learning have been utilised in contrast with writing a framework from scratch.
 
 % Scikit-learn is a statistics and machine learning for Python. It was selected due to it's ease of use, and has been used to analyse, prototype and produce the results of this paper.
 
 \subsection{Method Summary}
 
-The method details selecting the desired output, the required data input, a metric to score by, a classifier, optimising hyperparameters against the previous options, and finally training and validating aginst the data. \\
+The method details selecting the desired output, the required data input, a metric to score by, a classifier, optimising hyperparameters against the previous options, and finally training and validating the data. \\
 
 {\itshape For this project}
 \begin{enumerate}
     \item The desired output is a label (or labels) detailing the Acoustic Event in the sample (e.g. The labels found in \ref{apx:ExtraSensoryLabels} like `Walking').
     \item The required data is the ExtraSensory dataset, or a custom dataset as recorded by the project's App.
     \item The score selected is the F1 score. This is due to it being an industry standard.
-    \item The classifier chosen is the MLPClassifier which is a feedforward neural network, trainded via backpropegation.
+    \item The classifier chosen is the MLPClassifier which is a feedforward neural network, trained via backpropagation.
     \item Hyperparameters of the MLPClassifier are chosen via a Random Search Cross Validation.
     \item Training and Validation was run with Early Stopping using a 10\% validation set, using 59 out of the 60 ExtraSensory users.
     \item Final testing is done with the 60\textsuperscript{th} user.
@@ -954,7 +954,7 @@ A Binary MLP Classifier was run using the following settings:
 \begin{lstlisting}
     {'solver': 'adam', 'learning_rate': 'adaptive', 'hidden_layer_sizes': (150, 100, 50), 'alpha': 0.03, 'activation': 'tanh'}
 \end{lstlisting}
-It was trained to classifiy label 2. Average training time was for Audio only was 42.9 minutes, whilst Audio+Extra was 53.6 minutes. This does not reflect the full training time, but rather the final optimising and training time after manual refinment of the Random Search Cross Validation hyperparameter range.
+It was trained to classify label 2. Average training time was for Audio only was 42.9 minutes, whilst Audio+Extra was 53.6 minutes. This does not reflect the full training time, but rather the final optimising and training time after manual refinement of the Random Search Cross Validation hyperparameter range.
 
 \paragraph{Results from Audio Only}
 \begin{lstlisting}[
@@ -997,7 +997,7 @@ F-Score: 0.84
  [ 609 3707]]
 \end{lstlisting}
 
-\subparagraph{Area Under Reciever Operating Characteristics (AUROC)}
+\subparagraph{Area Under Receiver Operating Characteristics (AUROC)}
 The AUROC was calculated and plotted for the binary MLP classifier.
 \fFigure{both_ROC.png}{ROCs for Audio, Audio+Extra}{1}
 % \fFigure{ROC_audio.png}{AUROC of Audio only}{0.6}
@@ -1010,7 +1010,7 @@ A Multilabel MLP Classifier was run using the following settings:
 \begin{lstlisting}
     {'solver': 'adam', 'learning_rate': 'invscaling', 'hidden_layer_sizes': (150, 200), 'alpha': 0.07, 'activation': 'relu'}
 \end{lstlisting}
-It was trained to classifiy labels 2 through 22 inclusive. Average training time was for Audio only was 60.6 minutes, whilst Audio+Extra was 73.1 minutes. This does not reflect the full optimising and training time, but rather the final training time after manual refinment of the Random Search Cross Validation hyperparameter range.
+It was trained to classify labels 2 through 22 inclusive. Average training time was for Audio only was 60.6 minutes, whilst Audio+Extra was 73.1 minutes. This does not reflect the full optimising and training time, but rather the final training time after manual refinement of the Random Search Cross Validation hyperparameter range.
 
 \paragraph{Results from Audio Only}
 \begin{lstlisting}
@@ -1058,29 +1058,29 @@ The results achieved (shown in \ref{tab:F1Results}) demonstrate that the supplem
 
 
 \NewSection{Discussion}\label{sec:Discussion}
-The results above aim to demonstrate a quanitative difference in F1 score across 2 the classifier with and without Accelerometer, Gyroscope and GPS data. The results achieved did produce a quanitative relative improvement of 10.5\% and 11.9\% for the Binary and Multilabel result respectively.
+The results above aim to demonstrate a quantitative difference in F1 score across 2 the classifier with and without Accelerometer, Gyroscope and GPS data. The results achieved did produce a quantitative relative improvement of 10.5\% and 11.9\% for the Binary and Multilabel result respectively.
 
 \subparagraph{Assumptions}
-The results are constrainted by the assumptions made in \sref{sec:Method}. One assumption is that the \inlineQuote{No Free Lunch} theorem infers that no individual classifier is theoretically better than another pre-training. This assumption infers that the results of this project will affect all models, but the quanitative impact may vary post-training. Simiarly so, there is no assumption on the strength of this result on application to other projects; the dataset and training may significantly affect the the strength of this result.
+The results are constrained by the assumptions made in \sref{sec:Method}. One assumption is that the \inlineQuote{No Free Lunch} theorem infers that no individual classifier is theoretically better than another pre-training. This assumption infers that the results of this project will affect all models, but the quantitative impact may vary post-training. Similarly so, there is no assumption on the strength of this result on application to other projects; the dataset and training may significantly affect the the strength of this result.
 
-\subparagraph{Confidence and Qualatitive Evaluation of Result}
-The result had been analysed using the Area Under Reciever Operating Characteristics (AUROC) plot, to determine how the classifier would operate over different decision boundries. The AUROC plots shown in \fref{both_ROC.png} show the consistancy of the model. This is demonstrated via the smooth continuity of the ROC curve (no major jumps in TP performance). This sanity check ensures that the results produced were not the result of a classifier optimised about artefact of the post-training model.
+\subparagraph{Confidence and Qualitative Evaluation of Result}
+The result had been analysed using the Area Under Receiver Operating Characteristics (AUROC) plot, to determine how the classifier would operate over different decision boundaries. The AUROC plots shown in \fref{both_ROC.png} show the consistency of the model. This is demonstrated via the smooth continuity of the ROC curve (no major jumps in TP performance). This sanity check ensures that the results produced were not the result of a classifier optimised about artefact of the post-training model.
 
 \subparagraph{Changing Hyperparameters}
-The results make the assumption that using static hyperparameters across the Audio, and Audio+Extra classifiers would be an invalid strategy of testing the hyposthesis. It would be expected that optimising the hyperparameters for one classifier and not the other would result in the other classifier performing worse. This would result in a convolution of the effect from the extra data, and a classifier with poorly optimised hyperparameters. As such, there is an inverse assumption that optimising both classifiers seperately, but using the same methodology is a fair strategy to minimise the model and it's hyperparameter's effect on F1 Score.
+The results make the assumption that using static hyperparameters across the Audio, and Audio+Extra classifiers would be an invalid strategy of testing the hypothesis. It would be expected that optimising the hyperparameters for one classifier and not the other would result in the other classifier performing worse. This would result in a convolution of the effect from the extra data, and a classifier with poorly optimised hyperparameters. As such, there is an inverse assumption that optimising both classifiers separately, but using the same methodology is a fair strategy to minimise the model and its hyperparameter's effect on F1 Score.
 
 \subparagraph{Complexity} 
 The complexity of the classification task was low compared to similar studies \cite{Tseng2017} \cite{Virtanen2010} due to the limited and broad labels available in the ExtraSensory dataset. However the number of classes are comparative to previous studies (61 classes, Virtanen 2010 \cite{Virtanen2010}). To improve these results, the complexity of the labels could be improved. A promising new technique is to train a network on weakly supervised data \cite{Tseng2017}, which could extend to generating/classifying new labels on the ExtraSensory dataset. This would allow a more complex dataset, such as AudioSet \cite{Audiosetgoogle2018} to reprocess the ExtraSensory database to have a larger number of classes. 
 
-\subparagraph{Casuastion}
-The increase in F1 score could occur in 2 areas. The first is during hyperparameter optimisation, in which the hyperparameters are fitted to our activation model using Audio and/or the supplementary data, optimised about the F1 score. The second is in the fitting itself, where the supplementary data may contain a signal that could be benefiting the F1 score of the model. If this hyposthesis is correct, then these results will hold valid across other classifiers that require hyperparameter optimisation and fitting of training data.
+\subparagraph{Causation}
+The increase in F1 score could occur in 2 areas. The first is during hyperparameter optimisation, in which the hyperparameters are fitted to our activation model using Audio and/or the supplementary data, optimised about the F1 score. The second is in the fitting itself, where the supplementary data may contain a signal that could be benefiting the F1 score of the model. If this hypothesis is correct, then these results will hold valid across other classifiers that require hyperparameter optimisation and fitting of training data.
 
 \subparagraph{Acoustic Event Detection}
-The validity of the result holds true for Acoustic Event Classification, however, no Acoustic Event \inlineQuote{Detection} was carried out. That is, a sound sample was classified as an Acoustic Event as a binary output, rather than identifying when the Acoustic Event occured in the sound sample. Phaun discusses the differences and complexities involved in AEC vs AED in a paper called \inlineQuote{What Makes Audio Event Detection Harder than Classification?}\cite{Phan2016}. This suggests that this project's result may be valid Acoustic Event Detection, given AEC is a crucial element of the detection pipeline.
+The validity of the result holds true for Acoustic Event Classification, however, no Acoustic Event \inlineQuote{Detection} was carried out. That is, a sound sample was classified as an Acoustic Event as a binary output, rather than identifying when the Acoustic Event occurred in the sound sample. Phaun discusses the differences and complexities involved in AEC vs AED in a paper called \inlineQuote{What Makes Audio Event Detection Harder than Classification?}\cite{Phan2016}. This suggests that this project's result may be valid Acoustic Event Detection, given AEC is a crucial element of the detection pipeline.
 
 \subparagraph{Significance}
-The results from this project aim to present a peer-reviewable benchmark for the impact of the supplementary datasources of an accelerometer, gyroscope and GPS. The key significance is that the qualatative result can be taken and applied to similar projects.\\
-Of note, no effort was made to discern the impact each of the 3 additional datasources played in the 10.5\% and 11.9\% improvements obtain in the results. This was a concious effort, as these datasources are prevalant, and commnonly found together. It could be inferred from \aref{apx:FeatureImportance} that accelerometer was likely the most impactful element. It would be left to future work to investigate discern the specific impact each sensor had, and the cost of including \inlineQuote{less important} features vs training time. 
+The results from this project aim to present a peer-reviewable benchmark for the impact of the supplementary datasources of an accelerometer, gyroscope and GPS. The key significance is that the qualitative result can be taken and applied to similar projects.\\
+Of note, no effort was made to discern the impact each of the 3 additional datasources played in the 10.5\% and 11.9\% improvements obtain in the results. This was a conscious effort, as these datasources are prevalent, and commonly found together. It could be inferred from \aref{apx:FeatureImportance} that accelerometer was likely the most impactful element. It would be left to future work to investigate discern the specific impact each sensor had, and the cost of including \inlineQuote{less important} features vs training time. 
 
 * making sure that they evaluate their results;
 * compare them to other research;
@@ -1088,11 +1088,11 @@ Of note, no effort was made to discern the impact each of the 3 additional datas
 * identify limitations of the study.
 
 \subparagraph{Quality of Data}
-ExtraSensory was used as the dataset for this project. As a result of using the a public dataset, there was no investigation into the quality of the data within the dataset, beyond reading the original study \cite{Vaizman2017}. This is a key limitation with analysing the quanatative result. This limitation does not invalid the result however because the dataset was collected with mobile phones. Mobile phones would likely be the main datasource for any future dataset involving audio, accelerometer, gyroscope and GPS data.\\
+ExtraSensory was used as the dataset for this project. As a result of using the a public dataset, there was no investigation into the quality of the data within the dataset, beyond reading the original study \cite{Vaizman2017}. This is a key limitation with analysing the quantitative result. This limitation does not invalid the result however because the dataset was collected with mobile phones. Mobile phones would likely be the main datasource for any future dataset involving audio, accelerometer, gyroscope and GPS data.\\
 
-Furthermore, no effort was made to audit the labels provided in the dataset, as it was assumped that the dataset was 100\% accurate. If this was not the case, this assumption would affect the expected realative improvement in the result. 
+Furthermore, no effort was made to audit the labels provided in the dataset, as it was assumped that the dataset was 100\% accurate. If this was not the case, this assumption would affect the expected relative improvement in the result. 
 
-4 including the additional data points of accelerometer data gyroscope data and GPS data what it doesn't highlight is how optimal that data is nor does it evaluate the preprocessing of that data nor does it evaluate the generalisation of this methodology to new data sets what it does answer is the original question of does including supplementary data of mu staff increase the F1 score and the answer is yes what is important is to discuss how you would evaluate the generalisation of this model you would also discuss what what impact the model quality has on this result if we've used a different model which we have and we will show this result what is the difference in the improvement is there any improvement how do you evaluate whether a model will benefit from this extra data points there are some models specifically which you do need to do feature reduction and feature analysis on to ensure you don't over specify the features even if you low weight the features you may still have an issue of having too much data and this is just in terms of a performance another element of this is what we got the results what was the cost so we have increase the amount of data we need to use increase the data we need to process increase the data we need to collect to train we are also looking at a larger model file size which for a use case of potentially online processing would be very detrimental so what's the results of 5\% are based on solid evidence they may not actually be a valid application or a valid progress for achieving a 5\% increase for instance how do we only change the data set and retrain revalidated and then re-evaluated this process would we see similar numbers that is the model likely wouldn't produce the exact same if one school so is our 5\% related or proportional to the original benefit had we not done hyperparameter searching to optimise our model potentially we would have seen a much larger game in F1 score from the addition of the additional data points that hypothetical would be because if l model is already underperforming / are an optimised then the additional data points May introduce that additional optimisation needed similes conclusion in conclusion what we're looking at is a 5\% increase in F1 school which is relevant for this approach for this data set because this data set does closely match our target use case this is actually a valid result and this is a worthy increase to the field what this does raise however is how does hell result generalise across other applications because this project had a specific use case it was not within the scope to evaluate whether or not supplementary data would improve audio event classification and detection in other audio sets simile so the number of audio sets the database database is available is limited and the format of that data all the data selection would play a role so whilst we discussed supplementary data to specific data that we use was axela on the data a gyroscope data GPS however it did not attempt to evaluate other supplementary data is for instance the magna mater other accelerometer data video etcetera this data set is also a 1 minutes sample time snap what we did was we recorded across the day and time time-invariant snapshot of our data why that's important is because would time variance significantly affect this outcome that is something probably to put in the discussion section but in conclusion this seems to be a valid strategy and the next next step you would take is to look at trying a larger data set when available and 2 validate this on hardware in a actual environment further so there were other methods to approach the same problem and it should be considered whether or not those other methods would drastically change the app for instant whilst we used a model that was well well chosen for the purpose of a single binary flag to create an ensemble of classifiersconclusion in conclusion what would looking at is a 5\% increase in Heflin school which is relevant for visa parts for this. Affect because the status that sounds call claim at at Target use case this is actually a valid result in this is a wuzzy increase to the failed what is thugs raise however is how does have result general on across the applications because it's project hi to specific use case it was not with him the Skype still valley light weather I'm not supplementary Dada would improve audio event classification inspection in other warriors that simile so the number of audio set device. Basis available is limited and the format of that. Orthodontist election would play a role boat well sweet discussed supplementary gotta to specific daughter that we used was XL alarm the Dada gyroscope. GPS however it did not attempt to evaluate all the supplementary. It Francis magnetic element get to work today sometime and burien shops all out. Why that's important who's because would come variant significantly effects did outcome that is something 0n
+4 including the additional data points of accelerometer data gyroscope data and GPS data what it doesn't highlight is how optimal that data is nor does it evaluate the preprocessing of that data nor does it evaluate the generalisation of this methodology to new data sets what it does answer is the original question of does including supplementary data of mu staff increase the F1 score and the answer is yes what is important is to discuss how you would evaluate the generalisation of this model you would also discuss what what impact the model quality has on this result if we've used a different model which we have and we will show this result what is the difference in the improvement is there any improvement how do you evaluate whether a model will benefit from this extra data points there are some models specifically which you do need to do feature reduction and feature analysis on to ensure you don't over specify the features even if you low weight the features you may still have an issue of having too much data and this is just in terms of a performance another element of this is what we got the results what was the cost so we have increase the amount of data we need to use increase the data we need to process increase the data we need to collect to train we are also looking at a larger model file size which for a use case of potentially online processing would be very detrimental so what's the results of 5\% are based on solid evidence they may not actually be a valid application or a valid progress for achieving a 5\% increase for instance how do we only change the data set and retrain revalidated and then re-evaluated this process would we see similar numbers that is the model likely wouldn't produce the exact same if one school so is our 5\% related or proportional to the original benefit had we not done hyperparameter searching to optimise our model potentially we would have seen a much larger game in F1 score from the addition of the additional data points that hypothetical would be because if l model is already underperforming / are an optimised then the additional data points May introduce that additional optimisation needed similes conclusion in conclusion what we're looking at is a 5\% increase in F1 school which is relevant for this approach for this data set because this data set does closely match our target use case this is actually a valid result and this is a worthy increase to the field what this does raise however is how does hell result generalise across other applications because this project had a specific use case it was not within the scope to evaluate whether or not supplementary data would improve audio event classification and detection in other audio sets simile so the number of audio sets the database database is available is limited and the format of that data all the data selection would play a role so whilst we discussed supplementary data to specific data that we use was axela on the data a gyroscope data GPS however it did not attempt to evaluate other supplementary data is for instance the magna mater other accelerometer data video etcetera this data set is also a 1 minutes sample time snap what we did was we recorded across the day and time time-invariant snapshot of our data why that's important is because would time variance significantly affect this outcome that is something probably to put in the discussion section but in conclusion this seems to be a valid strategy and the next next step you would take is to look at trying a larger data set when available and 2 validate this on hardware in a actual environment further so there were other methods to approach the same problem and it should be considered whether or not those other methods would drastically change the app for instant whilst we used a model that was well well chosen for the purpose of a single binary flag to create an ensemble of classifiersconclusion in conclusion what would looking at is a 5\% increase in Heflin school which is relevant for visa parts for this. Affect because the status that sounds call claim at at Target use case this is actually a valid result in this is a wuzzy increase to the failed what is thugs raise however is how does have result general on across the applications because its project hi to specific use case it was not with him the Skype still valley light weather I'm not supplementary Dada would improve audio event classification inspection in other warriors that simile so the number of audio set device. Basis available is limited and the format of that. Orthodontist election would play a role boat well sweet discussed supplementary gotta to specific daughter that we used was XL alarm the Dada gyroscope. GPS however it did not attempt to evaluate all the supplementary. It Francis magnetic element get to work today sometime and burien shops all out. Why that's important who's because would come variant significantly effects did outcome that is something 0n
 
 
 \NewSection{Conclusion}\label{sec:Conclusion}
@@ -1105,9 +1105,9 @@ This is one of the most important parts of the report. In the conclusion section
 \end{itemize}
 
 The results achieved showed audio as a sole input for determining physical actions to be a viable but also shows room for improvement. The focus was on what data to use, preprocessing and finally classification. 
-Data use settled on Google's AudioSet \flagforreview for ease of use, where as the IMU data was needed was recorded through a bespoke app created by myself and a colleague. Preprocessing took some domain knowledge learnt through out Mechatronics, and processed (mel power coeffecients). Classification was through machine learning (RNN, known topologies etc.). 
+Data use settled on Google's AudioSet \flagforreview for ease of use, where as the IMU data was needed was recorded through a bespoke app created by myself and a colleague. Preprocessing took some domain knowledge learnt through out Mechatronics, and processed (mel power coefficients). Classification was through machine learning (RNN, known topologies etc.). 
 The work presented does demonstrates a contribution to the audio processing space and explores how mechatronics domain knowledge impacts and extends machine learning.
-Based on the work presented, it's clear that audio data processing will be a major tool and research topic into the future. The niche explored in this FYP, of amalgamating traditional audio processing with physical sensor input looks to be of limited use, to limited applications. More over, without large datasets of audio paired with physical sensor data, the machine learning tools explored in this FYP will not be able to be used. As such, the rise of audio recording equipped equipment should be the basis for further research into this space. 
+Based on the work presented, it is clear that audio data processing will be a major tool and research topic into the future. The niche explored in this FYP, of amalgamating traditional audio processing with physical sensor input looks to be of limited use, to limited applications. More over, without large datasets of audio paired with physical sensor data, the machine learning tools explored in this FYP will not be able to be used. As such, the rise of audio recording equipped equipment should be the basis for further research into this space. 
 Future work from here would be to look at the larger role of data acquisition. This is both because it was one of the larger hurdles I had to face, plus it enables further research into the effectiveness of what a diverse dataset can bring. Industry will reasonably expect to take aspects of data fusion and machine learning. To know what
 
 \NewSection{Future Work}
@@ -1274,7 +1274,7 @@ A suggested option for Future Work could include adapting the Bogosort to Machin
 \newpage
 \appendix
 \NewSection{Full Extracts of Journals}
-N/A, email correspondance available on request.
+N/A, email correspondence available on request.
 
 \NewSection{Reflection}
 about several of the Engineers Australia 16 competencies.  \flagforreview
@@ -1288,7 +1288,7 @@ This project was a whirlwind. Taken over the 2018 S2, 2019 S1 period, including 
     \item Smaller Scope, get it done in Part A, expand and write in Part B.
 \end{itemize}
 
-The FYP has made me appreciate Subject Matter Expertise. In MCHA3900, I focused heavily on understanding the physical hardware involved in the Hexapod - Matlab, RPi, i2c, Openservo v3, and the physical bot itself. I felt I knew that system well, but I recognised my limited understanding. In comparison to that, I reflect on \textit{how much} I've learnt during this FYP, and to what depth of detail compared to MCHA3900. I think I already knew that when I read it's `MCHA3900 - INTRO TO ROBOTICS', but seeing how that was already a good 200 hours I'm surprised just how much more I've had to delve into this.
+The FYP has made me appreciate Subject Matter Expertise. In MCHA3900, I focused heavily on understanding the physical hardware involved in the Hexapod - Matlab, RPi, i2c, Openservo v3, and the physical bot itself. I felt I knew that system well, but I recognised my limited understanding. In comparison to that, I reflect on \textit{how much} I've learnt during this FYP, and to what depth of detail compared to MCHA3900. I think I already knew that when I read it is `MCHA3900 - INTRO TO ROBOTICS', but seeing how that was already a good 200 hours I'm surprised just how much more I've had to delve into this.
 
 On that note, I lastly reflect on the skills I've learnt, and the perspective I've gained in how complex the field is, and how much more there is to learn.
 
@@ -1787,19 +1787,19 @@ F-Score: 0.29
 \end{lstlisting}
 
 \NewSection{Dataset Feature Importance}\label{apx:FeatureImportance}
-\fFigure{feature_important_just_audio2.png}{A Random Tree Classifier was used to evaluate feaure importance, during the design phase of the main classifier. Features were Audio (26 bins)}{0.5}
+\fFigure{feature_important_just_audio2.png}{A Random Tree Classifier was used to evaluate feature importance, during the design phase of the main classifier. Features were Audio (26 bins)}{0.5}
 
-\fFigure{feature_important_just_accel.png}{A Random Tree Classifier was used to evaluate feaure importance, during the design phase of the main classifier. Features were Accelerometer(26)}{0.5}
+\fFigure{feature_important_just_accel.png}{A Random Tree Classifier was used to evaluate feature importance, during the design phase of the main classifier. Features were Accelerometer(26)}{0.5}
 
-\fFigure{feature_important_just_Gyro.png}{A Random Tree Classifier was used to evaluate feaure importance, during the design phase of the main classifier. Features were Gyroscope(26)}{0.5}
+\fFigure{feature_important_just_Gyro.png}{A Random Tree Classifier was used to evaluate feature importance, during the design phase of the main classifier. Features were Gyroscope(26)}{0.5}
 
-\fFigure{feature_important_just_GPS2.png}{A Random Tree Classifier was used to evaluate feaure importance, during the design phase of the main classifier. Features were GPS (16)}{0.5}
+\fFigure{feature_important_just_GPS2.png}{A Random Tree Classifier was used to evaluate feature importance, during the design phase of the main classifier. Features were GPS (16)}{0.5}
 
 \NewSection{Trade-Review of "Online vs Offline" processing}\label{sec:TradeReview}
 
 
 \NewSection{GridSearch Attempts}\label{apx:GSAttempt}
-This shows how a Grid Search was used for hyperparameter optimisation. In particular, this is an example of an iteritive process where the grid was manually narrowed and precision increase. 
+This shows how a Grid Search was used for hyperparameter optimisation. In particular, this is an example of an iterative process where the grid was manually narrowed and precision increase. 
 \begin{lstlisting}
     parameters={'hidden_layer_sizes': [(145,), (147,), (149,), (151,), (153)],
                 'alpha': [0.09, 0.11, 0.13, 0.15, 0.17, 0.19]}

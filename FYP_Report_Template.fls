@@ -270,10 +270,10 @@ INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\cmextra\cmbsy8.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\cmextra\cmbsy6.tfm
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmss10.tfm
 INPUT c:\FYP\report\FYP_Report_Template.toc
 INPUT c:\FYP\report\FYP_Report_Template.toc
 OUTPUT c:\FYP\report\FYP_Report_Template.toc
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmti10.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmssbx10.tfm
 INPUT c:\FYP\report\Figures\treeDiagram.png
 INPUT c:\FYP\report\Figures\treeDiagram.png
@@ -409,7 +409,6 @@ INPUT c:\FYP\report\Figures\both_ROC.png
 INPUT c:\FYP\report\Figures\both_ROC.png
 INPUT c:\FYP\report\FYP_Report_Template.bbl
 INPUT c:\FYP\report\FYP_Report_Template.bbl
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmtt10.tfm
 INPUT c:\FYP\report\Figures\feature_important_just_audio2.png
 INPUT c:\FYP\report\Figures\feature_important_just_audio2.png
 INPUT c:\FYP\report\Figures\feature_important_just_audio2.png
@@ -465,5 +464,5 @@ INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmti10.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmti10.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmtt10.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmtt10.pfb
-INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\rsfs\rsfs10.pfb
-INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\rsfs\rsfs10.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\rsfs\rsfs7.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\rsfs\rsfs7.pfb

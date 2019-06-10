@@ -1,9 +1,11 @@
 {
     "cSpell.words": [
+        "AUROC",
         "Dropout",
         "Keras",
         "Lite",
         "MCHA",
+        "backpropagation",
         "hyperparameters",
         "matplotlib",
         "overfit",
