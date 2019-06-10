@@ -1156,22 +1156,31 @@ The work presented has demonstrated that the fear of machine learning being a "b
 
 The report looks at how the AEC/D pipeline would be created (such as the creation of the app, preprocessing, etc.), much of which is not reflected in the final results but were critical in the overal Final Year Project.\flagforreview %The results do not reflect the work done throughout this project.\flagforreview %created. Much of which is not reflected in the final results  
 The results achieved showed audio as a sole input for determining physical actions to be a viable, but the extra available data did improve the classification. The report also reflects on how much room for improvement there is\flagforreview.
-
-Preprocessing took some domain knowledge learnt through out Mechatronics, and processed (mel power coefficients). Results only demonstrate the sheer inclusion of the data, as no processing or optimisation on the extra data was carried out.
-
-Classification was through machine learning (RNN, known topologies etc.). 
 The work presented does demonstrates a contribution to the audio processing space and explores how mechatronics domain knowledge impacts and extends machine learning.
-Based on the work presented, it is clear that audio data processing will be a major tool and research topic into the future. The niche explored in this FYP, of amalgamating traditional audio processing with physical sensor input looks to be of limited use, to limited applications. More over, without large datasets of audio paired with physical sensor data, the machine learning tools explored in this FYP will not be able to be used. As such, the rise of audio recording equipped equipment should be the basis for further research into this space. 
-Future work from here would be to look at the larger role of data acquisition. This is both because it was one of the larger hurdles I had to face, plus it enables further research into the effectiveness of what a diverse dataset can bring. Industry will reasonably expect to take aspects of data fusion and machine learning. To know what
+%Preprocessing took some domain knowledge learnt through out Mechatronics, and processed (mel power coefficients). 
 
-Conclusion
-The question of \inlineQuote{[what is] the effect of supplementary data on acoustic event classification through machine learning} has been answer: The answer is a 8\% increase in F1 score, or 10.5/11.9\% relative increase in their respective models.
+Results only demonstrate the sheer inclusion of the data, as no processing or optimisation on the extra data was carried out.
 
-Which is relevant for this approach for this data set because this data set does closely match our target use case this is actually a valid result and this is a worthy increase to the field what this does raise however is how does hell result generalise across other applications because this project had a specific use case it was not within the scope to evaluate whether or not supplementary data would improve audio event classification and detection in other audio sets similarly so the number of audio+Extra datasets is available is limited and the format of that data all the data selection would play a role so whilst we discussed supplementary data to specific data that we use was axela on the data a gyroscope data GPS however it did not attempt to evaluate other supplementary data.
+This report used a dataset that was similar to the target use case. As a result, this suggests a the result is valid in the use case, and as such is a worthy improvement to the field.
+What this raises is how well do the results generalise across other applications and use cases? This project had a specific use case it was not within the scope to evaluate whether or not supplementary data would improve audio event classification and detection in other audio sets, or across other use cases. Even then the number of audio+Extra datasets is available is limited and the format of that data would effect the result from this report. So whilst supplementary data added to the was discussed, it did not attempt to evaluate other supplementary data.
+
+%Recommendations
+Based on the work presented, it is clear that audio data processing will be a major tool and research topic into the future. Without large datasets of audio paired with physical sensor data, the machine learning tools explored in this Final Year Project will not be able to be used. As such, it is recommended that due to the rise of well labled audio datasets, audio only should remain the key basis for further research into this space. Perhaps an ensable of classifieries, one with a well trained AEC/D based on audio only, and amalgamate it with the extra data to form the best classifier possible.
+
+A recommendation would be to apply the outcome to a relavent project when the supplementary data is available, but consider the extra training time required. Also consider the quality of datasets available, and whether requiring the inclusion of supplementary data would exclude higher quality datasets. For example, an AEC/D classifier trained on the ExtraSensory dataset (with accelerometer, gyroscope, and GPS data) may perform worse than an audio only classifier of the same design trained on the Google AudioSet dataset.
+
+In conclusion this seems to be a valid strategy and the next next step you would take is to look at trying a larger data set when available and 2 validate this on hardware in a actual environment further so there were other methods to approach the same problem.
+
+% Future work from here would be to look at the larger role of data acquisition. This is both because it was one of the larger hurdles I had to face, plus it enables further research into the effectiveness of what a diverse dataset can bring. Industry will reasonably expect to take aspects of data fusion and machine learning. To know what
+
+% Conclusion
+% The question of \inlineQuote{[what is] the effect of supplementary data on acoustic event classification through machine learning} has been answer: The answer is a 8\% increase in F1 score, or 10.5/11.9\% relative increase in their respective models.
+
+
 
 %a 1 minutes sample time snap what we did was we recorded across the day and time time-invariant snapshot of our data why that's important is because would time variance significantly affect this outcome that is something probably to put in the discussion section 
 
-In conclusion this seems to be a valid strategy and the next next step you would take is to look at trying a larger data set when available and 2 validate this on hardware in a actual environment further so there were other methods to approach the same problem.
+
 %and it should be considered whether or not those other methods would drastically change the app for instant whilst we used a model that was well well chosen for the purpose of a single binary flag to create an ensemble of classifiersconclusion in conclusion what would looking at is a 5\% increase in Heflin school which is relevant for visa parts for this. Affect because the status that sounds call claim at at Target use case this is actually a valid result in this is a wuzzy increase to the failed what is thugs raise however is how does have result general on across the applications because its project hi to specific use case it was not with him the Skype still valley light weather I'm not supplementary Dada would improve audio event classification inspection in other warriors that simile so the number of audio set device. Basis available is limited and the format of that. Orthodontist election would play a role boat well sweet discussed supplementary gotta to specific daughter that we used was XL alarm the Dada gyroscope. GPS however it did not attempt to evaluate all the supplementary. It Francis magnetic element get to work today sometime and burien shops all out. Why that's important who's because would come variant significantly effects did outcome that is something 0n
 
 
