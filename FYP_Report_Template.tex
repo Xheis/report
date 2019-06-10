@@ -22,7 +22,7 @@
 \usepackage[explicit]{titlesec} % Sentence Case
 
 
-
+\usepackage{caption}
 
 % Wikipedia-style "citation needed" macro source: https://gist.github.com/martinarroyo/b9e0a963ad27169a6eee
 \newcommand{\citationneeded}{\textsuperscript{\color{blue} [citation needed]}}
@@ -36,13 +36,13 @@
 \newcommand{\tref}[1] {Table \ref{#1}}
 \newcommand{\aref}[1] {Appendix \ref{#1}}
 \newcommand{\fFigure}[3]{
-	\begin{figure}[h]
+	%\begin{minipage}%[H] %figure is a floating page, consider replacing with   
         \begin{center}  
             \includegraphics[width=#3\linewidth]{Figures/#1}  
-            \caption{#2}
+        \captionof{figure}{#2}
             \label{#1}
         \end{center}
-	\end{figure}
+	%\end{minipage}
 }
 
 \newcommand{\NewSection}[1]{
@@ -315,16 +315,16 @@ A Systems Map takes the Affinity Diagram, Input Output Analysis, and Tree-Diagra
 \subsection{Sequence Diagram}
 A Sequence Diagram was developed to analyse the flow of data through the processes identified in the System Map. This is shown in \fref{SequenceDiagram.png}. This helped to predict and manage any potential complexities and logistics related to the specific needs of each process. 
 Originally, This Sequence Diagram was used to justify removing data fusion from the scope due to the large workload required to implement alongside machine learning. Later in the project, it was brought back into the scope of the project to help compare and evaluate its effectiveness in improving the overall system. 
-\fFigure{SequenceDiagram.png}{A basic Sequence Diagram for the project}{0.8}
+\fFigure{SequenceDiagram.png}{A basic Sequence Diagram for the project}{0.7}
 
 
 \subsection{N\textsuperscript{2} Analysis}
 An N\textsuperscript{2} Analysis methodically expands on the what data moves around the system. This is to compliment the discussed complexities in the Sequence Diagram by documenting what data is expected. A example of this is shown in \fref{n2analysis.png}
-\fFigure{n2analysis.png}{A N\textsuperscript{2} Analysis for the project}{0.8}
+\fFigure{n2analysis.png}{A N\textsuperscript{2} Analysis for the project}{0.7}
 
 \subsection{Spray Diagram}
 The Spray Diagram shown in \fref{SprayDiagram.png} shows how details of the system can have multi-factored effects in design requirements, outcomes and operational use. Of interest in the diagram is the relationship between high-quality output will require high-quality input, and this may increase production and design costs. 
-\fFigure{SprayDiagram.png}{A Spray Diagram for the project}{1}
+\fFigure{SprayDiagram.png}{A Spray Diagram for the project}{0.8}
 
 \subsection{Matrix Diagram}
 A matrix diagram was made to review the now more refined, reduced scope as shown in \fref{MatrixDiagram.png}. This works by using a “strong”, “weak” or “none” indicator for each aspect of the project. It highlighted the difficulty in balancing the needs of both major stakeholders. 
@@ -385,8 +385,8 @@ The winning model used in the DCASE2018 Task 4 challenge used a “Mean-teacher�
 \NewSection{Method} \label{sec:Method}
 \subsection{Introduction to the Method}
 In a traditional machine learning problem there are 5 stages to the method; 
-
-\begin{enumerate}[start=1,label={Stage \arabic*:}]
+list looks awful \flagforreview
+\begin{enumerate}%[start=1,label={     Stage \arabic*:}]
     \item Data
     \item Preprocessing
     \item Model
