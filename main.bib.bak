@@ -449,9 +449,21 @@ http://www.k-jahn.de/files/bibtex.xslhttp://www.k-jahn.de/files/bibtex.xslhttp:/
   year        = {1993},
 }
 
-@article{johnson2011debriefing,
-  title={Debriefing after simulation: Guidelines for faculty and students},
-  author={Johnson Pivec, Cynthia Renee},
-  year={2011}
+@Article{johnson2011debriefing,
+  author = {Johnson Pivec, Cynthia Renee},
+  title  = {Debriefing after simulation: Guidelines for faculty and students},
+  year   = {2011},
 }
+
+@article{mcculloch1943logical,
+  title={A logical calculus of the ideas immanent in nervous activity},
+  author={McCulloch, Warren S and Pitts, Walter},
+  journal={The bulletin of mathematical biophysics},
+  volume={5},
+  number={4},
+  pages={115--133},
+  year={1943},
+  publisher={Springer}
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}

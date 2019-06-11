@@ -275,16 +275,16 @@ INPUT c:\FYP\report\FYP_Report_Template.toc
 INPUT c:\FYP\report\FYP_Report_Template.toc
 OUTPUT c:\FYP\report\FYP_Report_Template.toc
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmssbx10.tfm
-INPUT c:\FYP\report\Figures\treeDiagram.png
-INPUT c:\FYP\report\Figures\treeDiagram.png
-INPUT c:\FYP\report\Figures\treeDiagram.png
-INPUT c:\FYP\report\Figures\treeDiagram.png
-INPUT c:\FYP\report\Figures\treeDiagram.png
-INPUT c:\FYP\report\Figures\QuadOfAims2.png
-INPUT c:\FYP\report\Figures\QuadOfAims2.png
-INPUT c:\FYP\report\Figures\QuadOfAims2.png
-INPUT c:\FYP\report\Figures\QuadOfAims2.png
-INPUT c:\FYP\report\Figures\QuadOfAims2.png
+INPUT c:\FYP\report\Figures\niche.png
+INPUT c:\FYP\report\Figures\niche.png
+INPUT c:\FYP\report\Figures\niche.png
+INPUT c:\FYP\report\Figures\niche.png
+INPUT c:\FYP\report\Figures\niche.png
+INPUT c:\FYP\report\Figures\F1_score.png
+INPUT c:\FYP\report\Figures\F1_score.png
+INPUT c:\FYP\report\Figures\F1_score.png
+INPUT c:\FYP\report\Figures\F1_score.png
+INPUT c:\FYP\report\Figures\F1_score.png
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmmi9.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmsy9.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\cmextra\cmex9.tfm
@@ -294,6 +294,16 @@ INPUT C:\Users\Administrator\AppData\Local\MiKTeX\2.9\fonts\tfm\public\rsfs\rsfs
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmbx9.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\cmextra\cmmib9.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\cmextra\cmbsy9.tfm
+INPUT c:\FYP\report\Figures\treeDiagram.png
+INPUT c:\FYP\report\Figures\treeDiagram.png
+INPUT c:\FYP\report\Figures\treeDiagram.png
+INPUT c:\FYP\report\Figures\treeDiagram.png
+INPUT c:\FYP\report\Figures\treeDiagram.png
+INPUT c:\FYP\report\Figures\QuadOfAims2.png
+INPUT c:\FYP\report\Figures\QuadOfAims2.png
+INPUT c:\FYP\report\Figures\QuadOfAims2.png
+INPUT c:\FYP\report\Figures\QuadOfAims2.png
+INPUT c:\FYP\report\Figures\QuadOfAims2.png
 INPUT c:\FYP\report\Figures\InputOutput.png
 INPUT c:\FYP\report\Figures\InputOutput.png
 INPUT c:\FYP\report\Figures\InputOutput.png
@@ -340,16 +350,6 @@ INPUT c:\FYP\report\Figures\MatrixDiagram.png
 INPUT c:\FYP\report\Figures\MatrixDiagram.png
 INPUT c:\FYP\report\Figures\MatrixDiagram.png
 INPUT c:\FYP\report\Figures\MatrixDiagram.png
-INPUT c:\FYP\report\Figures\niche.png
-INPUT c:\FYP\report\Figures\niche.png
-INPUT c:\FYP\report\Figures\niche.png
-INPUT c:\FYP\report\Figures\niche.png
-INPUT c:\FYP\report\Figures\niche.png
-INPUT c:\FYP\report\Figures\F1_score.png
-INPUT c:\FYP\report\Figures\F1_score.png
-INPUT c:\FYP\report\Figures\F1_score.png
-INPUT c:\FYP\report\Figures\F1_score.png
-INPUT c:\FYP\report\Figures\F1_score.png
 INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstlang1.sty
 INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstlang1.sty
 INPUT C:\Users\Administrator\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstmisc.sty

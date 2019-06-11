@@ -6,6 +6,7 @@
         "Lite",
         "MCHA",
         "backpropagation",
+        "discretised",
         "hyperparameters",
         "matplotlib",
         "overfit",

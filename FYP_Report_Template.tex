@@ -45,10 +45,10 @@
 	%\end{minipage}
 }
 
-\newcommand{\NewSection}[1]{
-    \clearpage 
-    \section{#1}
-}
+% \newcommand{\NewSection}[1]{
+%     \clearpage 
+%     \section{#1}
+% }
 
 % \newcommand\SentenceCase[1]{%
 %   \caselower[e]{#1}%
@@ -152,13 +152,13 @@ I did:
     \item I learnt and prototyped a pipeline to record data, process it, classify it, and output it.
     \item I used my mechatronics subject matter learnings to best apply machine learning to this problem. This includes Mechatronics Design (trade off and evaluations from MCHA3000), sound pre-processing, preprocessing Inertial Measuring Unit data, and how Audio waveforms can be treated as energy, and statistics from MECH2450/MCHA3900. \flagforreview
     \item I learnt and used system engineering techniques to elicit requirements from my university and work stakeholders
+    \item I managed and worked with another employee to implement a proof of concept app to record data as an input into this project. This involved using my software engineering skills and project management skills to create a schema, develop the android app, and present it to the relevant stakeholders. \rephrase
 \end{itemize}
-I helped:
-\begin{itemize}
-   \item I managed and worked with another employee to implement a proof of concept app to record data as an input into this project. This involved using my software engineering skills and project management skills to create a schema, develop the android app, and present it to the relevant stakeholders. \rephrase
+
+
 %    \item 
 %     \item \sout{I helped integrate this proof of concept with a larger C\# replay system at my work. This involved lat/long coordinate calculations for display playback, leading the configuration management with a local git server, and helping develop the data pipeline where the proof of concept feeds through my machine learning classifier, and into the larger replay system.}
-\end{itemize}
+
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -204,7 +204,7 @@ I'd also like to thank each and every mechatronics Academic staff member at the 
 \tableofcontents
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\NewSection{Introduction}
+\clearpage \section{Introduction}
 
 * Introduce field
 * discuss what the current work is like in field, what current results are, maybe what can be determined from data presently etc
@@ -212,19 +212,45 @@ I'd also like to thank each and every mechatronics Academic staff member at the 
 * nitty gridd of the debrief problem?
 * Why does my question help solve this problem/answer this question
 
+\subsection{Machine Learning Field}
+The machine learning field dates back to the first attempted reproduction of a neuron network \cite{mcculloch1943logical} in an attempt to explain the physical decision making process of the nervous system.
 
-\paragraph{Introduction to the Field from a Mechatronics Perspective}
-machine learning will be the focus of this report. machine learning is a field of Engineering and Computer Science concerned with automating the discovery and modelling of a process. This process is usually a classification or regression function. In a nutshell, it is about training a computer algorithm to learn from data.\\
+Significant scientific papers on machine learning from mathematicians and early computer scientists ... through the late 20th century.
 
-It's application in this report is that of almost akin to that of a traditional optimisation problem in mechatronics: Given a \inlineQuote{plant} {\itshape(or, a neural network)}, how can someone \inlineQuote{optimise} {\itshape(train)} the plant's \inlineQuote{parameters} {\itshape(both weightings and hyperparameters)} as to \inlineQuote{minimise an error} {\itshape(or, maximise a classification/regression score)}?
+The advent of cheaper, and faster processing power has revived the idea of machine learning, and the widespread availability of data has against furthered the boom.
 
+Machine learning concerns itself with any application of a computer learning to complete a task.
 
+\paragraph{Learning Computers}
+Machine learning is based on the concept of having a computer \inlineQuote{learn}. This broad term has been used to described fitting a function to historical data, iterative output optimisation based on previous hypothesis, and 'genetic algorithms' which are a random search, using previous success as an initial guess for a new random guess.
+
+All these strategies have a common theme: machine learning rewards progress and punishes mistakes. Often, but not always, this can be reduced down to a cost/constraint model.
+
+\paragraph{Signal Processing}
+Signal Processing is a field of mathematics focused on the use, interpretation, creation and modification of time varying structures of information. The broad definition of a signal could be anything from a wave of light, to a graph of house prices. This project will be primarily concerned with the physical phenomenon of vibrations of varying amplitude, known as audio.
+
+\paragraph{Audio Signal Processing}
+Audio (or acoustic) signal processing is the sub field of signal processing that is the focus of this report. Audio signal processing is an old field (dating back to the 17th century), and looks to understand the science behind an audio signal, and the many applications of it. 
+
+\subparagraph{Music}
+% From the ancient human reproduction of music from a memory of musical signal, to musical notation to spread a musical signal, to devices with a musical signal physically encoded onto it (such as a mu) for mechanical reproduction, to the disc record gramophones, to the 
+Audio signal processing has been a key element of technological development in music. From human reproduction music instruments, to a wide range of mechanical analogue devices to record and reproduce sound, to finally a discretised digital signal. All these methods represent an audio signal, but the advent of a digital signal has allowed for the widespread use of digital signal processing in a wide range of applications.
+For example; new musical effects, compression and storage, sound recognition, noise cancellation, equalisation. %all of these could be done anolg
+
+\subparagraph{New Opportunities}
+Audio digital signal processing has allowed widespread application of actionable audio data. Speech recognition, speech synthesis, acoustic pattern detection, etc.
+
+\subsection{Classification}
+Classification is the process of determining, based on observations, what categories an item belongs in. This is a phenomenon present where there can be a ground truth of membership.
+It is possible for categories to be mutually-exclusive, such as that of the an animal's genus, or it could be non-unique, such as a song's genre. 
+
+\subsection{The Problem}
 This project aims to answer the question \inlineQuote{[What is] the effect of supplementary data on acoustic event classification through machine learning}. To do this, results will analyse the F1 Scores of a binary MLPClassifier, and a multi-label MLPClassifier, both trained on the ExtraSensory dataset using the method described in Section \ref{sec:Method}.
 Additionally, the output of the classifiers will be analysed for \inlineQuote{validity}. Does the classifier successfully detect and classify an acoustic event?
 
 The desired results are a demonstrable difference (or lack thereof) in the F1 score, after comparing a classifier with and without supplementary data.
 
-\paragraph{Motivation for the problem}
+\subsection{Motivation for the problem}
 The capacity to identify a physical event in the real world using sound would open the door to a whole new realm of data. The potential implications and applications are limitless; assistance and closed captioning for the hearing impaired, improved security closed loop TV, increased transparency and documentation of a ride sharing trip, and early detection of potential accidents or medical emergencies to name a few. The primary focus of the new potential is to review AEC/D as a method of debriefing across multiple industries. \\
 
 \subparagraph{Debreifing (or After Action Report)}
@@ -251,10 +277,64 @@ This is a key tool in training after any group activity, and has been extended t
 % \end{itemize}
 % Here you need to sell why what you are doing is important, and what benefits will it bring if you are successful and solve the problem? 
 %
+\section{Background}
+\subsection{Machine Learning from a Mechatronics Perspective}
+Machine learning was the focus of this report. Machine learning is a field of Engineering and Computer Science concerned with automating the discovery and modelling of a process. This process is usually a classification or regression function. In a nutshell, it is about training a computer algorithm to learn from data.\\
 
+It's application in this report has parallels to a traditional optimisation problem in mechatronics: Given a \inlineQuote{plant} {\itshape(or, a neural network)}, how can someone \inlineQuote{optimise} {\itshape(train)} the plant's \inlineQuote{parameters} {\itshape(both weightings and hyperparameters)} as to \inlineQuote{minimise an error} {\itshape(or, maximise a classification/regression score)}?
+
+\subsection{Key Concepts}
+
+\paragraph{Modern application of Machine Learning}
+Traditional approaches are to fit a function to a 
+
+\clearpage \section{Review Of Literature}\label{sec:LitReview}
+A literature review of the current research was conducted with guidance from University of Queensland’s guide to Literature reviews \cite{QueenslandReview} . There are 3 nested areas of research that are of interest to this project. The wider classification and regression research topic, the machine learning topic that covers many various fields of implemented and theoretical machine learning applications, and finally the specific field of acoustic event detection and classification (AED/AEC); this field has traditionally relied on older techniques, and is undergoing a revolution with machine learning. 
+
+\fFigure{niche.png}{The literature for this project is a niche topic in the machine learning area of research}{0.8}
+
+\subsection{Machine Learning}
+A definition for Machine learning is taken from Tom M. Mitchell's 1997 textbook, \inlineQuote{machine learning}
+\begin{quote}
+    A computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E. \cite{Mitchell1997}
+\end{quote}
+
+This definition of machine learning can be applied to this project; the task T (AED/C), the E (Audio, IMU, GPS), and P (a traditional F1 score). 
+
+The computer program described in this project has been produced in Python, using the sklearn and TensorFlow libraries. \flagforreview
+
+\subsection{Acoustic Event Detection and Acoustic Event Classification}
+Historically the technologies for AED/AEC have been Support vector machine (SVMs), Hidden Markov Models (HHMs), and more generally, basic DSP (Digital Signal Processing) classifiers. But in the last 8 years, AED and AEC research has emerged as a hot topic of research. Research focuses on the two key tasks: detection (when did an acoustic event occur in the audio, and when did it stop?) and classification (what sound occurred?). New research papers are often the result of DCASE competitions, which is an official IEEE Audio and Acoustic Signal Processing (AASP) competition. \fref{F1_score.png}.
+
+\fFigure{F1_score.png}{DCASE Researcher Toni Heittola's F1 Results reflect the AED/AEC field of research with drastic improvements over the last 8 years.\cite{ToniWebsite}}{0.8}
+
+\subsection{DCASE Competitions (Detection and Classification of Acoustic Scenes and Events)}
+The DCASE competitions format started 2013, had its second competition in 2016, and since then has been a yearly event. Since 2017, there has been a new format where the competition starts march, formal results are released by September, and a workshop for participants on the best team’s work in November\cite{2018Schedule}. 2016 was the first to feature machine learning (winning teams incorporated machine learning into ensemble models/classifiers). By 2017 all entries utilised machine learning. Recently the results from DCASE2018 have been published; progress in the AED/AEC field has allowed more sophisticated, real-world applications to be evaluated (Challenge Task \#4)\cite{2018n}. The complexity of the dataset, the number of acoustic classes and fidelity of output are unprecedented in the AEC field. The winning results at this level of complexity are not as high quality compared to last year’s more controlled environment/dataset (2017 had a 41.7\% F1 score\cite{2017results} vs 2018’s 32.4\%\cite{2018n}), but pre-sent the best precedent for the problem addressed in this paper.
+
+\subsection{Leading Research, DCASE2018 Task 4 Winner}
+The winning model used in the DCASE2018 Task 4 challenge used a “Mean-teacher” model for classification (useful abstract results averaging applicable to a range of classifier models), a CNN for context gating (a pre-classifier step to improve flaws in training methodologies for some machine learning models\cite{Yan16}) and a bidirectional recurrent neural network (RNN) to improve the utilisation of unlabelled, unbalanced training datasets\cite{winners}; this last component is important for this paper, as the leading dataset outside of DCASE challenges is the weakly labelled Google AudioSet, of which only small percentage of is balanced.
+
+\begin{table}[h!]
+    \begin{center}
+        \caption{AudioSet data on cars}\label{tab:AudioSetCars}
+        {\footnotesize
+            \begin{tabular}{c l l l|}
+                \hline\hline Dataset & Number of videos & Duration hours \\ \hline 
+                Evaluation & 280 & 0.8 \\
+                Balanced train & 296 & 0.8 \\
+                Unbalanced train & 40,978 & 113.3 \\
+                Overall & 41,554 & 114.9 \\
+                \hline
+            \end{tabular}
+        }
+    \end{center}
+\end{table}
+\begin{gather*}
+    Car AudioSet:  \frac{0.8}{114.9}=0.69\%
+\end{gather*}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\NewSection{Problem Analysis}\label{sec:ProblemAnalysis}
+\clearpage \section{Problem Analysis}\label{sec:ProblemAnalysis}
 
 This project approached the problem through a system engineering perspective, a process which “is a structured and systematic methodology providing greater visibility and control over … new system[s]” \cite{limited2018systems}. This perspective was informed by ISO/IEC/IEEE 15288 \cite{IEEE15288} and Burge Hughes Walsh’s system engineering Toolbox \cite{SysThink2015}. The tools adapted and applied throughout this section are primarily derived from that \inlineQuote{system engineering Toolbox}. 
 
@@ -330,59 +410,15 @@ The Spray Diagram shown in \fref{SprayDiagram.png} shows how details of the syst
 A matrix diagram was made to review the now more refined, reduced scope as shown in \fref{MatrixDiagram.png}. This works by using a “strong”, “weak” or “none” indicator for each aspect of the project. It highlighted the difficulty in balancing the needs of both major stakeholders. 
 \fFigure{MatrixDiagram.png}{A Matrix Diagram for the project}{0.8}
 
-\subsection{Final Problem Analysis and Discussion}
+\subsection{Summary of Problem Analysis: Final Problem Analysis and Discussion}
 % \subsection{Discussion}
-The purpose of the project is to hypothesis and produce a proof-of-concept of how digital technologies could improve debriefing processes and outcomes. This seems achievable within 1 year, and should provide an excellent learning opportunity for the author.
+The purpose of the project is to hypothesis and produce a proof-of-concept machine learning solution to improve debriefing processes and outcomes. This should also provide an excellent learning opportunity for the author. \flagforreview
 
 %%%%%%%%%%%%%%%%%%%%%%%
-\newpage
-\NewSection{Review Of Literature}\label{sec:LitReview}
-A literature review of the current research was conducted with guidance from University of Queensland’s guide to Literature reviews \cite{QueenslandReview} . There are 3 nested areas of research that are of interest to this project. The wider classification and regression research topic, the machine learning topic that covers many various fields of implemented and theoretical machine learning applications, and finally the specific field of acoustic event detection and classification (AED/AEC); this field has traditionally relied on older techniques, and is undergoing a revolution with machine learning. 
 
-\fFigure{niche.png}{The literature for this project is a niche topic in the machine learning area of research}{0.8}
-
-\subsection{machine learning}
-A definition for Machine learning is taken from Tom M. Mitchell's 1997 textbook, \inlineQuote{machine learning}
-\begin{quote}
-    A computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E. \cite{Mitchell1997}
-\end{quote}
-
-This definition of machine learning can be applied to this project; the task T (AED/C), the E (Audio, IMU, GPS), and P (a traditional F1 score). 
-
-The computer program described in this project has been produced in Python, using the sklearn and TensorFlow libraries. \flagforreview
-
-\subsection{acoustic event Detection and acoustic event classification}
-Historically the technologies for AED/AEC have been Support vector machine (SVMs), Hidden Markov Models (HHMs), and more generally, basic DSP (Digital Signal Processing) classifiers. But in the last 8 years, AED and AEC research has emerged as a hot topic of research. Research focuses on the two key tasks: detection (when did an acoustic event occur in the audio, and when did it stop?) and classification (what sound occurred?). New research papers are often the result of DCASE competitions, which is an official IEEE Audio and Acoustic Signal Processing (AASP) competition. \fref{F1_score.png}.
-
-\fFigure{F1_score.png}{DCASE Researcher Toni Heittola's F1 Results reflect the AED/AEC field of research with drastic improvements over the last 8 years.\cite{ToniWebsite}}{0.8}
-
-\subsection{DCASE Competitions (Detection and Classification of Acoustic Scenes and Events)}
-The DCASE competitions format started 2013, had its second competition in 2016, and since then has been a yearly event. Since 2017, there has been a new format where the competition starts march, formal results are released by September, and a workshop for participants on the best team’s work in November\cite{2018Schedule}. 2016 was the first to feature machine learning (winning teams incorporated machine learning into ensemble models/classifiers). By 2017 all entries utilised machine learning. Recently the results from DCASE2018 have been published; progress in the AED/AEC field has allowed more sophisticated, real-world applications to be evaluated (Challenge Task \#4)\cite{2018n}. The complexity of the dataset, the number of acoustic classes and fidelity of output are unprecedented in the AEC field. The winning results at this level of complexity are not as high quality compared to last year’s more controlled environment/dataset (2017 had a 41.7\% F1 score\cite{2017results} vs 2018’s 32.4\%\cite{2018n}), but pre-sent the best precedent for the problem addressed in this paper.
-
-\subsection{Leading Research, DCASE2018 Task 4 Winner}
-The winning model used in the DCASE2018 Task 4 challenge used a “Mean-teacher” model for classification (useful abstract results averaging applicable to a range of classifier models), a CNN for context gating (a pre-classifier step to improve flaws in training methodologies for some machine learning models\cite{Yan16}) and a bidirectional recurrent neural network (RNN) to improve the utilisation of unlabelled, unbalanced training datasets\cite{winners}; this last component is important for this paper, as the leading dataset outside of DCASE challenges is the weakly labelled Google AudioSet, of which only small percentage of is balanced.
-
-\begin{table}[h!]
-    \begin{center}
-        \caption{AudioSet data on cars}\label{tab:AudioSetCars}
-        {\footnotesize
-            \begin{tabular}{c l l l|}
-                \hline\hline Dataset & Number of videos & Duration hours \\ \hline 
-                Evaluation & 280 & 0.8 \\
-                Balanced train & 296 & 0.8 \\
-                Unbalanced train & 40,978 & 113.3 \\
-                Overall & 41,554 & 114.9 \\
-                \hline
-            \end{tabular}
-        }
-    \end{center}
-\end{table}
-\begin{gather*}
-    Car AudioSet:  \frac{0.8}{114.9}=0.69\%
-\end{gather*}
 
 %%%%%%%%%%%%%%%%%%%%%%%
-\NewSection{Method} \label{sec:Method}
+\clearpage \section{Method} \label{sec:Method}
 \subsection{Introduction to the Method}
 In a traditional machine learning problem there are 5 stages to the method; 
 list looks awful \flagforreview
@@ -960,7 +996,7 @@ The method details selecting the desired output, the required data input, a metr
 \end{enumerate}
 
 
-\NewSection{Results} \label{sec:Results}
+\clearpage \section{Results} \label{sec:Results}
 
 The desired results are a demonstratable difference (or lack thereof) in the F1 score, after comparing a classifier with and without supplementary data.
 This will answer the question, and title of the report, \inlineQuote{[What is] the  effect of supplementary data on acoustic event classification through machine learning}. To this effect, the results will analyse the F1 Scores of a binary MLPClassifier, and a multi-label MLPClassifier, both trained on the ExtraSensory dataset using the method described in Section \ref{sec:Method}.
@@ -1056,7 +1092,7 @@ F-Score: 0.75
 
 \end{lstlisting}
 
-\NewSection{Summary of Results}
+\subsection{Summary of Results}
 The results achieved (shown in \ref{tab:F1Results}) demonstrate that the supplementary data used in accordance with the method described in Section \ref{sec:Method}, contribute to an 8\% increase to the F1 score in both the Binary MLP Classifier, and the Multilabel classifier when compared with Audio only input. This a relative increase of 10.5\% and 11.9\% respectively. 
 
 \begin{table}[h]
@@ -1074,7 +1110,7 @@ The results achieved (shown in \ref{tab:F1Results}) demonstrate that the supplem
 \end{table}
 
 
-\NewSection{Discussion}\label{sec:Discussion}
+\clearpage \section{Discussion}\label{sec:Discussion}
 The results above aim to demonstrate a quantitative difference in F1 score across 2 the classifier with and without Accelerometer, Gyroscope and GPS data. The results achieved did produce a quantitative relative improvement of 10.5\% and 11.9\% for the Binary and Multilabel result respectively.
 
 \subparagraph{Assumptions}
@@ -1141,7 +1177,7 @@ The 8\% results are based on solid evidence they may not actually be a valid app
 
 
 
-\NewSection{Conclusion}\label{sec:Conclusion}
+\clearpage \section{Conclusion}\label{sec:Conclusion}
 % This is one of the most important parts of the report. In the conclusion section, you  should 
 % \begin{itemize}
 % \item briefly summarise the results,
@@ -1189,7 +1225,7 @@ In conclusion this seems to be a valid strategy and the next step you would take
 %and it should be considered whether or not those other methods would drastically change the app for instant whilst we used a model that was well well chosen for the purpose of a single binary flag to create an ensemble of classifiersconclusion in conclusion what would looking at is a 5\% increase in Heflin school which is relevant for visa parts for this. Affect because the status that sounds call claim at at Target use case this is actually a valid result in this is a wuzzy increase to the failed what is thugs raise however is how does have result general on across the applications because its project hi to specific use case it was not with him the Skype still valley light weather I'm not supplementary Dada would improve audio event classification inspection in other warriors that simile so the number of audio set device. Basis available is limited and the format of that. Orthodontist election would play a role boat well sweet discussed supplementary gotta to specific daughter that we used was XL alarm the Dada gyroscope. GPS however it did not attempt to evaluate all the supplementary. It Francis magnetic element get to work today sometime and burien shops all out. Why that's important who's because would come variant significantly effects did outcome that is something 0n
 
 
-\NewSection{Future Work}\label{sec:futurework}
+\clearpage \section{Future Work}\label{sec:futurework}
 \paragraph{Individual effect}
 A package of future work would be to discern what impact each additional datasource had on the result.
 
@@ -1210,7 +1246,7 @@ A final suggestion for future work is to adapte the Bogosort to machine learning
 \newpage 
 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\NewSection{References and Citations}\label{sec:RefCite}
+\clearpage \section{References and Citations}\label{sec:RefCite}
 % To generate the bibliography look at the end of this document in .tex file. To make reference to the bibliography use the commands \verb|\citet{}| and \verb|\citep{}| \citep{strunk2007elements}. You can combine more than one reference in a single citation \citep{troyka1999simon, jay1995write}.
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1221,10 +1257,10 @@ A final suggestion for future work is to adapte the Bogosort to machine learning
 
 \newpage
 \appendix
-\NewSection{Full Extracts of Journals}
+\clearpage \section{Full Extracts of Journals}
 N/A, email correspondence available on request.
 
-\NewSection{Reflection}
+\clearpage \section{Reflection}
 about several of the Engineers Australia 16 competencies.  \flagforreview
 I'll write this from the first person perspective.
 This project was a whirlwind. Taken over the 2018 S2, 2019 S1 period, including the Christmas Holidays, the project was a learning experience. The outcome I got is barely quantifiable past a common sense guess, but I can take pride in knowing the outcome is quantified and based on the `360 hours' minimum of work to get to that result. I learnt a lot starting with\dots
@@ -1241,7 +1277,7 @@ The FYP has made me appreciate Subject Matter Expertise. In MCHA3900, I focused 
 On that note, I lastly reflect on the skills I've learnt, and the perspective I've gained in how complex the field is, and how much more there is to learn.
 
 
-\NewSection{Full Result Output}
+\clearpage \section{Full Result Output}
 
 \subsection{Binary Classifier}
 \begin{lstlisting}[breaklines=true]
@@ -1734,7 +1770,7 @@ F-Score: 0.29
 [[2158]]
 \end{lstlisting}
 
-\NewSection{Dataset Feature Importance}\label{apx:FeatureImportance}
+\clearpage \section{Dataset Feature Importance}\label{apx:FeatureImportance}
 \fFigure{feature_important_just_audio2.png}{A Random Tree Classifier was used to evaluate feature importance, during the design phase of the main classifier. Features were Audio (26 bins)}{0.5}
 
 \fFigure{feature_important_just_accel.png}{A Random Tree Classifier was used to evaluate feature importance, during the design phase of the main classifier. Features were Accelerometer(26)}{0.5}
@@ -1743,7 +1779,7 @@ F-Score: 0.29
 
 \fFigure{feature_important_just_GPS2.png}{A Random Tree Classifier was used to evaluate feature importance, during the design phase of the main classifier. Features were GPS (16)}{0.5}
 
-\NewSection{Trade-Review of "Online vs Offline" processing}\label{sec:TradeReview}
+\clearpage \section{Trade-Review of "Online vs Offline" processing}\label{sec:TradeReview}
 \paragraph{Online vs Offline Data Fusion \& Data Analytics}
 
 This document will compare the costs, benefits and risks in designing an
@@ -1850,7 +1886,7 @@ It's clear that Offline processing offers less risk and more capacity to
 achieve what we want, so it is my (Chris) recommendation to go with 2
 discrete systems (data acquisition, data processing)
 
-\NewSection{GridSearch Attempts}\label{apx:GSAttempt}
+\clearpage \section{GridSearch Attempts}\label{apx:GSAttempt}
 This shows how a Grid Search was used for hyperparameter optimisation. In particular, this is an example of an iterative process where the grid was manually narrowed and precision increase. 
 \begin{lstlisting}
     parameters={'hidden_layer_sizes': [(145,), (147,), (149,), (151,), (153)],
@@ -1871,7 +1907,7 @@ This shows how a Grid Search was used for hyperparameter optimisation. In partic
 \end{lstlisting}
 
 
-\NewSection{Table of ExtraSensory Labels}\label{apx:ExtraSensoryLabels}
+\clearpage \section{Table of ExtraSensory Labels}\label{apx:ExtraSensoryLabels}
 \begin{table}[h]
 \begin{center}  
 \caption{ExtraSensory Labels \cite{Vaizman2017}}\label{tab:ExtraSensoryLabels}
