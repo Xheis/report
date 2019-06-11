@@ -1,7 +1,7 @@
 \documentclass{UoNMCHA}
 
 % Packages to include
-\usepackage[authoryear]{natbib}
+\usepackage[square,sort,comma,numbers]{natbib}%\usepackage[authoryear]{natbib}
 \usepackage{array,booktabs} % For nice tables
 \usepackage{amsmath,amsfonts,amssymb,mathrsfs,bm} % For nice 
 \usepackage{color}
@@ -205,12 +205,14 @@ I'd also like to thank each and every mechatronics Academic staff member at the 
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage \section{Introduction}
+ 
+The mobile phone is an omnipresent force in modern society with the number of unique mobile phone users reached 5.1 billion at the end of 2018 \cite{GSMA}. Every phone carries a microphone, and in a data intensive field such as machine learning, there is an untapped potential for these 5.1 billion microphones. %for public and private good remain a heated debate.
 
-* Introduce field
-* discuss what the current work is like in field, what current results are, maybe what can be determined from data presently etc
-* What is the problem/question
-* nitty gridd of the debrief problem?
-* Why does my question help solve this problem/answer this question
+% * Introduce field
+% * discuss what the current work is like in field, what current results are, maybe what can be determined from data presently etc
+% * What is the problem/question
+% * nitty gridd of the debrief problem?
+% * Why does my question help solve this problem/answer this question
 
 \subsection{Machine Learning Field}
 The machine learning field dates back to the first attempted reproduction of a neuron network \cite{mcculloch1943logical} in an attempt to explain the physical decision making process of the nervous system.
@@ -247,6 +249,10 @@ Audio digital signal processing has allowed widespread application of actionable
 Classification is the process of determining, based on observations, what categories an item belongs in. This is a phenomenon present where there can be a ground truth of membership.
 It is possible for categories to be mutually-exclusive, such as that of the an animal's genus, or it could be non-unique, such as a song's genre. It can also be the process of labelling a signal, such as whether an acoustic event was detected in an audio signal.
 
+\paragraph{Current State of Acoustic Event Classification}
+Presently the latest results from the field can be found in the Detection and Classification of
+Acoustic Scenes and Events (DCASE) competitions. Presently, preliminary results from DCASE 2019's Task A challenge demonstrates an accuracy score ({\small }$ \frac{Correctly\;Classified\;Samples}{Total\;Samples} $}) \cite{Mesaros2018_DCASE}
+
 \subsection{The Problem}
 This project aims to answer the question: What is the effect of supplementary data on acoustic event classification through machine learning?. 
 
@@ -255,15 +261,15 @@ Additionally, the output of the classifiers will be analysed for \inlineQuote{va
 
 The desired results are a demonstrable difference (or lack thereof) in the F1 score, after comparing a classifier with and without supplementary data.
 
-\subsection{Motivation for the problem}
-The capacity to identify a physical event in the real world using sound would open the door to a whole new realm of data. The potential implications and applications are limitless; assistance and closed captioning for the hearing impaired, improved security closed loop TV, increased transparency and documentation of a ride sharing trip, and early detection of potential accidents or medical emergencies to name a few. The primary focus of the new potential is to review AEC/D as a method of debriefing across multiple industries. \\
+\paragraph{Motivation for the Problem}
+The capacity to identify a physical event in the real world using sound would open the door to a whole new realm of data. The potential implications and applications are limitless; assistance and reality closed captioning for the hearing impaired, improved security closed loop TV, increased transparency and documentation of a ride sharing trip, and early detection of potential accidents or medical emergencies to name a few. The primary focus of the new potential is to review AEC/D as a method of debriefing across multiple industries. \\
 
 \subparagraph{Debreifing (or After Action Report)}
 
 Debriefing is effectively an education tool used to educate an individual, a group or record a more holistic history of an event, for purposes of performance feedback \cite{recentAAR}.
 %The After Action Report style of debriefing is one where an educator works with a student to go through the following steps: an explanation of an event, e, reporting of measures of performance, and/or opportunities to further investigate the results of a study, investigation, or assessment of performance after participation in an immersive activity is complete.
 The formal debrief originated from the World War 2, with SLA Marshell's "interviews after combat" \cite{DebriefAAR}. Since then, the "After Action Report" was developed by the US Army as ...
-\fancyquote{a professional discussion of an event, focused on performance standards, that enables soldiers to discover for themselves what happened, why it happened and how to sustain strengths and improve on weaknesses. \cite{TC2520}}
+\fancyquote{a professional discussion of an event, focused on performance standards, that enables soldiers to discover for themselves what happened, why it happened and how to sustain strengths and improve on weaknesses \cite{TC2520}.}
 This is a key tool in training after any group activity, and has been extended to many industry, most notably in the training of Doctors \cite{johnson2011debriefing}.\flagforreview. Traditionally this is done through a collection of primary sources (where available) and secondary sources. In the information age, these primary sources have expanded to include large datasets, recordings and other digital forensics. This new and increasing range of primary sources provides the potential to significantly improve the steps of debriefing, and ultimately improve debriefing outcomes \cite{PsychologicalDebriefing2012}.
 
 
@@ -287,7 +293,7 @@ This is a key tool in training after any group activity, and has been extended t
 \subsection{Machine Learning}
 A definition for Machine learning is taken from Tom M. Mitchell's 1997 textbook, \inlineQuote{machine learning}
 \begin{quote}
-    A computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E. \cite{Mitchell1997}
+    A computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E \cite{Mitchell1997}.
 \end{quote}
 
 This definition of machine learning can be applied to this project; the task T (AED/C), the E (Audio, IMU, GPS), and P (a traditional F1 score). 
@@ -308,10 +314,9 @@ The traditional approach to machine learning has been to fit a function to a col
 The process of machine learning relies on having examples of audio data (and supplementary data), paired with a true classification from that known data. This is what is more broadly known as a supervised learning task. A key concept for this project is to be comparing the classifier produced, against the recorded truth of the samples. This allowed the comparison of the classifier against 
 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage \section{Review Of Literature}\label{sec:LitReview}
-A literature review of the current research was conducted with guidance from University of Queensland’s guide to Literature reviews \cite{QueenslandReview} . There are 3 nested areas of research that are of interest to this project. The wider classification and regression research topic, the machine learning topic that covers many various fields of implemented and theoretical machine learning applications, and finally the specific field of acoustic event detection and classification (AED/AEC); this field has traditionally relied on older techniques, and is undergoing a revolution with machine learning. 
+A literature review of the current research was conducted with guidance from University of Queensland’s guide to Literature reviews \cite{QueenslandReview}. There are 3 nested areas of research that are of interest to this project. The wider classification and regression research topic, the machine learning topic that covers many various fields of implemented and theoretical machine learning applications, and finally the specific field of acoustic event detection and classification (AED/AEC); this field has traditionally relied on older techniques, and is undergoing a revolution with machine learning. 
 
 \fFigure{niche.png}{The literature for this project is a niche topic in the machine learning area of research}{0.8}
 
@@ -319,13 +324,13 @@ A literature review of the current research was conducted with guidance from Uni
 \subsection{Acoustic Event Detection and Acoustic Event Classification}
 Historically the technologies for AED/AEC have been Support vector machine (SVMs), Hidden Markov Models (HHMs), and more generally, basic DSP (Digital Signal Processing) classifiers. But in the last 8 years, AED and AEC research has emerged as a hot topic of research. Research focuses on the two key tasks: detection (when did an acoustic event occur in the audio, and when did it stop?) and classification (what sound occurred?). New research papers are often the result of DCASE competitions, which is an official IEEE Audio and Acoustic Signal Processing (AASP) competition. \fref{F1_score.png}.
 
-\fFigure{F1_score.png}{DCASE Researcher Toni Heittola's F1 Results reflect the AED/AEC field of research with drastic improvements over the last 8 years.\cite{ToniWebsite}}{0.8}
+\fFigure{F1_score.png}{DCASE Researcher Toni Heittola's F1 Results reflect the AED/AEC field of research with drastic improvements over the last 8 years \cite{ToniWebsite}. }{0.8}
 
 \subsection{DCASE Competitions (Detection and Classification of Acoustic Scenes and Events)}
-The DCASE competitions format started 2013, had its second competition in 2016, and since then has been a yearly event. Since 2017, there has been a new format where the competition starts march, formal results are released by September, and a workshop for participants on the best team’s work in November\cite{2018Schedule}. 2016 was the first to feature machine learning (winning teams incorporated machine learning into ensemble models/classifiers). By 2017 all entries utilised machine learning. Recently the results from DCASE2018 have been published; progress in the AED/AEC field has allowed more sophisticated, real-world applications to be evaluated (Challenge Task \#4)\cite{2018n}. The complexity of the dataset, the number of acoustic classes and fidelity of output are unprecedented in the AEC field. The winning results at this level of complexity are not as high quality compared to last year’s more controlled environment/dataset (2017 had a 41.7\% F1 score\cite{2017results} vs 2018’s 32.4\%\cite{2018n}), but pre-sent the best precedent for the problem addressed in this paper.
+The DCASE competitions format started 2013, had its second competition in 2016, and since then has been a yearly event. Since 2017, there has been a new format where the competition starts march, formal results are released by September, and a workshop for participants on the best team’s work in November \cite{2018Schedule}. 2016 was the first to feature machine learning (winning teams incorporated machine learning into ensemble models/classifiers). By 2017 all entries utilised machine learning. Recently the results from DCASE2018 have been published; progress in the AED/AEC field has allowed more sophisticated, real-world applications to be evaluated (Challenge Task \#4) \cite{2018n}. The complexity of the dataset, the number of acoustic classes and fidelity of output are unprecedented in the AEC field. The winning results at this level of complexity are not as high quality compared to last year’s more controlled environment/dataset (2017 had a 41.7\% F1 score \cite{2017results} vs 2018’s 32.4\% \cite{2018n}), but pre-sent the best precedent for the problem addressed in this paper.
 
 \subsection{Leading Research, DCASE2018 Task 4 Winner}
-The winning model used in the DCASE2018 Task 4 challenge used a “Mean-teacher” model for classification (useful abstract results averaging applicable to a range of classifier models), a CNN for context gating (a pre-classifier step to improve flaws in training methodologies for some machine learning models\cite{Yan16}) and a bidirectional recurrent neural network (RNN) to improve the utilisation of unlabelled, unbalanced training datasets\cite{winners}; this last component is important for this paper, as the leading dataset outside of DCASE challenges is the weakly labelled Google AudioSet, of which only small percentage of is balanced.
+The winning model used in the DCASE2018 Task 4 challenge used a “Mean-teacher” model for classification (useful abstract results averaging applicable to a range of classifier models), a CNN for context gating (a pre-classifier step to improve flaws in training methodologies for some machine learning models \cite{Yan16}) and a bidirectional recurrent neural network (RNN) to improve the utilisation of unlabelled, unbalanced training datasets \cite{winners}; this last component is important for this paper, as the leading dataset outside of DCASE challenges is the weakly labelled Google AudioSet, of which only small percentage of is balanced.
 
 \begin{table}[h!]
     \begin{center}
@@ -349,7 +354,7 @@ The winning model used in the DCASE2018 Task 4 challenge used a “Mean-teacher�
 
 \clearpage \section{Problem Analysis}\label{sec:ProblemAnalysis}
 
-This project approached the problem through a system engineering perspective, a process which “is a structured and systematic methodology providing greater visibility and control over … new system[s]” \cite{limited2018systems}. This perspective was informed by ISO/IEC/IEEE 15288 \cite{IEEE15288} and Burge Hughes Walsh’s system engineering Toolbox \cite{SysThink2015}. The tools adapted and applied throughout this section are primarily derived from that \inlineQuote{system engineering Toolbox}. 
+This project approached the problem through a system engineering perspective, a process which “is a structured and systematic methodology providing greater visibility and control over … new system[s]” \cite{limited2018systems}. This perspective was informed by ISO/IEC/IEEE 15288 \cite{IEEE15288} and Burge Hughes Walsh’s system engineering Toolbox \cite{SysThink2015}. The tools adapted and applied throughout this section are primarily derived from this \inlineQuote{System Engineering Toolbox}. 
 
 % \subsection{Purpose of Problem Analysis} %should this be a 
 The purpose of Problem Analysis is to define the scope of this project to be achievable, measurable and practical to implement. This took 2-4 weeks through June 2018, and remains an ongoing task. 
@@ -358,17 +363,17 @@ The purpose of Problem Analysis is to define the scope of this project to be ach
 The following system engineering tools have been adapted and implemented to develop this paper and the author’s understanding of the problem. 
 
 \subsection{Current 18 Words}
-A tool called \inlineQuote{18 Words} was used to constantly refine and maintain a description on the scope as it changed throughout problem analysis. The current “18 Words” is the following:
-“[The project is] a portable proprietary format compliant track file data recording system coupled with offline processing to log specific physical events in proximity that occurred during recording.” 
+A tool called \inlineQuote{18 Words} was used to constantly refine and maintain a description on the scope as it changed throughout problem analysis, with the intent to succinctly describe the project in \inlineQuote{close to 18 words}. The current “18 Words” is the following:\\
+“The project aims to create a portable, trackfile recording system. This is coupled with offline processing to record specific physical events that occurred during recording.” 
 
 \subsection{Tree Diagram}
-With the new understanding of what the project is, a Tree Diagram was drafted to explore missed requirements, hidden modules and other aspects of the project not yet considered. \fref{treeDiagram.png} shows a Tree Diagram breakdown for this FYP.
+With the understanding of what the project was intended to be, a Tree Diagram was drafted to explore missed requirements, hidden modules and other aspects of the project not yet considered. \fref{treeDiagram.png} shows a Tree Diagram breakdown for this FYP.
 
- \fFigure{treeDiagram.png}{A tree diagram for the project, being used as a method of allocating work}{0.7}
+ \fFigure{treeDiagram.png}{A tree diagram for the project, used as a method of allocating work}{0.7}
 
 
 \subsection{Quad of Aims}
-The Quad of Aims is a tool used to explore 4 critical, high level aspects of the project as explained in table \ref{tab:QuadOfAims}, and shown in \fref{QuadOfAims2.png}.
+The Quad of Aims is a tool used to explore 4 critical, high level aspects of the project as explained in \tref{tab:QuadOfAims}, and shown in \fref{QuadOfAims2.png}.
 
 \fFigure{QuadOfAims2.png}{A Quad of Aims for the project might be A3 in size and would have the relevant information embedded. It may also be completed on a whiteboard.}{1}
 
@@ -388,20 +393,20 @@ The Quad of Aims is a tool used to explore 4 critical, high level aspects of the
     \end{center}
 \end{table}
 
-This is typically done to instigate early works on a project.
+This was done to evaluate any early risks, and the begin scope reduction on the project.
 
 \subsection{Input Output Analysis}
-The Input Output Analysis of the system informs the bounds and requirements to operate the system. In this situation, it helped consider the full scope of the project; this includes the technical and non-technical aspects of undertaking the MECH4841 Project as shown in \fref{InputOutput.png}.
+The input output analysis of the system informed the bounds and requirements to operate the system. In this situation, it helped define the full scope of the project; including the technical and non-technical aspects of undertaking the MECH4841 Project as shown in \fref{InputOutput.png}.
 
 \fFigure{InputOutput.png}{The input output analysis for the system}{0.75}
 
 
 \subsection{Affinity Diagram}
-An Affinity Diagram helps to solidify the high level, vague ideas, requirements and tests into a more detailed view. There is a focus on putting tangible measurements onto requirements. During this process, system architecture decisions were made such as a trade review into online vs offline processing, and subsequently splitting the system into smaller modules. Our primary system had 2 key sub-systems: The recording, and the processing systems. An Affinity Diagram of the top-level system was created, and the 2 affinity diagrams of the sub-systems were informed and made from this. After this was complete, previous work was updated to reflect these changes. \fref{AffinityDiagram.png}. \citationneeded
+An Affinity Diagram helped to add detail to the high level concepts in the project. There was a focus on putting tangible measurements onto requirements. During this process, system architecture decisions were made such as a trade review into online vs offline processing \aref{apx:TradeReview}, and subsequently splitting the system into smaller modules. The primary system had 2 key sub-systems: the recording system, and the offboard processing systems. An Affinity Diagram of the top-level system was created, and and this informed the creation of 2 affinity diagrams of the sub-systems. After this was complete, previous work was updated to reflect these changes. \fref{AffinityDiagram.png}.
 \fFigure{AffinityDiagram.png}{The Affinity Diagrams for the full system architecture}{1}
 
 \subsection{Systems Map}
-A Systems Map takes the Affinity Diagram, Input Output Analysis, and Tree-Diagram to identify the processes inside sub-modules that are needed to design the system. This was used to great effect to measure and estimate the workload necessary to implement data fusion alongside deep learning of acoustic classification and detection as shown in \fref{SystemMap.png}.
+A systems map uses the affinity diagram, input output analysis, and tree-diagram to identify the processes inside sub-modules that are needed to design the system. This was used to successfully \flagforreview to measure and estimate the workload necessary to implement data fusion alongside deep learning of acoustic classification and detection as shown in \fref{SystemMap.png}.
 \fFigure{SystemMap.png}{A systems map for the project}{0.8}
 
 
@@ -412,20 +417,21 @@ Originally, This Sequence Diagram was used to justify removing data fusion from 
 
 
 \subsection{N\textsuperscript{2} Analysis}
-An N\textsuperscript{2} Analysis methodically expands on the what data moves around the system. This is to compliment the discussed complexities in the Sequence Diagram by documenting what data is expected. A example of this is shown in \fref{n2analysis.png}
+A N\textsuperscript{2} analysis methodically expands on the data flow within the system. This complimented the complexities highlighted in the sequence diagram by documenting what data was expected. A example of this is shown in \fref{n2analysis.png}
 \fFigure{n2analysis.png}{A N\textsuperscript{2} Analysis for the project}{0.7}
 
 \subsection{Spray Diagram}
-The Spray Diagram shown in \fref{SprayDiagram.png} shows how details of the system can have multi-factored effects in design requirements, outcomes and operational use. Of interest in the diagram is the relationship between high-quality output will require high-quality input, and this may increase production and design costs. 
+The spray diagram shown in \fref{SprayDiagram.png} shows how details of the system could have multiple effects in design requirements, outcomes and operational use. Of interest in the diagram was the reciprocal relationship between high-quality output and high-quality input. The requirement of a high-quality output indicated the potential increase of production and design costs due to the necessitation of a high-quality input.
+
 \fFigure{SprayDiagram.png}{A Spray Diagram for the project}{0.8}
 
 \subsection{Matrix Diagram}
-A matrix diagram was made to review the now more refined, reduced scope as shown in \fref{MatrixDiagram.png}. This works by using a “strong”, “weak” or “none” indicator for each aspect of the project. It highlighted the difficulty in balancing the needs of both major stakeholders. 
-\fFigure{MatrixDiagram.png}{A Matrix Diagram for the project}{0.8}
+A matrix diagram was made to review reduced scope as shown in \fref{MatrixDiagram.png}. The numbers indicate \inlineQuote{packages of work}. By using a “strong”, “weak” or “none” indicator for each aspect of the project, each package of work was evaluated against it's likelihood to fulfill to the requirements of the project. It highlighted the difficulty in balancing the needs of both major stakeholders. 
+\fFigure{MatrixDiagram.png}{A matrix diagram for the project}{0.8}
 
 \subsection{Summary of Problem Analysis: Final Problem Analysis and Discussion}
 % \subsection{Discussion}
-The purpose of the project is to hypothesis and produce a proof-of-concept machine learning solution to improve debriefing processes and outcomes. This should also provide an excellent learning opportunity for the author. \flagforreview
+The purpose of the project was to hypothesis and produce a proof-of-concept machine learning solution to improve debriefing processes and outcomes. This should also provide an excellent learning opportunity for the author. \flagforreview
 
 %%%%%%%%%%%%%%%%%%%%%%%
 
@@ -455,7 +461,7 @@ Stage 2 is preprocessing. This is about taking the data available transforming i
 Stage 3 is picking the model. The method of picking a model may be based on doing research into what is best practice for your particular problem, looking at recent papers and investigating whether the particular topic demands any special requirements. Once a model is picked, the parameters of the model must be chosen (or evaluated) before a final model can be selected. This is done in the following two stages.
 
 \subparagraph{Stage 4}
-Stage 4 is fitting the model. The selected algorithm may need to be trained or fitted. This is the process of taking labelled input / output data (denoted as X, y) and supervising the model as it attempts to reproduce y from X. A common method to achieve this is to cost Stochastic Gradient Descent (SGD) and back propagation\cite{lecun2012efficient}. In summary, it is the process of changing the weights proportionally to their contribution to the error. Equation \ref{eq:BP_grad_dec} adapted from \cite{lecun2012efficient} demonstrates this, where W is the machine learning weights for a given topology, $\eta$ is the proportional factor or step size, and the partial represents how each weight contributes to error.\\
+Stage 4 is fitting the model. The selected algorithm may need to be trained or fitted. This is the process of taking labelled input / output data (denoted as X, y) and supervising the model as it attempts to reproduce y from X. A common method to achieve this is to cost Stochastic Gradient Descent (SGD) and back propagation \cite{lecun2012efficient}. In summary, it is the process of changing the weights proportionally to their contribution to the error. Equation \ref{eq:BP_grad_dec} adapted from \cite{lecun2012efficient} demonstrates this, where W is the machine learning weights for a given topology, $\eta$ is the proportional factor or step size, and the partial represents how each weight contributes to error.\\
 
 \begin{gather}\label{eq:BP_grad_dec}
     W(t) = W(t-1) - \eta\frac{\partial E}{\partial W} 
@@ -517,7 +523,7 @@ Both datasets share the same timestamp format, so a \inlineQuote{Time} column ha
     numbers=left,
     xleftmargin=1cm,
     frame=shadowbox,
-    caption={Code snippet for getting Accelerometer data from the Android System as above \cite{androidMotionsensors} above},
+    caption={Code snippet from \cite{androidMotionsensors} for getting Accelerometer data from the Android System.},
     morekeywords={try,catch}
     ]{Code/accel_example.c}
 
@@ -549,7 +555,7 @@ Both datasets share the same timestamp format, so a \inlineQuote{Time} column ha
     \end{center}
 \end{table}
 
-The ExtraSensory dataset is compiled from 60 users with a diverse range of phones (\inlineQuote{34 iPhone users, 26 Android users.}\cite{Vaizman2017}. This is in contrast to this project's phone range, which was limited to 2 Android devices, a Samsung S6 and a Lenovo Zuk Z2. The Samsung uses a InvenSense MPU-6500, the Lenovo Zuk Z2 unknown.
+The ExtraSensory dataset is compiled from 60 users with a diverse range of phones (\inlineQuote{34 iPhone users, 26 Android users.} \cite{Vaizman2017}. This is in contrast to this project's phone range, which was limited to 2 Android devices, a Samsung S6 and a Lenovo Zuk Z2. The Samsung uses a InvenSense MPU-6500, the Lenovo Zuk Z2 unknown.
 
 \fancyquote{
     \underline{Devices:}
@@ -696,7 +702,7 @@ The dataset was considered for use in 2 ways; training on a per user instance, o
 kfold Cross Validation can be described as:
 \fancyquote{
     ... approach involves randomly dividing the set of observations into k groups, or folds, of approximately equal size. The first fold is treated as a validation set, and the method is fit on the remaining k - 1 folds. 
-    }\cite{James2017}
+    } \cite{James2017}
 A key element expanding on this is the ability to cycle through `k folds', changing which group is the validation, or test set, and training on the rest.
 % The kfold creates creates 2 groups. A single test group and many training groups. Each training group gets tested via the single test group. Then, test group changes each 'fold'.
 
@@ -708,7 +714,7 @@ The question of whether supplementary data will improve the classifier's F1 scor
 A classifier by definition classifies (or, categorises) things. A more thorough understanding is that a classifier takes some input data and maps it to an output category, or label. In a machine learning context, this mapping is done via the $\hat{f}$ learnt function. For this project the classifier is a learnt function that takes audio, accelerometer, gyroscope and GPS data and maps that data to a label one of the labels found in Appendix \ref{apx:ExtraSensoryLabels}, table \ref{tab:ExtraSensoryLabels}. 
 
 \subparagraph{Binary, Multi-class, and  Multi-Label classifiers}
-If a classifier is to map data to a label, it stands to reason that the label must be well defined. A binary classifier as the name suggests will categorise input as 1, or 0 against a label. This could be result in "Car" or "Not Car", but it can also be extended to multiple classes, for example "Not Car", "Holden", "Ford" etc. This can be done via a ensemble of binary classifiers (combing together the output of the same dataset that has been parsed into a "Ford" classifier, a "Holden" classifier etc.), or more recently through a \inlineQuote{One Hot}\cite{huffman1954the} encoded output array as seen in table \ref{tab:HotOneEnc}. A key element of multi-class classifiers are that the classes are mutually exclusive. The car brands in \ref{tab:HotOneEnc} are mutually exclusive.
+If a classifier is to map data to a label, it stands to reason that the label must be well defined. A binary classifier as the name suggests will categorise input as 1, or 0 against a label. This could be result in "Car" or "Not Car", but it can also be extended to multiple classes, for example "Not Car", "Holden", "Ford" etc. This can be done via a ensemble of binary classifiers (combing together the output of the same dataset that has been parsed into a "Ford" classifier, a "Holden" classifier etc.), or more recently through a \inlineQuote{One Hot} \cite{huffman1954the} encoded output array as seen in table \ref{tab:HotOneEnc}. A key element of multi-class classifiers are that the classes are mutually exclusive. The car brands in \ref{tab:HotOneEnc} are mutually exclusive.
 
 \begin{table}[h]
     \begin{center}  
@@ -774,7 +780,7 @@ Validation is the process of optimisation the hyperparameters of a model on the 
 Before the hyperparameters can be optimised, a metrics to optimise the network on must be selected, of which there are many ways to do it which will now discussed. \\
 
 
-\subsection{Terminology} 
+\paragraph{Terminology} 
 Before evaluating metrics, the Terminology of the following formula must be formalised. The first is what a "correct" classification is. The following terminology will be used:
 \begin{itemize}
     \item True Positives (TP) - A correctly classified positive sample
@@ -798,7 +804,7 @@ In this project, accuracy would be a very poor metric for machine learning becau
 \subparagraph{Confusion Matrix}
 A confusion matrix is a 4 cell table that lists TP, FP, FN, TN. This is a great visual tool to aid human evaluation of the model, as shown in \fref{confusion_matrix.png}. The matrix can be normalised across the rows, as to show what portion of samples were correctly classified. The capacity to directly penalising (and optimise about) the False Positives, and False Negatives, could be an essential tool for a project. 
 
-\fFigure{confusion_matrix.png}{A confusion matrix of the Iris Database.\cite{scikitlearnConMatrix}}{0.6}
+\fFigure{confusion_matrix.png}{A confusion matrix of the Iris Database. \cite{scikitlearnConMatrix}}{0.6}
 
 In this project, the Confusion Matrix gets generated to sanity check, and contextualise, other performance measures. It is an important tool for weighing up the validity of classifier before accepting it for real world use.
 
@@ -845,7 +851,7 @@ Lastly, the Area Under the Receiver Operating Characteristics (AUROC) is an impo
 
 In a more formal sense, the Receiver Operating Characteristics (ROC) is the relation between the True Positive rate against the False Positive rate, and how it changes when you change the classification decision threshold. To calculate the ROC, a sample of TP and FP is taken for a varying threshold (the threshold needed for the classifier to classify a sample as positive or negative). 
 
-\fFigure{ROCCurve.png}{A ROC Curve example from Google's machine learning shortcourse\cite{TF_ROC}}{0.5}
+\fFigure{ROCCurve.png}{A ROC Curve example from Google's machine learning shortcourse \cite{TF_ROC}}{0.5}
 
 In this project, the AUROC will not be extensively used, except for educational purposes. The purpose of a AUROC is to demonstrate, and optimise the confidence in classification based on thresholds applied. The AUROC can be used to demonstrate a quantitative assessment of any particular sample (similar to a Regression problem).
 
@@ -880,17 +886,17 @@ If the Brute Force Search method attempts to try every combination, then an impr
 Grid Search was used for early implementations across both TensorFlow + Keras, and Scikit-learn.
 
 \subparagraph{Random Search (Random Grid Search)}
-A Random Search builds upon the Grid Search, but aims to reduce the computation time required to find an optimal set of hyperparameters. This is especially true in higher dimensions\citationneeded. The key difference between the two searches, is Random Search will not attempt to try every combination. It will sample random number of combinations, which has been \inlineQuote{show[n that] empirically and theoretically, randomly chosen trials are more efficient for hyper-parameter optimization than trials on a grid}\cite{bergstra2012random}. In part, this is due to a principle known as \inlineQuote{Embarrassingly parallel}.\\
-\inlineQuote{Embarrassingly parallel}\cite{MauriceHerlihy2012} is a critical concept in machine learning that allows the Random and Grid searches to be run in parallel. The concept is, because running a trial of 1 point does not have a dependence on any other point, they can be run in parallel. This is where mass parallel computing (such as the operations of a Graphic Processing Units, or GPU) allows very large hyperparameter optimisation searches to be run in parallel. \\
+A Random Search builds upon the Grid Search, but aims to reduce the computation time required to find an optimal set of hyperparameters. This is especially true in higher dimensions\citationneeded. The key difference between the two searches, is Random Search will not attempt to try every combination. It will sample random number of combinations, which has been \inlineQuote{show[n that] empirically and theoretically, randomly chosen trials are more efficient for hyper-parameter optimization than trials on a grid} \cite{bergstra2012random}. In part, this is due to a principle known as \inlineQuote{Embarrassingly parallel}.\\
+\inlineQuote{Embarrassingly parallel} \cite{MauriceHerlihy2012} is a critical concept in machine learning that allows the Random and Grid searches to be run in parallel. The concept is, because running a trial of 1 point does not have a dependence on any other point, they can be run in parallel. This is where mass parallel computing (such as the operations of a Graphic Processing Units, or GPU) allows very large hyperparameter optimisation searches to be run in parallel. \\
 
 Due to the simplicity of the multilayer perceptron model selected, random search was primarily used for hyperparameter optimisation.
 
 \subparagraph{Bayesian Hyperparameter Optimisation}
 Bayesian Hyperparameter Optimisation is the principle of allowing a search to be influenced by previous experience. This is applied when the cost of the sample, such as a model's F1-score from a particular combination of hyperparameters, is computationally expensive to calculate. A more formal description can be found in Brochu's 2010 paper, "A Tutorial on Bayesian Optimization ...".
 
-\fancyquote{Bayesian optimization employs the Bayesian technique of setting a prior over the objective function and combining it with evidence to get a posterior function. \cite{Brochu2010}}
+\fancyquote{Bayesian optimization employs the Bayesian technique of setting a prior over the objective function and combining it with evidence to get a posterior function \cite{Brochu2010}.}
 
-Bayesian Optimisation for hyperparameter selection was not tested, as it is suggested it is best suited for optimising more complex networks. \cite{Snoek2012} \cite{Brochu2010} It is however an excellent tie in to the MCH3900 Bayesian lectures, and could constitute a future package of work.
+Bayesian Optimisation for hyperparameter selection was not tested, as it is suggested it is best suited for optimising more complex networks \cite{Snoek2012} \cite{Brochu2010}. It is however an excellent tie in to the MCH3900 Bayesian lectures, and could constitute a future package of work.
 
 \subparagraph{Final Hyperparameter output}
 Below are snippets of the an implemented Random Search for an MLP classifier. Of note is the parameters included are listed in the table \ref{tab:RandCV_HyperOptions} below. The hyperparameter options listed are a part of an iterative process where the range was manually narrowed after successive RandomSearches. This is a method to increase precision without high initial ranges that would be inefficient. 
@@ -946,15 +952,15 @@ and the results of which were
 Details of a Grid Search can be found in Appendix \ref{apx:GSAttempt}.
 
 
-\subsection{machine learning Libraries Used}
+\paragraph{Machine Learning Libraries Used}
 
-The classification libraries used were Google's TensorFlow and scikit-learn. Both libraries are python based (supporting both Python 3.0, and Python 2.7) \cite{scikitlearnpythonVer} \cite{TFpythonVer}%\cite{TFpythonVer} \cite{scikit-learn-pyV}.
+The classification libraries used were Google's TensorFlow and scikit-learn. Both libraries are python based (supporting both Python 3.0, and Python 2.7) \cite{scikitlearnpythonVer}\cite{TFpythonVer}
 
 \subparagraph{TensorFlow}
 TensorFlow is an opensource machine learning framework, primarily developed by Google.
-\inlineQuote{It has a comprehensive, flexible ecosystem of tools, libraries and community resources that lets researchers push the state-of-the-art in ML and developers easily build and deploy ML powered applications.}\cite{TFwebsite}. TensorFlow in conjunction with with Keras was used to prototype the initial pipeline. According to the textbook, \inlineQuote{Hands on machine learning with Scikit, Keras \& TensorFlow}, a pipeline is 
+\inlineQuote{It has a comprehensive, flexible ecosystem of tools, libraries and community resources that lets researchers push the state-of-the-art in ML and developers easily build and deploy ML powered applications.} \cite{TFwebsite}. TensorFlow in conjunction with with Keras was used to prototype the initial pipeline. According to the textbook, \inlineQuote{Hands on machine learning with Scikit, Keras \& TensorFlow}, a pipeline is 
 \fancyquote{
-A sequence of data processing components is called a data pipeline. Pipelines are very common in machine learning systems, since there is a lot of data to manipulate and many data transformations to apply\cite{HandsOnMLTextbook}.
+A sequence of data processing components is called a data pipeline. Pipelines are very common in machine learning systems, since there is a lot of data to manipulate and many data transformations to apply \cite{HandsOnMLTextbook}.
 }
 
 TensorFlow and Keras were selected to initially design the classifier due its ability to run on the TensorFlow Lite. This is inline with the motivation of the project to allow widespread use of an AED/C solution. The code snippet \ref{lst:pythonlisting} shows how a model converts.
@@ -983,6 +989,7 @@ A Random Tree Classifier was used to evaluate feature importance. Random Tree Cl
     numbers=left,
     xleftmargin=1cm,
     frame=shadowbox,
+    breaklines=true,
     caption={Code snippet for the early CNN model\label{lst:cnnpythonlisting}},
     ]{Code/tensorflow_cnn.py}
 
@@ -1017,7 +1024,7 @@ This will answer the question, and title of the report, \inlineQuote{[What is] t
 \subsection{Binary MLPClassifier}
 
 A Binary MLP Classifier was run using the following settings:
-\begin{lstlisting}
+\begin{lstlisting}[breaklines=true]
     {'solver': 'adam', 'learning_rate': 'adaptive', 'hidden_layer_sizes': (150, 100, 50), 'alpha': 0.03, 'activation': 'tanh'}
 \end{lstlisting}
 It was trained to classify label 2. Average training time was for Audio only was 42.9 minutes, whilst Audio+Extra was 53.6 minutes. This does not reflect the full training time, but rather the final optimising and training time after manual refinement of the Random Search Cross Validation hyperparameter range.
@@ -1073,7 +1080,7 @@ The AUROC was not calculated for the multilabel, as the AUROC is a comparison on
 \subsection{Multilabel MLPClassifier}
 
 A Multilabel MLP Classifier was run using the following settings:
-\begin{lstlisting}
+\begin{lstlisting}[breaklines=true]
     {'solver': 'adam', 'learning_rate': 'invscaling', 'hidden_layer_sizes': (150, 200), 'alpha': 0.07, 'activation': 'relu'}
 \end{lstlisting}
 It was trained to classify labels 2 through 22 inclusive. Average training time was for Audio only was 60.6 minutes, whilst Audio+Extra was 73.1 minutes. This does not reflect the full optimising and training time, but rather the final training time after manual refinement of the Random Search Cross Validation hyperparameter range.
@@ -1136,13 +1143,13 @@ The result had been analysed using the Area Under Receiver Operating Characteris
 The results assume that using static hyperparameters across the Audio, and Audio+Extra classifiers would be an invalid strategy of testing the hypothesis. It would be expected that optimising the hyperparameters for one classifier and not the other would result in the other classifier performing worse. This would result in a convolution of the effect from the extra data, and a classifier with poorly optimised hyperparameters. As such, there is an inverse assumption that optimising both classifiers separately, but using the same methodology is a fair strategy to minimise the model and its hyperparameter's effect on F1 Score.
 
 \subparagraph{Complexity} 
-The complexity of the classification task was low compared to similar studies \cite{Tseng2017} \cite{Virtanen2010} due to the limited and broad labels available in the ExtraSensory dataset. However the number of classes are comparative to previous studies (61 classes, Virtanen 2010 \cite{Virtanen2010}). To improve these results, the complexity of the labels could be improved. A promising new technique is to train a network on weakly supervised data \cite{Tseng2017}, which could extend to generating/classifying new labels on the ExtraSensory dataset. This would allow a more complex dataset, such as AudioSet \cite{Audiosetgoogle2018} to reprocess the ExtraSensory database to have a larger number of classes.
+The complexity of the classification task was low compared to similar studies \cite{Tseng2017}\cite{Virtanen2010} due to the limited and broad labels available in the ExtraSensory dataset. However the number of classes are comparative to previous studies (61 classes, Virtanen 2010 \cite{Virtanen2010}). To improve these results, the complexity of the labels could be improved. A promising new technique is to train a network on weakly supervised data \cite{Tseng2017}, which could extend to generating/classifying new labels on the ExtraSensory dataset. This would allow a more complex dataset, such as AudioSet \cite{Audiosetgoogle2018} to reprocess the ExtraSensory database to have a larger number of classes.
 
 \subparagraph{Causation}
 The increase in F1 score could occur in 2 areas. The first is during hyperparameter optimisation, in which the hyperparameters are fitted to our activation model using Audio and/or the supplementary data, optimised about the F1 score. The second is in the fitting itself, where the supplementary data may contain a signal that could be benefiting the F1 score of the model. If this hypothesis is correct, then these results will hold valid across other classifiers that require hyperparameter optimisation and fitting of training data.
 
 \subparagraph{acoustic event Detection}
-The validity of the result holds true for acoustic event classification, however, no acoustic event \inlineQuote{detection} was carried out. That is, a sound sample was classified as an acoustic event as a binary output, rather than identifying when the acoustic event occurred in the sound sample. Phaun discusses the differences and complexities involved in AEC vs AED in a paper called \inlineQuote{What Makes Audio Event Detection Harder than Classification?}\cite{Phan2016}. This suggests that this project's result may be valid acoustic event detection, given AEC is a crucial element of the detection pipeline.
+The validity of the result holds true for acoustic event classification, however, no acoustic event \inlineQuote{detection} was carried out. That is, a sound sample was classified as an acoustic event as a binary output, rather than identifying when the acoustic event occurred in the sound sample. Phaun discusses the differences and complexities involved in AEC vs AED in a paper called \inlineQuote{What Makes Audio Event Detection Harder than Classification?} \cite{Phan2016}. This suggests that this project's result may be valid acoustic event detection, given AEC is a crucial element of the detection pipeline.
 
 \subparagraph{Significance}
 The results from this project aim to present a peer-reviewable benchmark for the impact of the supplementary datasources of an accelerometer, gyroscope and GPS. The key significance is that the qualitative result can be taken and applied to similar projects.\\
@@ -1254,8 +1261,11 @@ The result should hold valid across other datasets, but it would be important to
 \paragraph{Use Another AEC/D to Label This Dataset}
 A key limitation to this field of search is the lack of datasets with both audio and IMU data. As audio classifiers trained on AudioSet improve, a classifer could be trained and optimised about minimising the False Positive rate. This could then be realiably used to append new labels to the ExtraSensory dataset. This would enable higher quality research to be produced with the dataset.
 
+\paragraph{Bayesian Optimization}
+Whilst not essential to the results of this paper, it would be an interesting report to evaluated how a completely different hyperparameter optimisation technique would effect the results. This is the study of metaheuristics. It would be an excellent tie in for this project from the MCH3900 Bayesian lectures.
+
 \paragraph{Novel Use of Bogosort as Optimisation Strategy}
-A final suggestion for future work is to adapte the Bogosort to machine learning, as it is an increasingly popular area of research \cite{Bogo_Gruber2007}, \cite{Bogo_max}, \cite{Bogo_Holzer2018}. The suggested method for using the Bogosort (or Bogosearch) would be to iterate over the hyperparameters of the network, then iterate over the neuron weights. If successfully applied, it could be the first instance of the Bogosort being applied in the machine learning sphere.
+A final suggestion for future work is to adapte the Bogosort to machine learning, as it is an increasingly popular area of research \cite{Bogo_Gruber2007}\cite{Bogo_max}\cite{Bogo_Holzer2018}. The suggested method for using the Bogosort (or Bogosearch) would be to iterate over the hyperparameters of the network, then iterate over the neuron weights. If successfully applied, it could be the first instance of the Bogosort being applied in the machine learning sphere.
 \newpage 
 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1266,12 +1276,12 @@ A final suggestion for future work is to adapte the Bogosort to machine learning
 % \bibliographystyle{ieeetr}%harvard}
 % \bibliography{chris} % This is the .bib file where the bibliography database is stored
 \bibliography{main} 
-\bibliographystyle{harvard} \flagforreview %IEEE
+\bibliographystyle{ieeetran} \flagforreview %IEEE
 
 \newpage
 \appendix
 \clearpage \section{Full Extracts of Journals}
-N/A, email correspondence available on request.
+N/A, email correspondence available on request. aasdasda
 
 \clearpage \section{Reflection}
 about several of the Engineers Australia 16 competencies.  \flagforreview
@@ -1792,7 +1802,7 @@ F-Score: 0.29
 
 \fFigure{feature_important_just_GPS2.png}{A Random Tree Classifier was used to evaluate feature importance, during the design phase of the main classifier. Features were GPS (16)}{0.5}
 
-\clearpage \section{Trade-Review of "Online vs Offline" processing}\label{sec:TradeReview}
+\clearpage \section{Trade-Review of "Online vs Offline" processing}\label{apx:TradeReview}
 \paragraph{Online vs Offline Data Fusion \& Data Analytics}
 
 This document will compare the costs, benefits and risks in designing an

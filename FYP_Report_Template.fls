@@ -275,6 +275,7 @@ INPUT c:\FYP\report\FYP_Report_Template.toc
 INPUT c:\FYP\report\FYP_Report_Template.toc
 OUTPUT c:\FYP\report\FYP_Report_Template.toc
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmssbx10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmti10.tfm
 INPUT c:\FYP\report\Figures\niche.png
 INPUT c:\FYP\report\Figures\niche.png
 INPUT c:\FYP\report\Figures\niche.png
@@ -443,6 +444,8 @@ INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmex10.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmex10.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi10.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi10.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi7.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi7.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi8.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi8.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr10.pfb
@@ -469,5 +472,5 @@ INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmti10.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmti10.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmtt10.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmtt10.pfb
-INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\rsfs\rsfs7.pfb
-INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\rsfs\rsfs7.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\rsfs\rsfs10.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\rsfs\rsfs10.pfb

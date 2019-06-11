@@ -143,7 +143,7 @@
 @Unpublished{Bogo_max,
   author = {Max Sherman},
   title  = {Bogo-sort is Sort of Slow},
-  month  = jun,
+  month  = {jun},
   year   = {2013},
 }
 
@@ -260,7 +260,8 @@
  @comment{ DCASE. (2018). Schedule. Retrieved from http://dcase.community/ }
 
 @Book{2018Schedule,
-  title     = {(2018)},
+  title     = {(DCASE 2018 Schedule)},
+  year      = {2018},
   publisher = {Schedule},
   author    = {DCASE.},
   url       = {http://dcase.community/},
@@ -287,15 +288,6 @@ http://www.k-jahn.de/files/bibtex.xslhttp://www.k-jahn.de/files/bibtex.xslhttp:/
   year  = {2015},
 }
 
-@TechReport{Int,
-  title = {Systems and software engineering -- System life cycle processes},
-  isbn  = {ISO/IEC/IEEE 15288:2015},
-}
-
-@TechReport{Wiki,
-  author = {Wikipedia},
-  year   = {2019},
-}
 
 @Manual{IEEE15288,
   title        = {IEEE 15288: Systems and software engineering -- System life cycle processes},
@@ -388,6 +380,7 @@ http://www.k-jahn.de/files/bibtex.xslhttp://www.k-jahn.de/files/bibtex.xslhttp:/
   title        = {What Makes Audio Event Detection Harder than Classification?},
   abstract     = {There is a common observation that audio event classification is easier to deal with than detection. So far, this observation has been accepted as a fact and we lack of a careful analysis. In this paper, we reason the rationale behind this fact and, more importantly, leverage them to benefit the audio event detection task. We present an improved detection pipeline in which a verification step is appended to augment a detection system. This step employs a high-quality event classifier to postprocess the benign event hypotheses outputted by the detection system and reject false alarms. To demonstrate the effectiveness of the proposed pipeline, we implement and pair up different event detectors based on the most common detection schemes and various event classifiers, ranging from the standard bag-of-words model to the state-of-the-art bank-of-regressors one. Experimental results on the ITC-Irst dataset show significant improvements to detection performance. More importantly, these improvements are consistent for all detector-classifier combinations.},
   date         = {2016-12-29},
+  year         = {2016},
   doi          = {10.23919/EUSIPCO.2017.8081709},
   eprint       = {http://arxiv.org/abs/1612.09089v4},
   eprintclass  = {cs.SD},
@@ -410,6 +403,7 @@ http://www.k-jahn.de/files/bibtex.xslhttp://www.k-jahn.de/files/bibtex.xslhttp:/
   title       = {Multiple Instance Deep Learning for Weakly Supervised Small-Footprint Audio Event Detection},
   abstract    = {State-of-the-art audio event detection (AED) systems rely on supervised learning using strongly labeled data. However, this dependence severely limits scalability to large-scale datasets where fine resolution annotations are too expensive to obtain. In this paper, we propose a small-footprint multiple instance learning (MIL) framework for multi-class AED using weakly annotated labels. The proposed MIL framework uses audio embeddings extracted from a pre-trained convolutional neural network as input features. We show that by using audio embeddings the MIL framework can be implemented using a simple DNN with performance comparable to recurrent neural networks. We evaluate our approach by training an audio tagging system using a subset of AudioSet, which is a large collection of weakly labeled YouTube video excerpts. Combined with a late-fusion approach, we improve the F1 score of a baseline audio tagging system by 17%. We show that audio embeddings extracted by the convolutional neural networks significantly boost the performance of all MIL models. This framework reduces the model complexity of the AED system and is suitable for applications where computational resources are limited.},
   date        = {2017-12-27},
+  year        = {2017},
   eprint      = {http://arxiv.org/abs/1712.09673v2},
   eprintclass = {cs.SD},
   eprinttype  = {arXiv},
@@ -466,4 +460,28 @@ http://www.k-jahn.de/files/bibtex.xslhttp://www.k-jahn.de/files/bibtex.xslhttp:/
   publisher={Springer}
 }
 
+@Booklet{GSMA,
+  title  = {The Mobile Economy 2019},
+  author = {GSM Association},
+  year   = {2019},
+  url    = {https://www.gsmaintelligence.com/research/?file=b9a6e6202ee1d5f787cfebb95d3639c5&download},
+}
+
+@Misc{dcase2019,
+  author = {DCASE},
+  title  = {Task A: Preliminary Results},
+  note   = {http://dcase.community/challenge2018/task-acoustic-scene-classification#evaluation},
+}
+
+@inproceedings{Mesaros2018_DCASE,
+    Author = "Mesaros, Annamaria and Heittola, Toni and Virtanen, Tuomas",
+    title = "A multi-device dataset for urban acoustic scene classification",
+    url = "https://arxiv.org/abs/1807.09840",
+    booktitle = "Proceedings of the Detection and Classification of Acoustic Scenes and Events 2018 Workshop (DCASE2018)",
+    month = "November",
+    pages = "9--13",
+    year = "2018",
+    keywords = "Acoustic scene classification, DCASE challenge, public datasets, multi-device data",
+    abstract = "This paper introduces the acoustic scene classification task of DCASE 2018 Challenge and the TUT Urban Acoustic Scenes 2018 dataset provided for the task, and evaluates the performance of a baseline system in the task. As in previous years of the challenge, the task is defined for classification of short audio samples into one of predefined acoustic scene classes, using a supervised, closed-set classification setup. The newly recorded TUT Urban Acoustic Scenes 2018 dataset consists of ten different acoustic scenes and was recorded in six large European cities, therefore it has a higher acoustic variability than the previous datasets used for this task, and in addition to high-quality binaural recordings, it also includes data recorded with mobile devices. We also present the baseline system consisting of a convolutional neural network and its performance in the subtasks using the recommended cross-validation setup."
+}
 @Comment{jabref-meta: databaseType:bibtex;}
