@@ -237,15 +237,20 @@ Audio (or acoustic) signal processing is the sub field of signal processing that
 Audio signal processing has been a key element of technological development in music. From human reproduction music instruments, to a wide range of mechanical analogue devices to record and reproduce sound, to finally a discretised digital signal. All these methods represent an audio signal, but the advent of a digital signal has allowed for the widespread use of digital signal processing in a wide range of applications.
 For example; new musical effects, compression and storage, sound recognition, noise cancellation, equalisation. %all of these could be done anolg
 
+\subparagraph{Acoustic Event}
+Audio signals can encompass a wide medium of data. It can cover creative aspects such as music, but it can also capture certain "acoustic events". This could be any event that is measurable through audio. In some cases, an event could be inferred from the audio signal.
+
 \subparagraph{New Opportunities}
 Audio digital signal processing has allowed widespread application of actionable audio data. Speech recognition, speech synthesis, acoustic pattern detection, etc.
 
 \subsection{Classification}
 Classification is the process of determining, based on observations, what categories an item belongs in. This is a phenomenon present where there can be a ground truth of membership.
-It is possible for categories to be mutually-exclusive, such as that of the an animal's genus, or it could be non-unique, such as a song's genre. 
+It is possible for categories to be mutually-exclusive, such as that of the an animal's genus, or it could be non-unique, such as a song's genre. It can also be the process of labelling a signal, such as whether an acoustic event was detected in an audio signal.
 
 \subsection{The Problem}
-This project aims to answer the question \inlineQuote{[What is] the effect of supplementary data on acoustic event classification through machine learning}. To do this, results will analyse the F1 Scores of a binary MLPClassifier, and a multi-label MLPClassifier, both trained on the ExtraSensory dataset using the method described in Section \ref{sec:Method}.
+This project aims to answer the question: What is the effect of supplementary data on acoustic event classification through machine learning?. 
+
+To do this, results will analyse the F1 Scores of a binary MLPClassifier, and a multi-label MLPClassifier, both trained on the ExtraSensory dataset using the method described in Section \ref{sec:Method}.
 Additionally, the output of the classifiers will be analysed for \inlineQuote{validity}. Does the classifier successfully detect and classify an acoustic event?
 
 The desired results are a demonstrable difference (or lack thereof) in the F1 score, after comparing a classifier with and without supplementary data.
@@ -278,20 +283,6 @@ This is a key tool in training after any group activity, and has been extended t
 % Here you need to sell why what you are doing is important, and what benefits will it bring if you are successful and solve the problem? 
 %
 \section{Background}
-\subsection{Machine Learning from a Mechatronics Perspective}
-Machine learning was the focus of this report. Machine learning is a field of Engineering and Computer Science concerned with automating the discovery and modelling of a process. This process is usually a classification or regression function. In a nutshell, it is about training a computer algorithm to learn from data.\\
-
-It's application in this report has parallels to a traditional optimisation problem in mechatronics: Given a \inlineQuote{plant} {\itshape(or, a neural network)}, how can someone \inlineQuote{optimise} {\itshape(train)} the plant's \inlineQuote{parameters} {\itshape(both weightings and hyperparameters)} as to \inlineQuote{minimise an error} {\itshape(or, maximise a classification/regression score)}?
-
-\subsection{Key Concepts}
-
-\paragraph{Modern application of Machine Learning}
-Traditional approaches are to fit a function to a 
-
-\clearpage \section{Review Of Literature}\label{sec:LitReview}
-A literature review of the current research was conducted with guidance from University of Queensland’s guide to Literature reviews \cite{QueenslandReview} . There are 3 nested areas of research that are of interest to this project. The wider classification and regression research topic, the machine learning topic that covers many various fields of implemented and theoretical machine learning applications, and finally the specific field of acoustic event detection and classification (AED/AEC); this field has traditionally relied on older techniques, and is undergoing a revolution with machine learning. 
-
-\fFigure{niche.png}{The literature for this project is a niche topic in the machine learning area of research}{0.8}
 
 \subsection{Machine Learning}
 A definition for Machine learning is taken from Tom M. Mitchell's 1997 textbook, \inlineQuote{machine learning}
@@ -301,7 +292,29 @@ A definition for Machine learning is taken from Tom M. Mitchell's 1997 textbook,
 
 This definition of machine learning can be applied to this project; the task T (AED/C), the E (Audio, IMU, GPS), and P (a traditional F1 score). 
 
-The computer program described in this project has been produced in Python, using the sklearn and TensorFlow libraries. \flagforreview
+The computer program described in this project has been produced in Python, using the scikit-learn and TensorFlow libraries. \flagforreview
+
+\paragraph{Machine Learning from a Mechatronics Perspective}
+Machine learning was the focus of this report. Machine learning is a field of Engineering and Computer Science concerned with automating the discovery and modelling of a process. This process is usually a classification or regression function. In a nutshell, it is about training a computer algorithm to learn from data.\\
+
+It's application in this report has parallels to a traditional optimisation problem in mechatronics: Given a \inlineQuote{plant} {\itshape(or, a neural network)}, how can someone \inlineQuote{optimise} {\itshape(train)} the plant's \inlineQuote{parameters} {\itshape(both weightings and hyperparameters)} as to \inlineQuote{minimise an error} {\itshape(or, maximise a classification/regression score)}?
+
+\subsection{Key Concepts}
+
+\paragraph{Traditional Machine Learning}
+The traditional approach to machine learning has been to fit a function to a collection of historical samples, called a dataset.
+
+\paragraph{Truth in Classification}
+The process of machine learning relies on having examples of audio data (and supplementary data), paired with a true classification from that known data. This is what is more broadly known as a supervised learning task. A key concept for this project is to be comparing the classifier produced, against the recorded truth of the samples. This allowed the comparison of the classifier against 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage \section{Review Of Literature}\label{sec:LitReview}
+A literature review of the current research was conducted with guidance from University of Queensland’s guide to Literature reviews \cite{QueenslandReview} . There are 3 nested areas of research that are of interest to this project. The wider classification and regression research topic, the machine learning topic that covers many various fields of implemented and theoretical machine learning applications, and finally the specific field of acoustic event detection and classification (AED/AEC); this field has traditionally relied on older techniques, and is undergoing a revolution with machine learning. 
+
+\fFigure{niche.png}{The literature for this project is a niche topic in the machine learning area of research}{0.8}
+
 
 \subsection{Acoustic Event Detection and Acoustic Event Classification}
 Historically the technologies for AED/AEC have been Support vector machine (SVMs), Hidden Markov Models (HHMs), and more generally, basic DSP (Digital Signal Processing) classifiers. But in the last 8 years, AED and AEC research has emerged as a hot topic of research. Research focuses on the two key tasks: detection (when did an acoustic event occur in the audio, and when did it stop?) and classification (what sound occurred?). New research papers are often the result of DCASE competitions, which is an official IEEE Audio and Acoustic Signal Processing (AASP) competition. \fref{F1_score.png}.
