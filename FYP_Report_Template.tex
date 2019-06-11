@@ -29,12 +29,16 @@
 % New macro to make defining labels easier.
 \newcommand{\flagforreview}{\textsuperscript{\color{red} [FLAGGED FOR REVIEW]}}
 \newcommand{\rephrase}{\textsuperscript{\color{red} [REPHRASE?]}}
+
 \newcommand{\inlineQuote}[1]{``#1''}
+
 \newcommand{\fancyquote}[1]{\begin{quotation}\inlineQuote{#1}\end{quotation}}
 \newcommand{\fref}[1] {Figure \ref{#1}}
 \newcommand{\sref}[1] {Section \ref{#1}}
 \newcommand{\tref}[1] {Table \ref{#1}}
 \newcommand{\aref}[1] {Appendix \ref{#1}}
+\newcommand{\lref}[1] {Listing \ref{#1}}
+
 \newcommand{\fFigure}[3]{
 	%\begin{minipage}%[H] %figure is a floating page, consider replacing with   
         \begin{center}  
@@ -335,7 +339,7 @@ Historically the technologies for AED/AEC have been support vector machine (SVMs
 The DCASE competitions format started 2013, had its second competition in 2016, and has been a yearly event since. Since 2017, there has been a new format where the competition starts march, formal results are released by September, and a workshop for participants on the best results in November \cite{2018Schedule}. 2016 was the first to feature machine learning (winning teams incorporated machine learning into ensemble model classifiers). By 2017 all entries utilised machine learning. The results from DCASE2018 indicate that progress in the AED/AEC field had allowed more sophisticated, real-world applications to be evaluated, such as DCASE2018's Challenge Task \#4 \cite{2018n}. This task focused on using a subset of Google's AudioSet to determine the audio class, and the timestamps of when that class occurred within a sample. The complexity of the dataset, the number of acoustic classes and fidelity of output were unprecedented in the AEC field. The winning results for this level of complexity did not score as high a F1 score compared to the DCASE2017 competition. DCASE2017 featured more controlled environments/datasets across the 4 tasks which likely resulted in the disparity (2017 had a 41.7\% F1 score \cite{2017results} vs 2018’s 32.4\% \cite{2018n}). It is however DCASE 2018 that presented the best precedent for the problem addressed in this paper.
 
 \subsection{Leading Research, DCASE2018 Task 4 Winner}
-The winning model used in the DCASE2018 Task 4 challenge used a “Mean-teacher” model for classification (useful abstract results averaging applicable to a range of classifier models), a CNN for context gating (a pre-classifier step to improve flaws in training methodologies for some machine learning models \cite{Yan16}) and a bidirectional recurrent neural network (RNN) to improve the utilisation of unlabelled, unbalanced training datasets \cite{winners}; this last component is important for this paper, as the leading dataset outside of DCASE challenges is the weakly labelled Google AudioSet, of which only small percentage of is balanced.
+The winning model used in the DCASE2018 Task 4 challenge used a “Mean-teacher” model for classification, a convolutional neural network (CNN) for context gating (a pre-classifier step to improve flaws in training methodologies for some machine learning models \cite{Yan16}) and a bidirectional recurrent neural network (RNN) to improve the utilisation of unlabelled, unbalanced training datasets \cite{winners}. The bidirectional RNN is an important would be an important element for this report if the AudioSet dataset was being used. This is because the leading dataset outside of DCASE challenges is the weakly labelled Google AudioSet, of which only small percentage of is balanced.
 
 \begin{table}[h!]
     \begin{center}
@@ -440,8 +444,8 @@ This section described the motivation for the project was applied AEC/D and this
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage \section{Method} \label{sec:Method}
 \subsection{Introduction to the Method}
-In a traditional machine learning problem there are 5 stages to the method; 
-list looks awful \flagforreview
+In a traditional machine learning problem there are 5 stages to the method: 
+% list looks awful \flagforreview
 \begin{enumerate}%[start=1,label={     Stage \arabic*:}]
     \item Data
     \item Preprocessing
@@ -456,13 +460,13 @@ list looks awful \flagforreview
 Stage 1 is choosing what raw data is available and what information the model must product. This is the inputs and the outputs that you want from the system, and the expected result.
 
 \subparagraph{Stage 2}
-Stage 2 is preprocessing. This is about taking the data available transforming it. This could be optimising, filtering, feature building (producing refined data of interest to the model e.g. MFFCs from raw Audio) and in many other options. Preliminary features are also evaluated in this stage to ascertain their quality and effectiveness in a preliminary model.
+Stage 2 is preprocessing. The purpose of preprocessing is to transform the available data into a format most appropriate for the intended analysis. This is inclusive of processes such as optimising, filtering, feature building\footnote{Producing refined data of interest to the model. For example, Mel-frequency cepstral coefficients (MFCCs) from raw Audio} and in many other options. Preliminary features are also evaluated in this stage to ascertain their quality and effectiveness in a preliminary model.
 
 \subparagraph{Stage 3}
-Stage 3 is picking the model. The method of picking a model may be based on doing research into what is best practice for your particular problem, looking at recent papers and investigating whether the particular topic demands any special requirements. Once a model is picked, the parameters of the model must be chosen (or evaluated) before a final model can be selected. This is done in the following two stages.
+Stage 3 is selecting the model to be used. The selection of the model involves an understanding of what is best practice in the chosen topic area, a review of recent publications and their methods, and investigating if the chosen topic necessitates any special requirements. Once a model is elected, the parameters of the model must be determined (or evaluated) before a final model can be selected. This is done in the following two stages.
 
 \subparagraph{Stage 4}
-Stage 4 is fitting the model. The selected algorithm may need to be trained or fitted. This is the process of taking labelled input / output data (denoted as X, y) and supervising the model as it attempts to reproduce y from X. A common method to achieve this is to cost Stochastic Gradient Descent (SGD) and back propagation \cite{lecun2012efficient}. In summary, it is the process of changing the weights proportionally to their contribution to the error. Equation \ref{eq:BP_grad_dec} adapted from \cite{lecun2012efficient} demonstrates this, where W is the machine learning weights for a given topology, $\eta$ is the proportional factor or step size, and the partial represents how each weight contributes to error.\\
+Stage 4 is fitting the model. The selected algorithm may need to be trained or fitted. This is the process of taking labelled input / output data (denoted as X, y) and supervising the model as it attempts to reproduce y from X. A common method to achieve this is through Stochastic Gradient Descent (SGD) and back propagation \cite{lecun2012efficient}. In summary, it is the process of changing the neuron weights proportionally to their contribution to the error. Equation \ref{eq:BP_grad_dec} adapted from \cite{lecun2012efficient} demonstrates this, where W is the machine learning weights for a given topology, $\eta$ is the proportional factor or step size, and the partial represents how each weight contributes to error.\\
 
 \begin{gather}\label{eq:BP_grad_dec}
     W(t) = W(t-1) - \eta\frac{\partial E}{\partial W} 
@@ -470,20 +474,20 @@ Stage 4 is fitting the model. The selected algorithm may need to be trained or f
 Once trained on a training set, the next stage is validating whether the model is sufficiently fit.
 
 \subparagraph{Stage 5}
-Stage 5 is validation. Validation is the process of checking the performance of the against certain criteria. For instance, a model may be checked for overfitting, underfitting, bias, sensitivity, specificity, accuracy, precision, AUC (area under the (ROC) curve), and F1 score to name a few. F1 score will be used as the primary measure because the F1 has been is the research industry standard for evaluating algorithms. \\
+Stage 5 is validation. Validation is the process of checking the performance of the model against certain criteria. For instance, a model may be checked for overfitting, underfitting, bias, sensitivity, specificity, accuracy, precision, AUC (area under the (ROC) curve), and F1 score to name a few. F1 score was used as the primary measure in this project because the F1 has been used as a research industry standard for evaluating algorithms. \\
 
-It is beneficial to work up slowly to this goal. external to the method of building the machine learning classifier is the work involved in developing the pipeline associated with it. The main tasks to implement a machine learning classifier are as follows:
+It is beneficial to work up methodically approach implementing machine learning. As each section will dramatically effect the next, care should be taken to optimise each stage before progressing in implementation. External to the method of building the machine learning classifier is the work involved in developing the pipeline associated with it. The main tasks to implement a machine learning classifier as a part of a larger solution are as follows:
 
 \begin{itemize}
     \item Develop the use-case, and identify the output
     \item Investigate what data is available, and whether further data/datasets would be beneficial
     \item Choose a framework/technology to implement the machine learning algorithm in
     \item Build the machine learning classifier as described above, and test its effectiveness
-    \item Validate the whole system by using the classifier in the pipeline (by take the classified output, and appending it to the trackfile)
+    \item Validate the whole system by using the classifier in the pipeline (by taking the classified output, and appending it to the trackfile)
 \end{itemize}
 
 \subsection{Required Data}
-The machine learning uses GPS, accelerometer, gyroscope, and audio. A Google Pixel 2 was selected as the model data acquisition, which table /ref{} below shows.
+The machine learning solution required GPS, accelerometer, gyroscope, and audio. A Google Pixel 2 was selected as the target data acquisition unit, which \tref{AndroidSensorsAvailable} below shows.
 \begin{table}[h!] 
     \begin{center}
         \caption{Data Available \cite{pixelteardown}}\label{tab:AndroidSensorsAvailable}
@@ -500,51 +504,78 @@ The machine learning uses GPS, accelerometer, gyroscope, and audio. A Google Pix
 
 \subsection{Data Collection}
 
-The choice of what data to collected and use was found through the first problem analysis step. As the goal is to maximise the accuracy of the classifier (whilst still being an achievable goal), the data chosen for use and collection was GPS, accelerometer, gyroscope, and audio. As described in the problem analysis phase, the best platform for this would be a smartphone as shown in section \ref{sec:ProblemAnalysis} and appendix \ref{sec:TradeReview}. 
+The decision of what data to collect and utilise was identified through the problem analysis in \sref{sec:ProblemAnalysis}. As the goal was to maximise the accuracy of the classifier (whilst still being an achievable goal), the data chosen for use and collection was GPS, accelerometer, gyroscope, and audio. As described in the problem analysis phase, the best platform for this would be a smartphone as shown in \sref{sec:ProblemAnalysis} and \aref{apx:TradeReview}. 
 
+\subsubsection{Project Android App}
+Android was chosen as the platform as it had significant support for reading from the on-board sensors. The data available from the Android API can be seen in table \ref{tab:AndroidDataAvailable}. This was the source for accelerometer, gyroscope and GPS data. It was also selected due to its support for C/C++ through the Native Development Kit (NDK). The programming language C is required knowledge for many courses in the University of Newcastle Bachelor of Mechatronics degree. 
 
-Android was chosen as the platform as it had significant support for reading from the on-board sensors. The data available from the Android API can be seen in table \ref{tab:AndroidDataAvailable}, of which GPS and acceleration will be used. It was also chosen due to its support for C/C++ through the Native Development Kit (NDK). The programming language C is required knowledge for many courses in the University of Newcastle Bachelor of Mechatronics degree. 
-
-The app development took 5 weeks to get to a useful state. It can record Audio to a .wav file and record raw GPS lat/long/alt, raw accelerometer, and raw gyroscope to a csv. There are technical issues still present in the app (notably that the screen must be unlocked to record).
+The app was developed over five weeks. It was able to record audio to a .wav file and record raw GPS data\footnote{Timestamps, latitude, longitude and altitude are recorded from the GPS sensor}, raw acceleration, and raw gyroscopic data. The output was an audio .wav file, and a Comma Separated Value (csv) file.
 
 During this time, an Atlassian JIRA environment was set up to facilitate management (using concepts from ENG3500 - Project Management). The Atlassian "Git-Flow" methodology was also learnt and used.
 
-I helped with 30\% of the overall programming, and code reviewed the product along with other colleagues. Credit goes to [Sebastian Wallman].
+I assisted with an estimated 30\% of the overall programming, and a code review of the product along with other colleagues. The majority of development work was attributed to a colleague.
 
-\subsubsection{Data collected during project vs ExtraSensory dataset}
-The table \ref{tab:ProjectData} shows a snippet of the Comma-Separated Values (csv) data produced from the app. The id is a unique count, %the attr\_time is a timestamp from the Android system, and attr\_x, attr\_y, and attr\_z are the raw output of the. 
-The table \ref{tab:ExtraSensoryDataExample} shows a snippet of the csv data from the ExtraSensory dataset. 
-
-Both datasets share the same timestamp format, so a \inlineQuote{Time} column has been added to the table for illustration purposes only.
 
 %https://developer.android.com/guide/topics/sensors/sensors_motion
- \lstinputlisting[
+\lstinputlisting[
+    breaklines=true
     language=C,
     float=h,
     numbers=left,
     xleftmargin=1cm,
     frame=shadowbox,
     caption={Code snippet from \cite{androidMotionsensors} for getting Accelerometer data from the Android System.},
-    morekeywords={try,catch}
     ]{Code/accel_example.c}
 
 
-\begin{table}[]\label{tab:ProjectData}
-    \begin{center}
-        \begin{tabular}{llllll}
-        \hline\hline id & attr\_time & Time & attr\_x   & attr\_y & attr\_z \\ \hline
-        1  & 1547182324433 & 2018-01-11 14:52 & -0.229843 & 3.1795  & 8.52336 \\
-        2  & 1547182324442 & 2018-01-11 14:52 & -0.257614 & 2.93185 & 8.61444 \\
-        3  & 1547182324451 & 2018-01-11 14:52 & -0.179626 & 2.81464 & 8.81348 \\
-        4  & 1547182324467 & 2018-01-11 14:52 & -0.118927 & 2.82674 & 8.70142 \\
-        5  & 1547182324498 & 2018-01-11 14:52 & -0.191544 & 2.95287 & 8.66815 \\ \hline
-        \end{tabular}
+    \begin{table} 
+        \begin{center}
+            \caption{An example of data recorded from the App}\label{tab:ProjectData}
+            \begin{tabular}{llllll}
+            \hline\hline id & attr\_time & time & attr\_x   & attr\_y & attr\_z \\ \hline
+            1  & 1547182324433 & 2018-01-11 14:52 & -0.229843 & 3.1795  & 8.52336 \\
+            2  & 1547182324442 & 2018-01-11 14:52 & -0.257614 & 2.93185 & 8.61444 \\
+            3  & 1547182324451 & 2018-01-11 14:52 & -0.179626 & 2.81464 & 8.81348 \\
+            4  & 1547182324467 & 2018-01-11 14:52 & -0.118927 & 2.82674 & 8.70142 \\
+            5  & 1547182324498 & 2018-01-11 14:52 & -0.191544 & 2.95287 & 8.66815 \\ \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+
+\subsubsection{ExtraSensory}
+The ExtraSensory dataset contains over 300,000 samples across 60 Users (in a CSV format with 278 feature columns), as shown in \ref{tab:ExtraSensoryDataExample}. Each row contains an a 'snapshot' of the sensors at a frequency of once a minute. There are large non-continuities across each user. The dataset is unbalanced, and has had its labels cleaned by the researchers involved. Further details about the users themselves can be found in \ref{tab:ExtraSensoryDataBreakdown}, or at it paper \cite{Vaizman2017}.
+
+\begin{table}[h]
+    \begin{center}  
+        \caption{ExtraSensory Data Breakdown \cite{Vaizman2017}}\label{tab:ExtraSensoryDataBreakdown}
+        \begin{tabular}{lllll}
+            \hline\hline 
+                       & Range     & Average & (standard deviation) &  \\
+            \hline 
+            Age        & 18-42     & 24.7    & -5.6                 &  \\
+            Height     & 145-188   & 171     & -9                   &  \\
+            Weight     & 50-93     & 66      & -11                  &  \\
+            Body       & 18-32     & 23      &                      &  \\
+            Labeled    & 685-9,706 & 5,139   & -2,332               &  \\
+            Additional & 2-6,218   & 1,150   & -1,246               &  \\
+            Average    & 1.1-9.7   & 3.8     & -1.4                 &  \\
+            Days       & 2.9-28.1  & 7.6     & -3.2 \\
+            \hline  
+            \end{tabular}
     \end{center}
 \end{table}
 
+\subsubsection{Project Android App vs ExtraSensory dataset}
+The \tref{tab:ProjectData} shows a portion of the Comma-Separated Values (csv) data produced from the app. The id is a unique count, the attr\_time is a timestamp from the Android system, and attr\_x, attr\_y, and attr\_z columns show measured acceleration.
 
-\begin{table}[]\label{tab:ExtraSensoryDataExample}
+The \tref{tab:ExtraSensoryDataExample} shows a section of the csv data from the ExtraSensory dataset. 
+
+Both datasets share the same timestamp format. A \inlineQuote{time} column has been added to the table for illustration purposes only.
+
+    
+\begin{table}
     \begin{center}
+        \caption{Example of data from the ExtraSensory dataset}\label{tab:ExtraSensoryDataExample}
         \begin{tabular}{lllllll}
             \hline\hline timestamp  & Time & raw\_acc:mean & raw\_acc:std & raw\_acc:moment3 & raw\_acc:moment4 \\\hline 
         1464129912 & 2016-05-24 22:45 & 1.011438                       & 0.012573                      & 0.023013                          & 0.04124      \\
@@ -556,29 +587,46 @@ Both datasets share the same timestamp format, so a \inlineQuote{Time} column ha
     \end{center}
 \end{table}
 
-The ExtraSensory dataset is compiled from 60 users with a diverse range of phones (\inlineQuote{34 iPhone users, 26 Android users.} \cite{Vaizman2017}. This is in contrast to this project's phone range, which was limited to 2 Android devices, a Samsung S6 and a Lenovo Zuk Z2. The Samsung uses a InvenSense MPU-6500, the Lenovo Zuk Z2 unknown.
 
-\fancyquote{
-    \underline{Devices:}
-    The users in ExtraSensory had a variety of phone devices.
-    iPhone generations: 4, 4S, 5, 5S, 5C, 6 and 6S.
-    iPhone operating system versions ranging from iOS-7 to iOS-9.
-    Android devices: Samsung, Nexus, HTC, moto G, LG, Motorola, One Plus One, Sony.
-}
+\subparagraph{ExtraSensory Dataset}
+The ExtraSensory dataset is compiled from 60 users with a diverse range of phones, with \inlineQuote{34 iPhone users, and 26 Android users.} \cite{Vaizman2017}. A further breakdown can be found in \tref{tab:ExtraSensoryPhones}. This is in contrast to this project's phone range, which was limited to 2 Android devices, a Samsung S6 and a Lenovo Zuk Z2. The Samsung uses a InvenSense MPU-6500, the Lenovo Zuk Z2 unknown. A section of data can be found in \tref{tab:ExtraSensoryDataExample}. Further details can be found on page \pageref{para:ExtraSensorydataset}.
 
-\subsection{Data Pre-Processing}
-Python was used to process the data before the machine learning modules of code, and Matlab was used with GPS, IMU to prototype the algorithms. 
+% \fancyquote{
+%     \underline{Devices:}
+%     The users in ExtraSensory had a variety of phone devices.
+%     iPhone generations: 4, 4S, 5, 5S, 5C, 6 and 6S.
+%     iPhone operating system versions ranging from iOS-7 to iOS-9.
+%     Android devices: Samsung, Nexus, HTC, moto G, LG, Motorola, One Plus One, Sony.
+% }
+
+\begin{table}[]    
+    \begin{center}
+        \caption{Mobile Phone types used in the ExtraSensory dataset}\label{tab:ExtraSensoryPhones}
+        \begin{tabular}{lllllllll}
+            \hline \hline 
+            Device Type         &         &        &    &         &    &         &              &      \\
+            \hline                                                                                     \\
+            iPhone generations  & 4       & 4S    & 5   & 5S     & 5C & 6        & 6S           &      \\
+            Android devices     & Samsung & Nexus & HTC & moto G & LG & Motorola & One Plus One & Sony \\
+            \hline 
+        \end{tabular}
+    \end{center}
+\end{table}
 
 
- \sout{The data from the ExtraSensory dataset is provided in its raw format, which is best option is for the data to be raw, as this allows platform independent filtering, smoothing and sensor fusion\citationneeded.} 
+\subsection{Data Preprocessing}
+In the machine learning pipeline for use with the Android app, the data pre-processing occurred offboard from the app. This preprocessing was done Python. Preprocessing the data occurs before the machine learning modules of code, and Matlab was also used to prototype the algorithms.
 
 \subparagraph{Audio}
-Data preprocessing of the Audio was done by Mel Frequency Cepstral Coefficients (MFCCs). Start with a recorded .wav sample, and split the whole sample into smaller sections via the sliding window method\citationneeded. Take each window and calculate the Fourier transform. This in turn is both \inlineQuote{Feature Engineering}, as well as preprocessing to be training compatible. 
+Data preprocessing of the Audio was as follows:
+The recorded .wav files were split into smaller sections via the sliding window method\flagforreview. Each window then has the Fourier transform applied to it. These windows are then mapped to the Mel Log Scale. 
+ This in turn is both \inlineQuote{Feature Engineering}, as well as preprocessing to be training compatible. 
 \begin{gather}%\label{eq:EquationLine}
     WindowSample(t) \xrightarrow{\mathscr{F}}  WindowSample(\omega)
 \end{gather}
 
 \lstinputlisting[
+    breaklines=true
     language=Matlab,
     float=h,
     numbers=left,
@@ -588,30 +636,14 @@ Data preprocessing of the Audio was done by Mel Frequency Cepstral Coefficients 
     morekeywords={try,catch}
     ]{code/extract_mfcc.m}
 
-% \textbf{!!!!from Wikipedia!!!}
-% \begin{enumerate}
-%     \item \sout{Take the Fourier transform of (a windowed excerpt of) a signal.}
-%     \item \sout{Map the powers of the spectrum obtained above onto the mel scale,using triangular overlapping windows.}
-%     \item \sout{Take the logs of the powers at each of the mel frequencies.}
-%     \item \sout{Take the discrete cosine transform of the list of mel log powers, as if it were a signal.}
-%     \item \sout{The MFCCs are the amplitudes of the resulting spectrum.}
-% \end{enumerate}
-
-Audio to a .wav file and record raw GPS lat/long/alt, raw accelerometer, and raw gyroscope to a csv.  
-
-“First, resample the audio clips at 22,050 Hz, because the high frequency part of sound signal is not useful for event detection in daily life
-
-Extract the log mel-spectrogram from the audio clips by 128-bin, 2048-window and 365-hop (1683- overlap)”
-Aka classic sliding window, but this specifies some good over-lap, data density etc.
+For the ExtraSensory dataset, this had already been processed.
 
 \subparagraph{GPS}
-\sout{Talk about what a GPS is, and how we get the signal}
-The GPS signal is requested by the "Fused Location Provider", in the Google Play services location API and comes heavily prefiltered\citationneeded. Further filtering is possible by a Kalman filter with the other physical sensors.
+The Global Positioning System (GPS) is a constellation of geosynchronous satellites. Each satellite emits a timestamp. When a GPS receiver receives multiple timestamps, it can triangulate it's position. The mobile phone in this project is the GPS receiver. A GPS signal is requested by the "Fused Location Provider", in the Google Play services location\footnote{Google's closed source \inlineQuote{Fused Location Provider} is chosen over the Android Platform's location API for performance reasons. The Android Platform is a part of the Android open source project. One could replicate this using the open source equivalent but one would need to consider refining the location data themselves; perhaps with a Kalman Filter?} API and comes heavily pre-filtered. Further filtering is possible by a Kalman filter with the other physical sensors.
 
 \subparagraph{IMU}
-For the purpose of this project, the data collected through the Android App applied a Low Pass Filter\citationneeded. A Kalman Filter was considered but wasn't used to avoid modelling the specific android sensor plant dynamics.
+For the purpose of this project, the data collected through the Android App had a Low Pass Filter applied to it (however was not used). An example of this filtering is shown in \fref{AndroidDataExample.png}, and the code used in \lref{lst:filter_android}. A Kalman Filter was considered, but not progressed when the ExtraSensory dataset was selected for us.
 
-\fref{AndroidDataExample.png}
 \fFigure{AndroidDataExample.png}{Results of Low Pass Filter vs Raw accelerometer data}{0.8}
 
 
@@ -671,31 +703,11 @@ For the purpose of this project, the data collected through the Android App appl
 \end{table}
 
 %https://developer.android.com/guide/topics/sensors/sensors_motion
-\subsubsection{Audio}
+% \subsubsection{Audio}\label{sec:Audio}
 
 
-\subparagraph{Data Training, Testing and Evaluation Set}
-The ExtraSensory dataset contains over 300,000 samples across 60 Users (in a CSV format with 278 feature columns), as shown in \ref{tab:ExtraSensoryDataExample}. Each row contains an a 'snapshot' of the sensors at a frequency of once a minute. There are large non-continuities across each user. The dataset is unbalanced, and has had its labels cleaned by the researchers involved. Further details about the users themselves can be found in \ref{tab:ExtraSensoryDataBreakdown}, or at it paper \cite{Vaizman2017}.
+\subparagraph{Data Training, Testing and Evaluation Set} \label{para:ExtraSensorydataset}
 
-\begin{table}[h]
-    \begin{center}  
-        \caption{ExtraSensory Data Breakdown \cite{Vaizman2017}}\label{tab:ExtraSensoryDataBreakdown}
-        \begin{tabular}{lllll}
-            \hline\hline 
-                       & Range     & Average & (standard deviation) &  \\
-            \hline 
-            Age        & 18-42     & 24.7    & -5.6                 &  \\
-            Height     & 145-188   & 171     & -9                   &  \\
-            Weight     & 50-93     & 66      & -11                  &  \\
-            Body       & 18-32     & 23      &                      &  \\
-            Labeled    & 685-9,706 & 5,139   & -2,332               &  \\
-            Additional & 2-6,218   & 1,150   & -1,246               &  \\
-            Average    & 1.1-9.7   & 3.8     & -1.4                 &  \\
-            Days       & 2.9-28.1  & 7.6     & -3.2 \\
-            \hline  
-            \end{tabular}
-    \end{center}
-\end{table}
 
 The dataset was considered for use in 2 ways; training on a per user instance, or training on a per sample instance. The benefits of per user is to isolate recording hardware, and other plant noise. However this is undesirable, as this can result in a low variance in $\epsilon$ (bias), which increases the likelihood  of the learnt function ($\hat{f}$) to overfit the signal of the training users ($ \hat{f} = f(x) + \epsilon$) This, to minimise its impact in evaluation. Thus is the benefit of training on a per sample basis. By introducing other user noise into a training set, we minimise overfitting \inlineQuote{for free}. Finally as a \inlineQuote{kfold} (or other Cross-Validate methods) is applied to the whole training dataset for training + validation purposes, the likelihood  of the random selection incorporating a larger variance of noise increases. As a result, the data is used on as a per sample basis.
 
@@ -1166,7 +1178,9 @@ The choice in machine learning frameworks (and their implementation) could effec
 
 
 \subparagraph{Details of the Audio Data}
-A key assumption was the audio data provided (mono-channel recorded from a mobile phone) is representative of all audio data for use in machine learning. Furthermore, the audio was processed into MFFCs, which are a leading way to process audio data. The report did not attempt to test the results against different types of Audio data (such as multi channel, higher dynamic ranges, etc). The report did not attempt to review the results with other approaches of processing audio data (such as spectrograms with computer vision / machine learning), which may significantly differ the decision boundary which supplementary data would assist.
+A key assumption was the audio data provided (mono-channel recorded from a mobile phone) is representative of all audio data for use in machine learning. Furthermore, the audio was processed into Mel-frequency cepstral coefficients (MFCCs), which are a leading way to process audio data. MFCCs are the coefficents that represent the Mel-frequency cepstral. 
+
+The report did not attempt to test the results against different types of Audio data (such as multi channel, higher dynamic ranges, etc). The report did not attempt to review the results with other approaches of processing audio data (such as spectrograms with computer vision / machine learning), which may significantly differ the decision boundary which supplementary data would assist.
 
 \subparagraph{Types of Supplementary Data}
 The report took the assumption that "supplementary data" in the AEC/D field would be defined as accelerometer, gyroscope, and GPS data. A limitation of this result is whether the result would transfer and compare with different supplementary data sources; video, metadata, multiple datasources for one sample etc. 
@@ -1251,7 +1265,7 @@ In conclusion this seems to be a valid strategy and the next step you would take
 A package of future work would be to discern what impact each additional datasource had on the result.
 
 \paragraph{Review Preprocessing of Data}
-A package of future work would be to analyse whether the method of preprocessing chosen affects the results. For example, this project used MFFCs, but another common practice is to use a sliding window spectrograms.
+A package of future work would be to analyse whether the method of preprocessing chosen affects the results. For example, this project used MFCCs, but another common practice is to use a sliding window spectrograms.
 
 \paragraph{Temporal Feature Engineering}
 A package of future work would be to discern how this result might affect classifiers that use temporal elements for AEC/D.
