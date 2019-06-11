@@ -315,19 +315,24 @@ The process of machine learning relies on having examples of audio data (and sup
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage \section{Review Of Literature}\label{sec:LitReview}
-A literature review of the current research was conducted with guidance from University of Queensland’s guide to Literature reviews \cite{QueenslandReview}. There are 3 nested areas of research that are of interest to this project. The wider classification and regression research topic, the machine learning topic that covers many various fields of implemented and theoretical machine learning applications, and finally the specific field of acoustic event detection and classification (AED/AEC); this field has traditionally relied on older techniques, and is undergoing a revolution with machine learning. 
+\clearpage \section{Review of Literature}\label{sec:LitReview}
+A literature review of the current research was conducted with guidance from University of Queensland’s guide to Literature reviews \cite{QueenslandReview}. There are 3 nested areas of research that are of interest to this project:
+\begin{itemize}
+    \item The wider classification and regression research topic
+    \item The machine learning topic that covers many fields of implemented and theoretical machine learning applications
+    \item The specific field of acoustic event detection and classification (AED/AEC) - this field has traditionally relied on older techniques, and is undergoing a revolution with machine learning. 
+\end{itemize}
 
 \fFigure{niche.png}{The literature for this project is a niche topic in the machine learning area of research}{0.8}
 
 
 \subsection{Acoustic Event Detection and Acoustic Event Classification}
-Historically the technologies for AED/AEC have been Support vector machine (SVMs), Hidden Markov Models (HHMs), and more generally, basic DSP (Digital Signal Processing) classifiers. But in the last 8 years, AED and AEC research has emerged as a hot topic of research. Research focuses on the two key tasks: detection (when did an acoustic event occur in the audio, and when did it stop?) and classification (what sound occurred?). New research papers are often the result of DCASE competitions, which is an official IEEE Audio and Acoustic Signal Processing (AASP) competition. \fref{F1_score.png}.
+Historically the technologies for AED/AEC have been support vector machine (SVMs), Hidden Markov Models (HHMs), and more generally, digital signal processing (DSP) classifiers. In the last 8 years, AED and AEC research has been a popular emerging topic of research. Research has focused on the two key tasks: detection (when did an acoustic event occur in the audio, and when did it stop?) and classification (what sound occurred?). New research papers are often the result of Detection and Classification of Acoustic Scenes and Events Competitions (DCASE) competitions. DCASE is an official Institute of Electrical and Electronics Engineers (IEEE) Audio and Acoustic Signal Processing (AASP) competition. \fref{F1_score.png}.
 
-\fFigure{F1_score.png}{DCASE Researcher Toni Heittola's F1 Results reflect the AED/AEC field of research with drastic improvements over the last 8 years \cite{ToniWebsite}. }{0.8}
+\fFigure{F1_score.png}{Tampere University of Technology Researcher Toni Heittola's F1 Results reflect the AED/AEC field of research with drastic improvements over the last 8 years \cite{ToniWebsite}.}{0.8}
 
-\subsection{DCASE Competitions (Detection and Classification of Acoustic Scenes and Events)}
-The DCASE competitions format started 2013, had its second competition in 2016, and since then has been a yearly event. Since 2017, there has been a new format where the competition starts march, formal results are released by September, and a workshop for participants on the best team’s work in November \cite{2018Schedule}. 2016 was the first to feature machine learning (winning teams incorporated machine learning into ensemble models/classifiers). By 2017 all entries utilised machine learning. Recently the results from DCASE2018 have been published; progress in the AED/AEC field has allowed more sophisticated, real-world applications to be evaluated (Challenge Task \#4) \cite{2018n}. The complexity of the dataset, the number of acoustic classes and fidelity of output are unprecedented in the AEC field. The winning results at this level of complexity are not as high quality compared to last year’s more controlled environment/dataset (2017 had a 41.7\% F1 score \cite{2017results} vs 2018’s 32.4\% \cite{2018n}), but pre-sent the best precedent for the problem addressed in this paper.
+\subsection{Detection and Classification of Acoustic Scenes and Events Competitions (DCASE)}
+The DCASE competitions format started 2013, had its second competition in 2016, and has been a yearly event since. Since 2017, there has been a new format where the competition starts march, formal results are released by September, and a workshop for participants on the best results in November \cite{2018Schedule}. 2016 was the first to feature machine learning (winning teams incorporated machine learning into ensemble model classifiers). By 2017 all entries utilised machine learning. The results from DCASE2018 indicate that progress in the AED/AEC field had allowed more sophisticated, real-world applications to be evaluated, such as DCASE2018's Challenge Task \#4 \cite{2018n}. This task focused on using a subset of Google's AudioSet to determine the audio class, and the timestamps of when that class occurred within a sample. The complexity of the dataset, the number of acoustic classes and fidelity of output were unprecedented in the AEC field. The winning results for this level of complexity did not score as high a F1 score compared to the DCASE2017 competition. DCASE2017 featured more controlled environments/datasets across the 4 tasks which likely resulted in the disparity (2017 had a 41.7\% F1 score \cite{2017results} vs 2018’s 32.4\% \cite{2018n}). It is however DCASE 2018 that presented the best precedent for the problem addressed in this paper.
 
 \subsection{Leading Research, DCASE2018 Task 4 Winner}
 The winning model used in the DCASE2018 Task 4 challenge used a “Mean-teacher” model for classification (useful abstract results averaging applicable to a range of classifier models), a CNN for context gating (a pre-classifier step to improve flaws in training methodologies for some machine learning models \cite{Yan16}) and a bidirectional recurrent neural network (RNN) to improve the utilisation of unlabelled, unbalanced training datasets \cite{winners}; this last component is important for this paper, as the leading dataset outside of DCASE challenges is the weakly labelled Google AudioSet, of which only small percentage of is balanced.
@@ -429,14 +434,10 @@ The spray diagram shown in \fref{SprayDiagram.png} shows how details of the syst
 A matrix diagram was made to review reduced scope as shown in \fref{MatrixDiagram.png}. The numbers indicate \inlineQuote{packages of work}. By using a “strong”, “weak” or “none” indicator for each aspect of the project, each package of work was evaluated against it's likelihood to fulfill to the requirements of the project. It highlighted the difficulty in balancing the needs of both major stakeholders. 
 \fFigure{MatrixDiagram.png}{A matrix diagram for the project}{0.8}
 
-\subsection{Summary of Problem Analysis: Final Problem Analysis and Discussion}
-% \subsection{Discussion}
-The purpose of the project was to hypothesis and produce a proof-of-concept machine learning solution to improve debriefing processes and outcomes. This should also provide an excellent learning opportunity for the author. \flagforreview
+\subsection{Summary of Problem Analysis}
+This section described the motivation for the project was applied AEC/D and this required scope reduction to ensure it was feasible as a Final Year Project. It also included a proof-of-concept machine learning solution within the scope. This should also provide an excellent learning opportunity for the author.
 
-%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage \section{Method} \label{sec:Method}
 \subsection{Introduction to the Method}
 In a traditional machine learning problem there are 5 stages to the method; 
