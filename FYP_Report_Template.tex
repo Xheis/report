@@ -21,6 +21,7 @@
 \usepackage{stringstrings}      % Sentence Case
 \usepackage[explicit]{titlesec} % Sentence Case
 
+% \usepackage{dirtytalk} % \say
 
 \usepackage{caption}
 
@@ -30,7 +31,7 @@
 \newcommand{\flagforreview}{\textsuperscript{\color{red} [FLAGGED FOR REVIEW]}}
 \newcommand{\rephrase}{\textsuperscript{\color{red} [REPHRASE?]}}
 
-\newcommand{\inlineQuote}[1]{``#1''}
+\newcommand{\inlineQuote}[1]{`` #1 ''}
 
 \newcommand{\fancyquote}[1]{\begin{quotation}\inlineQuote{#1}\end{quotation}}
 \newcommand{\fref}[1] {Figure \ref{#1}}
@@ -504,10 +505,54 @@ The machine learning solution required GPS, accelerometer, gyroscope, and audio.
 
 \subsection{Data Collection}
 
-The decision of what data to collect and utilise was identified through the problem analysis in \sref{sec:ProblemAnalysis}. As the goal was to maximise the accuracy of the classifier (whilst still being an achievable goal), the data chosen for use and collection was GPS, accelerometer, gyroscope, and audio. As described in the problem analysis phase, the best platform for this would be a smartphone as shown in \sref{sec:ProblemAnalysis} and \aref{apx:TradeReview}. 
+The decision of what data to collect and utilise was identified through the problem analysis in \sref{sec:ProblemAnalysis}. As the goal was to maximise the accuracy of the classifier (whilst still being an achievable goal), the data chosen for use and collection was GPS, accelerometer, gyroscope, and audio. As described in the problem analysis phase, the best platform for this would be a mobile phone as shown in \sref{sec:ProblemAnalysis} and \aref{apx:TradeReview}. 
 
 \subsubsection{Project Android App}
 Android was chosen as the platform as it had significant support for reading from the on-board sensors. The data available from the Android API can be seen in table \ref{tab:AndroidDataAvailable}. This was the source for accelerometer, gyroscope and GPS data. It was also selected due to its support for C/C++ through the Native Development Kit (NDK). The programming language C is required knowledge for many courses in the University of Newcastle Bachelor of Mechatronics degree. 
+
+
+\begin{table}[h!]
+    \begin{center}
+        \caption{Data Available\citationneeded}\label{tab:AndroidDataAvailable}
+        {\footnotesize
+            \begin{tabular}{c l l l|}
+                \hline\hline Sensor & Description \\ \hline 
+                TYPE ACCELEROMETER & Acceleration force along the x axis (including gravity). \\
+                 & Acceleration force along the y axis (including gravity). \\
+                  & Acceleration force along the z axis (including gravity). \\
+                TYPE ACCELEROMETER UNCALIBRATED & Measured acceleration along the X axis without any bias compensation. \\
+                  & Measured acceleration along the Y axis without any bias compensation. \\
+                  & Measured acceleration along the Z axis without any bias compensation. \\
+                  & Measured acceleration along the X axis with estimated bias compensation. \\
+                  & Measured acceleration along the Y axis with estimated bias compensation. \\
+                  & Measured acceleration along the Z axis with estimated bias compensation. \\
+                TYPE GRAVITY & Force of gravity along the x axis. \\
+                 & Force of gravity along the y axis. \\
+                 & Force of gravity along the z axis. \\
+                TYPE GYROSCOPE & Rate of rotation around the x axis. \\
+                  & Rate of rotation around the y axis. \\
+                  & Rate of rotation around the z axis. \\
+                TYPE GYROSCOPE UNCALIBRATED & Rate of rotation (without drift compensation) around the x axis. \\
+                  & Rate of rotation (without drift compensation) around the y axis. \\
+                  & Rate of rotation (without drift compensation) around the z axis. \\
+                  & Estimated drift around the x axis. \\
+                  & Estimated drift around the y axis. \\
+                  & Estimated drift around the z axis. \\
+                TYPE LINEAR ACCELERATION & Acceleration force along the x axis (excluding gravity). \\
+                  & Acceleration force along the y axis (excluding gravity). \\
+                  & Acceleration force along the z axis (excluding gravity). \\
+                TYPE ROTATION VECTOR & Rotation vector component along the x axis (x  sin(o/2)). \\
+                  & Rotation vector component along the y axis (y  sin(o/2)). \\
+                  & Rotation vector component along the z axis (z  sin(o/2)). \\
+                  & Scalar component of the rotation vector ((cos(o/2)).1 \\
+                TYPE SIGNIFICANT MOTION & N/A \\
+                TYPE STEP COUNTER & Number of steps taken by the user since the last reboot while the sensor was activated. \\
+                TYPE STEP DETECTOR & N/A \\
+                \\ \hline
+            \end{tabular}
+        }
+    \end{center}
+\end{table}
 
 The app was developed over five weeks. It was able to record audio to a .wav file and record raw GPS data\footnote{Timestamps, latitude, longitude and altitude are recorded from the GPS sensor}, raw acceleration, and raw gyroscopic data. The output was an audio .wav file, and a Comma Separated Value (csv) file.
 
@@ -613,12 +658,11 @@ The ExtraSensory dataset is compiled from 60 users with a diverse range of phone
     \end{center}
 \end{table}
 
-
 \subsection{Data Preprocessing}
 In the machine learning pipeline for use with the Android app, the data pre-processing occurred offboard from the app. This preprocessing was done Python. Preprocessing the data occurs before the machine learning modules of code, and Matlab was also used to prototype the algorithms.
 
 \subparagraph{Audio}
-Data preprocessing of the Audio was as follows:
+Preprocessing of the audio data was as follows:
 The recorded .wav files were split into smaller sections via the sliding window method\flagforreview. Each window then has the Fourier transform applied to it. These windows are then mapped to the Mel Log Scale. 
  This in turn is both \inlineQuote{Feature Engineering}, as well as preprocessing to be training compatible. 
 \begin{gather}%\label{eq:EquationLine}
@@ -646,7 +690,6 @@ For the purpose of this project, the data collected through the Android App had 
 
 \fFigure{AndroidDataExample.png}{Results of Low Pass Filter vs Raw accelerometer data}{0.8}
 
-
 \lstinputlisting[
     language=Matlab,
     float=h,
@@ -659,91 +702,67 @@ For the purpose of this project, the data collected through the Android App had 
 
     
 
-\begin{table}[h!]
-    \begin{center}
-        \caption{Data Available\citationneeded}\label{tab:AndroidDataAvailable}
-        {\footnotesize
-            \begin{tabular}{c l l l|}
-                \hline\hline Sensor & Description \\ \hline 
-                TYPE ACCELEROMETER & Acceleration force along the x axis (including gravity). \\
-                 & Acceleration force along the y axis (including gravity). \\
-                  & Acceleration force along the z axis (including gravity). \\
-                TYPE ACCELEROMETER UNCALIBRATED & Measured acceleration along the X axis without any bias compensation. \\
-                  & Measured acceleration along the Y axis without any bias compensation. \\
-                  & Measured acceleration along the Z axis without any bias compensation. \\
-                  & Measured acceleration along the X axis with estimated bias compensation. \\
-                  & Measured acceleration along the Y axis with estimated bias compensation. \\
-                  & Measured acceleration along the Z axis with estimated bias compensation. \\
-                TYPE GRAVITY & Force of gravity along the x axis. \\
-                 & Force of gravity along the y axis. \\
-                 & Force of gravity along the z axis. \\
-                TYPE GYROSCOPE & Rate of rotation around the x axis. \\
-                  & Rate of rotation around the y axis. \\
-                  & Rate of rotation around the z axis. \\
-                TYPE GYROSCOPE UNCALIBRATED & Rate of rotation (without drift compensation) around the x axis. \\
-                  & Rate of rotation (without drift compensation) around the y axis. \\
-                  & Rate of rotation (without drift compensation) around the z axis. \\
-                  & Estimated drift around the x axis. \\
-                  & Estimated drift around the y axis. \\
-                  & Estimated drift around the z axis. \\
-                TYPE LINEAR ACCELERATION & Acceleration force along the x axis (excluding gravity). \\
-                  & Acceleration force along the y axis (excluding gravity). \\
-                  & Acceleration force along the z axis (excluding gravity). \\
-                TYPE ROTATION VECTOR & Rotation vector component along the x axis (x  sin(o/2)). \\
-                  & Rotation vector component along the y axis (y  sin(o/2)). \\
-                  & Rotation vector component along the z axis (z  sin(o/2)). \\
-                  & Scalar component of the rotation vector ((cos(o/2)).1 \\
-                TYPE SIGNIFICANT MOTION & N/A \\
-                TYPE STEP COUNTER & Number of steps taken by the user since the last reboot while the sensor was activated. \\
-                TYPE STEP DETECTOR & N/A \\
-                \\ \hline
-            \end{tabular}
-        }
-    \end{center}
-\end{table}
 
 %https://developer.android.com/guide/topics/sensors/sensors_motion
 % \subsubsection{Audio}\label{sec:Audio}
 
 
 \subparagraph{Data Training, Testing and Evaluation Set} \label{para:ExtraSensorydataset}
-
-
-The dataset was considered for use in 2 ways; training on a per user instance, or training on a per sample instance. The benefits of per user is to isolate recording hardware, and other plant noise. However this is undesirable, as this can result in a low variance in $\epsilon$ (bias), which increases the likelihood  of the learnt function ($\hat{f}$) to overfit the signal of the training users ($ \hat{f} = f(x) + \epsilon$) This, to minimise its impact in evaluation. Thus is the benefit of training on a per sample basis. By introducing other user noise into a training set, we minimise overfitting \inlineQuote{for free}. Finally as a \inlineQuote{kfold} (or other Cross-Validate methods) is applied to the whole training dataset for training + validation purposes, the likelihood  of the random selection incorporating a larger variance of noise increases. As a result, the data is used on as a per sample basis.
+The ExtraSensory dataset\footnote{The same approach was considered for the Android app} was considered for use in 2 ways; training on a per user instance, or training on a per sample instance. The benefits of per user was to isolate recording hardware, and other plant noise. However this was undesirable, as this could result in a low variance in $\epsilon$ (bias), which increases the likelihood of the learnt function ($\hat{f}$) to overfit the signal of the training users ($ \hat{f} = f(x) + \epsilon$).
+%The trade off is to minimise variance, and its impact in the evaluation, could better isolate desired results.
+Thus was the benefit of training on a per sample basis. By introducing other user noise into a training set, overfitting was minimised \inlineQuote{for free}. Finally as a \inlineQuote{kfold} (or other cross-validation methods) is applied to the whole training dataset for training + validation purposes, the likelihood of the random selection incorporating a larger variance of noise increases. As a result, the data is used on as a per sample basis.
 
 \subparagraph{\inlineQuote{kfold} Cross validation} \flagforreview
-kfold Cross Validation can be described as:
+kfold Cross Validation is described as:
 \fancyquote{
-    ... approach involves randomly dividing the set of observations into k groups, or folds, of approximately equal size. The first fold is treated as a validation set, and the method is fit on the remaining k - 1 folds. 
-    } \cite{James2017}
-A key element expanding on this is the ability to cycle through `k folds', changing which group is the validation, or test set, and training on the rest.
-% The kfold creates creates 2 groups. A single test group and many training groups. Each training group gets tested via the single test group. Then, test group changes each 'fold'.
+    kFold involves randomly dividing the set of observations into k groups, or folds, of approximately equal size. The first fold is treated as a validation set, and the method is fit on the remaining k - 1 folds. \cite{James2017}} 
+A key element expanding on this is the ability to cycle through `k folds', changing which group is the validation, or test set, and training on the rest.\footnote{kFold implementation occurs within the RandomCV, as discussed on page \pageref{subsec:HypOpt}}
 
-The question of whether supplementary data will improve the classifier's F1 score is best answered by deciding on an appropriate classifier, and testing it with and without the supplementary data. As discussed, the appropriate classifier could be chosen via hyperparameter testing against a validation set, however the feature analysis carried out above will also influence classifier design. The unbalanced nature of the dataset is also a factor.
+\subparagraph{Balanced vs Unbalanced}
+A meaning of a \inlineQuote{Balanced} vs \inlineQuote{Unbalanced} dataset is whether positive samples are \inlineQuote{balanced} by an equal amount of negative samples. In a hypothetical binary classification, this might be an equal amount of benign vs malignant cancers in a cancer classification dataset. The reason why a balanced dataset is important is to minimise any bias in the network. If a majority of cases are benign, then a bias towards all cases being benign would be a valid strategy, but not a desired one. 
+
+The ExtraSensory dataset contains positive samples across 51 classes. These 51 classes do not occur at the same frequency as each other. In any given sample, one would not expect every class to be equally represented. To minimise bias, the Python library \inlineQuote{imblearn} was used to resample the dataset, as shown in \lref{lst:resampExtraSensory}.
+
+\lstinputlisting[
+    language=python,
+    float=h,
+    numbers=left,
+    xleftmargin=1cm,
+    frame=shadowbox,
+    breaklines=true,
+    caption={Code for resampling of the ExtraSensory dataset\label{lst:resampExtraSensory}},
+    ]{Code/resample.py}
+
+% The question of whether supplementary data will improve the classifier's F1 score is best answered by deciding on an appropriate classifier, and testing it with and without the supplementary data. As discussed, the appropriate classifier could be chosen via hyperparameter testing against a validation set, however the feature analysis carried out above will also influence classifier design. The unbalanced nature of the dataset is also a factor.
 
 
 \subsection{Classifier}
 
-A classifier by definition classifies (or, categorises) things. A more thorough understanding is that a classifier takes some input data and maps it to an output category, or label. In a machine learning context, this mapping is done via the $\hat{f}$ learnt function. For this project the classifier is a learnt function that takes audio, accelerometer, gyroscope and GPS data and maps that data to a label one of the labels found in Appendix \ref{apx:ExtraSensoryLabels}, table \ref{tab:ExtraSensoryLabels}. 
+A classifier by definition classifies (or, categorises) things. A more thorough understanding is that a classifier takes some input data and maps it to an output category, or label. In a machine learning context, this mapping is done via the $\hat{f}$ learnt function. For this project the classifier is a learnt function that takes audio, accelerometer, gyroscope and GPS data and maps that data to a label one of the labels found in \aref{apx:ExtraSensoryLabels}, \tref{tab:ExtraSensoryLabels}. 
 
 \subparagraph{Binary, Multi-class, and  Multi-Label classifiers}
-If a classifier is to map data to a label, it stands to reason that the label must be well defined. A binary classifier as the name suggests will categorise input as 1, or 0 against a label. This could be result in "Car" or "Not Car", but it can also be extended to multiple classes, for example "Not Car", "Holden", "Ford" etc. This can be done via a ensemble of binary classifiers (combing together the output of the same dataset that has been parsed into a "Ford" classifier, a "Holden" classifier etc.), or more recently through a \inlineQuote{One Hot} \cite{huffman1954the} encoded output array as seen in table \ref{tab:HotOneEnc}. A key element of multi-class classifiers are that the classes are mutually exclusive. The car brands in \ref{tab:HotOneEnc} are mutually exclusive.
+If a classifier is to map data to a label, it stands to reason that the label must be well defined. A binary classifier as the name suggests will categorise input as 1, or 0 against a label. This could be result in "Car" or "Not Car", but it can also be extended to multiple classes, for example "Not Car", "Holden", "Ford" etc. This can be done via a ensemble of binary classifiers (combing together the output of the same dataset that has been parsed into a "Ford" classifier, a "Holden" classifier etc.), or more recently through a \inlineQuote{One Hot} \cite{huffman1954the} encoded output array as seen in \tref{tab:HotOneEnc}. A key element of multi-class classifiers are that the classes are mutually exclusive. The car brands in \tref{tab:HotOneEnc} are mutually exclusive.
 
 \begin{table}[h]
     \begin{center}  
     \caption{Example Hot One Encoding}\label{tab:HotOneEnc}
         \begin{tabular}{llll}
+            \hline\hline
                            & Holden & Ford & Other \\
+                           \hline \\
             Ford Fiesta    & 0      & 1    & 0     \\
             VW Golf        & 0      & 0    & 1     \\
-            Holden Captiva & 1      & 0    & 0    
+            Holden Captiva & 1      & 0    & 0     \\
+            \hline
         \end{tabular}
     \end{center}
 \end{table}
 
-However, there is another type of classifier called the multi-label classifier. An example of a multi label classifier is this project. The project may want to label whether signal in the provided data represents jogging, walking, talking, eating etc. For these labels, they are not mutually exclusive, and could all be occurring at the same time.
+However, there is another type of classifier called the multi-label classifier. An example of a multi label classifier is this project. This project wanted to label whether signal in the provided data represents jogging, walking, talking, eating etc. For these labels, they are not always mutually exclusive, and could occur at the same time.
 
-For this project, a binary classifier and a multi-label classifier will be used and evaluated. The reason for this is because the intent of the project is to answer the question does supplementary data assist in classifying an acoustic event detection and classification (AEC/D) problem, and a binary classifier is a valid and succinct way to answer this question. However, for most realistic use cases, what is important is whether the result is valid in a multi-label classifier. For this reason, the methodology section will be applied to creating a multi-label variant of the network. This will use the same hyperparameter optimisation as the binary classifier and will be discussed in the results. 
+For this project, a binary classifier and a multi-label classifier was used and evaluated. The reason for this is because the intent of the project was to answer the question does supplementary data assist in an acoustic event detection and classification (AEC/D) problem, and a binary classifier is a valid and succinct way to answer this question. However, for most `realistic' use cases the validity of the result is important. For this reason, a multi-label classifier would be the most appropriate classifier to test against.\\
+
+The methodology section was used to create a multi-label variant of the network. This used the same hyperparameter optimisation as the binary classifier and is discussed in the results. 
 
 
 % * What is a classifier - maps data into categories, or in our case audio/imu data in AEC/AED labels.
@@ -770,7 +789,7 @@ The recursive neural network (RNN) is not well suited to tabular data this is be
 However it will not be used due to the extra complexity which is not needed by the use case. Other options include a random Forest classifier which have been used to great success by Phan, \cite{Phan2015}. However a random Forest classifier is not well suited to unbalanced data sets and would prevent a much bigger problem with for training the future the random forest classifier has been evaluated for comparison in the results section however as a architectural decision it will not be used simile so scikit-learn also has the algorithm extra trees classifier citation needed which can be used in a similar way to the random Forest Hill that you eat better handles label caissons which is important for our use case ll use case is evaluating a binary class against the potential list \flagforreview
 
 \subparagraph{Mulilayer Perceptron Feed Forward Neural Network}
-The multilayer perceptron classifier has been selected this
+The multilayer perceptron classifier has been selected this \flagforreview
 
 For our project we are using tabular time-invariant data using a snapshot data in a tabular format means that we will not see the benefits of a convolution neural network in a deep learning environment vs the more simple mlpclassifier which trains faster will receive the better result and is expected to compress better winNetwork(parametee will also
 
@@ -787,13 +806,12 @@ The MLPClassifier is a feedforward neural network, trained via backpropagation. 
 
 
 \subsection{Model Validation}\label{subsec:ModelVal}
-Validation is the process of optimisation the hyperparameters of a model on the hold-out validation set of data. This is an important aspect of machine learning process because model validation cannot be learnt from data. That is to say, hyperparameter optimisation is out of the scope of training via traditional gradient decent and back propagation. Due to the "No Free Lunch" theorem, a model will be chosen and must be optimised before training begins. This is an extension of trying to find the optimal model for the solution. 
+Validation is the process of optimising the hyperparameters of a model, and evaluating each iteration on the hold-out validation set of data. This is an important aspect of the machine learning process because model validation cannot be learnt from data. That is to say, hyperparameter optimisation is out of the scope of training via traditional gradient decent and back propagation. Due to the "No Free Lunch" theorem, a model will be chosen and optimised before training and evaluation begins. This is an extension of trying to find the optimal model for the solution. 
 
 \paragraph{Model Performance Metrics}
-Before the hyperparameters can be optimised, a metrics to optimise the network on must be selected, of which there are many ways to do it which will now discussed. \\
+Before the hyperparameters could be optimised, a metrics to optimise the network on had to be selected. There are many metrics that will now discussed. \\
 
-
-\paragraph{Terminology} 
+\subparagraph{Terminology} 
 Before evaluating metrics, the Terminology of the following formula must be formalised. The first is what a "correct" classification is. The following terminology will be used:
 \begin{itemize}
     \item True Positives (TP) - A correctly classified positive sample
@@ -819,7 +837,7 @@ A confusion matrix is a 4 cell table that lists TP, FP, FN, TN. This is a great 
 
 \fFigure{confusion_matrix.png}{A confusion matrix of the Iris Database. \cite{scikitlearnConMatrix}}{0.6}
 
-In this project, the Confusion Matrix gets generated to sanity check, and contextualise, other performance measures. It is an important tool for weighing up the validity of classifier before accepting it for real world use.
+In this project, the Confusion Matrix gets generated to check, and contextualise, other performance measures. It is an important tool for weighing up the validity of classifier before accepting it for real world use.
 
 \subparagraph{Recall (or sensitivity)}
 
@@ -868,7 +886,7 @@ In a more formal sense, the Receiver Operating Characteristics (ROC) is the rela
 
 In this project, the AUROC will not be extensively used, except for educational purposes. The purpose of a AUROC is to demonstrate, and optimise the confidence in classification based on thresholds applied. The AUROC can be used to demonstrate a quantitative assessment of any particular sample (similar to a Regression problem).
 
-\subsubsection{Hyperparameter Optimisation}
+\subsubsection{Hyperparameter Optimisation}\label{subsec:HypOpt}
  Machine learning is about learning, and adjusting, the internal parameters of a classifier. A hyperparameter is a parameter that cannot be learnt from backpropagation, as it is external to the classifier. These are parameters such as hidden layer size, training rates, classifier specific strategy, etc. The way to choose these hyperparameters is therefore an optimisation problem. The problem is to maximise the score selected above, by trialling  different hyperparameters. The following describe methods of finding the optimal hyperparameters.
 
  \subparagraph{Manual Search}
@@ -1150,7 +1168,7 @@ The results above aim to demonstrate a quantitative difference in F1 score acros
 The results are constrained by the assumptions made in \sref{sec:Method}. One assumption is that the \inlineQuote{No Free Lunch} theorem infers that no individual classifier is theoretically better than another pre-training. This assumption infers that the results of this project will affect all models, but the quantitative impact may vary post-training. Similarly so, there is no assumption on the strength of this result on application to other projects; the dataset and training may significantly affect the strength of this result.
 
 \subparagraph{Confidence and Qualitative Evaluation of Result}
-The result had been analysed using the Area Under Receiver Operating Characteristics (AUROC) plot, to determine how the classifier would operate over different decision boundaries. The AUROC plots shown in \fref{both_ROC.png} show the consistency of the model. This is demonstrated via the smooth continuity of the ROC curve (no major jumps in TP performance). This sanity check ensures that the results produced were not the result of a classifier optimised about artefact of the post-training model.
+The result had been analysed using the Area Under Receiver Operating Characteristics (AUROC) plot, to determine how the classifier would operate over different decision boundaries. The AUROC plots shown in \fref{both_ROC.png} show the consistency of the model. This is demonstrated via the smooth continuity of the ROC curve (no major jumps in TP performance). This ensures that the results produced were not the result of a classifier optimised about an artefact of the post-training model.
 
 \subparagraph{Changing Hyperparameters}
 The results assume that using static hyperparameters across the Audio, and Audio+Extra classifiers would be an invalid strategy of testing the hypothesis. It would be expected that optimising the hyperparameters for one classifier and not the other would result in the other classifier performing worse. This would result in a convolution of the effect from the extra data, and a classifier with poorly optimised hyperparameters. As such, there is an inverse assumption that optimising both classifiers separately, but using the same methodology is a fair strategy to minimise the model and its hyperparameter's effect on F1 Score.
@@ -1161,12 +1179,9 @@ The complexity of the classification task was low compared to similar studies \c
 \subparagraph{Causation}
 The increase in F1 score could occur in 2 areas. The first is during hyperparameter optimisation, in which the hyperparameters are fitted to our activation model using Audio and/or the supplementary data, optimised about the F1 score. The second is in the fitting itself, where the supplementary data may contain a signal that could be benefiting the F1 score of the model. If this hypothesis is correct, then these results will hold valid across other classifiers that require hyperparameter optimisation and fitting of training data.
 
-\subparagraph{acoustic event Detection}
-The validity of the result holds true for acoustic event classification, however, no acoustic event \inlineQuote{detection} was carried out. That is, a sound sample was classified as an acoustic event as a binary output, rather than identifying when the acoustic event occurred in the sound sample. Phaun discusses the differences and complexities involved in AEC vs AED in a paper called \inlineQuote{What Makes Audio Event Detection Harder than Classification?} \cite{Phan2016}. This suggests that this project's result may be valid acoustic event detection, given AEC is a crucial element of the detection pipeline.
-
-\subparagraph{Significance}
-The results from this project aim to present a peer-reviewable benchmark for the impact of the supplementary datasources of an accelerometer, gyroscope and GPS. The key significance is that the qualitative result can be taken and applied to similar projects.\\
-Of note, no effort was made to discern the impact each of the 3 additional datasources played in the 10.5\% and 11.9\% improvements obtain in the results. This was a conscious effort, as these datasources are prevalent, and commonly found together. It could be inferred from \aref{apx:FeatureImportance} that accelerometer was likely the most impactful element. It would be left to future work to investigate and discern the specific impact each sensor had, and the cost of including \inlineQuote{less important} features vs training time. 
+\subparagraph{Acoustic Event Detection}
+The validity of the result holds true for acoustic event classification, however, no acoustic event \inlineQuote{detection} was carried out. That is, a sound sample was classified as containing an acoustic event rather than identifying when the acoustic event occurred in the sound sample. Phaun \cite{Phan2016} discusses the differences and complexities involved in AEC vs AED, and evaluates the use of classifiers as a verification stage in an acoustic event detection pipeline. %in a paper called \inlineQuote{What Makes Audio Event Detection Harder than Classification?} .
+Phaun's results suggested that the AEC is an crucial element of the detection pipeline. This project's result may then be valid for acoustic event detection, given AEC's role in AED.
 
 \subparagraph{Quality of Data}
 ExtraSensory was used as the dataset for this project. As a result of using the a public dataset, there was no investigation into the quality of the data within the dataset, beyond reading the original study. The quality of the recording device, any preproccessing, nor whether they generalised well has been checked. This is a key limitation with analysing the quantitative result. This limitation does not invalid the result however because the dataset was collected with mobile phones. Mobile phones would likely be the main datasource for any future dataset involving audio, accelerometer, gyroscope and GPS data.\\
@@ -1178,18 +1193,18 @@ The choice in machine learning frameworks (and their implementation) could effec
 
 
 \subparagraph{Details of the Audio Data}
-A key assumption was the audio data provided (mono-channel recorded from a mobile phone) is representative of all audio data for use in machine learning. Furthermore, the audio was processed into Mel-frequency cepstral coefficients (MFCCs), which are a leading way to process audio data. MFCCs are the coefficents that represent the Mel-frequency cepstral. 
+A key assumption was the audio data provided (mono-channel recorded from a mobile phone) is representative of all audio data for use in machine learning. Furthermore, the audio was processed into Mel-frequency cepstral coefficients (MFCCs), a leading approach to processing audio data. MFCCs are the coefficents that represent the Mel-frequency cepstral. 
 
-The report did not attempt to test the results against different types of Audio data (such as multi channel, higher dynamic ranges, etc). The report did not attempt to review the results with other approaches of processing audio data (such as spectrograms with computer vision / machine learning), which may significantly differ the decision boundary which supplementary data would assist.
+This report did not attempt to test the results against different types of Audio data (such as multi channel, higher dynamic ranges, etc). The report did not attempt to review the results with other approaches of processing audio data (such as spectrograms with computer vision / machine learning), which may significantly differ the decision boundary which supplementary data would assist.
 
 \subparagraph{Types of Supplementary Data}
-The report took the assumption that "supplementary data" in the AEC/D field would be defined as accelerometer, gyroscope, and GPS data. A limitation of this result is whether the result would transfer and compare with different supplementary data sources; video, metadata, multiple datasources for one sample etc. 
+This report took the assumption that "supplementary data" in the AEC/D field would be defined as accelerometer, gyroscope, and GPS data. A limitation of this result is whether the result would transfer and compare with different supplementary data sources; video, metadata, multiple datasources for one sample etc. 
 
 \subparagraph{Model Optimisation}
 A key assumption was that the model selected had been close to fully optimised, to the extent as to \sref{sec:Method} allowed. This assumption infers that any improvement in F1 Score with the addition of supplementary data can determined to be from the introduction of the data itself, and not a result of better hyperparameter optimisation.
 
 \subparagraph{F1 Score as a Metric}
-The project sought to measure a discernible difference in F1 score by the introduction of supplementary data. An assumption that F1 score is the most appropriate indicator of a positive result is made. It could be noted that F1 score is the harmonic mean of the true positive and true negative rate. Had the project selected a different metric from \sref{subsec:ModelVal}, the intent of the question would remain but the relative increase in performance would be vastly different. A limitation of this result is that the validity of the result working in another project assumes that an improvement in F1 score throughout hyperparameter optimisation and backpropagation/training of the model is desirable in the other project.
+This project sought to measure a discernible difference in F1 score by the introduction of supplementary data. An assumption that F1 score is the most appropriate indicator of a positive result is made. It could be noted that F1 score is the harmonic mean of the true positive and true negative rate. Had the project selected a different metric from \sref{subsec:ModelVal}, the intent of the question would remain but the relative increase in performance would be vastly different. A limitation of this result is that the validity of the result working in another project assumes that an improvement in F1 score throughout hyperparameter optimisation and backpropagation/training of the model is desirable in the other project.
 
 \subparagraph{Limiting Model Choice to Avoid Excessive Feature}
 Some machine learning models are sensitive to feature \citationneeded \flagforreview
@@ -1197,17 +1212,23 @@ Some machine learning models are sensitive to feature \citationneeded \flagforre
 \subparagraph{Temporal Features}
 This classifier did not make use of any temporal aspects that would be available to other datasets. This was a limitation of the dataset. Due to the natural of the supplementary data being time varying measurements, it would be expected that their inclusion to a AED/C pipeline would benefit, however it would be left for future work to determine the exact nature of this benefit.
 
+
+\subparagraph{Significance} %review: reverse funnel; talk to the very specific result, then what knock on effects it will have, then what that means for the wider field, and finally what that means for actual real life. key words; fundamental, building block, wider application, through multiple wider fields, real world imapct, 
+The results from this project aim to present a peer-reviewable benchmark for the impact of the supplementary datasources of an accelerometer, gyroscope and GPS. The key significance is that the qualitative result can be taken and applied to similar projects.\\
+Of note, no effort was made to discern the impact each of the 3 additional datasources played in the 10.5\% and 11.9\% improvements obtain in the results. This was a conscious effort, as these datasources are prevalent, and commonly found together. It could be inferred from \aref{apx:FeatureImportance} that accelerometer was likely the most impactful element. It would be left to future work to investigate and discern the specific impact each sensor had, and the cost of including \inlineQuote{less important} features vs training time. 
+
+
 %4 including the additional data points of accelerometer data gyroscope data and GPS data what it doesn't highlight is how optimal that data is nor does it evaluate the preprocessing of that data nor does it 
-evaluate the generalisation of this methodology to new data sets
-what it does answer is the original question of does including supplementary data increase the F1 score and the answer is yes
+% evaluate the generalisation of this methodology to new data sets
+% what it does answer is the original question of does including supplementary data increase the F1 score and the answer is yes
 
-what is important is to discuss how you would evaluate the generalisation of this model 
-what impact the model quality has on this result if we've used a different model which we have and we will show this result what is the difference in the improvement 
-is there any improvement how do you evaluate whether a model will benefit from this extra data points there are some models specifically which you do need to do feature reduction and feature analysis on to ensure you don't over specify the features even if you low weight the features you may still have an issue of having too much data
+% what is important is to discuss how you would evaluate the generalisation of this model 
+% what impact the model quality has on this result if we've used a different model which we have and we will show this result what is the difference in the improvement 
+% is there any improvement how do you evaluate whether a model will benefit from this extra data points there are some models specifically which you do need to do feature reduction and feature analysis on to ensure you don't over specify the features even if you low weight the features you may still have an issue of having too much data
 
-performance is another element of this is. For the results what was the cost so we have increase the amount of data we need to use increase the data we need to process increase the data we need to collect to train we are also looking at a larger model file size which for a use case of potentially online processing would be very detrimental
+% performance is another element of this is. For the results what was the cost so we have increase the amount of data we need to use increase the data we need to process increase the data we need to collect to train we are also looking at a larger model file size which for a use case of potentially online processing would be very detrimental
 
-The 8\% results are based on solid evidence they may not actually be a valid application or a valid progress for achieving a 5\% increase for instance how do we only change the data set and retrain revalidated and then re-evaluated this process would we see similar numbers that is the model likely wouldn't produce the exact same if one school so is our 5\% related or proportional to the original benefit had we not done hyperparameter searching to optimise our model potentially we would have seen a much larger game in F1 score from the addition of the additional data points that hypothetical would be because if the model is already underperforming / are an optimised then the additional data points May introduce that additional optimisation needed
+% The 8\% results are based on solid evidence they may not actually be a valid application or a valid progress for achieving a 5\% increase for instance how do we only change the data set and retrain revalidated and then re-evaluated this process would we see similar numbers that is the model likely wouldn't produce the exact same if one school so is our 5\% related or proportional to the original benefit had we not done hyperparameter searching to optimise our model potentially we would have seen a much larger game in F1 score from the addition of the additional data points that hypothetical would be because if the model is already underperforming / are an optimised then the additional data points May introduce that additional optimisation needed
 
 
 
