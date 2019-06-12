@@ -498,4 +498,13 @@ http://www.k-jahn.de/files/bibtex.xslhttp://www.k-jahn.de/files/bibtex.xslhttp:/
   publisher = {American Mathematical Society ({AMS})},
 }
 
+@TechReport{Lu2018,
+  author      = {JiaKai, Lu},
+  title       = {MEAN TEACHER CONVOLUTION SYSTEM FOR DCASE 2018 TASK 4},
+  institution = {DCASE2018 Challenge},
+  year        = {2018},
+  month       = {September},
+  abstract    = {In this paper, we present our neural network for the DCASE 2018 challenge’s Task 4 (Large-scale weakly labeled semi-supervised sound event detection in domestic environments). This task evaluates systems for the large-scale detection of sound events using weakly labeled data, and explore the possibility to exploit a large amount of unbalanced and unlabeled training data together with a small weakly annotated training set to improve system performance to doing audio tagging and sound event detection. We propose a mean-teacher model with context-gating convolutional neural network (CNN) and recurrent neural network (RNN) to maximize the use of unlabeled in-domain dataset.},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}

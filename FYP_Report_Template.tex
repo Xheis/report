@@ -178,7 +178,7 @@ The project investigated whether supplementary data (Accelerometer, Gyroscope, G
 
 \sref{sec:Discussion} evaluates the results and discusses their limitations. It will discuss how multi-sensor AEC/D is effective, why the result will be valid in other projects and the significance of these results in the wider field.\\
 
-\sref{sec:Conclusion} concludes and reflects on the report, and expands on the significance of the project.\\
+\sref{sec:Conclusion} concludes and reflects on the report, and expands on the significance of the thesis.\\
 
 \sref{sec:futurework} will recommend future work including; investigations into new datasets with a greater number of labels, and further detailed analysis into the cause of the result.
 
@@ -187,7 +187,7 @@ The project investigated whether supplementary data (Accelerometer, Gyroscope, G
 \vspace{-2mm}
 \section*{Acknowledgements}
 \vspace{-3mm}
-I'd like to thank my partner Brigid for encouraging and supporting me throughout this project. \\
+I'd like to thank my partner Brigid for encouraging and supporting me throughout this thesis. \\
 
 I'd also like to thank each and every mechatronics Academic staff member at the University of Newcastle.% The teaching staff care about their students, and I want that to grow. 
 
@@ -242,84 +242,95 @@ Audio digital signal processing has allowed widespread application of actionable
 
 \subsection{Classification}
 Classification is the process of determining, based on observations, what categories an item belongs in. %This is a phenomenon present where there can be a ground truth of membership.
-It is possible for categories to be mutually-exclusive, such as that of the an animal's genus, or it could be non-unique, such as a song's genre. It can also be the process of labelling a signal, such as whether an acoustic event was detected in an audio signal.
+It is possible for categories to be mutually-exclusive, such as that of the an animal's genus, or it could be non-unique, such as a song's genre. It can also be the process of labelling a signal, such as the type of acoustic event detected in an audio signal.
 
-Classification is a major topic of research within machine learning, and the classification of acoustic events with machine learning is another exploding subset of research.
+Classification is a major topic of research within machine learning, and the classification of acoustic events with machine learning is another expanding subset of research.
 
 \paragraph{Current State of Acoustic Event Classification}
-Presently the latest results from the field can be found in the Detection and Classification of
-Acoustic Scenes and Events (DCASE) competitions. Presently, preliminary results from DCASE 2019's Task A challenge demonstrates an accuracy score ({\small $ \frac{Correctly\;Classified\;Samples}{Total\;Samples} $}) \cite{Mesaros2018_DCASE} of 86.5\%.
+The latest results within the field can be found in the Detection and Classification of Acoustic Scenes and Events (DCASE) competitions. At the time of publication, preliminary results from DCASE 2019's Task A challenge demonstrates an accuracy score of 86.5\%  \cite{Mesaros2018_DCASE}. ({\small $ \frac{Correctly\;Classified\;Samples}{Total\;Samples} $})
 
 \subsection{The Problem}
 This project aims to answer the question: What is the effect of supplementary data on acoustic event classification through machine learning?
-
-To do this, the project will analyse the difference between two classifiers. One with supplementary data, and one without. %F1 Scores of a binary MLPClassifier, and a multi-label MLPClassifier, both trained on the ExtraSensory dataset using the method described in \sref{sec:Method}.
-Additionally, the output of the classifiers will be analysed for \inlineQuote{validity}. Does the classifier successfully detect and classify an acoustic event?
-
-% The desired results are a demonstrable difference (or lack thereof) in the F1 score, after comparing a classifier with and without supplementary data.
+This thesis will analyse the difference between two classifiers, one with supplementary data, and one without. 
+Additionally, the output of the classifiers will be analysed for \inlineQuote{validity}. This will be determined by whether the classifier can successfully detect and classify an acoustic event.
 
 \paragraph{Motivation for the Problem}
-The capacity to identify a physical event in the real world using sound would create a new realm of capabilities. The potential implications and applications are limitless; assistance and reality closed captioning for the hearing impaired, improved security closed loop TV, increased transparency and documentation of a ride sharing trip, and early detection of potential accidents or medical emergencies to name a few. The primary focus of this report is on a new potential and review of AEC/D as a method of debriefing across multiple industries.
+The capacity to identify a physical event in the real world using sound has many potential implications and applications. The hypothetical applications are limitless: assistance and reality closed captioning for the hearing impaired, improved security closed loop TV, improved ride sharing trip documentation, and early detection of potential accidents or medical emergencies are some examples of how it could span multiple industries. The primary focus of this report is to review AEC/D as a potential new method of debriefing.
 
 \subparagraph{Debreifing (or After Action Report)}
-
-Debriefing is an education tool used to educate an individual, a group or record a more holistic history of an event, for purposes of performance feedback.
-The formal debrief originated from the World War 2, with SLA Marshell's "interviews after combat" \cite{DebriefAAR}. Since then, the "After Action Report" was developed by the US Army as ...
+Debriefing is an educational tool for providing performance feedback to teams or an individual.
+The formal debrief originated from World War 2, with SLA Marshell's "interviews after combat" \cite{DebriefAAR}. Since then, the "After Action Report" was developed by the US Army as ...
 \fancyquote{a professional discussion of an event, focused on performance standards, that enables soldiers to discover for themselves what happened, why it happened and how to sustain strengths and improve on weaknesses \cite{TC2520}.}
-Debriefing is a key tool in training after any activity, and has been extended to many industry, most notably in the training of doctors \cite{johnson2011debriefing}.
+Debriefing is a key tool in training after any activity, and has been extended to many industries, most notably in the training of doctors \cite{johnson2011debriefing}.
 
-Traditionally, debriefing is done through a collection of primary sources (where available) and secondary sources.\cite{recentAAR} In the information age, these primary sources have expanded to include large datasets, recordings and other digital forensics. This new and increasing range of primary sources provides the potential to significantly improve the steps of debriefing, and ultimately improve debriefing outcomes, which is a process prone to review \cite{PsychologicalDebriefing2012}.
+Traditionally, debriefing is done through a collection of primary and secondary sources\cite{recentAAR}. In the information age, these primary sources have expanded to include large datasets, recordings and other digital forensics, as seen in the post-simulation debriefing of a surgeon. This new and increasing range of primary sources provides the potential to significantly improve the steps of debriefing, and ultimately improve debriefing outcomes. %, which is a process prone to review \cite{PsychologicalDebriefing2012}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage \section{Review of Literature}\label{sec:LitReview}
-A literature review of the current research was conducted with guidance from University of Queensland’s guide to Literature reviews \cite{QueenslandReview}. There are 3 nested areas of research that are of interest to this project:
+A literature review of the current research was conducted with guidance from University of Queensland’s guide to Literature reviews \cite{QueenslandReview}. There are 3 nested areas of research that are of interest to this thesis:
 \begin{itemize}
-    \item The wider classification and regression research topic
-    \item The machine learning topic that covers many fields of implemented and theoretical machine learning applications
-    \item The specific field of acoustic event detection and classification (AED/AEC) - this field has traditionally relied on older techniques, and is undergoing a revolution with machine learning. 
+    \item Classification and Regression techniques
+    \item Machine learning
+    \item The specific field of acoustic event detection and classification (AEC/D)
 \end{itemize}
 
 \fFigure{niche.png}{The literature for this project is a niche topic in the machine learning area of research}{0.8}
 
 
-\subsection{Acoustic Event Detection and Acoustic Event Classification}
-Historically the technologies for AED/AEC have been support vector machine (SVMs), Hidden Markov Models (HHMs), and more generally, digital signal processing (DSP) classifiers. In the last 8 years, AED and AEC research has been a popular emerging topic of research. Research has focused on the two key tasks: detection (when did an acoustic event occur in the audio, and when did it stop?) and classification (what sound occurred?). New research papers are often the result of Detection and Classification of Acoustic Scenes and Events Competitions (DCASE) competitions. DCASE is an official Institute of Electrical and Electronics Engineers (IEEE) Audio and Acoustic Signal Processing (AASP) competition. \fref{F1_score.png}.
+\subsection{Acoustic Event Classification and Acoustic Event Detection}
+Historically the technologies for AEC/D have been support vector machines (SVMs), Hidden Markov Models (HHMs), and more generally, digital signal processing (DSP) threshold classifiers. In the last 8 years, AEC/D research has been a popular emerging topic of research. Research has focused on the two key tasks: detection (when did an acoustic event occur in the audio sample, and when did it stop?) and classification (what sound occurred?). New research papers are often the result of Detection and Classification of Acoustic Scenes and Events (DCASE) competitions. DCASE is an official Institute of Electrical and Electronics Engineers (IEEE) Audio and Acoustic Signal Processing (AASP) competition. \fref{F1_score.png} depicts the increasing F1 scores of Toni Heittola's classifiers since 2010. This highlights the technological change the field has undergone.
 
-\fFigure{F1_score.png}{Tampere University of Technology Researcher Toni Heittola's F1 Results reflect the AED/AEC field of research with drastic improvements over the last 8 years \cite{ToniWebsite}.}{0.8}
+\fFigure{F1_score.png}{Tampere University of Technology researcher Toni Heittola's F1 results reflect the AEC/D field of research with drastic improvements over the last 8 years \cite{ToniWebsite}.}{0.8}
 
 \subsection{Detection and Classification of Acoustic Scenes and Events Competitions (DCASE)}
-The DCASE competitions format started 2013, had its second competition in 2016, and has been a yearly event since. Since 2017, there has been a new format where the competition starts march, formal results are released by September, and a workshop for participants on the best results in November \cite{2018Schedule}. 2016 was the first to feature machine learning (winning teams incorporated machine learning into ensemble model classifiers). By 2017 all entries utilised machine learning. The results from DCASE2018 indicate that progress in the AED/AEC field had allowed more sophisticated, real-world applications to be evaluated, such as DCASE2018's Challenge Task \#4 \cite{2018n}. This task focused on using a subset of Google's AudioSet to determine the audio class, and the timestamps of when that class occurred within a sample. The complexity of the dataset, the number of acoustic classes and fidelity of output were unprecedented in the AEC field. The winning results for this level of complexity did not score as high a F1 score compared to the DCASE2017 competition. DCASE2017 featured more controlled environments/datasets across the 4 tasks which likely resulted in the disparity (2017 had a 41.7\% F1 score \cite{2017results} vs 2018’s 32.4\% \cite{2018n}). It is however DCASE 2018 that presented the best precedent for the problem addressed in this paper.
+The DCASE competitions started in 2013, had its second competition in 2016. It has since become a yearly event. Since 2017, there has been a new format where the competition starts in March, formal results are released by September, and in November a workshop for participants regarding the best results from that year \cite{2018Schedule}. 2016 was the first to feature machine learning (winning teams incorporated machine learning into ensemble model classifiers). By 2017 all entries utilised machine learning. The results from DCASE2018 indicate that progress in the AEC/D field had allowed more sophisticated, real-world applications to be evaluated. This includes DCASE2018 Challenge Task \#4 \cite{2018n}. This task focused on using a subset of Google's AudioSet to determine the audio class and the timestamps of when that class occurred within a sample. The complexity of the dataset, the number of acoustic classes, and fidelity of output were unprecedented in the AEC field. The winning results for this level of complexity did not score as high a F1 score compared to the DCASE2017 competition (2017 had a 41.7\% F1 score \cite{2017results} vs 2018’s 32.4\% \cite{2018n}). DCASE2017 featured more controlled environments/datasets across the 4 tasks which likely resulted in the disparity. However DCASE2018 that presented the best precedent for the problem addressed in this thesis.
 
 \subsection{Leading Research, DCASE2018 Task 4 Winner}
-The winning model used in the DCASE2018 Task 4 challenge used a “Mean-teacher” model for classification, a convolutional neural network (CNN) for context gating (a pre-classifier step to improve flaws in training methodologies for some machine learning models \cite{Yan16}) and a bidirectional recurrent neural network (RNN) to improve the utilisation of unlabelled, unbalanced training datasets \cite{winners}. The bidirectional RNN is an important would be an important element for this report if the AudioSet dataset was being used. This is because the leading dataset outside of DCASE challenges is the weakly labelled Google AudioSet, of which only small percentage of is balanced.
+The winning model used in the DCASE2018 Task 4 challenge used a the following features: %\cite{Lu2018}
+\begin{enumerate}
+    \item “Mean-teacher” model for classification
+    \item a convolutional neural network (CNN) for context gating\footnote{a pre-classifier step to improve flaws in training methodologies for some machine learning models \cite{Yan16}}\cite{Yan16}
+    \item a bidirectional recurrent neural network (RNN) to improve the utilisation of unlabelled, unbalanced training datasets \cite{Lu2018}. 
+\end{enumerate}
 
-\begin{table}[h!]
-    \begin{center}
-        \caption{AudioSet data on cars}\label{tab:AudioSetCars}
-        {\footnotesize
-            \begin{tabular}{c l l l|}
-                \hline\hline Dataset & Number of videos & Duration hours \\ \hline 
-                Evaluation & 280 & 0.8 \\
-                Balanced train & 296 & 0.8 \\
-                Unbalanced train & 40,978 & 113.3 \\
-                Overall & 41,554 & 114.9 \\
-                \hline
-            \end{tabular}
-        }
-    \end{center}
-\end{table}
-\begin{gather*}
-    Car AudioSet:  \frac{0.8}{114.9}=0.69\%
-\end{gather*}
+
+%%%%%%%%%%%%%
 
 
 
-\flagforreview
-At the time of publication, the question of the effect supplamentry data on audio classification had not been answered.
 
 
+% A bidirectional RNN would be an important element for this report if the AudioSet dataset was being used. This is because the leading dataset outside of DCASE challenges is the weakly labelled Google AudioSet, of which only small percentage of is balanced.
+% The \tref{tab:AudioSetCars} details the audio data with the car 
 
+% \begin{table}[h!]
+%     \begin{center}
+%         \caption{AudioSet data on cars\citationneeded}\label{tab:AudioSetCars}
+%         {\footnotesize
+%             \begin{tabular}{c l l l|}
+%                 \hline\hline Dataset & Number of videos & Duration hours \\ \hline 
+%                 Evaluation & 280 & 0.8 \\
+%                 Balanced train & 296 & 0.8 \\
+%                 Unbalanced train & 40,978 & 113.3 \\
+%                 Overall & 41,554 & 114.9 \\
+%                 \hline
+%             \end{tabular}
+%         }
+%     \end{center}
+% \end{table}
+% \begin{gather*}
+%     Car AudioSet:  \frac{0.8}{114.9}=0.69\%
+% \end{gather*}
+
+
+\subsection{Summary of Literature Review}
+% * Most relevant research was in Machine Learning, and not specifically AEC/D
+% * Historically, a lot of AEC/D research was older, and did not use machine learning but other techniques.
+% * Many papers on AEC/D that did use machine learning used unique datasets
+% * No papers were found that discussed the use of audio with imu data
+
+Previously, AEC/D research has not utilised machine learning, as can be seen in the music industry. It is only recently with competitions like DCASE that machine learning has started to be incorporated into the analysis of AED/C. Even in these situations the datasets used are often unique and not widely applicable. At the time of submission, no papers have been identified that discuss the use of audio with physical sensor data, and as yet the question of the effect of supplementary data on audio classification has not been answered.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1199,7 +1210,7 @@ Based on the work presented, it is clear that audio data processing will be a ma
 
 A recommendation would be to apply the outcome to a relevant project when the supplementary data is available, but consider the extra training time required. Also consider the quality of datasets available, and whether requiring the inclusion of supplementary data would exclude higher quality datasets. For example, an AEC/D classifier trained on the ExtraSensory dataset (with accelerometer, gyroscope, and GPS data) may perform worse than an audio only classifier of the same design trained on the Google AudioSet dataset.
 
-In conclusion the question of \inlineQuote{[what is] the effect of supplementary data on acoustic event classification through machine learning} has been answered: The answer is an 8\% increase in F1 score, or 10.5/11.9\% relative increase in their respective models. The implications of this report on potential applications are well defined; any improvement on classification bring ideas like reality closed captioning for the hearing impaired, improved security closed loop TV, improved ride sharing trip documenting, early detection of potential accidents or medical emergencies, and a method of debriefing across multiple industries all the more closer to reality.
+In conclusion the question of \inlineQuote{[what is] the effect of supplementary data on acoustic event classification through machine learning} has been answered: The answer is an 8\% increase in F1 score, or 10.5/11.9\% relative increase in their respective models. The implications of this report on potential applications are well defined; any improvement on classification bring ideas like reality closed captioning for the hearing impaired, improved security closed loop TV, improved ride sharing trip documenation, early detection of potential accidents or medical emergencies, and a method of debriefing across multiple industries all the more closer to reality.
 
 
 

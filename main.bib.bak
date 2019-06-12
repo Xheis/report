@@ -473,15 +473,25 @@ http://www.k-jahn.de/files/bibtex.xslhttp://www.k-jahn.de/files/bibtex.xslhttp:/
   note   = {http://dcase.community/challenge2018/task-acoustic-scene-classification#evaluation},
 }
 
-@inproceedings{Mesaros2018_DCASE,
-    Author = "Mesaros, Annamaria and Heittola, Toni and Virtanen, Tuomas",
-    title = "A multi-device dataset for urban acoustic scene classification",
-    url = "https://arxiv.org/abs/1807.09840",
-    booktitle = "Proceedings of the Detection and Classification of Acoustic Scenes and Events 2018 Workshop (DCASE2018)",
-    month = "November",
-    pages = "9--13",
-    year = "2018",
-    keywords = "Acoustic scene classification, DCASE challenge, public datasets, multi-device data",
-    abstract = "This paper introduces the acoustic scene classification task of DCASE 2018 Challenge and the TUT Urban Acoustic Scenes 2018 dataset provided for the task, and evaluates the performance of a baseline system in the task. As in previous years of the challenge, the task is defined for classification of short audio samples into one of predefined acoustic scene classes, using a supervised, closed-set classification setup. The newly recorded TUT Urban Acoustic Scenes 2018 dataset consists of ten different acoustic scenes and was recorded in six large European cities, therefore it has a higher acoustic variability than the previous datasets used for this task, and in addition to high-quality binaural recordings, it also includes data recorded with mobile devices. We also present the baseline system consisting of a convolutional neural network and its performance in the subtasks using the recommended cross-validation setup."
+@InProceedings{Mesaros2018_DCASE,
+  author    = {Mesaros, Annamaria and Heittola, Toni and Virtanen, Tuomas},
+  title     = {A multi-device dataset for urban acoustic scene classification},
+  booktitle = {Proceedings of the Detection and Classification of Acoustic Scenes and Events 2018 Workshop (DCASE2018)},
+  year      = {2018},
+  pages     = {9--13},
+  month     = {November},
+  abstract  = {This paper introduces the acoustic scene classification task of DCASE 2018 Challenge and the TUT Urban Acoustic Scenes 2018 dataset provided for the task, and evaluates the performance of a baseline system in the task. As in previous years of the challenge, the task is defined for classification of short audio samples into one of predefined acoustic scene classes, using a supervised, closed-set classification setup. The newly recorded TUT Urban Acoustic Scenes 2018 dataset consists of ten different acoustic scenes and was recorded in six large European cities, therefore it has a higher acoustic variability than the previous datasets used for this task, and in addition to high-quality binaural recordings, it also includes data recorded with mobile devices. We also present the baseline system consisting of a convolutional neural network and its performance in the subtasks using the recommended cross-validation setup.},
+  keywords  = {Acoustic scene classification, DCASE challenge, public datasets, multi-device data},
+  url       = {https://arxiv.org/abs/1807.09840},
 }
+
+@techreport{Lu2018,
+    Author = "JiaKai, Lu",
+    institution = "DCASE2018 Challenge",
+    title = "MEAN TEACHER CONVOLUTION SYSTEM FOR DCASE 2018 TASK 4",
+    abstract = "In this paper, we present our neural network for the DCASE 2018 challenge’s Task 4 (Large-scale weakly labeled semi-supervised sound event detection in domestic environments). This task evaluates systems for the large-scale detection of sound events using weakly labeled data, and explore the possibility to exploit a large amount of unbalanced and unlabeled training data together with a small weakly annotated training set to improve system performance to doing audio tagging and sound event detection. We propose a mean-teacher model with context-gating convolutional neural network (CNN) and recurrent neural network (RNN) to maximize the use of unlabeled in-domain dataset.",
+    month = "September",
+    year = "2018"
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
