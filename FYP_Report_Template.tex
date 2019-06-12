@@ -714,8 +714,7 @@ Thus was the benefit of training on a per sample basis. By introducing other use
 
 \subparagraph{\inlineQuote{kfold} Cross validation} \flagforreview
 kfold Cross Validation is described as:
-\fancyquote{
-    kFold involves randomly dividing the set of observations into k groups, or folds, of approximately equal size. The first fold is treated as a validation set, and the method is fit on the remaining k - 1 folds. \cite{James2017}} 
+\fancyquote{kFold involves randomly dividing the set of observations into k groups, or folds, of approximately equal size. The first fold is treated as a validation set, and the method is fit on the remaining k - 1 folds. \cite{James2017}} 
 A key element expanding on this is the ability to cycle through `k folds', changing which group is the validation, or test set, and training on the rest.\footnote{kFold implementation occurs within the RandomCV, as discussed on page \pageref{subsec:HypOpt}}
 
 \subparagraph{Balanced vs Unbalanced}
@@ -748,8 +747,8 @@ If a classifier is to map data to a label, it stands to reason that the label mu
     \caption{Example Hot One Encoding}\label{tab:HotOneEnc}
         \begin{tabular}{llll}
             \hline\hline
-                           & Holden & Ford & Other \\
-                           \hline \\
+                           & Holden & Ford & Other \\\hline
+                            
             Ford Fiesta    & 0      & 1    & 0     \\
             VW Golf        & 0      & 0    & 1     \\
             Holden Captiva & 1      & 0    & 0     \\
@@ -758,9 +757,9 @@ If a classifier is to map data to a label, it stands to reason that the label mu
     \end{center}
 \end{table}
 
-However, there is another type of classifier called the multi-label classifier. An example of a multi label classifier is this project. This project wanted to label whether signal in the provided data represents jogging, walking, talking, eating etc. For these labels, they are not always mutually exclusive, and could occur at the same time.
+However, there is another type of classifier called the multi-label classifier. An example of a multi label classifier is this project. This project wanted to label whether signal in the provided data represents jogging, walking, talking, eating etc. For these labels, they are not always mutually exclusive and could occur at the same time.
 
-For this project, a binary classifier and a multi-label classifier was used and evaluated. The reason for this is because the intent of the project was to answer the question does supplementary data assist in an acoustic event detection and classification (AEC/D) problem, and a binary classifier is a valid and succinct way to answer this question. However, for most `realistic' use cases the validity of the result is important. For this reason, a multi-label classifier would be the most appropriate classifier to test against.\\
+For this project, a binary classifier and a multi-label classifier were used and evaluated. The reason for this is because a binary classifier is a valid and succinct way to answer the intent of the project, which was to answer the question does supplementary data assist in an acoustic event detection and classification (AEC/D) problem. However for most `realistic' use cases, the validity of the result is important. For this reason, a multi-label classifier would be the most appropriate classifier to test against.\\
 
 The methodology section was used to create a multi-label variant of the network. This used the same hyperparameter optimisation as the binary classifier and is discussed in the results. 
 
@@ -772,29 +771,37 @@ The methodology section was used to create a multi-label variant of the network.
 %     * This is because our problem has mutliple output predictions, and not every label is exclusive (e.g. a different class), thus we can live with having this be a multilabel classifier
 
 \subsubsection{Model Selection}
-Model selection is an important aspect of machine learning, because of what is known as a the "No Free Lunch" theorem. 
+Model selection is an important aspect of machine learning because of the "No Free Lunch" theorem. 
 \fancyquote{No Free Lunch theorems have shown that learning algorithms cannot be universally good. \cite{NFL_quote}}
 This theorem shows that selection of a Model is non-trivial, and the use case must be factored in.\\
 
-The model required for the project will have to take into consideration several factors; the type, format and datapoints of data in use, the type and format of the desired information, as well as some unique factors: desire to run onboard, desire to run generalise well (even into different use cases). The standard approach is to either a) try many options or b) have an educated guess as to the 
+The model required for the project will have to take into consideration several factors; the type, format and quality of data in use, the type and format of the desired information, as well as some unique factors. There is a desire to investigate applicability for onboard processing and a desire to have the methodology and results generalise well (even into different use cases).\\
 
-\fFigure{modelselection.png}{Scikit-learn's suggested model selection process}{0.8}
+The standard approach is to either a) try many model options or b) investigate current best practice in academia. Below several models have been reviewed.
+
+\fFigure{modelselection.png}{Scikit-learn's suggested model selection process\cite{scikit-learn}}{0.8}
 
 
-\subparagraph{Convolution Neural Networks}
-CNN convolution neural networks are primarily designed and received the best results for image-based classification problems this is because the architecture has been designed with computer vision in mind for our project
+\subparagraph{Convolutional Neural Networks}
+Convolutional neural networks (CNN) were primarily designed for, and received the best results for image-based classification problems. This is because the architecture has been designed for computer vision. This would have be an excellent choice if audio spectrograms were to be used.
 
 \subparagraph{Recursive Neural Networks}
-The recursive neural network (RNN) is not well suited to tabular data this is because and this will not be used because it has been designed for producing multi-class probabilities. A recursive neural network could be used to generate a probability output that is to say use it as a regression out progressive algorithm to output all a probabilities however we are after a binary classification and fast it is not relevant more important what the classifier deems as an appropriate probability before it classifies for future work this may in fact be a very useful extension as the tailoring of the sensitivity and specificity probability thresholds of the recursive neural network. This could also be used in conjunction with a soft Max layer\flagforreview to produce a normalised a labelling classifier this %flag all of this for review. is this right?
-However it will not be used due to the extra complexity which is not needed by the use case. Other options include a random Forest classifier which have been used to great success by Phan, \cite{Phan2015}. However a random Forest classifier is not well suited to unbalanced data sets and would prevent a much bigger problem with for training the future the random forest classifier has been evaluated for comparison in the results section however as a architectural decision it will not be used simile so scikit-learn also has the algorithm extra trees classifier citation needed which can be used in a similar way to the random Forest Hill that you eat better handles label caissons which is important for our use case ll use case is evaluating a binary class against the potential list \flagforreview
+Recursive neural networks (RNN) were not well suited to tabular data. This is because 
+RNNs (and deeper learning methods) utilise the Manifold Hypothesis. This suggests that very high dimensional data can have features represented on a low dimensional manifold. As this manifold is much lower in dimension (and consequently requires computation power), this is what deep learning approaches attempt to learn and map to. This was tested in Fefferman 2016 \cite{Fefferman2016}.
+As such, this approach is not best suited to the small dimensionality of the preprocessed, tabular features found in the ExtraSensory dataset. A recursive neural network could be used to generate a probability output and could also be used in conjunction with a soft Max layer to act as a classifier but it is not the best tool.
+
+
+\subparagraph{Random Forests}
+Another option is a random Forest classifier which have been used to great success by Phan, \cite{Phan2015}. However a random Forest classifier is not well suited to unbalanced data sets and would perform worse as the number of classes in the problem scaled up. For feature engineering purposes, a random forest classifier was used to evaluate and compare individual feature's importance in the ExtraSensory dataset.
+
 
 \subparagraph{Mulilayer Perceptron Feed Forward Neural Network}
-The multilayer perceptron classifier has been selected this \flagforreview
+A multilayer perceptron classifier is a feedforward neural network, trained via backpropagation. It was selected for this project. For this project, tabular time-invariant snapshots of data were used. The simple MLP classifier trained faster than other Neural Networks, and was theorised to produce better results. Due to it's simplicity, it was also expected to compress better for any potential onboarding processing use.\\
 
-For our project we are using tabular time-invariant data using a snapshot data in a tabular format means that we will not see the benefits of a convolution neural network in a deep learning environment vs the more simple mlpclassifier which trains faster will receive the better result and is expected to compress better winNetwork(parametee will also
+The details of the models use (hyperparameters, results) are discussed in the subsection \inlineQuote{Model Validation} and \sref{sec:Results}.
 
-\subparagraph{Final Model} \flagforreview fix the details
-The MLPClassifier is a feedforward neural network, trained via backpropagation. It was set up using the \inlineQuote{lbfgs} solver, an alpha equal to $1e-5$, and was hand selected to have 80 by 10 hidden layers (80 long, 10 deep). This was the classifier to use for evaluation.
+% \subparagraph{Final Model} 
+% The MLPClassifier is a feedforward neural network, trained via backpropagation. It was set up using the \inlineQuote{lbfgs} solver, an alpha equal to $1e-5$, and was hand selected to have 80 by 10 hidden layers (80 long, 10 deep). This was the classifier to use for evaluation.
 
 % \begin{itemize}
 %     \item Mean-teacher*
@@ -809,10 +816,10 @@ The MLPClassifier is a feedforward neural network, trained via backpropagation. 
 Validation is the process of optimising the hyperparameters of a model, and evaluating each iteration on the hold-out validation set of data. This is an important aspect of the machine learning process because model validation cannot be learnt from data. That is to say, hyperparameter optimisation is out of the scope of training via traditional gradient decent and back propagation. Due to the "No Free Lunch" theorem, a model will be chosen and optimised before training and evaluation begins. This is an extension of trying to find the optimal model for the solution. 
 
 \paragraph{Model Performance Metrics}
-Before the hyperparameters could be optimised, a metrics to optimise the network on had to be selected. There are many metrics that will now discussed. \\
+Before the hyperparameters could be optimised, a metrics to optimise the network about had to be selected. There are many metrics that have been discussed below. \\
 
 \subparagraph{Terminology} 
-Before evaluating metrics, the Terminology of the following formula must be formalised. The first is what a "correct" classification is. The following terminology will be used:
+Before evaluating metrics, the terminology of the following formula must be formalised. The following terms help describe what a "correct" classification is. These terms are:
 \begin{itemize}
     \item True Positives (TP) - A correctly classified positive sample
     \item True Negatives (TN) - A correctly classified negative sample
@@ -820,7 +827,7 @@ Before evaluating metrics, the Terminology of the following formula must be form
     \item False Negatives (FN) - A positive example incorrectly classified as negative
 \end{itemize}
 
-These four terms are the main parameters in the following formula
+These four terms are the main parameters in the following formula.
 
 \subparagraph{Accuracy} 
 Accuracy is the measure of how many samples the classifier correctly classified across its operation, as shown in \ref{eq:Accur}.
@@ -828,16 +835,16 @@ Accuracy is the measure of how many samples the classifier correctly classified 
     Accuracy = \frac{TP+TN}{TP+FP+TN+FN}
 \end{gather}
 
-Accuracy is used when a dataset is balanced (or close to balanced), and when there's no specific weighting on False Positives or False Negatives. Situations where you may have specific weightings on False Positive and False Negatives rates could be the medical industry, where a false positive will have a cost associated with it (the cost of further tests, or screenings) vs a false negative (where by a patient's health outcomes could be severely impacted by the incorrect diagnosis).
+Accuracy is used when a dataset is balanced (or close to balanced), and when there's no specific weighting on False Positives or False Negatives. Situations where this may have specific weightings on False Positive and False Negatives rates could be the medical industry. In this scenario, a false positive will have a cost associated with it (the cost of further tests, or screenings) where as a false negative would affect a patient's health outcomes (as they could be severely impacted by the incorrect diagnosis).
 
-In this project, accuracy would be a very poor metric for machine learning because the ExtraSensory dataset compromises 51 labels. When performing a binary classification on any individual label the majority class will be blank/negative. As such, a classifier which would classify every sample as blank/negative would still achieve a high accuracy rate (due to achieving a high True Negative rate).
+In this project, accuracy was a very poor metric for the machine learning measure because the ExtraSensory dataset has 51 labels. When performing a binary classification on any individual label the majority class will be blank/negative. As such, a classifier which would classify every sample as blank/negative would still achieve a high accuracy rate (due to achieving a high True Negative rate). This was discussed as a key element of an unbalanced dataset, and accuracy can reinforce a classification bias.
 
 \subparagraph{Confusion Matrix}
 A confusion matrix is a 4 cell table that lists TP, FP, FN, TN. This is a great visual tool to aid human evaluation of the model, as shown in \fref{confusion_matrix.png}. The matrix can be normalised across the rows, as to show what portion of samples were correctly classified. The capacity to directly penalising (and optimise about) the False Positives, and False Negatives, could be an essential tool for a project. 
 
 \fFigure{confusion_matrix.png}{A confusion matrix of the Iris Database. \cite{scikitlearnConMatrix}}{0.6}
 
-In this project, the Confusion Matrix gets generated to check, and contextualise, other performance measures. It is an important tool for weighing up the validity of classifier before accepting it for real world use.
+In this project, the Confusion Matrix was generated to check and contextualise other performance measures. It is an important tool for weighing up the validity of classifier before accepting it for real world use.
 
 \subparagraph{Recall (or sensitivity)}
 
@@ -848,7 +855,7 @@ This is the ratio of predicted positives vs the \inlineQuote{True} positive rate
     Recall = \frac{TP}{TP+FN}
 \end{gather}
 
-In this project, the Recall rate is of importance as the user case is to document an acoustic event, upon which any False Positives could be disregarded by the user, or provide interesting new insight into the behaviour observed.
+In this project, the Recall rate was of importance as the user case is to document an acoustic event, upon which any False Positives could be disregarded by the user, or provide interesting new insight into the behaviour observed.
 
 \subparagraph{Precision}
 In contrast to Recall, precision is the measure of the error in Positives classification. That is, out of the samples classified  as Positive, how many were suppose to be positive, or the ratio of correct predictions over all predictions.
@@ -857,7 +864,7 @@ In contrast to Recall, precision is the measure of the error in Positives classi
     Precision = \frac{TP}{TP+FP}
 \end{gather}
 
-In this project, this is less important as discussed above. Precision may be important when a high degree of statistical confidence is needed for a decision, but missed opportunities may not be important. 
+In this project, this was less important as discussed above. Precision may be important when a high degree of statistical confidence is needed for a decision, but missed opportunities may not be important. 
 
 \subparagraph{Specificity}
 Specificity is the compliment of to Recall. It is the ratio of correctly negative classifications vs the total number of negative classifications. This is another important metric for training models that are required to be highly \inlineQuote{specific} it the model's predictions.
@@ -866,7 +873,7 @@ Specificity is the compliment of to Recall. It is the ratio of correctly negativ
     Precision = \frac{TN}{TN+FP}
 \end{gather}
 
-In this project, the specificity will ideally be traded off against the Recall rate. For the reasons already discussed, the risk from false positives are negligible. 
+In this project, the specificity was ideally to be be traded off against the Recall rate. For the reasons already discussed, the risk from false positives are negligible. 
 
 \subparagraph{F1 Score}
 An F1 Score is an industry standard approach to evaluating a model. It is formally defined as the harmonic mean of the Precision and Recall, as shown in \ref{eq:F1Score}. This score is a method of evaluating a model's Recall and Precision with equal weighing, but punishing an imbalance between the two scores. 
@@ -875,28 +882,27 @@ An F1 Score is an industry standard approach to evaluating a model. It is formal
     F1 Score = \frac{2 \times (Precision \times Recall)}{Precision + Recall}
 \end{gather}
 
-This project will use the F1 Score as its prime metric for evaluating the model, and the effect of supplementary data on the acoustic event detection/classification task in question. A further extension of the F1 Score is required to apply to a multi class or multilabel problem. This is often done through a sum of F1 Scores across each class or label. For best precision, a weighted could be applied to sum to best reflect (and optimise) the intent of the classifier. 
+This project used the F1 Score as its prime metric for evaluating the model, and the effect of supplementary data on the acoustic event detection/classification task in question. A further extension of the F1 Score was required to apply to a multi class or multilabel problem. This is done through a sum of F1 Scores across each class or label. For best precision, a weight could be applied during the summation of F1 scores to best reflect (and optimise) the intent of the classifier. 
 
 \subparagraph{Area Under the Receiver Operating Characteristics (AUROC) Curve}
-Lastly, the Area Under the Receiver Operating Characteristics (AUROC) is an important measure of the a classifiers overall performance. The AUROC demonstrates how confident a classifier is across all class-classification thresholds.
+Lastly, the Area Under the Receiver Operating Characteristics (AUROC) is an important measure of the a classifiers overall performance. The AUROC demonstrates how confident a classifier is across all classification decision boundary\footnote{A decision boundary is the limit which separates a positive class from a negative class.} thresholds.
 
 In a more formal sense, the Receiver Operating Characteristics (ROC) is the relation between the True Positive rate against the False Positive rate, and how it changes when you change the classification decision threshold. To calculate the ROC, a sample of TP and FP is taken for a varying threshold (the threshold needed for the classifier to classify a sample as positive or negative). 
 
 \fFigure{ROCCurve.png}{A ROC Curve example from Google's machine learning shortcourse \cite{TF_ROC}}{0.5}
 
-In this project, the AUROC will not be extensively used, except for educational purposes. The purpose of a AUROC is to demonstrate, and optimise the confidence in classification based on thresholds applied. The AUROC can be used to demonstrate a quantitative assessment of any particular sample (similar to a Regression problem).
+In this project, the AUROC was not extensively used, except for educational purposes. The purpose of a AUROC is to demonstrate, and optimise the confidence in classification based on thresholds applied. The AUROC can be used to demonstrate a quantitative assessment of any particular sample (similar to a Regression problem). An important limitation is the ROC is plotted against each class, or label. Thus 51 AUROCs would need to be calculated to evaluate the performance of the multilabel classifier.
 
 \subsubsection{Hyperparameter Optimisation}\label{subsec:HypOpt}
- Machine learning is about learning, and adjusting, the internal parameters of a classifier. A hyperparameter is a parameter that cannot be learnt from backpropagation, as it is external to the classifier. These are parameters such as hidden layer size, training rates, classifier specific strategy, etc. The way to choose these hyperparameters is therefore an optimisation problem. The problem is to maximise the score selected above, by trialling  different hyperparameters. The following describe methods of finding the optimal hyperparameters.
+ Machine learning is about learning, and adjusting, the internal parameters of a classifier. A hyperparameter is a parameter that cannot be learnt from this process (such as backpropagation), as hyperparameters are external to the classifier. These are variables such as hidden layer size\footnote{A hidden layer is any layer of a MLP that sits between the input layer and the output layer}, training rates, or classifier specific strategies etc. The way to choose these hyperparameters is therefore an optimisation problem. The problem is to maximise the score selected from the metrics above, by trialling  different hyperparameters. The following describe methods of finding the optimal hyperparameters.
 
  \subparagraph{Manual Search}
  Hyperparameters could be manually selected and adjusted, in a search for a more optimal solution. This may be a valid option for interrogating what each hyperparameter does, and the impact on the classification score. This however would not be a valid solution for finding the optimal hyperparameters. \\
 
-This was tried and yielded mediocre results from default hyperparameter settings on various algorithms.
-
+This was tried and yielded mediocre results compared to default hyperparameter settings on various algorithms.
 
  \subparagraph{Brute Force Search}
-To improve upon the Manual Search, one could attempt to try every option available in your parameter space.
+To improve upon the Manual Search, one could attempt to try every option available in your parameter space. For example,
 
 \begin{lstlisting}
     for hyperparameter1 = 0 to 100 {
@@ -905,25 +911,27 @@ To improve upon the Manual Search, one could attempt to try every option availab
         }
     }
 \end{lstlisting}
-This improves on the Manual Search, but is very inefficient ($O(n^2)$), and thus extremely slow. \\
 
+This improves on the Manual Search, but is very inefficient ($O(n^2)$), and thus extremely slow.
 This was not tried during this project, but highlights the importance of the following algorithms.
 
 \subparagraph{Grid Search (Manual Grid Search)}
-If the Brute Force Search method attempts to try every combination, then an improvement on this is to better specify the set from which a combination is formed. This is called a Grid Search. A Grid Search iterates through every combination provided. A 2d example shown in \fref{gridsearch.png} shows a grid is generated based on the hyperparameters intervals selected. A power element of Grid Search is the capacity to select non-equidistant intervals. \\
+If the Brute Force Search method attempts to try every combination, then an improvement on this is to better specify the set from which a combination is formed. This is called a Grid Search. A Grid Search iterates through every combination provided. A 2D example shown in \fref{gridsearch.png} shows a grid is generated based on the hyperparameters intervals selected. A powerful aspect of Grid Search is the capacity to select non-equidistant, arbitrary intervals. \\
 
 \fFigure{gridsearch.png}{3 options for Hyperparameter 1 and 2 have been selected. Each combination will be evaluated, as denoted by the green `x'.}{0.5} 
 
 Grid Search was used for early implementations across both TensorFlow + Keras, and Scikit-learn.
 
 \subparagraph{Random Search (Random Grid Search)}
-A Random Search builds upon the Grid Search, but aims to reduce the computation time required to find an optimal set of hyperparameters. This is especially true in higher dimensions\citationneeded. The key difference between the two searches, is Random Search will not attempt to try every combination. It will sample random number of combinations, which has been \inlineQuote{show[n that] empirically and theoretically, randomly chosen trials are more efficient for hyper-parameter optimization than trials on a grid} \cite{bergstra2012random}. In part, this is due to a principle known as \inlineQuote{Embarrassingly parallel}.\\
-\inlineQuote{Embarrassingly parallel} \cite{MauriceHerlihy2012} is a critical concept in machine learning that allows the Random and Grid searches to be run in parallel. The concept is, because running a trial of 1 point does not have a dependence on any other point, they can be run in parallel. This is where mass parallel computing (such as the operations of a Graphic Processing Units, or GPU) allows very large hyperparameter optimisation searches to be run in parallel. \\
+A Random Search builds upon the Grid Search, but aims to reduce the computation time required to find an optimal set of hyperparameters. This is especially true in higher dimensions\footnote{This is know as the \inlineQuote{Curse of Dimensionality}}. The key difference between the two searches, is Random Search will not attempt to try every combination. It will sample random number of combinations, which has been \inlineQuote{shown that empirically and theoretically, randomly chosen trials are more efficient for hyper-parameter optimization than trials on a grid} \cite{bergstra2012random}. In part, this is due to a principle known as \inlineQuote{Embarrassingly parallel}.
+\\
+\inlineQuote{Embarrassingly Parallel} 
+Embarrassingly Parallel is a critical concept in machine learning that allows the Random and Grid searches to be run in parallel \cite{MauriceHerlihy2012}. The concept is, because running a trial of 1 point does not have a dependence on any other point, they can be run in parallel. This is where mass parallel computing (such as the operations of a Graphic Processing Units, or GPU) allows very large hyperparameter optimisation searches to be run in parallel. \\
 
-Due to the simplicity of the multilayer perceptron model selected, random search was primarily used for hyperparameter optimisation.
+Due to the simplicity of the multilayer perceptron model selected, the random search was primarily used for hyperparameter optimisation.
 
 \subparagraph{Bayesian Hyperparameter Optimisation}
-Bayesian Hyperparameter Optimisation is the principle of allowing a search to be influenced by previous experience. This is applied when the cost of the sample, such as a model's F1-score from a particular combination of hyperparameters, is computationally expensive to calculate. A more formal description can be found in Brochu's 2010 paper, "A Tutorial on Bayesian Optimization ...".
+Bayesian Hyperparameter Optimisation is the principle of allowing a search to be influenced by previous experience. This is applied when the cost of the sample, such as a model's F1-score from a particular combination of hyperparameters, is computationally expensive to calculate. A more formal description can be found in Brochu's 2010 paper, "A Tutorial on Bayesian Optimization ...":
 
 \fancyquote{Bayesian optimization employs the Bayesian technique of setting a prior over the objective function and combining it with evidence to get a posterior function \cite{Brochu2010}.}
 
@@ -955,6 +963,7 @@ These parameters are then placed into a python Dict, and passed into the scikit 
        language=python,
        float=h,
        numbers=none,
+       breaklines=true,
        frame=shadowbox]
     parameters={'learning_rate': ["constant", "invscaling", "adaptive"],
                 'hidden_layer_sizes': [(145,), (147,), (149,), (151,), (153)],
@@ -974,27 +983,26 @@ and the results of which were
     language=python,
     float=h,
     numbers=none,
+    breaklines=true,
     frame=shadowbox]
     F-Score: 0.92
     {'solver': 'adam', 'learning_rate': 'invscaling', 'hidden_layer_sizes': (150,),
      'alpha': 0.17, 'activation': 'relu'}
 \end{lstlisting}
 
-Details of a Grid Search can be found in Appendix \ref{apx:GSAttempt}.
+\subparagraph{Grid Search Implimenation}
+A Grid Search was also trialed, and details can be found in \aref{apx:GSAttempt}.
 
 
 \paragraph{Machine Learning Libraries Used}
-
 The classification libraries used were Google's TensorFlow and scikit-learn. Both libraries are python based (supporting both Python 3.0, and Python 2.7) \cite{scikitlearnpythonVer}\cite{TFpythonVer}
 
 \subparagraph{TensorFlow}
 TensorFlow is an opensource machine learning framework, primarily developed by Google.
-\inlineQuote{It has a comprehensive, flexible ecosystem of tools, libraries and community resources that lets researchers push the state-of-the-art in ML and developers easily build and deploy ML powered applications.} \cite{TFwebsite}. TensorFlow in conjunction with with Keras was used to prototype the initial pipeline. According to the textbook, \inlineQuote{Hands on machine learning with Scikit, Keras \& TensorFlow}, a pipeline is 
-\fancyquote{
-A sequence of data processing components is called a data pipeline. Pipelines are very common in machine learning systems, since there is a lot of data to manipulate and many data transformations to apply \cite{HandsOnMLTextbook}.
-}
+\inlineQuote{It has a comprehensive, flexible ecosystem of tools, libraries and community resources that lets researchers push the state-of-the-art in ML and developers easily build and deploy ML powered applications} \cite{TFwebsite}. TensorFlow in conjunction with with Keras was used to prototype the initial pipeline. According to the textbook, \inlineQuote{Hands on machine learning with Scikit, Keras \& TensorFlow}, a pipeline is:
+\fancyquote{A sequence of data processing components is called a data pipeline. Pipelines are very common in machine learning systems, since there is a lot of data to manipulate and many data transformations to apply \cite{HandsOnMLTextbook}.}
 
-TensorFlow and Keras were selected to initially design the classifier due its ability to run on the TensorFlow Lite. This is inline with the motivation of the project to allow widespread use of an AED/C solution. The code snippet \ref{lst:pythonlisting} shows how a model converts.
+TensorFlow and Keras were selected to initially design the classifier due its ability to run on the TensorFlow Lite. This was inline with the motivation of the project to allow widespread use of an AED/C solution. The code snippet \lref{lst:pythonlisting} shows how a model converts.
 
 \lstinputlisting[
     language=python,
@@ -1005,12 +1013,11 @@ TensorFlow and Keras were selected to initially design the classifier due its ab
     caption={Code snippet for converting the classifier model to TensorFlow Lite for mobile operation \cite{convertTF}\label{lst:pythonlisting}},
     ]{Code/tensorflow_convert.py}
 
-The original prototyping for audio only classification with TensorFlow and Keras was to use matplotlib to plot the spectrogram of each audio sample, and use a sequential CNN to process the spectrograms. A code snippet for that design is shown in \ref{lst:cnnpythonlisting}.
+The original prototyping for audio only classification with TensorFlow and Keras was to use matplotlib to plot the spectrogram of each audio sample, and use a sequential CNN to process the spectrograms. A code snippet for that design is shown in \lref{lst:cnnpythonlisting}. This was influenced by Keras documenation, tutorials, and best practice for guidance.
 
-Due to the sample size of the dataset (AudioSet's large database, but smaller balanced datasets for the specific use-cases identified), and the use of GPS, Acceleration and Gyroscope data, the classifier could have been prone to overfitting. \citationneeded Dropout layers are method of regularisation, which is used to help prevent overfitting in machine learning. Dropout layers work by "randomly dropping units (along with their connections) from the neural network during training" \cite{witten2016data}. The purpose of dropout layers in this classifier is to prevent the classifier from overfitting by reducing the over reliance on any individual neuron, but also to reduce the over reliance on any individual data source. This is important because the Audio feature has the highest fidelity (MFCCs across N-bins), and the classifier could have a heavy bias towards it and as a result overfit. Dropout layers will help minimise this overfit. To test this hypothesis, a Random Forest classifier (estimators = 300) was trained on all users to weigh the features, to help identify the design choices. Appendix \ref{apx:FeatureImportance} shows each feature importance breakdown, where \fref{feature_important_just_combined_big_colour.png} shows the scikit Random Trees feature importance of the set (Audio, Accelerometer, Gyroscope, GPS).
-% These should go to Appendix
+Due to the size of the ExtraSensory dataset (60 users), and the use of the supplementary GPS, acceleration and gyroscope data, the classifier could have been prone to overfitting. Dropout layers are method of regularisation, which is used to help prevent overfitting in machine learning. Dropout layers work by "randomly dropping units (along with their connections) from the neural network during training" \cite{witten2016data}. The purpose of dropout layers in this classifier is to prevent the classifier from overfitting by reducing the over reliance on any individual neuron, but also to reduce the over reliance on any individual data source. This is important because the Audio feature has the highest fidelity, and the classifier could have a heavy bias towards it and as a result overfit to th audio. Dropout layers will help minimise this overfit. To test this hypothesis, a Random Forest classifier (estimators = 300) was trained on all users to weigh the features, to help identify the design choices. \aref{apx:FeatureImportance} shows each feature importance breakdown, where \fref{feature_important_just_combined_big_colour.png} shows the scikit Random Trees feature importance of the set of inputs (audio, accelerometer, gyroscope, GPS).
 
-A Random Tree Classifier was used to evaluate feature importance. Random Tree Classifier's perform poorly on unbalanced datasets. like on  on a the ExtraSensory after random undersampled dataset, during the design phase of the main classifier. Features were Audio (Blue, 26 bins), Accelerometer (Orange, 26 features), Gyroscope (Red, 26 features), GPS (Green, 17 features)
+% A Random Tree Classifier was used to evaluate feature importance. Random Tree Classifier's perform poorly on unbalanced datasets. like on  on a the ExtraSensory after random undersampled dataset, during the design phase of the main classifier. Features were Audio (Blue, 26 bins), Accelerometer (Orange, 26 features), Gyroscope (Red, 26 features), GPS (Green, 17 features)
 
 \fFigure{feature_important_just_combined_big_colour.png}{A Random Tree Classifier was used to evaluate feature importance on a the ExtraSensory after random undersampled dataset, during the design phase of the main classifier. Features were Audio (Blue, 26 bins), Accelerometer (Orange, 26 features), Gyroscope (Red, 26 features), GPS (Green, 17 features)}{1}
 
@@ -1027,28 +1034,24 @@ A Random Tree Classifier was used to evaluate feature importance. Random Tree Cl
 
 \subparagraph{scikit-learn}
 Scikit-learn is an extensive machine learning Python library. The purpose of the library is to remove much of the \inlineQuote{boilerplate} code associated with and in implementing machine learning networks and algorithms. It also provides an extensive list of machine learning support functions.
-When combined with other Python libraries such as numpy,matlibplot and others, it allows for succinct and consistent reproduction of the results this project aims to deduce. It is for this reason that libraries for machine learning have been utilised in contrast with writing a framework from scratch.
-
-% Scikit-learn is a statistics and machine learning for Python. It was selected due to it's ease of use, and has been used to analyse, prototype and produce the results of this paper.
+When combined with other Python libraries such as numpy, matlibplot and others, it allows for succinct and consistent reproduction of the results this project aims to deduce. It is for this reason that libraries for machine learning was utilised in contrast with writing a framework from scratch.
 
 \subsection{Method Summary}
-
-The method details selecting the desired output, the required data input, a metric to score by, a classifier, optimising hyperparameters against the previous options, and finally training and validating the data. \\
+The method section detailed selecting the desired output, the required data input, a metric to score by, a classifier, optimising hyperparameters against the previous options, and finally training and validating the data. \\
 
 {\itshape For this project}
 \begin{enumerate}
-    \item The desired output is a label (or labels) detailing the acoustic event in the sample (e.g. The labels found in \ref{apx:ExtraSensoryLabels} like `Walking').
-    \item The required data is the ExtraSensory dataset, or a custom dataset as recorded by the project's App.
-    \item The score selected is the F1 score. This is due to it being an industry standard.
-    \item The classifier chosen is the MLPClassifier which is a feedforward neural network, trained via backpropagation.
-    \item Hyperparameters of the MLPClassifier are chosen via a Random Search Cross Validation.
-    \item Training and Validation was run with Early Stopping using a 10\% validation set, using 59 out of the 60 ExtraSensory users.
+    \item The desired output was a label (or labels) detailing the acoustic event in the sample (e.g. The labels found in \ref{apx:ExtraSensoryLabels} like `Walking').
+    \item The required data was the ExtraSensory dataset, or a custom dataset as recorded by the project's App.
+    \item The score selected was the F1 score. It is an industry standard.
+    \item The classifier chosen was the MLPClassifier which is a feedforward neural network, trained via backpropagation.
+    \item Hyperparameters of the MLPClassifier were chosen via a Random Search Cross Validation.
+    \item Training and Validation were run with early stopping\footnote{Early Stopping is the practice of training a neural network, and measuring the score of the classifier on the validation set. The error of the classifier on the testing set will tend to 0, but at a certain point the error on the validation set will reacha a global minimum. This represents the early stopping point to prevent overfitting.} using a 10\% validation set, using 59 out of the 60 ExtraSensory users.
     \item Final testing is done with the 60\textsuperscript{th} user.
 \end{enumerate}
 
 
 \clearpage \section{Results} \label{sec:Results}
-
 The desired results are a demonstratable difference (or lack thereof) in the F1 score, after comparing a classifier with and without supplementary data.
 This will answer the question, and title of the report, \inlineQuote{[What is] the  effect of supplementary data on acoustic event classification through machine learning}. To this effect, the results will analyse the F1 Scores of a binary MLPClassifier, and a multi-label MLPClassifier, both trained on the ExtraSensory dataset using the method described in Section \ref{sec:Method}.
 
@@ -1162,7 +1165,7 @@ The results achieved (shown in \ref{tab:F1Results}) demonstrate that the supplem
 
 
 \clearpage \section{Discussion}\label{sec:Discussion}
-The results above aim to demonstrate a quantitative difference in F1 score across 2 the classifier with and without Accelerometer, Gyroscope and GPS data. The results achieved did produce a quantitative relative improvement of 10.5\% and 11.9\% for the Binary and Multilabel result respectively.
+The results above aim to demonstrate a quantitative difference in F1 score across 2 the classifier with and without Accelerometer, Gyroscope and GPS data. The results achieved did produce a quantitative relative improvement of 10.5\% and 11.9\% for the Binary and Multilabel result respectively. The realtative improvements of 10.5\% and 11.9\% are significant in a field that frequently publishes about improvements in the single digitis.
 
 \subparagraph{Assumptions}
 The results are constrained by the assumptions made in \sref{sec:Method}. One assumption is that the \inlineQuote{No Free Lunch} theorem infers that no individual classifier is theoretically better than another pre-training. This assumption infers that the results of this project will affect all models, but the quantitative impact may vary post-training. Similarly so, there is no assumption on the strength of this result on application to other projects; the dataset and training may significantly affect the strength of this result.

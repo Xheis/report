@@ -485,4 +485,17 @@ http://www.k-jahn.de/files/bibtex.xslhttp://www.k-jahn.de/files/bibtex.xslhttp:/
   url       = {https://arxiv.org/abs/1807.09840},
 }
 
+@Article{Fefferman2016,
+  author    = {Charles Fefferman and Sanjoy Mitter and Hariharan Narayanan},
+  title     = {Testing the manifold hypothesis},
+  journal   = {Journal of the American Mathematical Society},
+  year      = {2016},
+  volume    = {29},
+  number    = {4},
+  pages     = {983--1049},
+  month     = {feb},
+  doi       = {10.1090/jams/852},
+  publisher = {American Mathematical Society ({AMS})},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
