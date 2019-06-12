@@ -137,21 +137,15 @@ E-mail: \href{mailto:Christopher.Caelli@uon.edu.au}{\textsf{Christopher.Caelli@u
 \vspace{-5mm}
 \section*{Mandatory Dot Point Summary}
 \vspace{-3mm}
-
-Tense: Past, Future etc. Search "was", "is" "ed" etc.
-check for st-ray - inca-se the-y block sh-t
-
-review the use of section vs paragraph vs subsection etc.
-check for bad refs by ? ?? ??? ????
-
+\flagforreview Put in a screenshot of the bloody app!
 As per the FYP Handbook: \\
 I did:
 \begin{itemize}
-    \item I learnt and prototyped two machine learning solutions that each take audio and physical data (GPS, accelerometer, gyroscope). They compare whether the physical supplementary data could improve the classification of an acoustic event, as measured by the F1 score.
-    \item I learnt and prototyped a pipeline to record data, process it, classify it, and output it.
+    \item I studied and prototyped two machine learning solutions to identify if audio data paired with supplementary physical data (GPS, accelerometer, gyroscope) can improve the classification of an acoustic event, as measured by the F1 score.
+    \item I learnt and prototyped a pipeline to record, process, classify, and output data.
     \item I used my mechatronics degree as a basis for machine learning in this problem. This includes Mechatronics Design (trade off and evaluations from MCHA3000), sound pre-processing, preprocessing data (filtering, analysing), and statistics from MECH2450/MCHA3900.
-    \item I learnt and used system engineering techniques to elicit requirements from my university and work stakeholders.
-    \item I managed and worked with another employee to implement a proof of concept app to record data as an input into this project. This involved using my software engineering skills and project management skills to create a schema, develop the android app, and present it to the relevant stakeholders.
+    \item I identified and applied appropriate system engineering techniques to elicit requirements from my university and work stakeholders.
+    \item I managed the development and implementation of a proof of concept app to record data as an input for this project. I applied my software engineering skills and project management skills to supervise another employee, create a schema, develop the android app, and present it to the relevant stakeholders.
 \end{itemize}
 
 
@@ -162,38 +156,32 @@ I did:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \vspace{-5mm}
-\section*{Executive summary}
+\section*{Executive Summary}
 \vspace{-3mm}
-The project investigated whether supplementary data (Accelerometer, Gyroscope, GPS) will improve a classifiers ability to classify an "acoustic event" in an acoustic event classification / detection (AEC/D) problem. The motivation behind this was to improve AEC/D without onerous microphone requirements, to enable more widespread commercial use of AEC/D.
-\\
+The project investigated whether supplementary data (Accelerometer, Gyroscope, GPS) will improve a classifier's ability to classify an \inlineQuote{acoustic event} in an acoustic event classification / detection (AEC/D) problem. The motivation behind this was to improve AEC/D without onerous microphone requirements, to enable more widespread commercial use of AEC/D.\\
 
-\sref{sec:ProblemAnalysis} of the project begins by evaluating the research problem for a car use case, and eliciting the design requirements through system engineering principles. 
-\\
+\sref{sec:LitReview} reviews current research. The AEC/D field is expanding in line with advances in the wider machine learning community. However AEC/D still remains a non-trivial problem with few commercial products, and few real-world applications. Research in this area remains small compared to the wider machine learning community, but is expanding. At the time of publication, the question of the effect supplamentry data on audio classification had not been answered. \\
 
-\sref{sec:LitReview} reviews current research. Presently the field is expanding with broader advances in the wider machine learning community, however AEC/D remains a non-trivial problem with few commercial products, and no real-world AEC/D solution yet. Comparatively to the wider machine learning community, acoustic event detection is very limited in active researchers. This specific issue hasn't been answered. 
-\\
+\sref{sec:ProblemAnalysis} analyses the problem and elicits the design requirements through system engineering principles.\\
 
-\sref{sec:Method} details the method of selecting the desired output, the required data input, a metric to score by, a classifier, optimising hyperparameters against the previous options, and finally training and validating against the data. For this project:
-{\small
-\begin{itemize}
-    \item The desired output is a label (or labels) detailing the acoustic event in the sample (e.g. The labels found in \aref{apx:ExtraSensoryLabels} like `Walking').
-    \item The required data is the ExtraSensory dataset, or a custom dataset as recorded by the project's App.
-    \item The score selected is the F1 score. This is due to it being an industry standard.
-    \item The classifier chosen is the MLPClassifier which is a feedforward neural network, trained via backpropagation.
-    \item Hyperparameters of the MLPClassifier are chosen via a Random Search Cross Validation.
-    \item Training and Validation was run with Early Stopping using a 10\% validation set, using 59 out of the 60 ExtraSensory users.
-    \item Final testing is done with the 60\textsuperscript{th} user.
-\end{itemize}
+\sref{sec:Method} details the method of selecting the desired output, the required data input, a metric to score by, a classifier, optimising hyperparameters, and training and validating the data. For this project:
+{\small\begin{enumerate}
+    \item The desired output was a label (or labels) detailing the acoustic event in the sample (e.g. The labels found in \aref{apx:ExtraSensoryLabels} like `Walking').
+    \item The required data was the ExtraSensory dataset, or a custom dataset as recorded by the project's App.
+    \item The score selected was the F1 score. It is an industry standard.
+    \item The classifier chosen was the MLPClassifier which is a feedforward neural network, trained via backpropagation.
+    \item Hyperparameters of the MLPClassifier were chosen via a Random Search Cross Validation, against the F1 score.
+    \item Training and Validation were run with early stopping using a 10\% validation set, using 59 out of the 60 ExtraSensory users. A final test is done with the 60\textsuperscript{th} user.
+\end{enumerate} }
+~\\
+\sref{sec:Results} shows the results are a 10.5\% and 11.9\% relative improvement in F1 score for a binary and multi-label classifier respectively. This was calculated through the analysis of F1 scores of a binary MLPClassifier, and a multi-label MLPClassifier, both trained on the ExtraSensory dataset using the method described in \sref{sec:Method}.\\
 
-\sref{sec:Results} the desired results are a 10.5\% and 11.9\% relative improvement in F1 score for a Binary and Multi-label classifier respectively. This is calculated through analysis of F1 Scores of a binary MLPClassifier, and a multi-label MLPClassifier, both trained on the ExtraSensory dataset using the method described in \sref{sec:Method}.
+\sref{sec:Discussion} evaluates the results and discusses their limitations. It will discuss how multi-sensor AEC/D is effective, why the result will be valid in other projects and the significance of these results in the wider field.\\
 
-\sref{sec:Discussion} evaluates the results and discusses the limitations of the results. It will discuss how multi-sensor AEC/D is effective, and why the result will be valid in other projects. The significance of these results throughout the field.
-%but requires more datasets to test smaller, more specific tasks. 
+\sref{sec:Conclusion} concludes and reflects on the report, and expands on the significance of the project.\\
 
-\sref{sec:Conclusion} will present how these results will contribute to the field, and reflect on the project.
+\sref{sec:futurework} will recommend future work including; investigations into new datasets with a greater number of labels, and further detailed analysis into the cause of the result.
 
-\sref{sec:futurework} will list future work including; investigations into new datasets with a greater number of labels, and further detailed analysis into the cause of the result.
-% This document will cover the author's progress through the Final Year Project. The scope of the project is a portable data recording system coupled with offline processing to track and identify specific physical events in close proximity that occurred during recording. acoustic event detection and classification is the focus of this paper, and the goal of this FYP report is exploring and validating current research techniques in an uncontrolled environment for a specific use case. The content of this paper will start with, system engineering, problem analysis, a review into the current research and will expand to document python implementation, machine learning, data pre-processing, app development and progress in developing the proof of concept to take logged data from a phone and process it on a sever to create a “trackfile” (special csv file).
 \newpage
 %%%%%%%%%%%%%%
 \vspace{-2mm}
@@ -201,7 +189,7 @@ The project investigated whether supplementary data (Accelerometer, Gyroscope, G
 \vspace{-3mm}
 I'd like to thank my partner Brigid for encouraging and supporting me throughout this project. \\
 
-I'd also like to thank each and every mechatronics Academic staff member at the University of Newcastle. The teaching staff care about their students, and I want that to grow. 
+I'd also like to thank each and every mechatronics Academic staff member at the University of Newcastle.% The teaching staff care about their students, and I want that to grow. 
 
 \newpage
 \tableofcontents
@@ -212,21 +200,19 @@ I'd also like to thank each and every mechatronics Academic staff member at the 
 The mobile phone is an omnipresent force in modern society. The number of unique mobile phone users was 5.1 billion at the end of 2018 \cite{GSMA}. Every phone carries a microphone, and in a data intensive field such as machine learning, this presents an untapped potential. One application of these devices could be to document and understand the environment around them.
 
 \subsection{Machine Learning Field}
-The machine learning field dates back to the first reproduction of a neuron network \cite{mcculloch1943logical} in an attempt to explain the physical decision making process of the nervous system. There were seminal scientific breakthroughs and papers on machine learning from mathematicians and early computer scientists throughout the mid to late 20th century. The advent of cheaper, and faster processing power has revived the idea of machine learning, and the widespread availability of data has again accelerated this boom. Machine learning encompasses any application of a computer learning to complete a task.
+The machine learning field dates back to the first reproduction of a neural network \cite{mcculloch1943logical} in an attempt to explain the physical decision making process of the nervous system. There were seminal scientific breakthroughs and papers on machine learning from mathematicians and early computer scientists throughout the mid to late 20th century. The advent of cheaper, faster processing power in the last decade has revived the idea of machine learning, and the widespread availability of data has again accelerated this area. Machine learning encompasses any application of a computer learning to complete a task.
 
 \paragraph{Learning Computers}
-Machine learning is based on the concept of having a computer \inlineQuote{learn}. This broad term has been used to described fitting a function to historical data, iterative output optimisation based on previous Hypotheses, and `genetic algorithms' (which are a random search, using previous success as an initial guess for a new random guess). All these strategies have a common theme: machine learning rewards progress and punishes mistakes. Often, but not always, this can be reduced down to a cost/constraint model.
+Machine learning is based on the concept of having a computer \inlineQuote{learn}. This broad term has been used to describe a plethora of operations including fitting a function to historical data, iterative output optimisation based on previous hypotheses, and `genetic algorithms'\footnote{Genetic Algorithms are an optimisation approach that relies on narrowing a random search, using previous success to shape the bounds of the next random guess}. All of these strategies have a common theme; machine learning rewards progress and punishes mistakes. Often this can be reduced down to a cost/constraint model.
 
 \paragraph{A Formal Definition}
 A definition for Machine learning is taken from Tom M. Mitchell's 1997 textbook, \inlineQuote{Machine Learning}:
 \fancyquote{A computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E \cite{Mitchell1997}.}
 
-This definition of machine learning can be applied to this project; the task T (AEC/D), the E (Audio, IMU, GPS), and P (a traditional F1 score). 
+This definition of machine learning can be applied to this project: the task T (AEC/D), the E (Audio, IMU, GPS), and P (a F1 score). 
 
-% The computer program described in this project has been produced in Python, using the scikit-learn and TensorFlow libraries.
-
-\subparagraph{Machine Learning from a Mechatronics Perspective}
-Machine learning was the focus of this report. Machine learning is a field of Engineering and Computer Science concerned with automating the discovery and modelling of a process. This process is usually a classification or regression function. In a nutshell, it is about training a computer algorithm to learn from data.
+\paragraph{Machine Learning from a Mechatronics Perspective}
+Machine learning is the focus of this report. Machine learning is a field of engineering and computer science concerned with automating the discovery and modelling of a process. This process is usually a classification or regression function. In a nutshell, it is about training a computer algorithm to learn from data.
 It's application in this report has parallels to a traditional optimisation problem in mechatronics: Given a \inlineQuote{plant} {\itshape(or, a neural network)}, how can someone \inlineQuote{optimise} {\itshape(train)} the plant's \inlineQuote{parameters} {\itshape(both weightings and hyperparameters)} as to \inlineQuote{minimise an error} {\itshape(or, maximise a classification/regression score)}?
 
 \paragraph{Model Based Approach}
@@ -259,7 +245,7 @@ Classification is a major topic of research within machine learning, and the cla
 
 \paragraph{Current State of Acoustic Event Classification}
 Presently the latest results from the field can be found in the Detection and Classification of
-Acoustic Scenes and Events (DCASE) competitions. Presently, preliminary results from DCASE 2019's Task A challenge demonstrates an accuracy score ({\small }$ \frac{Correctly\;Classified\;Samples}{Total\;Samples} $}) \cite{Mesaros2018_DCASE} of 86.5\%.
+Acoustic Scenes and Events (DCASE) competitions. Presently, preliminary results from DCASE 2019's Task A challenge demonstrates an accuracy score ({\small $ \frac{Correctly\;Classified\;Samples}{Total\;Samples} $}) \cite{Mesaros2018_DCASE} of 86.5\%.
 
 \subsection{The Problem}
 This project aims to answer the question: What is the effect of supplementary data on acoustic event classification through machine learning?
@@ -323,6 +309,15 @@ The winning model used in the DCASE2018 Task 4 challenge used a “Mean-teacher�
 \begin{gather*}
     Car AudioSet:  \frac{0.8}{114.9}=0.69\%
 \end{gather*}
+
+
+
+\flagforreview
+At the time of publication, the question of the effect supplamentry data on audio classification had not been answered.
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage \section{Problem Analysis}\label{sec:ProblemAnalysis}
@@ -828,13 +823,13 @@ Specificity is the compliment of to Recall. It is the ratio of correctly negativ
 In this project, the specificity was ideally to be be traded off against the Recall rate. For the reasons already discussed, the risk from false positives are negligible. 
 
 \subparagraph{F1 Score}
-An F1 Score is an industry standard approach to evaluating a model. It is formally defined as the harmonic mean of the Precision and Recall, as shown in \eref{eq:F1Score}. This score is a method of evaluating a model's Recall and Precision with equal weighing, but punishing an imbalance between the two scores. 
+An F1 score is an industry standard approach to evaluating a model. It is formally defined as the harmonic mean of the Precision and Recall, as shown in \eref{eq:F1Score}. This score is a method of evaluating a model's Recall and Precision with equal weighing, but punishing an imbalance between the two scores. 
 
 \begin{gather}\label{eq:F1Score}
     F1 Score = \frac{2 \times (Precision \times Recall)}{Precision + Recall}
 \end{gather}
 
-This project used the F1 Score as its prime metric for evaluating the model, and the effect of supplementary data on the acoustic event detection/classification task in question. A further extension of the F1 Score was required to apply to a multi class or multilabel problem. This is done through a sum of F1 Scores across each class or label. For best precision, a weight could be applied during the summation of F1 scores to best reflect (and optimise) the intent of the classifier. 
+This project used the F1 score as its prime metric for evaluating the model, and the effect of supplementary data on the acoustic event detection/classification task in question. A further extension of the F1 score was required to apply to a multi class or multilabel problem. This is done through a sum of F1 scores across each class or label. For best precision, a weight could be applied during the summation of F1 scores to best reflect (and optimise) the intent of the classifier. 
 
 \subparagraph{Area Under the Receiver Operating Characteristics (AUROC) Curve}
 Lastly, the Area Under the Receiver Operating Characteristics (AUROC) is an important measure of the a classifiers overall performance. The AUROC demonstrates how confident a classifier is across all classification decision boundary\footnote{A decision boundary is the limit which separates a positive class from a negative class.} thresholds.
@@ -1127,7 +1122,7 @@ The increase in F1 score could occur in 2 areas. The first is during hyperparame
 The result had been analysed using the Area Under Receiver Operating Characteristics (AUROC) plot, to determine how the classifier would operate over different decision boundaries. The AUROC plots shown in \fref{both_ROC.png} show the consistency of the model. This is demonstrated via the smooth continuity of the ROC curve (no major jumps in TP performance). This ensures that the results produced were not the result of a classifier optimised about an artefact of the post-training model.
 
 \subparagraph{Changing Hyperparameters}
-The results assume that using static hyperparameters across the Audio, and Audio+Extra classifiers would be an invalid strategy of testing the hypothesis. It would be expected that optimising the hyperparameters for one classifier and not the other would result in the other classifier performing worse. This would result in a convolution of the effect from the extra data, and a classifier with poorly optimised hyperparameters. As such, there is an inverse assumption that optimising both classifiers separately, but using the same methodology is a fair strategy to minimise the model and its hyperparameter's effect on F1 Score.
+The results assume that using static hyperparameters across the Audio, and Audio+Extra classifiers would be an invalid strategy of testing the hypothesis. It would be expected that optimising the hyperparameters for one classifier and not the other would result in the other classifier performing worse. This would result in a convolution of the effect from the extra data, and a classifier with poorly optimised hyperparameters. As such, there is an inverse assumption that optimising both classifiers separately, but using the same methodology is a fair strategy to minimise the model and its hyperparameter's effect on F1 score.
 
 \subparagraph{Complexity} 
 The complexity of the classification task was low compared to similar studies \cite{Tseng2017}\cite{Virtanen2010} due to the limited and broad labels available in the ExtraSensory dataset. However the number of classes are comparative to previous studies (61 classes, Virtanen 2010 \cite{Virtanen2010}). To improve these results, the complexity of the labels could be improved. A promising new technique is to train a network on weakly supervised data \cite{Tseng2017}, which could extend to generating/classifying new labels on the ExtraSensory dataset. This would allow a more complex dataset, such as AudioSet \cite{Audiosetgoogle2018} to reprocess the ExtraSensory database to have a larger number of classes.
@@ -1155,7 +1150,7 @@ This report did not attempt to test the results against different types of Audio
 This report had defined "supplementary data" as accelerometer, gyroscope, and GPS data. An assumption was that the AEC/D field could accept this definition within the context of the results. A limitation of this result was whether the result would transfer and compare with different supplementary data sources. For example, would similar benefits be gained from inclusion of video, metadata, multiple audio sources etc. 
 
 \subparagraph{Model Optimisation}
-A key assumption was that the model selected had been close to fully optimised, to the extent as to \sref{sec:Method} allowed. This assumption infers that any improvement in F1 Score with the addition of supplementary data can determined to be from the introduction of the data itself, and not a result of better hyperparameter optimisation.
+A key assumption was that the model selected had been close to fully optimised, to the extent as to \sref{sec:Method} allowed. This assumption infers that any improvement in F1 score with the addition of supplementary data can determined to be from the introduction of the data itself, and not a result of better hyperparameter optimisation.
 
 \subparagraph{F1 Score as a Metric}
 This project sought to measure a discernible difference in F1 score by the introduction of supplementary data. An assumption that F1 score is the most appropriate indicator of a positive result is made. It could be noted that F1 score is the harmonic mean of the true positive and true negative rate. Had the project selected a different metric from \sref{subsec:ModelVal}, the intent of the question would remain but the relative increase in performance would be vastly different. A limitation of this result was that the validity of the result working in another project assumes that an improvement in F1 score throughout hyperparameter optimisation and backpropagation/training of the model is desirable in the other project.
