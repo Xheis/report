@@ -427,37 +427,36 @@ In a traditional machine learning problem there are 5 stages to the method:
 \end{enumerate}
 
 \subparagraph{Stage 1}
-Stage 1 is choosing what raw data is available and what information the model must product. This is the inputs and the outputs that is wanted from the system, and the expected result.
+Stage 1 is choosing what raw data is available and what information the model must produce. These are the inputs and the outputs that is wanted from the system, and the expected result.
 
 \subparagraph{Stage 2}
-Stage 2 is preprocessing. The purpose of preprocessing is to transform the available data into a format most appropriate for the intended analysis. This is inclusive of processes such as optimising, filtering, feature building\footnote{Producing refined data of interest to the model. For example, Mel-frequency cepstral coefficients (MFCCs) from raw Audio} and in many other options. Preliminary features are also evaluated in this stage to ascertain their quality and effectiveness in a preliminary model.
+Stage 2 is preprocessing. The purpose of preprocessing is to transform the available data into a format most appropriate for the intended analysis. This is inclusive of processes such as optimising, filtering, feature building\footnote{Producing refined data of interest to the model. For example, Mel-frequency cepstral coefficients (MFCCs) from raw Audio} and many other options. Preliminary features are also evaluated in this stage to ascertain their quality and effectiveness in a preliminary model.
 
-\subparagraph{Stage 3}
+\subparagraph{Stage 3}  
 Stage 3 is selecting the model to be used. The selection of the model involves an understanding of what is best practice in the chosen topic area, a review of recent publications and their methods, and investigating if the chosen topic necessitates any special requirements. Once a model is elected, the parameters of the model must be determined (or evaluated) before a final model can be selected. This is done in the following two stages.
 
 \subparagraph{Stage 4}
-Stage 4 is fitting the model. The selected algorithm may need to be trained or fitted. This is the process of taking labelled input / output data (denoted as X, y) and supervising the model as it attempts to reproduce y from X. A common method to achieve this is through Stochastic Gradient Descent (SGD) and back propagation \cite{lecun2012efficient}. In summary, it is the process of changing the neuron weights proportionally to their contribution to the error. \eref{eq:BP_grad_dec} adapted from \cite{lecun2012efficient} demonstrates this, where W is the machine learning weights for a given topology, $\eta$ is the proportional factor or step size, and the partial represents how each weight contributes to error.\\
-
+Stage 4 is fitting the model. The selected algorithm may need to be trained or fitted. This is the process of taking labelled input / output data (denoted as X, y) and supervising the model as it attempts to reproduce y from X. A common method to achieve this is through Stochastic Gradient Descent (SGD) and back propagation \cite{lecun2012efficient}. In summary, it is the process of changing the neuron weights proportionally to their contribution to the error. \eref{eq:BP_grad_dec} adapted from Lecun(2012) demonstrates this, where W is the machine learning weights for a given topology, $\eta$ is the proportional factor or step size, and the partial represents how each weight contributes to error \cite{lecun2012efficient}. 
 \begin{gather}\label{eq:BP_grad_dec}
     W(t) = W(t-1) - \eta\frac{\partial E}{\partial W} 
 \end{gather}
 Once trained on a training set, the next stage is validating whether the model is sufficiently fit.
 
 \subparagraph{Stage 5}
-Stage 5 is validation. Validation is the process of checking the performance of the model against certain criteria. For instance, a model may be checked for overfitting, underfitting, bias, sensitivity, specificity, accuracy, precision, AUC (area under the (ROC) curve), and F1 score to name a few. F1 score was used as the primary measure in this project because the F1 has been used as a research industry standard for evaluating algorithms. \\
+Stage 5 is validation. Validation is the process of checking the performance of the model against certain criteria. For instance, a model may be checked for overfitting, underfitting, bias, sensitivity, specificity, accuracy, precision, AUC (area under the (ROC) curve), and F1 score. F1 score was used as the primary measure in this project because the F1 has been used as a research industry standard for evaluating algorithms. \\
 
-It is beneficial to work up methodically approach implementing machine learning. As each section will dramatically effect the next, care should be taken to optimise each stage before progressing in implementation. External to the method of building the machine learning classifier is the work involved in developing the pipeline associated with it. The main tasks to implement a machine learning classifier as a part of a larger solution are as follows:
+It is beneficial to apply a methodical approach when implementing machine learning. As each section will significantly affect the next section, care should be taken to optimise each stage before progressing in implementation. External to the method of building the machine learning classifier is the work involved in developing the pipeline associated with it. The main tasks to implement a machine learning classifier as a part of a larger solution are as follows:
 
 \begin{itemize}
     \item Develop the use-case, and identify the output
     \item Investigate what data is available, and whether further data/datasets would be beneficial
-    \item Choose a framework/technology to implement the machine learning algorithm in
+    \item Choose a framework/technology to implement the machine learning algorithm
     \item Build the machine learning classifier as described above, and test its effectiveness
-    \item Validate the whole system by using the classifier in the pipeline (by taking the classified output, and appending it to the trackfile)
+    \item Validate the whole system by using the classifier in the pipeline %(by taking the classified output, and appending it to the trackfile)
 \end{itemize}
 
 \subsection{Required Data}
-The machine learning solution required GPS, accelerometer, gyroscope, and audio. A Google Pixel 2 was selected as the target data acquisition unit, which \tref{tab:AndroidSensorsAvailable} below shows.
+The machine learning solution required GPS, accelerometer, gyroscope, and audio. A Google Pixel 2 was selected as the target data acquisition unit. \tref{tab:AndroidSensorsAvailable} below shows the Pixel 2 sensors associated with the required data.
 \begin{table}[h!] 
     \begin{center}
         \caption{Data Available \cite{pixelteardown}}\label{tab:AndroidSensorsAvailable}
@@ -466,7 +465,7 @@ The machine learning solution required GPS, accelerometer, gyroscope, and audio.
                 \hline\hline Sensor & Description \\ \hline 
                 GPS & The Pixel 2 uses the Snapdragon 835 System on Chip GPS receiver\\
                 Accelerometer / Gyroscope & The Pixel 2 uses a Bosch BMI160 \\
-                Audio & The Pixel 2 uses a Qualcom WCD9395 Audio Codec chip and a NXP TFA9891UK Audio Amplifier \\ \hline
+                    Audio & {\scriptsize The Pixel 2 uses a Qualcom WCD9395 Audio Codec chip and a NXP TFA9891UK Audio Amplifier} \\ \hline
             \end{tabular}
         }
     \end{center}
@@ -474,7 +473,7 @@ The machine learning solution required GPS, accelerometer, gyroscope, and audio.
 
 \subsection{Data Collection}
 
-The decision of what data to collect and utilise was identified through the problem analysis in \sref{sec:ProblemAnalysis}. As the goal was to maximise the accuracy of the classifier (whilst still being an achievable goal), the data chosen for use and collection was GPS, accelerometer, gyroscope, and audio. As described in the problem analysis phase, the best platform for this would be a mobile phone as shown in \sref{sec:ProblemAnalysis} and \aref{apx:TradeReview}. 
+The decision of what data to collect and utilise was identified through the problem analysis in \sref{sec:ProblemAnalysis}. As the goal was to maximise the accuracy of the classifier, the data chosen for use and collection was GPS, accelerometer, gyroscope, and audio. As described in the problem analysis phase, the best platform for this would be a mobile phone as shown in \sref{sec:ProblemAnalysis} and \aref{apx:TradeReview}. 
 
 \subsubsection{Project Android App}
 Android was chosen as the platform as it had significant support for reading from the on-board sensors. The data available from the Android API can be seen in \tref{tab:AndroidDataAvailable}. This was the source for accelerometer, gyroscope and GPS data. It was also selected due to its support for C/C++ through the Native Development Kit (NDK). The programming language C is required knowledge for many courses in the University of Newcastle Bachelor of Mechatronics degree. 
@@ -523,11 +522,13 @@ Android was chosen as the platform as it had significant support for reading fro
     \end{center}
 \end{table}
 
-The app was developed over five weeks. It was able to record audio to a .wav file and record raw GPS data\footnote{Timestamps, latitude, longitude and altitude are recorded from the GPS sensor}, raw acceleration, and raw gyroscopic data. The output was an audio .wav file, and a Comma Separated Value (csv) file.
+The app was developed over five weeks. It was able to record audio to a .wav file and record raw GPS data\footnote{Timestamps, latitude, longitude and altitude are recorded from the GPS sensor}, raw acceleration, and raw gyroscopic data. An example of this is shown in \lref{lst:AndroidMotionSnippet}. The output was an audio .wav file, and a Comma Separated Value (csv) file, as shown in \tref{tab:ProjectData}. \fref{app.png} shows a screenshot of the app made.
 
-During this time, an Atlassian JIRA environment was set up to facilitate management (using concepts from ENG3500 - Project Management). The Atlassian "Git-Flow" methodology was also learnt and used.
+\fFigure{app.png}{A screenshot of the app produced in this project}{0.4}
 
-I assisted with an estimated 30\% of the overall programming, and a code review of the product along with other colleagues. The majority of development work was attributed to a colleague.
+During this time, an Atlassian JIRA environment was set up to facilitate management (using concepts from ENG3500 - Project Management). The Atlassian \inlineQuote{Git-Flow} methodology was also learnt and used.
+
+I assisted with an estimated 30\% of the overall programming, and a code review of the product along with other colleagues. The majority of development work was attributed to an intern I was supervising at my place of employment.
 
 
 %https://developer.android.com/guide/topics/sensors/sensors_motion
@@ -538,7 +539,7 @@ I assisted with an estimated 30\% of the overall programming, and a code review 
     numbers=left,
     xleftmargin=1cm,
     frame=shadowbox,
-    caption={Code snippet from \cite{androidMotionsensors} for getting Accelerometer data from the Android System.},
+    caption={Code snippet from \cite{androidMotionsensors} for getting Accelerometer data from the Android System.\label{lst:AndroidMotionSnippet}},
     ]{Code/accel_example.c}
 
 
@@ -557,7 +558,7 @@ I assisted with an estimated 30\% of the overall programming, and a code review 
     \end{table}
 
 \subsubsection{ExtraSensory}
-The ExtraSensory dataset contains over 300,000 samples across 60 Users (in a CSV format with 278 feature columns), as shown in \tref{tab:ExtraSensoryDataExample}. Each row contains an a 'snapshot' of the sensors at a frequency of once a minute. There are large non-continuities across each user. The dataset is unbalanced, and has had its labels cleaned by the researchers involved. Further details about the users themselves can be found in \tref{tab:ExtraSensoryDataBreakdown}, or at it paper \cite{Vaizman2017}.
+The ExtraSensory dataset contains over 300,000 samples across 60 Users (in a CSV format with 278 feature columns), as shown in \tref{tab:ExtraSensoryDataExample}. Each row contains an a `snapshot' of the sensors at a sampling rate of $ \frac{1}{60}$ Hz. There is a lack of continuity within each user's CSV. The dataset is unbalanced, and has had its labels cleaned by the researchers involved. Further details about the users themselves can be found in \tref{tab:ExtraSensoryDataBreakdown}, or in Vaizman (2017) \cite{Vaizman2017}.
 
 \begin{table}[h]
     \begin{center}  
@@ -580,9 +581,9 @@ The ExtraSensory dataset contains over 300,000 samples across 60 Users (in a CSV
 \end{table}
 
 \subsubsection{Project Android App vs ExtraSensory dataset}
-The \tref{tab:ProjectData} shows a portion of the Comma-Separated Values (csv) data produced from the app. The id is a unique count, the attr\_time is a timestamp from the Android system, and attr\_x, attr\_y, and attr\_z columns show measured acceleration.
+\tref{tab:ProjectData} shows a portion of the Comma-Separated Values (csv) data produced from the app. The id is a unique count, the attr\_time is a timestamp from the Android system, and attr\_x, attr\_y, and attr\_z columns show measured acceleration.
 
-The \tref{tab:ExtraSensoryDataExample} shows a section of the csv data from the ExtraSensory dataset. 
+\tref{tab:ExtraSensoryDataExample} shows a section of the csv data from the ExtraSensory dataset. 
 
 Both datasets share the same timestamp format. A \inlineQuote{time} column has been added to the table for illustration purposes only.
 
@@ -628,10 +629,10 @@ The ExtraSensory dataset is compiled from 60 users with a diverse range of phone
 \end{table}
 
 \subsection{Data Preprocessing}
-In the machine learning pipeline for use with the Android app, the data pre-processing occurred offboard from the app. This preprocessing was done Python. Preprocessing the data occurs before the machine learning modules of code, and Matlab was also used to prototype the algorithms.
+In the machine learning pipeline for use with the Android app, the data pre-processing occurred offboard from the app. This preprocessing was done using Python. Preprocessing the data occurs before the machine learning modules of code, and Matlab was also used to prototype the algorithms.
 
 \subparagraph{Audio}
-Preprocessing of the audio data was as follows:
+Preprocessing of the audio data was as follows:\\
 The recorded .wav files were split into smaller sections via the sliding window method\footnote{This is a method of sampling a data by using a fixed sample time, and \inlineQuote{sliding} the bounds of the window across the sample. It discretises a continuous sample by known window length and overlap parameters.}. Each window then has the Fourier transform applied to it (as shown in \eref{eq:EquationLine}). These windows are then mapped to the Mel Log Scale (as shown in \lref{lst:matlabMFCC}). This in turn is both \inlineQuote{Feature Engineering}, as well as preprocessing to be compatible with training the model. 
 
 \begin{gather}\label{eq:EquationLine}
@@ -651,10 +652,10 @@ The recorded .wav files were split into smaller sections via the sliding window 
 For the ExtraSensory dataset, this had already been processed.
 
 \subparagraph{GPS}
-The Global Positioning System (GPS) is a constellation of geosynchronous satellites. Each satellite emits a timestamp. When a GPS receiver receives multiple timestamps, it can triangulate it's position. The mobile phone in this project is the GPS receiver. A GPS signal is requested by the "Fused Location Provider", in the Google Play services location\footnote{Google's closed source \inlineQuote{Fused Location Provider} is chosen over the Android Platform's location API for performance reasons. The Android Platform is a part of the Android open source project. One could replicate this using the open source equivalent but one would need to consider refining the location data themselves; perhaps with a Kalman Filter?} API and comes heavily pre-filtered. Further filtering is possible by a Kalman filter with the other physical sensors.
+The Global Positioning System (GPS) is a constellation of geosynchronous satellites. Each satellite emits a timestamp. When a GPS receiver receives multiple timestamps, it can triangulate its position. The mobile phone in this project is the GPS receiver. A GPS signal is requested by the \inlineQuote{Fused Location Provider}, in the Google Play services location API\footnote{Google's closed source \inlineQuote{Fused Location Provider} is chosen over the Android Platform's location API for performance reasons. The Android Platform is a part of the Android open source project. One could replicate this using the open source equivalent but one would need to consider refining the location data themselves; perhaps with a Kalman Filter?} and comes heavily pre-filtered. Further filtering is possible by a Kalman filter with the other physical sensors.
 
 \subparagraph{IMU}
-For the purpose of this project, the data collected through the Android App had a Low Pass Filter applied to it (however was not used). An example of this filtering is shown in \fref{AndroidDataExample.png}, and the code used in \lref{lst:filter_android}. A Kalman Filter was considered, but not progressed when the ExtraSensory dataset was selected for us.
+For the purpose of this project, the data collected through the Android App had a Low Pass Filter applied to it (however was not used). An example of this filtering is shown in \fref{AndroidDataExample.png}, and the code used in \lref{lst:filter_android}. A Kalman Filter was considered, but not progressed when the ExtraSensory dataset was selected for use.
 
 \fFigure{AndroidDataExample.png}{Results of Low Pass Filter vs Raw accelerometer data}{0.8}
 
@@ -676,17 +677,17 @@ For the purpose of this project, the data collected through the Android App had 
 
 
 \subparagraph{Data Training, Testing and Evaluation Set} \label{para:ExtraSensorydataset}
-The ExtraSensory dataset\footnote{The same approach was considered for the Android app} was considered for use in 2 ways; training on a per user instance, or training on a per sample instance. The benefits of per user was to isolate recording hardware, and other plant noise. However this was undesirable, as this could result in a low variance in $\epsilon$ (bias), which increases the likelihood of the learnt function ($\hat{f}$) to overfit the signal of the training users ($ \hat{f} = f(x) + \epsilon$).
+The ExtraSensory dataset\footnote{The same approach was considered for the Android app} was considered for use in 2 ways: training on a per user instance, or training on a per sample instance. The benefits of per user was to isolate recording hardware, and other plant noise. However this was undesirable, as this could result in a low variance in $\epsilon$ (bias), which increases the likelihood of the learnt function ($\hat{f}$) to overfit the signal of the training users ($ \hat{f} = f(x) + \epsilon$).
 %The trade off is to minimise variance, and its impact in the evaluation, could better isolate desired results.
-Thus was the benefit of training on a per sample basis. By introducing other user noise into a training set, overfitting was minimised \inlineQuote{for free}. Finally as a \inlineQuote{kfold} (or other cross-validation methods) is applied to the whole training dataset for training + validation purposes, the likelihood of the random selection incorporating a larger variance of noise increases. As a result, the data is used on as a per sample basis.
+This was the benefit of instead training on a per sample basis. By introducing other user noise into a training set, overfitting was minimised \inlineQuote{for free}. Finally, as a \inlineQuote{kfold} (or other cross-validation methods) operation is applied to the whole training dataset for training and validation purposes, the likelihood of the random selection incorporating a larger variance of noise increases. Subsequently, the data is used on as a per sample basis.
 
 \subparagraph{\inlineQuote{kfold} Cross validation}
-kfold Cross Validation is described as:
+James (2017) describes kfold cross validation as: 
 \fancyquote{kFold involves randomly dividing the set of observations into k groups, or folds, of approximately equal size. The first fold is treated as a validation set, and the method is fit on the remaining k - 1 folds. \cite{James2017}} 
 A key element expanding on this is the ability to cycle through `k folds', changing which group is the validation, or test set, and training on the rest \footnote{kFold implementation occurs within the RandomCV, as discussed on page \pageref{subsec:HypOpt}}. This was important for this project as it maximises training data whilst minimising the potential to overfit. 
 
 \subparagraph{Balanced vs Unbalanced}
-A meaning of a \inlineQuote{Balanced} vs \inlineQuote{Unbalanced} dataset is whether positive samples are \inlineQuote{balanced} by an equal amount of negative samples. In a hypothetical binary classification, this might be an equal amount of benign vs malignant cancers in a cancer classification dataset. The reason why a balanced dataset is important is to minimise any bias in the network. If a majority of cases are benign, then a bias towards all cases being benign would be a valid strategy, but not a desired one. 
+The meaning of a \inlineQuote{balanced} vs \inlineQuote{unbalanced} dataset is whether positive samples are \inlineQuote{balanced} by an equal amount of negative samples. In a hypothetical scenario, this might equate to an equal amount of benign vs malignant cancers in a cancer classification dataset. The reason why a balanced dataset is important is to minimise any bias in the network. If a majority of cases are benign, then a bias towards all cases being benign would be a valid strategy, but not a desired one. 
 
 The ExtraSensory dataset contains positive samples across 51 classes. These 51 classes do not occur at the same frequency as each other. In any given sample, one would not expect every class to be equally represented. To minimise bias, the Python library \inlineQuote{imblearn} was used to resample the dataset, as shown in \lref{lst:resampExtraSensory}.
 
@@ -708,7 +709,7 @@ The ExtraSensory dataset contains positive samples across 51 classes. These 51 c
 A classifier by definition classifies (or, categorises) things. A more thorough understanding is that a classifier takes some input data and maps it to an output category, or label. In a machine learning context, this mapping is done via the $\hat{f}$ learnt function. For this project the classifier is a learnt function that takes audio, accelerometer, gyroscope and GPS data and maps that data to a label one of the labels found in \aref{apx:ExtraSensoryLabels}, \tref{tab:ExtraSensoryLabels}. 
 
 \subparagraph{Binary, Multi-class, and  Multi-Label classifiers}
-If a classifier is to map data to a label, it stands to reason that the label must be well defined. A binary classifier as the name suggests will categorise input as 1, or 0 against a label. This could be result in "Car" or "Not Car", but it can also be extended to multiple classes, for example "Not Car", "Holden", "Ford" etc. This can be done via a ensemble of binary classifiers (combing together the output of the same dataset that has been parsed into a "Ford" classifier, a "Holden" classifier etc.), or more recently through a \inlineQuote{One Hot} \cite{huffman1954the} encoded output array as seen in \tref{tab:HotOneEnc}. A key element of multi-class classifiers are that the classes are mutually exclusive. The car brands in \tref{tab:HotOneEnc} are mutually exclusive.
+If a classifier is to map data to a label, it stands to reason that the label must be well defined. A binary classifier as the name suggests will categorise input as 1, or 0 against a label. An example of a result could be \inlineQuote{Car} or \inlineQuote{Not Car}, but it can also be extended to multiple classes, for example \inlineQuote{Not Car}, \inlineQuote{Holden}, \inlineQuote{Ford} etc. This can be done via an ensemble of binary classifiers (combining the output of a \inlineQuote{Ford} classifier and a \inlineQuote{Holden} classifier, that have both been parsed the same sample etc.), or more recently through a \inlineQuote{One Hot} \cite{huffman1954the} encoded output array as seen in \tref{tab:HotOneEnc}. A key element of multi-class classifiers are that the classes are mutually exclusive. The car brands in \tref{tab:HotOneEnc} are mutually exclusive.
 
 \begin{table}[h]
     \begin{center}  
@@ -725,18 +726,18 @@ If a classifier is to map data to a label, it stands to reason that the label mu
     \end{center}
 \end{table}
 
-However, there is another type of classifier called the multi-label classifier. An example of a multi label classifier is this project. This project wanted to label whether signal in the provided data represents jogging, walking, talking, eating etc. For these labels, they are not always mutually exclusive and could occur at the same time.
+There is another type of classifier called the multi-label classifier. These labels are not always mutually exclusive and can occur at the same time. For example, talking and eating would occur in the same setting at a restaurant. This thesis requires a multi-label classifier as it aims to label whether the signals provided in the data represent different acoustic events such as jogging, walking, laughing, computer work, etc as found in \tref{tab:ExtraSensoryLabels}. %This thesis aims to label whether signal in the provided data represents jogging, walking, talking, eating etc. For these labels, they are not always mutually exclusive and could occur at the same time. This makes this project an example of a multi-label classifier.
 
-For this project, a binary classifier and a multi-label classifier were used and evaluated. The reason for this is because a binary classifier is a valid and succinct way to answer the intent of the project, which was to answer the question does supplementary data assist in an acoustic event detection and classification (AEC/D) problem. However for most `realistic' use cases, the validity of the result is important. For this reason, a multi-label classifier would be the most appropriate classifier to test against.\\
+For this project, a binary classifier and a multi-label classifier were used and evaluated. The reason for this is because a binary classifier is a valid and succinct way to answer the intent of the project, which was to answer the question does supplementary data assist in an acoustic event detection and classification (AEC/D). However for most `realistic' use cases, the validity of the result is important. For this reason, a multi-label classifier would be an appropriate classifier to test with as well.\\
 
 The methodology section was used to create a multi-label variant of the network. This used the same hyperparameter optimisation as the binary classifier and is discussed in the results. 
 
 \subsubsection{Model Selection}
-Model selection is an important aspect of machine learning because of the "No Free Lunch" theorem. 
+Model selection is an important aspect of machine learning because of the \inlineQuote{No Free Lunch} theorem, described by Magdon (2000) as: 
 \fancyquote{No Free Lunch theorems have shown that learning algorithms cannot be universally good. \cite{NFL_quote}}
-This theorem shows that selection of a Model is non-trivial, and the use case must be factored in.\\
+This theorem shows that selection of a model is non-trivial, and the use case must be factored in.\\
 
-The model required for the project will have to take into consideration several factors; the type, format and quality of data in use, the type and format of the desired information, as well as some unique factors. There is a desire to investigate applicability for onboard processing and a desire to have the methodology and results generalise well (even into different use cases).\\
+The model required for the project will have to take into consideration several factors; the type, format and quality of data in use, the type and format of the desired information, as well as some unique factors. There is a desire to investigate applicability for onboard processing and a desire to have the methodology and results generalise well (across different use cases).\\
 
 The standard approach is to either a) try many model options or b) investigate current best practice in academia. Below several models have been reviewed.
 
@@ -747,17 +748,16 @@ The standard approach is to either a) try many model options or b) investigate c
 Convolutional neural networks (CNN) were primarily designed for, and received the best results for image-based classification problems. This is because the architecture has been designed for computer vision. This would have be an excellent choice if audio spectrograms were to be used.
 
 \subparagraph{Recursive Neural Networks}
-Recursive neural networks (RNN) were not well suited to tabular data. This is because 
-RNNs (and deeper learning methods) utilise the Manifold Hypothesis. This suggests that very high dimensional data can have features represented on a low dimensional manifold. As this manifold is much lower in dimension (and consequently requires computation power), this is what deep learning approaches attempt to learn and map to. This was tested in Fefferman 2016 \cite{Fefferman2016}.
-As such, this approach is not best suited to the small dimensionality of the preprocessed, tabular features found in the ExtraSensory dataset. A recursive neural network could be used to generate a probability output and could also be used in conjunction with a soft Max layer to act as a classifier but it is not the best tool.
+Recursive neural networks (RNN) are not well suited to tabular data. This is because RNNs (and deeper learning methods) utilise the Manifold Hypothesis. This suggests that very high dimensional data can have features represented on a low dimensional manifold. As this manifold is much lower in dimension (and consequently requires computation power), this is what deep learning models attempt to learn and map to. This was tested in Fefferman (2016) \cite{Fefferman2016}.
+As such, this approach is not best suited to the small dimensionality of the preprocessed, tabular features found in the ExtraSensory dataset. A recursive neural network could be used to generate a probability output and could also be used in conjunction with a soft Max layer to act as a classifier but as stated it is not the best tool.
 
 
 \subparagraph{Random Forests}
-Another option is a random Forest classifier which have been used to great success by Phan, \cite{Phan2015}. However a random Forest classifier is not well suited to unbalanced data sets and would perform worse as the number of classes in the problem scaled up. For feature engineering purposes, a random forest classifier was used to evaluate and compare individual feature's importance in the ExtraSensory dataset.
+Another option is a random forest classifier which has been used to great success by Phan (2015) \cite{Phan2015}. However a random forest classifier is not well suited to unbalanced data sets and would perform worse as the number of classes in the problem scaled up. For feature engineering purposes, a random forest classifier was used to evaluate and compare the individual feature's importance in the ExtraSensory dataset.
 
 
-\subparagraph{Mulilayer Perceptron Feed Forward Neural Network}
-A multilayer perceptron classifier is a feedforward neural network, trained via backpropagation. It was selected for this project. For this project, tabular time-invariant snapshots of data were used. The simple MLP classifier trained faster than other Neural Networks, and was theorised to produce better results. Due to the MLP's simplicity, it was also expected to compress better for any potential onboarding processing use.\\
+\subparagraph{Multilayer Perceptron Feed Forward Neural Network}
+A multilayer perceptron (MLP) classifier is a feedforward neural network, trained via backpropagation. It was selected for this thesis. For this project, tabular time-invariant snapshots of data were used. The simple MLP classifier trained faster than other neural networks, and was theorised to produce better results. Due to the MLP's simplicity, it was also expected to compress better for any potential application of onboard processing.\\
 
 The details of the models use (hyperparameters, results) are discussed in the \sref{subsec:ModelVal} and \sref{sec:Results}.
 
@@ -774,13 +774,13 @@ The details of the models use (hyperparameters, results) are discussed in the \s
 
 
 \subsection{Model Validation}\label{subsec:ModelVal}
-Validation is the process of optimising the hyperparameters of a model, and evaluating each iteration on the hold-out validation set of data. This is an important aspect of the machine learning process because model validation cannot be learnt from data. That is to say, hyperparameter optimisation is out of the scope of training via traditional gradient decent and back propagation. Due to the "No Free Lunch" theorem, a model will be chosen and optimised before training and evaluation begins. This is an extension of trying to find the optimal model for the solution. 
+Validation is the process of optimising the hyperparameters of a model, and evaluating each iteration on the hold-out validation set of data. This is an important aspect of the machine learning process because model validation cannot be learnt from data. That is to say, hyperparameter optimisation is out of the scope of training via traditional gradient decent and back propagation. Due to the \inlineQuote{No Free Lunch} theorem, a model will be chosen and optimised before training and evaluation begins. This is a significant aspect of identifying the optimal model for the solution. 
 
 \paragraph{Model Performance Metrics}
-Before the hyperparameters could be optimised, a metrics to optimise the network about had to be selected. There are many metrics that have been discussed below. \\
+Before the hyperparameters could be optimised, a metric had to be selected to optimise the network about. There are many metrics that will be discussed below. \\
 
 \subparagraph{Terminology} 
-Before evaluating metrics, the terminology of the following formula must be formalised. The following terms help describe what a "correct" classification is. These terms are:
+Before evaluating metrics, the terminology of the following formula must be formalised. The following terms help describe what a \inlineQuote{correct} classification is. These terms are:
 \begin{itemize}
     \item True Positives (TP) - A correctly classified positive sample
     \item True Negatives (TN) - A correctly classified negative sample
@@ -788,7 +788,7 @@ Before evaluating metrics, the terminology of the following formula must be form
     \item False Negatives (FN) - A positive example incorrectly classified as negative
 \end{itemize}
 
-These four terms are the main parameters in the following formula.
+These four terms are the main parameters in the following formulae.
 
 \subparagraph{Accuracy} 
 Accuracy is the measure of how many samples the classifier correctly classified across its operation, as shown in \eref{eq:Accur}.
@@ -796,14 +796,14 @@ Accuracy is the measure of how many samples the classifier correctly classified 
     Accuracy = \frac{TP+TN}{TP+FP+TN+FN}
 \end{gather}
 
-Accuracy is used when a dataset is balanced (or close to balanced), and when there's no specific weighting on False Positives or False Negatives. Situations where this may have specific weightings on False Positive and False Negatives rates could be the medical industry. In this scenario, a false positive will have a cost associated with it (the cost of further tests, or screenings) where as a false negative would affect a patient's health outcomes (as they could be severely impacted by the incorrect diagnosis).
+Accuracy is used when a dataset is balanced (or close to balanced), and when there's no specific weighting on False Positives or False Negatives. Situations where this may have specific weightings on False Positive and False Negative rates could be the medical industry. In this scenario, a false positive will have a cost associated with it (the cost of further tests, or screenings) where as a false negative would affect a patient's health outcomes (as they could be severely impacted by the incorrect diagnosis).
 
 In this project, accuracy was a very poor metric for the machine learning measure because the ExtraSensory dataset has 51 labels. When performing a binary classification on any individual label the majority class will be blank/negative. As such, a classifier which would classify every sample as blank/negative would still achieve a high accuracy rate (due to achieving a high True Negative rate). This was discussed as a key element of an unbalanced dataset, and accuracy can reinforce a classification bias.
 
 \subparagraph{Confusion Matrix}
 A confusion matrix is a 4 cell table that lists TP, FP, FN, TN. This is a great visual tool to aid human evaluation of the model, as shown in \fref{confusion_matrix.png}. The matrix can be normalised across the rows, as to show what portion of samples were correctly classified. The capacity to directly penalising (and optimise about) the False Positives, and False Negatives, could be an essential tool for a project. 
 
-\fFigure{confusion_matrix.png}{A confusion matrix of the Iris Database. \cite{scikitlearnConMatrix}}{0.6}
+\fFigure{confusion_matrix.png}{A confusion matrix of the Iris Database, sourced from scikitlearn's website \cite{scikitlearnConMatrix}.}{0.6}
 
 In this project, the Confusion Matrix was generated to check and contextualise other performance measures. It is an important tool for weighing up the validity of classifier before accepting it for real world use.
 
@@ -993,8 +993,8 @@ Due to the size of the ExtraSensory dataset (60 users), and the use of the suppl
 
 
 \subparagraph{scikit-learn}
-Scikit-learn is an extensive machine learning Python library. The purpose of the library is to remove much of the \inlineQuote{boilerplate} code associated with and in implementing machine learning networks and algorithms. It also provides an extensive list of machine learning support functions.
-When combined with other Python libraries such as numpy, matlibplot and others, it allows for succinct and consistent reproduction of the results this project aims to deduce. It is for this reason that libraries for machine learning was utilised in contrast with writing a framework from scratch.
+Scikit-learn is an extensive machine learning Python library. The purpose of the library is to remove much of the \inlineQuote{boilerplate} code associated with implementing machine learning networks and algorithms. It also provides an extensive list of machine learning support functions.
+When combined with other Python libraries such as numpy, matlibplot and others, it allows for succinct and consistent reproduction of the results this project aims to deduce. It is for this reason that libraries for machine learning were utilised in contrast with writing a framework from scratch.
 
 \subsection{Method Summary}
 The method section detailed selecting the desired output, the required data input, a metric to score by, a classifier, optimising hyperparameters against the previous options, and finally training and validating the data. \\
