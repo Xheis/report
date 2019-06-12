@@ -160,7 +160,7 @@ I did:
 \vspace{-3mm}
 The project investigated whether supplementary data (Accelerometer, Gyroscope, GPS) will improve a classifier's ability to classify an \inlineQuote{acoustic event} in an acoustic event classification / detection (AEC/D) problem. The motivation behind this was to improve AEC/D without onerous microphone requirements, to enable more widespread commercial use of AEC/D.\\
 
-\sref{sec:LitReview} reviews current research. The AEC/D field is expanding in line with advances in the wider machine learning community. However AEC/D still remains a non-trivial problem with few commercial products, and few real-world applications. Research in this area remains small compared to the wider machine learning community, but is expanding. At the time of publication, the question of the effect supplamentry data on audio classification had not been answered. \\
+\sref{sec:LitReview} reviews current research. The AEC/D field is expanding in line with advances in the wider machine learning community. However AEC/D still remains a non-trivial problem with few commercial products, and few real-world applications. Research in this area remains small compared to the wider machine learning community, but is expanding. At the time of publication, the question of the effect supplementary data on audio classification had not been answered. \\
 
 \sref{sec:ProblemAnalysis} analyses the problem and elicits the design requirements through system engineering principles.\\
 
@@ -189,7 +189,7 @@ The project investigated whether supplementary data (Accelerometer, Gyroscope, G
 \vspace{-3mm}
 I'd like to thank my partner Brigid for encouraging and supporting me throughout this thesis. \\
 
-I'd also like to thank each and every mechatronics Academic staff member at the University of Newcastle.% The teaching staff care about their students, and I want that to grow. 
+I'd also like to thank each and every mechatronics Academic staff member at the University of Newcastle. Their tireless efforts made it clear they care about their students, and advocate for the Mechatronics program at every step. I hope to see the degree continue to grow thanks to their efforts.
 
 \newpage
 \tableofcontents
@@ -951,7 +951,7 @@ After \lref{lst:ModelValidation} has run, these were the the results:
      'alpha': 0.17, 'activation': 'relu'}
 \end{lstlisting}
 
-\subparagraph{Grid Search Implimenation}
+\subparagraph{Grid Search Implementation}
 A Grid Search was also trialed, and details can be found in \aref{apx:GSAttempt}.
 
 \paragraph{Machine Learning Libraries Used}
@@ -997,7 +997,7 @@ Scikit-learn is an extensive machine learning Python library. The purpose of the
 When combined with other Python libraries such as numpy, matlibplot and others, it allows for succinct and consistent reproduction of the results this project aims to deduce. It is for this reason that libraries for machine learning were utilised in contrast with writing a framework from scratch.
 
 \subsection{Method Summary}
-The method section detailed selecting the desired output, the required data input, a metric to score by, a classifier, optimising hyperparameters against the previous options, and finally training and validating the data. \\
+This section details the method of selecting the desired output, the required data input, a metric to score by, a classifier, optimising hyperparameters against the previous options, and finally training and validating the data. \\
 
 {\itshape For this project}
 \begin{enumerate}
@@ -1020,12 +1020,13 @@ A Binary MLP Classifier was run using the following settings:
 \begin{lstlisting}[breaklines=true]
     {'solver': 'adam', 'learning_rate': 'adaptive', 'hidden_layer_sizes': (150, 100, 50), 'alpha': 0.03, 'activation': 'tanh'}
 \end{lstlisting}
-It was trained to classify label 2. Average training time for Audio only was 42.9 minutes, whilst Audio+Extra was 53.6 minutes. This does not reflect the full training time, but rather the final optimising and training time after manual refinement of the Random Search Cross Validation hyperparameter range.
+It was trained to classify label 2\footnote{Sitting}. Average training time for audio only was 42.9 minutes, whilst audio+extra was 53.6 minutes. This does not reflect the full training time, but rather the final optimising and training time after manual refinement of the Random Search Cross Validation hyperparameter range.
 
 \paragraph{Results from Audio Only}
+The results of the audio binary MLPClassifier are as follows:\\
+
 \begin{lstlisting}[
     language=python,
-    float=h,
     numbers=none,
     frame=shadowbox]
 --- Training Metrics ---
@@ -1043,10 +1044,10 @@ F-Score: 0.76
 \end{lstlisting}
 
 \paragraph{Results from Audio, Accelerometer, Gyroscope, GPS}
+The results of the audio+extra binary MLPClassifier are as follows:\\
 
 \begin{lstlisting}[
     language=python,
-    float=h,
     numbers=none,
     frame=shadowbox]
 --- Training Metrics ---
@@ -1079,7 +1080,11 @@ A Multilabel MLP Classifier was run using the following settings:
 It was trained to classify labels 2 through 22 inclusive. Average training time for Audio only was 60.6 minutes, whilst Audio+Extra was 73.1 minutes. This does not reflect the full optimising and training time, but rather the final training time after manual refinement of the Random Search Cross Validation hyperparameter range.
 
 \paragraph{Results from Audio Only}
-\begin{lstlisting}
+The results of the audio+extra multilabel MLPClassifier are as follows:\\
+\begin{lstlisting}[
+    language=python,
+    numbers=none,
+    frame=shadowbox]
 --- Training Metrics ---
 Samples: 7903
 Sensors: ['Aud']
@@ -1092,7 +1097,11 @@ F-Score: 0.67
 \end{lstlisting}
 
 \paragraph{Results from Audio, Accelerometer, Gyroscope, GPS}
-\begin{lstlisting}
+The results of the audio+extra multilabel MLPClassifier are as follows:\\
+\begin{lstlisting}[
+    language=python,
+    numbers=none,
+    frame=shadowbox]
 --- Training Metrics ---
 Samples: 2158
 Sensors: ['Aud', 'Acc', 'Gyro', 'Loc']
@@ -1106,7 +1115,7 @@ F-Score: 0.75
 \end{lstlisting}
 
 \subsection{Summary of Results}
-The results achieved (shown in \tref{tab:F1Results}) demonstrate that the supplementary data used in accordance with the method described in \sref{sec:Method}, contribute to an 8\% increase to the F1 score in both the Binary MLP Classifier, and the Multilabel classifier when compared with Audio only input. This a relative increase of 10.5\% and 11.9\% respectively. 
+The results achieved (shown in \tref{tab:F1Results}) demonstrate that the supplementary data used in accordance with the method described in \sref{sec:Method}, contribute to an 8\% increase to the F1 score in both the binary MLP Classifier, and the multilabel classifier when compared with audio only input. This a relative increase of 10.5\% and 11.9\% respectively. 
 
 \begin{table}[h]
     \begin{center}  
@@ -1124,80 +1133,80 @@ The results achieved (shown in \tref{tab:F1Results}) demonstrate that the supple
 
 
 \clearpage \section{Discussion}\label{sec:Discussion}
-The results above aim to demonstrate a quantitative difference in F1 score across 2 the classifier with and without Accelerometer, Gyroscope and GPS data. The results achieved did produce a quantitative relative improvement of 10.5\% and 11.9\% for the Binary and Multilabel result respectively. The realtative improvements of 10.5\% and 11.9\% are significant in a field that frequently publishes about improvements in the single digitis.
+The results above aim to demonstrate a quantitative difference in F1 score across the two classifiers with and without Accelerometer, Gyroscope and GPS data. The results achieved did produce a quantitative relative improvement of 10.5\% and 11.9\% for the Binary and Multilabel result respectively. The relative improvements of 10.5\% and 11.9\% are significant in a field that frequently publishes about improvements in the single digits, as seen in \fref{F1_score.png}.
 
 \subparagraph{Assumptions}
-The results are constrained by the assumptions made in \sref{sec:Method}. One assumption is that the \inlineQuote{No Free Lunch} theorem infers that no individual classifier is theoretically better than another pre-training. This assumption implies that the results of this project will affect all models, but the quantitative impact may vary post-training. Similarly, the dataset and training may significantly affect the strength of this result. As a result, the strength of this result when applied to other projects projects is unknown. 
+The results are constrained by the assumptions made in \sref{sec:Method}. One assumption is that the \inlineQuote{No Free Lunch} theorem infers that no individual classifier is theoretically better than another pre-training. This assumption implies that the results of this project will affect all models, but the quantitative impact may vary post-training. Similarly, the dataset and training may significantly affect the strength of this result. Consequently, the strength of the findings in this thesis is unknown in the context of application to other projects. 
 
 \subparagraph{Causation}
-The increase in F1 score could occur in 2 areas. The first is during hyperparameter optimisation, in which the hyperparameters are fitted to our activation model using Audio and/or the supplementary data, optimised about the F1 score. The second is in the fitting itself, where the supplementary data may contain a signal that could be benefiting the F1 score of the model. If this hypothesis is correct, then these results will hold valid across other classifiers that require hyperparameter optimisation and fitting of training data.
+The increase in F1 score could occur in two areas. The first is during hyperparameter optimisation, in which the hyperparameters are fitted to the activation model using audio and/or the supplementary data, optimised about the F1 score. The second is in the fitting itself, where the supplementary data may contain a signal that could be benefiting the F1 score of the model. If this hypothesis is correct, then these results will hold valid across other classifiers that require hyperparameter optimisation and fitting of training data.
 
 \subparagraph{Confidence and Qualitative Evaluation of Result}
 The result had been analysed using the Area Under Receiver Operating Characteristics (AUROC) plot, to determine how the classifier would operate over different decision boundaries. The AUROC plots shown in \fref{both_ROC.png} show the consistency of the model. This is demonstrated via the smooth continuity of the ROC curve (no major jumps in TP performance). This ensures that the results produced were not the result of a classifier optimised about an artefact of the post-training model.
 
 \subparagraph{Changing Hyperparameters}
-The results assume that using static hyperparameters across the Audio, and Audio+Extra classifiers would be an invalid strategy of testing the hypothesis. It would be expected that optimising the hyperparameters for one classifier and not the other would result in the other classifier performing worse. This would result in a convolution of the effect from the extra data, and a classifier with poorly optimised hyperparameters. As such, there is an inverse assumption that optimising both classifiers separately, but using the same methodology is a fair strategy to minimise the model and its hyperparameter's effect on F1 score.
+The results assume that using static hyperparameters across the audio, and audio+extra classifiers would be an invalid strategy of testing the hypothesis. It would be expected that optimising the hyperparameters for one classifier and not the other would result in the other classifier performing worse. This would result in a convolution of the effect from the extra data, and a classifier with poorly optimised hyperparameters. As such, there is an inverse assumption that optimising both classifiers separately, but using the same methodology, is a fair strategy to minimise the model and its hyperparameter's effect on F1 score.
 
 \subparagraph{Complexity} 
-The complexity of the classification task was low compared to similar studies \cite{Tseng2017}\cite{Virtanen2010} due to the limited and broad labels available in the ExtraSensory dataset. However the number of classes are comparative to previous studies (61 classes, Virtanen 2010 \cite{Virtanen2010}). To improve these results, the complexity of the labels could be improved. A promising new technique is to train a network on weakly supervised data \cite{Tseng2017}, which could extend to generating/classifying new labels on the ExtraSensory dataset. This would allow a more complex dataset, such as AudioSet \cite{Audiosetgoogle2018} to reprocess the ExtraSensory database to have a larger number of classes.
+The complexity of the classification task was low compared to similar studies \cite{Tseng2017}\cite{Virtanen2010} due to the limited and broad labels available in the ExtraSensory dataset. However, the number of classes are comparative to previous studies (61 classes, Virtanen (2010) \cite{Virtanen2010}). To improve these results, the complexity of the labels could be improved. A promising new technique is to train a network on weakly supervised data \cite{Tseng2017}, which could extend to generating/classifying new labels on the ExtraSensory dataset. This would allow a more complex dataset, such as AudioSet \cite{Audiosetgoogle2018} to reprocess the ExtraSensory database to have a larger number of classes.
 
 
 
 \subparagraph{Acoustic Event Detection}
-The validity of the result holds true for acoustic event classification, however, no acoustic event \inlineQuote{detection} was carried out. That is, a sound sample was classified as containing an acoustic event rather than identifying when the acoustic event occurred in the sound sample. Phaun \cite{Phan2016} discusses the differences and complexities involved in AEC vs AED, and evaluates the use of classifiers as a verification stage in an acoustic event detection pipeline. %in a paper called \inlineQuote{What Makes Audio Event Detection Harder than Classification?} .
-Phaun's results suggested that the AEC is an crucial element of the detection pipeline. This project's result may then be valid for acoustic event detection, given AEC's role in AED.
+The validity of the result holds true for acoustic event classification, however, no acoustic event \inlineQuote{detection} was carried out. That is, a sound sample was classified as containing an acoustic event rather than identifying when the acoustic event occurred in the sound sample. Phan (2016) \cite{Phan2016} discusses the differences and complexities involved in AEC vs AED, and evaluates the use of classifiers as a verification stage in an acoustic event detection pipeline. %in a paper called \inlineQuote{What Makes Audio Event Detection Harder than Classification?} .
+Phan's results suggested that the AEC is a crucial element of the detection pipeline. Given this, the results in this thesis may then be valid for acoustic event detection, given AEC's role in AED.
 
 \subparagraph{Quality of Data}
-ExtraSensory was used as the dataset for this project. As a result of using a public dataset, there was no investigation into the quality of the data within the dataset beyond reviewing the original study. The quality of the recording device, any preproccessing, or whether they generalised well has been checked. This is a key limitation with analysing the quantitative result. However,this limitation does not invalidate the result because the dataset was collected with mobile phones. Mobile phones would likely be the main datasource for any future dataset involving audio, accelerometer, gyroscope and GPS data.\\
+ExtraSensory was used as the dataset for this project. As a result of using a public dataset, there was no investigation into the quality of the data within the dataset beyond reviewing the original study. The quality of the recording device, any preproccessing, or whether they generalised well, have not been checked. This is a key limitation with analysing the quantitative result. However, this limitation does not invalidate the result because the dataset was collected with mobile phones. Mobile phones would likely be the main datasource for any future dataset involving audio, accelerometer, gyroscope and GPS data.\\
 
-Furthermore, no effort was made to audit the labels provided in the dataset, as it was assumed that the dataset was 100\% accurate. If this was not the case, this assumption would affect the expected relative improvement in the result. The labels were self-reported and cleaned up by the researchers \cite{Vaizman2017}. Whilst this introduces human error into the dataset, all datasets will require a decision boundary that may be controversial. To ensure the quality of the decision boundary, one would take guidance from their use case in real world use, or would take guidance from similar studies for their decision boundary. 
+Furthermore, no effort was made to audit the labels provided in the dataset, as it was assumed that the dataset was 100\% accurate. If this was not the case, this assumption would affect the expected relative improvement in the result. The labels were self-reported and cleaned up by the researchers \cite{Vaizman2017}. Whilst this introduces human error into the dataset, all datasets will require a decision boundary that may be controversial. To ensure the quality of the decision boundary, future studies should take guidance from their use case in real world use, or would take guidance from similar studies. 
 
 \subparagraph{Choice in Frameworks}
-The choice in machine learning frameworks (and their implementation) could affect the result. An assumption is made that this will be a minimal impact, and the results would stand valid across other frameworks.
+The choice in machine learning frameworks (and their implementation) could affect the result. For this project, an assumption was made that the choice in frameworks would be of minimal impact, and the results would remain valid across other frameworks.
 
 \subparagraph{Details of the Audio Data}
-A key assumption was that the audio data provided (mono-channel recorded from a mobile phone) was representative of all audio data for use in machine learning. Furthermore, the audio was processed into Mel-frequency cepstral coefficients (MFCCs), a leading approach to processing audio data. MFCCs are the coefficents that represent the Mel-frequency cepstral. 
-
-This report did not attempt to test the results against different types of Audio data (such as multi channel, higher dynamic ranges, etc). The report did not attempt to review the results with other approaches of processing audio data (such as spectrograms with computer vision / machine learning), which may significantly differ the decision boundary which supplementary data would assist.
+A key assumption was that the audio data provided (mono-channel recorded from a mobile phone) was representative of all audio data for use in machine learning. Furthermore, the audio was processed into Mel-frequency cepstral coefficients (MFCCs), a leading approach to processing audio data. This report did not attempt to test the results against different types of audio data (such as multi channel, higher dynamic ranges, etc). The report did not attempt to review the results with other approaches of processing audio data (such as spectrograms with computer vision / machine learning), which may significantly affect the result.
 
 \subparagraph{Types of Supplementary Data}
-This report had defined "supplementary data" as accelerometer, gyroscope, and GPS data. An assumption was that the AEC/D field could accept this definition within the context of the results. A limitation of this result was whether the result would transfer and compare with different supplementary data sources. For example, would similar benefits be gained from inclusion of video, metadata, multiple audio sources etc. 
+This report had defined \inlineQuote{supplementary data} as accelerometer, gyroscope, and GPS data. An assumption was that the AEC/D field would accept this definition within the context of the results. A limitation of this result was whether the result would transfer and compare with different supplementary data sources. For example, would similar benefits be gained from inclusion of video, metadata, multiple audio sources etc. 
 
 \subparagraph{Model Optimisation}
-A key assumption was that the model selected had been close to fully optimised, to the extent as to \sref{sec:Method} allowed. This assumption infers that any improvement in F1 score with the addition of supplementary data can determined to be from the introduction of the data itself, and not a result of better hyperparameter optimisation.
+A key assumption was that the model selected had been close to fully optimised to the extent \sref{sec:Method} allowed. This assumption infers that any improvement in F1 score with the addition of supplementary data can be determined to be from the introduction of the data itself, and not a result of better hyperparameter optimisation.
 
 \subparagraph{F1 Score as a Metric}
-This project sought to measure a discernible difference in F1 score by the introduction of supplementary data. An assumption that F1 score is the most appropriate indicator of a positive result is made. It could be noted that F1 score is the harmonic mean of the true positive and true negative rate. Had the project selected a different metric from \sref{subsec:ModelVal}, the intent of the question would remain but the relative increase in performance would be vastly different. A limitation of this result was that the validity of the result working in another project assumes that an improvement in F1 score throughout hyperparameter optimisation and backpropagation/training of the model is desirable in the other project.
+This project sought to measure a discernible difference in F1 score by the introduction of supplementary data. An assumption that F1 score is the most appropriate indicator of a positive result is made. It could be noted that F1 score is the harmonic mean of the True Positive and True Negative rate. Had the project selected a different metric from \sref{subsec:ModelVal}, the intent of the question would remain but the relative increase in performance would be vastly different. An assumption was that an improvement in F1 score throughout hyperparameter optimisation and backpropagation/training of the model is desirable in other projects.
 
 \subparagraph{Limiting Model Choice to Avoid Excessive Feature}
-Some machine learning models are sensitive to the number of features, and dimensionality reduction is critical to only keep the features that are of high importance. As the result didn't dicern which features were critical, the result may need to be duplicated after a dimension reduction.
+Some machine learning models are sensitive to the number of features. Dimensionality reduction is critical to keep only the features that are of high importance. As the result didn't dicern which features were critical, the result may need to be duplicated after a dimension reduction.
 
 \subparagraph{Temporal Features}
-This classifier did not make use of any temporal aspects that would be available to other datasets. This was a limitation of the dataset. Due to the natural of the supplementary data being time varying measurements, it would be expected that their inclusion to a AEC/D pipeline would benefit, however it would be left for future work to determine the exact nature of this benefit.
+This classifier did not make use of any temporal aspects that would be available to other datasets. This was a limitation of the dataset. As the supplementary data is a measurement in the time domain, it would be expected that their inclusion to a AEC/D pipeline would benefit, however it would be left for future work to determine the exact nature of this benefit.
 
 
 \subparagraph{Significance} %review: reverse funnel; talk to the very specific result, then what knock on effects it will have, then what that means for the wider field, and finally what that means for actual real life. key words; fundamental, building block, wider application, through multiple wider fields, real world imapct, 
-The results from this project aim to present the impact of the supplementary datasources of an accelerometer, gyroscope and GPS on AEC/D. This impact was of 10.5\% and 11.9\% for their respective models. The effect this research will have on other model implimenations will be that the qualitative result can be taken and applied to similar projects. Classifiers are a funadmental building block of the AEC/D field, and the effect of qualativie researh to help other researchers decide data inputs will be wide spread, affecting any research that makes use of classification. The decision to define "supplamentry data" as accelerometer, gyroscope and GPS was a conscious effort,as these datasources are prevalent, and commonly found together. This means that the impact of AEC/D research can best be applied to mobile phones, resulting in a wider application of AEC/D solutions, both into other fields of research as well as real world products. The significance of this report contributes to the real world impact of the AEC/D field.
+% The results from this project aim to present the impact of the supplementary datasources of an accelerometer, gyroscope and GPS on AEC/D. This impact was of 10.5\% and 11.9\% for their respective models. The effect this research will have on other model implementations will be that the qualitative result can be taken and applied to similar projects. Classifiers are a funadmental building block of the AEC/D field, and the effect of qualitative research to help other researchers decide data inputs will be wide spread, affecting any research that makes use of classification. The decision to define " data" as accelerometer, gyroscope and GPS was a conscious effort, as these datasources are prevalent, and commonly found together. This means that the impact of AEC/D research can best be applied to mobile phones, resulting in a wider application of AEC/D solutions both into other fields of research as well as real world products. The significance of this report contributes to the real world impact of the AEC/D field.
+This hypothesis presents the impact of the supplementary datasources of an accelerometer, gyroscope and GPS on AEC/D. This impact was of 10.5\% and 11.9\% for their respective models. The qualitative aspects of these results will be applicable to model implementation in other projects. Classifiers are a fundamental building block of the AEC/D field. This thesis will be relevant to future research that makes use of classification as it will aid researchers in the selection of data inputs. \\
 
+The decision to define \inlineQuote{supplementary data} as accelerometer, gyroscope and GPS was a calculated decision as these datasources are not only prevalent in modern society, but commonly found together in devices such as mobile phones. Subsequently, the research this thesis contributes to will have a widespread, real-world impact across varying industries and products. \\
 
-
+This thesis is significant because it is a key contributer to the real world impact of the AEC/D field.
 
 
 
 \clearpage \section{Conclusion}\label{sec:Conclusion}
-
 %summary
-The report demonstrated that introducing Accelerometer, Gyroscope, and GPS data contributed to an 8\% increase to the F1 score in both a binary, and a multilabel MLPClassifier. This a relative increase of 10.5\% and 11.9\% respectively, compared to a baseline without the extra data. The results had a significant limitations in what was tested, and assumptions about typical AEC/D problems. These limitations do not affect the significance and qualitative result of this report, but will affect the quantifiable improvement expected when implementing these findings in other projects. 
-The result was discussed and found to be valid, and a contribution to the field by specifying an estimate improvement for including of the extra data. To the best of the Author's knowledge, this has not been specifically done before.
+The report demonstrated that introducing accelerometer, gyroscope, and GPS data contributed to an 8\% increase in the F1 score in both a binary, and a multilabel MLPClassifier. This a relative increase of 10.5\% and 11.9\% respectively, compared to a baseline without the extra data. The results had significant limitations and assumptions about typical AEC/D problems. These limitations do not affect the significance and qualitative result of this report, but will affect the quantifiable improvement expected when implementing these findings in other projects. 
+The result was discussed and found to be valid. This thesis contributes to the field by specifying an estimate improvement for the inclusion of the supplementary data. At the time of publication, the question of the effect supplementary data on audio classification had not been previously answered.
 
 %reflect
-Reflecting on the report, it focused on investigating and analysing an AEC/D problem. A heavy focus was placed on creating a reviewable machine learning implementation, to best facilitate transferring results to other projects. The results vindicate this approach.
+This report focused on investigating and analysing an AEC/D problem. A heavy focus was placed on creating a reviewable machine learning implementation, to best facilitate transferring results to other projects.
 \\
-The work presented has demonstrated that the fear of machine learning being a "blackbox" method is unfounded. The methodical process applied in this project showed that the result can be isolated, and whilst the performance can not be attributed to hyperparameter optimisation or backpropagation analytically, it was evident that the effect was present in these. 
+%The work presented has demonstrated that the fear of machine learning being a "blackbox" method is unfounded. 
+The methodical process applied in this project showed that the result can be isolated. Whilst the performance cannot be attributed to hyperparameter optimisation or backpropagation analytically, it was evident that the effect was present in these areas. 
 \\
-The report looks at how the AEC/D pipeline would be created (such as the creation of the app, preprocessing, etc.), much of which is not reflected in the final results but were critical in the overall Final Year Project. Highlighting these aspects are also important in converying contextual understanind of the design choices being made in the result. This context aims to help reproducablity. 
+The report looks at how the AEC/D pipeline would be created (the creation of the app, preprocessing, etc.), much of which is not reflected in the final results but were critical in the overall Final Year Project. Highlighting these aspects are also important in converying a contextual understanding of the design choices being made in the result. This context aims to help reproducablity. 
 \\
-The results achieved showed audio as a sole input for determining physical actions to be a viable, but the extra available data did improve the classification. The work presented does demonstrates a contribution to the audio processing space and explores how mechatronics domain knowledge impacts and extends machine learning.
+The results achieved showed audio as a sole input for determining physical actions to be viable, but the extra available data did improve the classification. The work presented does demonstrates a contribution to the audio processing space and explores how mechatronics domain knowledge impacts and extends machine learning.
 %Preprocessing took some domain knowledge learnt through out Mechatronics, and processed (mel power coefficients). 
 
 % Results only demonstrate the sheer inclusion of the data, as no processing or optimisation on the extra data was carried out.
@@ -1206,18 +1215,16 @@ The results achieved showed audio as a sole input for determining physical actio
 % What this raises is how well do the results generalise across other applications and use cases? This project had a specific use case it was not within the scope to evaluate whether supplementary data would improve audio event classification and detection in other audio sets, or across other use cases. Even then the number of audio+Extra datasets is available is limited and the format of that data would affect the result from this report. So whilst supplementary data added to the was discussed, it did not attempt to evaluate other supplementary data.
 
 %Recommendations
-Based on the work presented, it is clear that audio data processing will be a major tool and research topic into the future. Without large datasets of audio paired with physical sensor data, the machine learning tools explored in this Final Year Project will not be able to be used. As such, it is recommended that due to the rise of well lablled audio datasets, audio only should remain the key basis for further research into this space. Perhaps an ensemble of classifiers, one with a well trained AEC/D based on audio only, and amalgamate it with the extra data to form the best classifier possible.
+Based on the work presented, it is clear that audio data processing will be a major tool and research topic into the future. Without large datasets of audio paired with physical sensor data, the machine learning tools explored in this Final Year Project may not be able to be used. As such, it is recommended that due to the rise of well lablled audio datasets, audio only should remain the key basis for further research into this space. An ensemble of classifiers with a well trained AEC/D based on audio only classifier, could make use of the extra data to form a more effective classifier.
 
 A recommendation would be to apply the outcome to a relevant project when the supplementary data is available, but consider the extra training time required. Also consider the quality of datasets available, and whether requiring the inclusion of supplementary data would exclude higher quality datasets. For example, an AEC/D classifier trained on the ExtraSensory dataset (with accelerometer, gyroscope, and GPS data) may perform worse than an audio only classifier of the same design trained on the Google AudioSet dataset.
 
-In conclusion the question of \inlineQuote{[what is] the effect of supplementary data on acoustic event classification through machine learning} has been answered: The answer is an 8\% increase in F1 score, or 10.5/11.9\% relative increase in their respective models. The implications of this report on potential applications are well defined; any improvement on classification bring ideas like reality closed captioning for the hearing impaired, improved security closed loop TV, improved ride sharing trip documenation, early detection of potential accidents or medical emergencies, and a method of debriefing across multiple industries all the more closer to reality.
-
+In conclusion the question of \inlineQuote{what is the effect of supplementary data on acoustic event classification through machine learning} has been answered. There is an 8\% increase in F1 score, or 10.5/11.9\% relative increase in a binary MLPClassifier and multilabel MLPClassifier respectively. The implications of this report on potential applications are well defined; any improvement on classification brings ideas like reality closed captioning for the hearing impaired, improved security closed loop TV, improved ride sharing trip documenation, early detection of potential accidents or medical emergencies, and a method of debriefing across multiple industries closer to reality.
 
 
 \clearpage \section{Future Work}\label{sec:futurework}
 \paragraph{Individual effect}
 A package of future work would be to discern what impact each additional datasource had on the result. It could be inferred from \aref{apx:FeatureImportance} that accelerometer was likely the most impactful element. An investigation to discern the specific impact each sensor had, and the cost of including \inlineQuote{less important} features vs training time would be of critical value. 
-
 
 \paragraph{Review Preprocessing of Data}
 A package of future work would be to analyse whether the method of preprocessing chosen affects the results. For example, this project used MFCCs, but another common practice is to use a sliding window spectrograms.

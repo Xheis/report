@@ -24,7 +24,7 @@
 %% Ordinary pages
 \fancyhf{}
 \fancyhead[CE]{School of Engineering, Discipline of Mechanical Engineering and Mechatronics}
-\fancyhead[CO]{\usebox{\shorttitlebox} | Updated: \today T \currenttime} %%
+\fancyhead[CO]{\usebox{\shorttitlebox} | Updated: \today} %%
 \fancyfoot[LE]{\thepage}
 \fancyfoot[RO]{\thepage}
 %% First page
